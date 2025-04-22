@@ -1,0 +1,1148 @@
+[
+  {
+    "courseId": "CMPS151",
+    "courseName": "Programming Concepts",
+    "creditHours": 3,
+    "subject": "Computer Science",
+    "courseNumber": "151",
+    "prerequisites": [],
+    "majorsOffered": [
+      "CMPS",
+      "CMPE"
+    ],
+    "currentClasses": [],
+    "description": "Problem solving techniques such as pseudo-code of flowcharts, algorithmic thinking. Basic prigramming concepts including: variables, arithmetic and logical operations, input/ output, conditional statements, loops, arrays, functions, and file processing. The laboratory provides a practical programming experience.",
+    "courseImage": "https://apps.weber.edu/wsuimages/DOCE/badgeup/BasicProgrammingConceptsBanner-AdobeStock_348397404.jpg"
+  },
+  {
+    "courseId": "CHEM101",
+    "courseName": "General Chemistry 1",
+    "creditHours": 3,
+    "subject": "Chemistry",
+    "courseNumber": "101",
+    "prerequisites": [],
+    "majorsOffered": [
+      "CMPS",
+      "CMPE"
+    ],
+    "currentClasses": [],
+    "description": "Chemistry and Measurement and significant figures. Atoms, molecules and ions. Formulas and names. Stoichiometry and chemical calculations. Chemical reactions. Thermochemistry and enthalpy changes. Quantum theory of the atom and electron configuration. Chemical bonding and molecular geometry.",
+    "courseImage": "https://courier.unesco.org/sites/default/files/styles/best_image/article/courier/photos/gettyimages-874157664.jpg?itok=QmvdimcR"
+  },
+  {
+    "courseId": "CHEM103",
+    "courseName": "Experimental General Chemistry 1",
+    "creditHours": 1,
+    "subject": "Chemistry",
+    "courseNumber": "103",
+    "prerequisites": [
+      "CHEM101"
+    ],
+    "majorsOffered": [
+      "CMPS",
+      "CMPE"
+    ],
+    "currentClasses": [],
+    "description": "This course is digitally enriched and delivered using learner centered and experiential learning strategies, and adopts critical thinking, problem solving and adoptive learning methods. The students learn essential laboratory safety practices, responsible use and disposal of chemicals and techniques of handling laboratory instruments and equipment. The hands-on experiments performed include measurement of mass, volume and density, identification of unknown compounds, qualitative analysis of anions, empirical formula determination, thermal decomposition, inorganic synthesis,stoichiometry, titrations, spectrophotometry, and enthalpy of reactions.",
+    "courseImage": "https://assets-homepages-learning.3plearning.net/wp-content/uploads/2014/12/blog-beakers-science.png"
+  },
+  {
+    "courseId": "MATH101",
+    "courseName": "Calculus 1",
+    "creditHours": 3,
+    "subject": "Mathematics",
+    "courseNumber": "101",
+    "prerequisites": [],
+    "majorsOffered": [
+      "CMPS",
+      "CMPE"
+    ],
+    "currentClasses": [],
+    "description": "Limits and continuity. Differentiation. Applications of derivatives. Integration. Inverse functions. Transcendental functions.",
+    "courseImage": "https://www.thoughtco.com/thmb/irSi_hwriBZL3QbGsCiiNsgaSWI=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/calculus-on-blackboard-79338340-5be4695946e0fb0026d6856f.jpg"
+  },
+  {
+    "courseId": "ENGL202",
+    "courseName": "English Language 1 Post Foundation",
+    "creditHours": 3,
+    "subject": "English",
+    "courseNumber": "202",
+    "prerequisites": [],
+    "majorsOffered": [
+      "CMPS",
+      "CMPE"
+    ],
+    "currentClasses": [
+      "25537",
+      "25538",
+      "25602"
+    ],
+    "description": "This course is designed to help students improve their academic writing ability, and to ensure that they are prepared for the more advanced writing and research skills introduced in English 2. Emphasis is placed on understanding information from authentic texts. Academic vocabulary is taught through inference and context. A collaborative community environment is encouraged, whereby students learn to provide and accept relevant, focused feedback to and from their peers. Throughout the semester, students create and develop an e-portfolio.",
+    "courseImage": "https://learnenglish.britishcouncil.org/sites/podcasts/files/RS7522_ThinkstockPhotos-622015126-hig_0.jpg"
+  },
+  {
+    "courseId": "HIST121",
+    "courseName": "History of Qatar",
+    "creditHours": 3,
+    "subject": "History",
+    "courseNumber": "121",
+    "prerequisites": [],
+    "majorsOffered": [
+      "CMPS",
+      "CMPE"
+    ],
+    "currentClasses": [
+      "25535",
+      "25536",
+      "25601"
+    ],
+    "description": "This course aims at familiarizing students with the history of Qatar through different historical eras, with particular emphasis on the emergence and development of Qatar Emirate during the Ottoman-British rivalry in the Gulf. The course also deals with social, economic and political life during the pre and post oil and Gas era. It examines the socio-political and economic developments that took place in the country covering the period of his Highness, Sheikh Hamad Ben Khalifa Al Thani.",
+    "courseImage": "https://www.remotelands.com/travelogues/app/uploads/2021/07/Qatar-Opens-1-2560x1280.jpg"
+  },
+  {
+    "courseId": "CMPS251",
+    "courseName": "Object-Oriented Programming",
+    "creditHours": 4,
+    "subject": "Computer Science",
+    "courseNumber": "251",
+    "prerequisites": [],
+    "majorsOffered": [
+      "CMPS",
+      "CMPE"
+    ],
+    "currentClasses": [],
+    "description": "Fundamentals of object-oriented programming, object-oriented design, apply object oriented concepts such as abstraction, encapsulation, composition, inheritance, polymorphism, and interfaces. Graphical user interface and event-driven programming; exception handling; additional object-oriented features. The laboratory provides practical object-oriented programming experience.",
+    "courseImage": "https://files.realpython.com/media/pcl-Class-Concepts-Object-Oriented-Programming-in-Python_Watermarked.cec519e31003.jpg"
+  },
+  {
+    "courseId": "PHYS191",
+    "courseName": "General Physics for Engineering 1",
+    "creditHours": 3,
+    "subject": "Physics",
+    "courseNumber": "191",
+    "prerequisites": [],
+    "majorsOffered": [
+      "CMPS",
+      "CMPE"
+    ],
+    "currentClasses": [],
+    "description": "Physics and Measurements: Units and Physical Quantities- Vectors- Motion in One Dimension- Motion in Tow Dimension- Horizontal Motion- Vertical Motion- Projectile Motion- Kinematic Equations. \u2022The Laws of Motion: Newton\u2019s First Law- Newton\u2019s Second Law- Some Applications of Newton\u2019s Laws- Circular Motion and its Application. \u2022Work and Energy: Kinetic Energy- Work Done by Constant Force- Work Energy Theorem- Potential Energy- Conservation of Energy- Quantization of Energy. \u2022Linear Momentum and Collision: Linear Momentum- Impulse of Momentum- Collisions- Elastic and Inelastic Collision- The Center of Mass- Motion of a System of Particles. \u2022Rotational Motion: Angular Position, Velocity and Acceleration- Rotational Kinematic Motion Equations- Angular and Linear Quantities- Rotational Kinetic Energy- Calculations of Moments of Inertia- Torque- Work, Power and Energy in Rotational Motion- Rolling Motion of a Rigid Objects. \u2022Angular Momentum: Angular Moment- Angular Moment of a Rotational Objects \u2013 Conservation of Angular Moment- The Motion of Gyroscopes and Tops. \u2022Elasticity: Elastic Properties of Solids- Type of Elasticity- The Center of Gravity and Static Equilibrium. \u2022Universal Gravitation: Newton\u2019s Law of Gravitation, Measuring the Gravitational Constant \u2013 Free-Fall Acceleration and the Gravitational Force- Kepler\u2019s Law and Motion of Planets- Energy Considerations in Planetary and Satellite. \u2022Waves: Definitions of Waves, Pulse on a Rope, Transverse Wave, Longitudinal Wave, Complex Waves, Earthquake Waves, Amplitude of Waves, Wavelength of Waves, Frequency of Waves. \u2022Temperature: Definition of Temperature, Thermal Equilibrium, Zeroth Law of Thermodynamics, Celsius Scale, Kelvin Scale, Fahrenheit Scale, Thermal Expansion, The Mole, The Ideal Gas Law. \u2022Heat: Definition of Heat, Heat Capacity, Specific Heat, Calorimetry, Phase Change, Energy Transfer Mechanism, First Law of Thermodynamics, Thermal Processes.",
+    "courseImage": "https://images.pexels.com/photos/60582/newton-s-cradle-balls-sphere-action-60582.jpeg?cs=srgb&dl=pexels-pixabay-60582.jpg&fm=jpg"
+  },
+  {
+    "courseId": "PHYS192",
+    "courseName": "Experimental General Physics for Engineering 1",
+    "creditHours": 1,
+    "subject": "Physics",
+    "courseNumber": "192",
+    "prerequisites": [
+      {
+        "courseId": "PHYS191",
+        "minGrade": "D"
+      }
+    ],
+    "majorsOffered": [
+      "CMPS",
+      "CMPE"
+    ],
+    "currentClasses": [],
+    "description": "This is the Lab-based course covering the subject matter of PHYS 191.The course presents an introduction to the methods of experimental physics Emphasis is on developing student\u2019s skills in experimental techniques, data analysis, and scientific reporting of lab work. During the course students execute a series of experiments on Kinematics of motion, kinetic and potential energy, Oscillatory motion, Thermal properties of matter, and Viscosity. The course includes computer based experiments Classical Mechanics.",
+    "courseImage": "https://i0.wp.com/digital-photography-school.com/wp-content/uploads/2021/03/motion-photography-8-1.jpg?resize=1500%2C1000&ssl=1"
+  },
+  {
+    "courseId": "MATH231",
+    "courseName": "Linear Algebra",
+    "creditHours": 3,
+    "subject": "Mathematics",
+    "courseNumber": "231",
+    "prerequisites": [
+      {
+        "courseId": "MATH101",
+        "minGrade": "D"
+      }
+    ],
+    "majorsOffered": [
+      "CMPS",
+      "CMPE"
+    ],
+    "currentClasses": [
+      "25533",
+      "25534",
+      "25597",
+      "25599"
+    ],
+    "description": "This course introduces the basic concepts of linear algebra, including elementary matrices, solutions of linear systems, vector spaces and subspaces, determinants, eigenvalues and eigenvectors, linear transformations.",
+    "courseImage": "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format%2Ccompress&fm=webp&fit=crop&crop=faces%2Cedges&w=1200&h=675&q=60&cs=tinysrgb"
+  },
+  {
+    "courseId": "MATH102",
+    "courseName": "Calculus 2",
+    "creditHours": 3,
+    "subject": "Mathematics",
+    "courseNumber": "102",
+    "prerequisites": [
+      {
+        "courseId": "MATH101",
+        "minGrade": "D"
+      }
+    ],
+    "majorsOffered": [
+      "CMPS",
+      "CMPE"
+    ],
+    "currentClasses": [
+      "25531",
+      "25532",
+      "25595"
+    ],
+    "description": "Applications of the integral. Techniques of integration. Sequences and infinite series. Power series. Taylor series. Parametric equations and polar coordinates.",
+    "courseImage": "https://i.ytimg.com/vi/2N6A4ed8s58/maxresdefault.jpg"
+  },
+  {
+    "courseId": "ENGL203",
+    "courseName": "English Language 2 Post Foundation",
+    "creditHours": 3,
+    "subject": "English",
+    "courseNumber": "203",
+    "prerequisites": [
+      {
+        "courseId": "ENGL202",
+        "minGrade": "D"
+      }
+    ],
+    "majorsOffered": [
+      "CMPS",
+      "CMPE"
+    ],
+    "currentClasses": [],
+    "description": "English 203 is an advanced academic writing course which provides an opportunity for students to learn and practice the skills needed for a guided university-level academic paper related to their field of study. The course emphasizes the development of academic writing skills as well as the ability to read and think critically. Students will learn to use the library and appropriate online resources to find and evaluate sources to inform, develop and support their ideas in term paper writing.",
+    "courseImage": "https://spunout.ie/wp-content/uploads/2023/09/public_speaking-2.jpg"
+  },
+  {
+    "courseId": "GENG107",
+    "courseName": "Engineering Skills and Ethics",
+    "creditHours": 3,
+    "subject": "General Engineering",
+    "courseNumber": "107",
+    "prerequisites": [],
+    "majorsOffered": [
+      "CMPE"
+    ],
+    "currentClasses": [],
+    "description": "Introduction to engineering and engineering disciplines, engineering ethics, communication skills, study skills and problem solving skills, introduction to design.",
+    "courseImage": "https://cesblog.sdsu.edu/wp-content/uploads/sites/8/2023/05/Top-10-Job-Sectors-for-Civil-Engineering-Graduates-Featured-image.png"
+  },
+  {
+    "courseId": "CMPS200",
+    "courseName": "Computer Ethics",
+    "creditHours": 1,
+    "subject": "Computer Science",
+    "courseNumber": "200",
+    "prerequisites": [],
+    "majorsOffered": [
+      "CMPS"
+    ],
+    "currentClasses": [],
+    "description": "Overview of computing ethics and practice. Philosophical ethical theory and morality; codes ethics and professional practice; cyber and computer crimes; whistle blowing; privacy and freedom of expression; legal and ethical issues; intellectual property and rights; safety-critical program development; ethics and the market place.",
+    "courseImage": "https://media.istockphoto.com/id/1584406266/photo/ai-ethics-and-ai-law-concept-judicial-gavel-and-laptop-with-legal-astute-icons-on-the-table.jpg?s=612x612&w=0&k=20&c=_CwzAxbueQZGYXfbiBhSOLlKx74lGflILmne4rUhYoQ="
+  },
+  {
+    "courseId": "CMPS205",
+    "courseName": "Discrete Structures for Computing",
+    "creditHours": 3,
+    "subject": "Computer Science",
+    "courseNumber": "205",
+    "prerequisites": [],
+    "majorsOffered": [
+      "CMPS",
+      "CMPE"
+    ],
+    "currentClasses": [],
+    "description": "Introduction to the elements of mathematics applicable to the computing field. Logic and methods of proof; logic gates; Boolean algebra and minimization; set theory; relations and functions; sequences and sums; induction; numbering systems and combinatorics.",
+    "courseImage": "https://blog-media.byjusfutureschool.com/bfs-blog/2022/09/21090501/Article-Page-86.png"
+  },
+  {
+    "courseId": "CMPS303",
+    "courseName": "Data Structures",
+    "creditHours": 4,
+    "subject": "Computer Science",
+    "courseNumber": "303",
+    "prerequisites": [
+      {
+        "courseId": "CMPS251",
+        "minGrade": "D"
+      }
+    ],
+    "majorsOffered": [
+      "CMPS",
+      "CMPE"
+    ],
+    "currentClasses": [],
+    "description": "Fundamental data structures and algorithms and their efficient implementation and application to problem solving. Linked lists, stacks, queues, hash tables, trees and graphs. Develop and analyze iterative and recursive algorithms such as searching and storing algorithms. The laboratory provides practical experience with data structures and algorithms.",
+    "courseImage": "https://miro.medium.com/v2/resize:fit:1400/1*J38nYZU7gzu-4lQmtjlSUw.jpeg"
+  },
+  {
+    "courseId": "PHYS193",
+    "courseName": "General Physics for Engineering 2",
+    "creditHours": 3,
+    "subject": "Physics",
+    "courseNumber": "193",
+    "prerequisites": [
+      {
+        "courseId": "PHYS191",
+        "minGrade": "D"
+      }
+    ],
+    "majorsOffered": [
+      "CMPS",
+      "CMPE"
+    ],
+    "currentClasses": [
+      "25539",
+      "25540",
+      "25604",
+      "25605"
+    ],
+    "description": "Electrostatics: Electric charges, atomic structure, charging and induction, Coulomb\u2019s law, the electric field and lines of force, Gauss\u2019s law, potential and potential energy, capacitors, stored energy in capacitors. The Electric Current: Resistors, electromotive force. Magnetic Properties of Matter: Magnetic material, molecular theory of magnetism, magnetization and magnetic intensity, ferromagnetic, hysteresis. Magnetic Fields and Magnetic Forces: Magnetism and magnetic fields, magnetic flux, motion of charged particles in magnetic fields, force on a conductor, torques on current loops, Biot-Savart law, force between parallel conductors, Ampere\u2019s law, motional electromotive force, Faraday\u2019s law, Lenz\u2019s law, self and mutual inductance, energy associated with inductors. Light: Nature of light, sources of light, light waves and their speed, the laws of reflection and refraction of light, absorption and illumination. Wave Phenomena: Interference, diffraction, polarization of light.",
+    "courseImage": "https://www.popsci.com/wp-content/uploads/2023/06/16/how-does-electricity-work-tesla-coil-experiment.jpg?quality=85&w=2000"
+  },
+  {
+    "courseId": "PHYS194",
+    "courseName": "Experimental General Physics for Engineering 2",
+    "creditHours": 3,
+    "subject": "Physics",
+    "courseNumber": "194",
+    "prerequisites": [
+      {
+        "courseId": "PHYS191",
+        "minGrade": "D"
+      },
+      {
+        "courseId": "PHYS192",
+        "minGrade": "D"
+      },
+      {
+        "courseId": "PHYS193",
+        "minGrade": "D"
+      }
+    ],
+    "majorsOffered": [
+      "CMPS",
+      "CMPE"
+    ],
+    "currentClasses": [
+      "25541",
+      "25542",
+      "25603",
+      "25606"
+    ],
+    "description": "This is the Lab course covering the subject matter of PHYS 193. The course presents an introduction to the methods of experimental physics. Emphasis is on experimental, data analysis, and written presentation skills of lab work. During the course students execute a series of experiments on electrostatic fields, Magnetic fields, Induction, DC circuits, and AC circuits.",
+    "courseImage": "https://ichef.bbci.co.uk/images/ic/1200xn/p0f726d0.png"
+  },
+  {
+    "courseId": "ARAB100",
+    "courseName": "Arabic Language 1",
+    "creditHours": 3,
+    "subject": "Arabic",
+    "courseNumber": "100",
+    "prerequisites": [],
+    "majorsOffered": [
+      "CMPS",
+      "CMPE"
+    ],
+    "currentClasses": [],
+    "description": "The course aims to provide students the important skills to communicate in Arabic; listening, speaking and reading, with attention to writing skills in relation to each. This is done through content that includes a variety of topics related to Contemporary Arabic, through deep analysis of linguistics and literary texts. The course has been introduced in an interactive learning environment based on: 1) student activities, 2) Developing student skills, 3) learning and collaborative methods, 4) Communication skills for self-expression and ideas in different ways, 5) Solving problems through critical thinking skills and creativity, and 6) The absorption of ideas in different contexts. The assessment process uses a variety of tools to measure the attainment of student learning outcomes.",
+    "courseImage": "https://alhamdarabicinstitute.com/wp-content/uploads/2023/10/11629A51-EEB2-41F9-AD41-9448101DF9CB.jpeg"
+  },
+  {
+    "courseId": "CMPS323",
+    "courseName": "Design & Analysis of Algorithms",
+    "creditHours": 3,
+    "subject": "Computer Science",
+    "courseNumber": "323",
+    "prerequisites": [
+      {
+        "courseId": "CMPS303",
+        "minGrade": "D"
+      }
+    ],
+    "majorsOffered": [
+      "CMPS"
+    ],
+    "currentClasses": [],
+    "description": "Algorithms are fundamental in Computer Science. At the resolution step of any problem, we always need to design efficient algorithms. In this course, after giving an introduction about algorithm analysis, we analyze algorithms on searching, sorting, and other different problems. A comprehensive study of problem-solving using the greedy method, divide-and-conquer, backtracking, dynamic programming and branch-and-bound techniques will also give some methodology about how to build good algorithms or solutions to several kinds of problems. We finally include an introduction to NP-completeness.",
+    "courseImage": "https://i0.wp.com/bdtechtalks.com/wp-content/uploads/2022/02/algorithm-formulation.jpg?ssl=1"
+  },
+  {
+    "courseId": "CMPS351",
+    "courseName": "Fundamentals of Database Systems",
+    "creditHours": 4,
+    "subject": "Computer Science",
+    "courseNumber": "351",
+    "prerequisites": [
+      {
+        "courseId": "CMPS251",
+        "minGrade": "D"
+      }
+    ],
+    "majorsOffered": [
+      "CMPS"
+    ],
+    "currentClasses": [],
+    "description": "Fundamentals database concepts, architectures, principles and techniques. Data modeling, relational database design and normalization. Query notations and languages including relational algebra, relational calculus and SQL. Database security. Hands-on Labs in modeling and implementing database applications using modern technologies.",
+    "courseImage": "https://cdn.corporatefinanceinstitute.com/assets/database.jpeg"
+  },
+  {
+    "courseId": "CMPE263",
+    "courseName": "Computer Architecture and Organization 1",
+    "creditHours": 3,
+    "subject": "Computer Engineering",
+    "courseNumber": "263",
+    "prerequisites": [
+      {
+        "courseId": "CMPS205",
+        "minGrade": "D"
+      },
+      {
+        "courseId": "CMPS151",
+        "minGrade": "D"
+      }
+    ],
+    "majorsOffered": [
+      "CMPS",
+      "CMPE"
+    ],
+    "currentClasses": [],
+    "description": "Higher-level concepts in computer architecture. Data representation; classic components of a computer; performance measures for computers; CPU types, design, organization, instruction-level description; processor programming, register transfer languages, addressing modes, assembly language; main and cache memory, caching techniques.",
+    "courseImage": "https://www.techspot.com/articles-info/1853/images/2019-06-14-image.jpg"
+  },
+  {
+    "courseId": "GENG200",
+    "courseName": "Probability and Statistics for Engineers",
+    "creditHours": 3,
+    "subject": "General Engineering",
+    "courseNumber": "200",
+    "prerequisites": [
+      {
+        "courseId": "MATH102",
+        "minGrade": "D"
+      }
+    ],
+    "majorsOffered": [
+      "CMPS",
+      "CMPE"
+    ],
+    "currentClasses": [],
+    "description": "Classification of Data. Graphical representation. Arithmetical description. Probability theory, probability of an event and composite events. Addition rule and multiplication rule, independent events. Counting techniques. Random variables and probability distributions. Expected values. Continuous and discrete random variables. Normal distribution. Binomial distribution. Poisson distribution. Joint and marginal probability distributions. Independence of random variables. Covariance and correlation. Random sampling. Unbiased estimates. Statistical intervals and test of hypothesis for a single sample.",
+    "courseImage": "https://swadesqms.com/wp-content/uploads/2022/07/Basic-Statistics.png"
+  },
+  {
+    "courseId": "CMPE261",
+    "courseName": "Digital Logic Design",
+    "creditHours": 4,
+    "subject": "Computer Engineering",
+    "courseNumber": "261",
+    "prerequisites": [
+      {
+        "courseId": "CMPS205",
+        "minGrade": "D"
+      }
+    ],
+    "majorsOffered": [
+      "CMPE"
+    ],
+    "currentClasses": [],
+    "description": "Introduction to digital logic circuit design, combinational and sequential circuits. TTL logic family; combinational logic design; logic minimization techniques; logic implementation techniques for ROM, RAM, EPROM, and PLDs, flip flops; sequential logic design, state diagrams, logic minimization; registers and counters; synthesis and analysis of sequential machines. The laboratory provides experiments examining logic devices and circuits, and a final design project.",
+    "courseImage": "https://i.ytimg.com/vi/jzR0jFbxchM/maxresdefault.jpg"
+  },
+  {
+    "courseId": "ELEC201",
+    "courseName": "Fundamentals of Electric Circuits",
+    "creditHours": 3,
+    "subject": "Electrical Engineering",
+    "courseNumber": "201",
+    "prerequisites": [
+      {
+        "courseId": "MATH102",
+        "minGrade": "D"
+      },
+      {
+        "courseId": "PHYS193",
+        "minGrade": "D"
+      }
+    ],
+    "majorsOffered": [
+      "CMPE"
+    ],
+    "currentClasses": [],
+    "description": "Electric current, voltage, power, and dependent and independent sources, Kirchhoff\u2019s current and voltage laws, Ohm\u2019s law and simplification of series/parallel. DC circuit analysis, Nodal and Mesh analysis, Superposition, Thevenin\u2019s and Norton\u2019s theorems, Source transformation and maximum power transfer, Capacitance and Inductance; Capacitors and inductors series/parallel connections. AC Circuits Analysis. phasor representation, complex impedances. Sinusoids and phasors. Sinusoidal steady-state analysis. Several laboratory experiments to reinforce material from the lectures will be conducted.",
+    "courseImage": "https://cdn.britannica.com/42/100742-050-F50E6B5F/circuit-switch-battery-lamp.jpg"
+  },
+  {
+    "courseId": "MATH211",
+    "courseName": "Calculus 3",
+    "creditHours": 3,
+    "subject": "Mathematics",
+    "courseNumber": "211",
+    "prerequisites": [
+      {
+        "courseId": "MATH102",
+        "minGrade": "D"
+      }
+    ],
+    "majorsOffered": [
+      "CMPE"
+    ],
+    "currentClasses": [],
+    "description": "The course include the main frame of mathematical treatment needed for the advanced physics courses of the level of 3rd and 4th years. It also includes ordinary differential equations as well as partial differential equations. It discuss the following special equations Legendre, Bessel, and Legendre polynomialsas well as the special functions of Bessel, Laplace, Poisson, and wave equation.",
+    "courseImage": "https://repository-images.githubusercontent.com/502746397/8dbbbfdc-8186-4227-b323-f25b03e7adfe"
+  },
+  {
+    "courseId": "ELEC351",
+    "courseName": "Signals and Systems",
+    "creditHours": 3,
+    "subject": "Electrical Engineering",
+    "courseNumber": "351",
+    "prerequisites": [
+      {
+        "courseId": "ELEC231",
+        "minGrade": "D"
+      }
+    ],
+    "majorsOffered": [
+      "CMPE"
+    ],
+    "currentClasses": [],
+    "description": "Continuous time representation of signals and systems: Signal and system properties; Convolution and time domain response of systems; Fourier series, Fourier transform, and signal spectrum; Laplace transform: Transfer functions; Analog filters; Nyquist Shannon sampling theorem and discrete time signals. Several laboratory experiments to reinforce material from the lectures will be conducted.",
+    "courseImage": "https://studyelectrical.com/wp-content/uploads/2021/10/MIT-Signals-and-Systems-Course.jpg"
+  },
+  {
+    "courseId": "ELEC231",
+    "courseName": "Electronics Devices and Circuits",
+    "creditHours": 3,
+    "subject": "Electrical Engineering",
+    "courseNumber": "231",
+    "prerequisites": [
+      {
+        "courseId": "ELEC201",
+        "minGrade": "D"
+      }
+    ],
+    "majorsOffered": [
+      "CMPE"
+    ],
+    "currentClasses": [],
+    "description": "PN junction; diodes and applications; BJTs and MOSFETs; DC and AC analysis of transistors;transistor applications (switches, CMOS digital logic gates, single- and multi-stage amplifiers),op amps and applications. Selected laboratory experiments for diodes, transistors, and opamps.",
+    "courseImage": "https://www.autodesk.com/products/fusion-360/blog/wp-content/uploads/2021/12/shutterstock_2043923687.jpg"
+  },
+  {
+    "courseId": "CMPS310",
+    "courseName": "Software Engineering",
+    "creditHours": 4,
+    "subject": "Computer Science",
+    "courseNumber": "310",
+    "prerequisites": [
+      {
+        "courseId": "CMPS251",
+        "minGrade": "D"
+      }
+    ],
+    "majorsOffered": [
+      "CMPS"
+    ],
+    "currentClasses": [],
+    "description": "Fundamental concepts, principles and techniques for cost-effective engineering of quality software. Software process models, requirements specification, domain analysis, software design and modeling of structural and behavioral aspects of a software system using a common modeling language, implementation, testing and software project management. The laboratory provides practical experience with software engineering and supporting tools.",
+    "courseImage": "https://img.wazobia.tech/https://sytbuildr.s3.eu-west-2.amazonaws.com/0406191c-f351-4a58-b164-b9521b3d78c5/typesofsoftwareengineering.jpeg_O1teey?tr=w-1500,cr-0.0.1500.900"
+  },
+  {
+    "courseId": "CMPE355",
+    "courseName": "Data Communication and Computer Networks 1",
+    "creditHours": 4,
+    "subject": "Computer Engineering",
+    "courseNumber": "355",
+    "prerequisites": [
+      {
+        "courseId": "CMPS303",
+        "minGrade": "D"
+      },
+      {
+        "courseId": "CMPE263",
+        "minGrade": "D"
+      }
+    ],
+    "majorsOffered": [
+      "CMPS",
+      "CMPE"
+    ],
+    "currentClasses": [],
+    "description": "Concepts and principles underlying data communication networks including TCP/IP protocol suite and OSI model, digital and analog conversions, multiplexing and spread spectrum. Transmission impairments, Ethernet, network layer protocols, IP addressing and submitting, UDP and TCP transport protocols, and application layer protocols. The laboratory provides hands-on experience in designing, simulating, configuring, and troubleshooting small-to-medium size networks",
+    "courseImage": "https://media.licdn.com/dms/image/v2/D5612AQHz5Y-ga-OQJg/article-cover_image-shrink_600_2000/article-cover_image-shrink_600_2000/0/1691562479164?e=2147483647&v=beta&t=CFz0YlLlSZrS6_oZp1Qerpt4DOE1jfuwn5WHcmuwMY4"
+  },
+  {
+    "courseId": "CMPS380",
+    "courseName": "Cybersecurity Fundamentals",
+    "creditHours": 3,
+    "subject": "Computer Science",
+    "courseNumber": "380",
+    "prerequisites": [
+      {
+        "courseId": "CMPS303",
+        "minGrade": "D"
+      }
+    ],
+    "majorsOffered": [
+      "CMPS",
+      "CMPE"
+    ],
+    "currentClasses": [
+      "25513",
+      "25514",
+      "25552",
+      "25562",
+      "25580",
+      "25581"
+    ],
+    "description": "Cybersecurity fundamentals; security goals and terminology; cybersecurity threats and risks; basics of cryptography; authentication; access control; security in networks; privacy and data protection; security standards and policies; legal and ethical issues in cybersecurity.",
+    "courseImage": "https://datos-insights.com/wp-content/uploads/2023/07/what-we-offer_cybersecurity.jpg"
+  },
+  {
+    "courseId": "CMPS497",
+    "courseName": "Special Topics in Computing",
+    "creditHours": 3,
+    "subject": "",
+    "courseNumber": "",
+    "prerequisites": [],
+    "majorsOffered": [
+      "CMPS"
+    ],
+    "currentClasses": [
+      "25505",
+      "25506",
+      "25560",
+      "25572",
+      "25574",
+      "25586"
+    ],
+    "description": "Selected topics in computing concerning content not normally covered in the formal curriculum. Topics vary",
+    "courseImage": "https://www.bolton.ac.uk/assets/Uploads/benifitsofcomputing.jpg"
+  },
+  {
+    "courseId": "CMPS482",
+    "courseName": "Cyber Physical Systems Security",
+    "creditHours": 3,
+    "subject": "Computer Science",
+    "courseNumber": "482",
+    "prerequisites": [
+      {
+        "courseId": "CMPS385",
+        "minGrade": "D"
+      }
+    ],
+    "majorsOffered": [
+      "CMPS",
+      "CMPE"
+    ],
+    "currentClasses": [
+      "25501",
+      "25502",
+      "25548",
+      "25558",
+      "25573",
+      "25579"
+    ],
+    "description": "Principles and practices to secure various types of cyber-physical systems including industrial control systems and IoT (Internet of Things) solutions. Tools and techniques used to compromise cyber-physical systems. Fundamental security primitives for protecting cyber-physical systems.",
+    "courseImage": "https://cdn.prod.website-files.com/62a896f6aab2228bfe538bd5/641c9d8d95f8787695214d0a_Blog-CPS.jpg"
+  },
+  {
+    "courseId": "CMPS360",
+    "courseName": "Data Science Fundamentals",
+    "creditHours": 3,
+    "subject": "Computer Science",
+    "courseNumber": "360",
+    "prerequisites": [
+      {
+        "courseId": "CMPS351",
+        "minGrade": "D"
+      }
+    ],
+    "majorsOffered": [
+      "CMPS",
+      "CMPE"
+    ],
+    "currentClasses": [
+      "25517",
+      "25518",
+      "25547",
+      "25564",
+      "25571",
+      "25577"
+    ],
+    "description": "Fundamental data science algorithms, methods and tools for analyzing data to effectively solve a broad set of data analysis problems and derive valuable insights from data. Including data collection and integration, data cleaning, various analytical approaches including exploratory data analysis, prediction models, statistical analytics, and data visualization. Acquiring a working knowledge of data science through hands-on projects on real datasets using common Data Science application development tools.",
+    "courseImage": "https://builtin.com/sites/www.builtin.com/files/2024-10/data-science.jpg"
+  },
+  {
+    "courseId": "CMPS350",
+    "courseName": "Web Development Fundamentals",
+    "creditHours": 3,
+    "subject": "Computer Science",
+    "courseNumber": "350",
+    "prerequisites": [
+      {
+        "courseId": "CMPS251",
+        "minGrade": "D"
+      }
+    ],
+    "majorsOffered": [
+      "CMPS"
+    ],
+    "currentClasses": [
+      "25519",
+      "25520",
+      "25557",
+      "25559",
+      "25561",
+      "25563",
+      "25582"
+    ],
+    "description": "Concepts, protocols and enabling technologies related to the development of modern web applications. Fundamentals of designing and developing dynamic and interactive web applications using HTML and related standards, scripting languages, client-side and server-side programming. Hands-on Lab to design and develop Web applications.",
+    "courseImage": "https://admin.12grids.com/uploads/blogs/original_cover_images/top-11-web-development-technologies-you-must-know-in-2024-12grids-compressed.jpg"
+  },
+  {
+    "courseId": "CMPS405",
+    "courseName": "Operating Systems",
+    "creditHours": 4,
+    "subject": "Computer Science",
+    "courseNumber": "405",
+    "prerequisites": [
+      {
+        "courseId": "CMPS303",
+        "minGrade": "D"
+      },
+      {
+        "courseId": "CMPE263",
+        "minGrade": "D"
+      }
+    ],
+    "majorsOffered": [
+      "CMPS",
+      "CMPE"
+    ],
+    "currentClasses": [
+      "25515",
+      "25516",
+      "25567",
+      "25568",
+      "25569",
+      "25576",
+      "25588"
+    ],
+    "description": "Fundamental concepts of operating system design and implementation. Operating system components, concurrency, process management and inter-process communication, process synchronization, deadlock, scheduling algorithms, memory management, input/output and file systems, protection and security. The laboratory provides practical experience on major operating system concepts.",
+    "courseImage": "https://phoenixnap.com/kb/wp-content/uploads/2022/03/comparison-of-different-server-operating-systems.png"
+  },
+  {
+    "courseId": "GENG300",
+    "courseName": "Numerical Methods",
+    "creditHours": 3,
+    "subject": "General Engineering",
+    "courseNumber": "300",
+    "prerequisites": [
+      {
+        "courseId": "CMPS151",
+        "minGrade": "D"
+      },
+      {
+        "courseId": "MATH102",
+        "minGrade": "D"
+      }
+    ],
+    "majorsOffered": [
+      "CMPS",
+      "CMPE"
+    ],
+    "currentClasses": [
+      "25527",
+      "25528"
+    ],
+    "description": "The numerical methods course involves solving engineering problems drawn from all fields of engineering. The numerical methods include: error analysis, roots of nonlinear algebraic equations, solution of linear and transcendental simultaneous equations, matrix and vector manipulation, curve fitting and interpolation, numerical integration and differentiation, solution of ordinary and partial differential equations.",
+    "courseImage": "https://lh3.googleusercontent.com/proxy/0F42XWt4LA5ch8OJbQymOui1kEhQ1Zm33OCKEJIeZJSyhAGZLYhVE-HtyRxdyc_Me-bv5-HQ2LX-1iOaIh8Tbe6DApf_YxxJm0BO9rbZVuVNIgWwSgznaPTm5rXV4g"
+  },
+  {
+    "courseId": "DAWA111",
+    "courseName": "Islamic Culture",
+    "creditHours": 3,
+    "subject": "Dawa and Islamic Culture",
+    "courseNumber": "111",
+    "prerequisites": [],
+    "majorsOffered": [
+      "CMPS",
+      "CMPE"
+    ],
+    "currentClasses": [
+      "25543",
+      "25544",
+      "25607"
+    ],
+    "description": "This course seeks to strengthen the unifying identity to which all students subscribe, regardless of their academic specialties. The Course adopts a particular educational philosophy that suits its particular nature. All topics are arranged in a unifying, integrative structure that begins with defining key concepts related to culture, science and civilization. Following these preliminary clarifications, an intensive analytical material on issues related to the message of Islam",
+    "courseImage": "https://images.squarespace-cdn.com/content/v1/5d016c1ba9f2e7000120c08c/1560579210527-7LDCZH62S91OLOJIKAE9/AdobeStock_87517185.jpeg"
+  },
+  {
+    "courseId": "CMPE363",
+    "courseName": "Computer Architecture and Organization 2",
+    "creditHours": 3,
+    "subject": "Computer Engineering",
+    "courseNumber": "363",
+    "prerequisites": [
+      {
+        "courseId": "CMPE263",
+        "minGrade": "D"
+      },
+      {
+        "courseId": "CMPE261",
+        "minGrade": "D"
+      }
+    ],
+    "majorsOffered": [
+      "CMPE"
+    ],
+    "currentClasses": [],
+    "description": "Fundamentals of computer organization. Central processing unit organization; hardwired control; arithmetic logic unit design and implementation; micro- programmed control, interrupts; instruction cycle and format, addressing modes; buses, pipelining, instruction-level parallelism; input/output system design; external storage.",
+    "courseImage": "https://t4.ftcdn.net/jpg/07/62/73/67/360_F_762736702_fO5GzY33TcWpxr6LcDTp02QLR1kr4V2F.jpg"
+  },
+  {
+    "courseId": "CMPE370",
+    "courseName": "Computer Engineering Practicum",
+    "creditHours": 1,
+    "subject": "Computer Engineering",
+    "courseNumber": "370",
+    "prerequisites": [
+      {
+        "courseId": "CMPE261",
+        "minGrade": "D"
+      },
+      {
+        "courseId": "ELEC201",
+        "minGrade": "D"
+      },
+      {
+        "courseId": "ELEC231",
+        "minGrade": "D"
+      }
+    ],
+    "majorsOffered": [
+      "CMPE"
+    ],
+    "currentClasses": [],
+    "description": "Introduction to hands-on broad hardware techniques and specific hardware skills useful for computer engineers. Circuit construction through soldering; personal computer hardware troubleshooting; project implementation using digital signal processing kits or advanced controller kits; embedded reverse engineering approaches; discrete component-based analog/digital circuits; programmable hardware designs.",
+    "courseImage": "https://www.pacific.edu/sites/default/files/2020-12/computerengineering.jpeg"
+  },
+  {
+    "courseId": "MATH217",
+    "courseName": "Mathematics for Engineers",
+    "creditHours": 3,
+    "subject": "Mathematics",
+    "courseNumber": "217",
+    "prerequisites": [
+      {
+        "courseId": "MATH211",
+        "minGrade": "D"
+      }
+    ],
+    "majorsOffered": [
+      "CMPE"
+    ],
+    "currentClasses": [
+      "25529",
+      "25530",
+      "25596",
+      "25598",
+      "25600"
+    ],
+    "description": "Mathematics for Engineers is a course which introduces some mathematical tools for solving and analyzing the problems arising in the mathematical modeling in engineering. A specified differential equation endeavors to match the known features of the application being modeled, as well as to be able to predict the systems' behavior in other circumstances. The course integrates theory and applications using a problem-based approach. This course prepares the students for future learning in relation to problem solving and decision-making, technical competence, teamwork and leadership.",
+    "courseImage": "https://blogs.ucl.ac.uk/ioe/files/2024/07/colourful-mathematical-graph-drawings-adapted.jpg"
+  },
+  {
+    "courseId": "CMPE364",
+    "courseName": "Microprocessor Based Design",
+    "creditHours": 4,
+    "subject": "Computer Engineering",
+    "courseNumber": "364",
+    "prerequisites": [
+      {
+        "courseId": "CMPE363",
+        "minGrade": "D"
+      }
+    ],
+    "majorsOffered": [
+      "CMPE"
+    ],
+    "currentClasses": [
+      "25521",
+      "25522",
+      "25556",
+      "25566",
+      "25575",
+      "25584",
+      "25589"
+    ],
+    "description": "This course focuses on microprocessor hardware and software for embedded systems, CPU organization, Assembly programming language, Instruction Set Architecture (ISA), memory access, and programmable I/O peripherals. It also includes Hands-on lab to design, build and test embedded systems using latest microprocessor technology, development frameworks and tools.",
+    "courseImage": "https://www.microchipusa.com/wp-content/uploads/2024/07/microprocessor.png"
+  },
+  {
+    "courseId": "CMPE457",
+    "courseName": "Data Communication and Computer Networks 2",
+    "creditHours": 3,
+    "subject": "Computer Engineering",
+    "courseNumber": "457",
+    "prerequisites": [
+      {
+        "courseId": "CMPE355",
+        "minGrade": "D"
+      }
+    ],
+    "majorsOffered": [
+      "CMPE"
+    ],
+    "currentClasses": [
+      "25507",
+      "25508",
+      "25587",
+      "25591"
+    ],
+    "description": "Builds upon fundamental knowledge and concepts addressed in the \u201cData Communications and Computer Networks I\u201d course. Signal modulation, coding techniques; wireless transmission; radio frequency, multiplexing, circuit and packet switching, medium access control; interior and exterior routing protocols, autonomous systems, link state routing; IPv6 address space, transmission methods from IPv4 to IPv6; network and internet security, VPN, cryptography, encryption schemes, firewalls, intrusion detection; congestion control, quality of service; protocols for network management; network socket programming.",
+    "courseImage": "https://asianetbroadband.in/wp-content/uploads/2023/09/computer-networking-devices.jpg"
+  },
+  {
+    "courseId": "CMPE476",
+    "courseName": "Digital Signal Processing",
+    "creditHours": 4,
+    "subject": "Computer Engineering",
+    "courseNumber": "476",
+    "prerequisites": [
+      {
+        "courseId": "ELEC351",
+        "minGrade": "D"
+      }
+    ],
+    "majorsOffered": [
+      "CMPE"
+    ],
+    "currentClasses": [
+      "25523",
+      "25524",
+      "25555",
+      "25583"
+    ],
+    "description": "Overview of continuous and discrete signal processing, Discrete Fourier transform, Fast Fourier transform, Signal sampling and reconstruction, Digital filters, Correlation and spectral estimation",
+    "courseImage": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGBRQoVGcQL58n19htmH9mfeYESgFgUCA6gQ&s"
+  },
+  {
+    "courseId": "GENG360",
+    "courseName": "Engineering Economics",
+    "creditHours": 3,
+    "subject": "General Engineering",
+    "courseNumber": "360",
+    "prerequisites": [
+      {
+        "courseId": "MATH102",
+        "minGrade": "D"
+      }
+    ],
+    "majorsOffered": [
+      "CMPE"
+    ],
+    "currentClasses": [
+      "25525",
+      "25526"
+    ],
+    "description": "Principles of Engineering Economy. Equivalence and compound interest formula. Single payment model. Uniform payment model. Gradient payment model. Decision criteria for single and multiple alternatives: Present worth, annual worth, future worth, internal rate of return, and benefit cost ratio. Before and after tax analysis.",
+    "courseImage": "https://www.cato.org/sites/cato.org/files/styles/optimized/public/2021-01/GettyImages-1127256104%20%281%29.jpg?itok=fJ2uAJCi"
+  },
+  {
+    "courseId": "CMPE483",
+    "courseName": "Introduction to Robotics",
+    "creditHours": 3,
+    "subject": "Computer Engineering",
+    "courseNumber": "483",
+    "prerequisites": [
+      {
+        "courseId": "CMPE261",
+        "minGrade": "D"
+      },
+      {
+        "courseId": "CMPS151",
+        "minGrade": "D"
+      }
+    ],
+    "majorsOffered": [
+      "CMPE"
+    ],
+    "currentClasses": [
+      "25509",
+      "25510",
+      "25550",
+      "25553",
+      "25565",
+      "25590",
+      "25594"
+    ],
+    "description": "Use of robotics kits, robot assembly, familiarization with the basic concepts of sensing, actuation, and robotic intelligence. Basic robotic sensors; actuation functions; embedded robotic task-related intelligence levels; capstone project and report presentation.",
+    "courseImage": "https://www.therobotreport.com/wp-content/uploads/2023/06/sick-sponsored-featured-image-july2023-article1.jpg"
+  },
+  {
+    "courseId": "CMPE471",
+    "courseName": "Selected Topics in Computer Engineering",
+    "creditHours": 3,
+    "subject": "Computer Engineering",
+    "courseNumber": "471",
+    "prerequisites": [],
+    "majorsOffered": [
+      "CMPE"
+    ],
+    "currentClasses": [
+      "25503",
+      "25504",
+      "25549",
+      "25554",
+      "25592",
+      "25593"
+    ],
+    "description": "Selected topics in the field of computer engineering addressing new trends and practical issues.",
+    "courseImage": "https://www.mtu.edu/ece/undergraduate/computer/what-is/images/computer-banner2400.jpg"
+  },
+  {
+    "courseId": "CMPS493",
+    "courseName": "Senior Project 1",
+    "creditHours": 3,
+    "subject": "Computer Science",
+    "courseNumber": "493",
+    "prerequisites": [
+      {
+        "courseId": "CMPS310",
+        "minGrade": "D"
+      },
+      {
+        "courseId": "CMPS405",
+        "minGrade": "D"
+      }
+    ],
+    "majorsOffered": [
+      "CMPS"
+    ],
+    "currentClasses": [],
+    "description": "The first phase of the computer science capstone project that involves number of students tackling different aspects of applied-research and/or development project requiring significant effort for planning and completion. Team members experience different roles and gain range of diverse technical skills in all phases of the project development. This first part focuses on problem definition, requirements gathering and analysis, defining a high level architecture of the proposed solution, preparation of a project plan for implementing and completing the project, compiling all in a well-formulated interim report and orally presenting it to the examining committee.",
+    "courseImage": "https://images.ctfassets.net/2htm8llflwdx/1LEJIT9KGRC4nwTJ5vuS6H/a912e31c468fd32986f2818816135cc4/OnlineLearning_SouthAsia_Learning_Indoor_GettyImages-1071652068.jpg"
+  },
+  {
+    "courseId": "CMPS499",
+    "courseName": "Senior Project 2",
+    "creditHours": 3,
+    "subject": "Computer Science",
+    "courseNumber": "499",
+    "prerequisites": [
+      {
+        "courseId": "CMPS493",
+        "minGrade": "D"
+      }
+    ],
+    "majorsOffered": [
+      "CMPS"
+    ],
+    "currentClasses": [],
+    "description": "Continuation of the capstone senior project started in CMPS 493 course. It includes detailed design, implementation and testing following a systematic development process while incorporating appropriate design and development principles and standards. This culminates in producing a working solution and a formal final report, and presenting the project achievements including a demo.",
+    "courseImage": "https://media.licdn.com/dms/image/v2/C5112AQGUKpZviShFeA/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1565704813458?e=2147483647&v=beta&t=ZWRdpPEZmHIwvg70Y-2Uq6mrb0qUcxh6SdoowPeklcw"
+  },
+  {
+    "courseId": "CMPS307",
+    "courseName": "Intro. to Project Management and Entrepreneurship",
+    "creditHours": 3,
+    "subject": "Computer Science",
+    "courseNumber": "307",
+    "prerequisites": [],
+    "majorsOffered": [
+      "CMPS"
+    ],
+    "currentClasses": [],
+    "description": "Introduction to entrepreneurship, and elements of business management with emphasis on managing software and information and communication technologies projects. Concepts of project management; project plan development, progress tracking, staffing, leadership, conflict resolution; organization, costs, risks, control; entrepreneurship, basics of owning and operating a business, business plan development for starting and financing a small business.",
+    "courseImage": "https://www.ciit.edu.ph/wp-content/uploads/2023/02/young-entrepreneur-presenting-scalable-startup-entrepreneurship-ideas.jpg"
+  },
+  {
+    "courseId": "MAGT101",
+    "courseName": "Principles of Management",
+    "creditHours": 3,
+    "subject": "Management and Marketing",
+    "courseNumber": "101",
+    "prerequisites": [
+      {
+        "courseId": "ENGL202",
+        "minGrade": "D"
+      }
+    ],
+    "majorsOffered": [
+      "CMPS"
+    ],
+    "currentClasses": [
+      "25545",
+      "25546",
+      "25608"
+    ],
+    "description": "This course focuses on the fundamental concepts of management including its characteristics, evolution and importance. Topics include the functions performed by managers, such as planning, organizing, directing and controlling. Current issues facing managers will also be discussed to provide students with the necessary skills they can build upon to succeed as future managers.",
+    "courseImage": "https://media.licdn.com/dms/image/v2/D4D12AQEllxO3p4SLIQ/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1704501432988?e=2147483647&v=beta&t=089TBBtLDTm2Jw3H-MDEJaM5cS5SGThIXLwtDYbZwJ8"
+  },
+  {
+    "courseId": "CMPE462",
+    "courseName": "Computer Interfacing",
+    "creditHours": 3,
+    "subject": "Computer Engineering",
+    "courseNumber": "462",
+    "prerequisites": [
+      {
+        "courseId": "CMPE364",
+        "minGrade": "D"
+      }
+    ],
+    "majorsOffered": [
+      "CMPE"
+    ],
+    "currentClasses": [],
+    "description": "Review of basic components in computer interfacing with real-world applications in graphical programming environments representing complete dataflow logic. Sensors; signal conditioning circuits; analog-digital converters; actuators; serial and parallel data interfacing with personal computers.",
+    "courseImage": "https://spca.education/wp-content/uploads/2023/08/Comif-1024x536.webp"
+  },
+  {
+    "courseId": "CMPE498",
+    "courseName": "Design Project 1",
+    "creditHours": 3,
+    "subject": "Computer Engineering",
+    "courseNumber": "498",
+    "prerequisites": [
+      {
+        "courseId": "CMPE370",
+        "minGrade": "D"
+      }
+    ],
+    "majorsOffered": [
+      "CMPE"
+    ],
+    "currentClasses": [],
+    "description": "The first phase of the capstone design project involving number of students tackling different aspects of a hardware and/or software project. It includes problem definition, requirements gathering and analysis, identification of appropriate engineering standards and real-life design constraints (e.g., economic, environmental, social, ethical, health and safety, manufacturability, and sustainability), defining an architecture of the proposed solution, preparing an implementation project plan, and compiling all in a well-formulated interim report and orally presenting it to the examining committee.",
+    "courseImage": "https://ms.codes/cdn/shop/articles/digipen-computer-engineering-2nd-year-four-legged-friend-im.jpg?v=1707824786"
+  },
+  {
+    "courseId": "CMPE499",
+    "courseName": "Design Project 2",
+    "creditHours": 3,
+    "subject": "Computer Engineering",
+    "courseNumber": "499",
+    "prerequisites": [
+      {
+        "courseId": "CMPE498",
+        "minGrade": "D"
+      }
+    ],
+    "majorsOffered": [
+      "CMPE"
+    ],
+    "currentClasses": [],
+    "description": "The implementation phase of the capstone design project. It includes the design, implementation and testing of the solution that was selected in CMPE498. This culminates in producing a working prototype, documenting the design solution and process, and presenting the project achievements. The primary objective of this course is to apply a systematic design process while incorporating appropriate engineering standards and addressing multiple realistic design constraints such as economic, environmental, social, ethical, health and safety, manufacturability, and sustainability.",
+    "courseImage": "https://ece.lafayette.edu/wp-content/uploads/sites/36/2023/06/sam_austin_embedded.jpg"
+  }
+]

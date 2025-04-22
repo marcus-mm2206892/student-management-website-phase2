@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student Home | UniTrack</title>
+
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <link rel="stylesheet" href="../styles/theme.css" />
+    <link rel="stylesheet" href="../styles/navbar.css" />
+    <link rel="stylesheet" href="../styles/footer.css" />
+    <link rel="stylesheet" href="../styles/scroll-up.css" />
+    <link rel="stylesheet" href="../styles/scrollbar.css" />
+    <link rel="stylesheet" href="../styles/course-card-discover.css" />
+    <link rel="stylesheet" href="../styles/student-home-page.css" />
+    <link rel="stylesheet" href="../styles/course-modal.css" />
+    <link rel="stylesheet" href="../styles/no-results.css" />
+    <link rel="stylesheet" href="../styles/empty-content.css" />
+  </head>
+
+  <body>
+    <!-- NAVBAR -->
+    <div id="navbarContent"></div>
+
+    <!-- Sidebar & User Dropdown-->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+    <div class="sidebar" id="sidebar"></div>
+    <div class="user-dropdown" id="userDropdown"></div>
+
+    <!-- MAIN DISCOVER PAGE -->
+    <main class="student-home">
+      <!-- Hero Section with Search -->
+      <section class="hero">
+        <h1>
+          Explore
+          <span class="cycle-text active">courses</span>,
+          <span class="cycle-text">track your progress</span>, and
+          <span class="cycle-text">plan your academic journey</span>
+          effortlessly.
+        </h1>
+      </section>
+
+      <!-- Courses Section -->
+      <!-- Recommended Courses -->
+      <section class="courses recommended-courses">
+        <div class="courses-header">
+          <div class="courses-header-left">
+            <h2>Find Recommended Courses</h2>
+            <p>Explore uncompleted courses that fit your learning path.</p>
+          </div>
+          <div class="courses-header-right">
+            <a href="../html/user-query.html" class="browse-courses">
+              Browse all courses <i class="fa-solid fa-chevron-right"></i>
+            </a>
+          </div>
+        </div>
+        <div class="course-grid"></div>
+        <div class="empty-content" id="recommendedEmpty"></div>
+        <div class="no-results" id="recommendedError" style="display: none;"></div>
+      </section>
+
+      <!-- Supplementary Courses -->
+      <section class="courses supplementary-courses">
+        <div class="courses-header">
+          <div class="courses-header-left">
+            <h2>Explore Beyond Your Path</h2>
+            <p>
+              Take courses that enhance your core studies and deepen your overall learning experience.
+            </p>
+          </div>
+          <div class="courses-header-right">
+            <a href="../html/user-query.html" class="browse-courses">
+              Browse all courses <i class="fa-solid fa-chevron-right"></i>
+            </a>
+          </div>
+        </div>
+        <div class="course-grid"></div>
+        <div class="empty-content" id="supplementaryEmpty"></div>
+        <div class="no-results" id="supplementaryError" style="display: none;"></div>
+      </section>
+
+      <section class="courses elective-courses">
+        <div class="courses-header">
+          <div class="courses-header-left">
+            <h2>Find Elective Courses</h2>
+            <p>
+              Explore elective courses that enhance your skills and broaden your
+              academic experience.
+            </p>
+          </div>
+          <div class="courses-header-right">
+            <a href="../html/user-query.html" class="browse-courses">
+              Browse all courses <i class="fa-solid fa-chevron-right"></i>
+            </a>
+          </div>
+        </div>
+        <div class="course-grid"></div>
+        <div class="empty-content" id="electivesEmpty"></div>
+        <div class="no-results" id="electivesError" style="display: none;"></div>
+      </section>
+
+      <button class="more-btn">Browse All Courses</button>
+
+      <div id="noResults" style="display: none;"></div>
+    </main>
+
+    <!-- FOOTER-->
+    <div id="footerContent"></div>
+
+    <script src="../scripts/script.js"></script>
+    <script src="../scripts/navbar.js"></script>
+    <script src="../scripts/footer.js"></script>
+    <script src="../scripts/scroll-up.js"></script>
+    <script src="../scripts/dark-light-elements.js"></script>
+    <script src="../scripts/student-home-page.js"></script>
+    <script src="../scripts/course-modal.js"></script>
+    <script src="../scripts/no-results.js"></script>
+    <script src="../scripts/empty-content.js"></script>
+  </body>
+</html>

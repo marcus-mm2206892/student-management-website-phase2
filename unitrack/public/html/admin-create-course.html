@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Create Course | UniTrack</title>
+
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <link rel="stylesheet" href="../styles/theme.css" />
+    <link rel="stylesheet" href="../styles/navbar.css" />
+    <link rel="stylesheet" href="../styles/footer.css" />
+    <link rel="stylesheet" href="../styles/scroll-up.css" />
+    <link rel="stylesheet" href="../styles/scrollbar.css" />
+    <link rel="stylesheet" href="../styles/admin-create-course.css" />
+    <link rel="stylesheet" href="../styles/custom-alert-modal.css" />
+  </head>
+  <body>
+    <!-- NAVBAR -->
+    <div id="navbarContent"></div>
+
+    <!-- Sidebar & User Dropdown-->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+    <div class="sidebar" id="sidebar"></div>
+    <div class="user-dropdown" id="userDropdown"></div>
+
+    <!-- ADMIN CREATE COURSE -->
+    <main class="admin_create">
+      <header class="create-header">
+        <h1>Create a Course</h1>
+        <p class="view-schedule-description">
+          Fill in the form to add a new course to the system.
+        </p>
+      </header>
+
+      <section class="create">
+        <form class="create-class-form" id="create-course-form">
+          <div class="input-div-container">
+            <div class="field-div">
+              <h1>Create New Course</h1>
+              <p>Please fill in all required fields to create a new course.</p>
+            </div>
+            <div class="field-div">
+              <label for="subject">Subject</label>
+              <div class="dropdown class-dropdown">
+                <div class="dropdown-toggle">
+                  <span
+                    class="selectedOption"
+                    id="selectedSubject"
+                    data-selected="false"
+                    >Select Subject</span
+                  >
+                  <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="dropdown-menu" id="subjectDropdown"></div>
+              </div>
+            </div>
+
+            <div class="field-div">
+              <label for="courseNumber">Course Number</label>
+              <input
+                autocomplete="off"
+                type="number"
+                id="courseNumber"
+                name="courseNumber"
+                class="input-field"
+                placeholder="e.g. 350"
+                required
+              />
+            </div>
+
+            <div class="field-div">
+              <label for="courseName">Course Name</label>
+              <input
+                autocomplete="off"
+                type="text"
+                id="courseName"
+                name="courseName"
+                class="input-field"
+                placeholder="e.g. Operating Systems"
+                required
+              />
+            </div>
+
+            <div class="field-div">
+              <label for="creditHours">Credit Hours</label>
+              <input
+                autocomplete="off"
+                type="number"
+                id="creditHours"
+                name="creditHours"
+                class="input-field"
+                min="1"
+                max="5"
+                placeholder="e.g. 3"
+                required
+              />
+            </div>
+
+            <div class="field-div">
+              <label for="description">Description</label>
+              <textarea
+                autocomplete="off"
+                id="description"
+                name="description"
+                class="input-field"
+                rows="4"
+                placeholder="Brief course overview..."
+                required
+              ></textarea>
+            </div>
+
+            <div class="field-div">
+              <label for="imageUrl">Image URL</label>
+              <input
+                autocomplete="off"
+                type="url"
+                id="imageUrl"
+                name="imageUrl"
+                class="input-field"
+                placeholder="https://example.com/image.jpg"
+                required
+              />
+            </div>
+
+            <div class="field-div">
+              <label for="prerequisites">Prerequisite Courses</label>
+              <div class="dropdown multi-dropdown">
+                <div class="dropdown-toggle">
+                  <span class="selectedOption" data-selected="false"
+                    >Select Prerequisites</span
+                  >
+                  <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="dropdown-menu" id="prereqDropdown"></div>
+              </div>
+              <div class="tag-container" id="selectedPrereqs"></div>
+            </div>
+
+            <div class="field-div">
+              <label for="majors">Availability to Majors</label>
+              <div class="dropdown multi-dropdown">
+                <div class="dropdown-toggle">
+                  <span class="selectedOption" data-selected="false"
+                    >Select Majors</span
+                  >
+                  <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="dropdown-menu" id="majorsDropdown"></div>
+              </div>
+              <div class="tag-container" id="selectedMajors"></div>
+            </div>
+          </div>
+
+          <div class="field-div">
+            <button type="submit" class="input-submit">Create Course</button>
+          </div>
+        </form>
+      </section>
+    </main>
+
+    <!-- FOOTER -->
+    <div id="footerContent"></div>
+
+    <script src="../scripts/script.js"></script>
+    <script src="../scripts/navbar.js"></script>
+    <script src="../scripts/dark-light-elements.js"></script>
+    <script src="../scripts/footer.js"></script>
+    <script src="../scripts/scroll-up.js"></script>
+    <script src="../scripts/admin-create-course.js"></script>
+    <script src="../scripts/custom-alert-modal.js"></script>
+  </body>
+</html>

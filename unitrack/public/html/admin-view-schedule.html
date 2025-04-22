@@ -1,0 +1,139 @@
+<!-- Copied stud-home for now, will fix later-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Home | UniTrack</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../styles/theme.css">
+    <link rel="stylesheet" href="../styles/navbar.css">
+    <link rel="stylesheet" href="../styles/footer.css">
+    <link rel="stylesheet" href="../styles/scroll-up.css">
+    <link rel="stylesheet" href="../styles/scrollbar.css">
+    <link rel="stylesheet" href="../styles/course-card-discover.css">
+    <link rel="stylesheet" href="../styles/admin-view-schedule.css">
+
+</head>
+
+<body>
+    <!-- NAVBAR -->
+    <div id="navbarContent"></div>
+
+    <!-- Sidebar & User Dropdown-->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+    <div class="sidebar" id="sidebar"></div>
+    <div class="user-dropdown" id="userDropdown"></div>
+
+    <main class="view-schedule">
+        <header class="view-schedule-header">
+            <div class="view-schedule-top-header">
+                <h1 class="view-schedule-title">View Registered Class Schedules</span></h1>
+                <div class="dropdown-div">
+                    <span class="dropdown-text">
+                    </span>                    
+                    <div class="dropdown class-dropdown">
+                        <div class="dropdown-toggle">
+                            <span id="selectedOption">Select Course</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="dropdown-menu">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <p class="view-schedule-description">Monitor all registered class schedules of all courses in the university.</p>
+        </header>
+        
+    
+        <div class="view-schedule-container">
+
+                <div class="modal-header">
+                    <div class="course-title-div">
+                        <h2 class="course-title">Course Title Unavailable</h2>
+                        <div class="course-tags-div">
+                            <span class="course-tag">Course Tag Unavailable</span>
+                            <span class="campus-tag">Campus Tag Unavailable</span>
+                            <span class="crn-tag">CRN Unavailable</span>
+                            <span class="section-tag">Section Unavailable</span>
+                        </div>
+                    </div>
+                    <div class="dropdown-div">
+                        <span class="dropdown-text">
+                            <i class="fas fa-info-circle"></i>
+                        </span>                    
+                        <div class="dropdown class-dropdown">
+                            <div class="dropdown-toggle">
+                                <span id="selectedCRNOption">Select Class</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="dropdown-menu">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal-content">
+
+                    <div id="Class Schedule" class="content-section">
+                        <div class="content-info-div instructors-container">
+                            <h3 class="content-info-attribute">Course Instructors</h3>
+                            <div class="instructors-list">
+                                <div class="instructor">
+                                    <i class="fa-solid fa-user"></i>
+                                    <div class="instructor-info">
+                                        <span class="instructor-name">Instructor Name Unavailable</span>
+                                        <span class="instructor-description">Instructor Description Unavailable</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+        
+                        <div class="content-info-div class-schedule-container">
+                            <div class="class-schedule">
+                                <h3 class="content-info-attribute">Class Schedule</h3>
+                                <div class="schedule">
+                                    <i class="fa-solid fa-calendar-days"></i>
+                                    <div class="schedule-info">
+                                        <div class="weekdays">
+                                        </div>
+                                        <p class="date-range">01/19/2025 - 05/08/2025</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    
+                    <div class="content-info-div class-schedule-container">
+                        <div class="class-location">
+                            <h3 class="content-info-attribute">Class Timings</h3>
+                            <div class="location">
+                                <i class="fa-solid fa-clock"></i>
+                                <div class="location-info">
+                                    <p class="time">Time Unavailable</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+                    
+            </div>
+    </main>
+    
+
+    <!-- FOOTER-->
+    <div id="footerContent"></div>
+
+    <script src="../scripts/script.js"></script> 
+    <script src="../scripts/navbar.js"></script>
+    <script src="../scripts/footer.js"></script>
+    <script src="../scripts/scroll-up.js"></script>
+    <script src="../scripts/dark-light-elements.js"></script>
+    <script src="../scripts/admin-view-schedule.js"></script>
+
+</body>
+</html>

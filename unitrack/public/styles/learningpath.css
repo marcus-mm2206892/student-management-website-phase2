@@ -1,0 +1,241 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  overflow-x: hidden;
+}
+
+body {
+    background-color: var(--clr-surface-a0);
+    background-image: url("../assets/imgs/unitrack-images/pattern-blue.png");
+    background-repeat: repeat;
+    color: var(--clr-contrast-a0);
+    font-family: "Inter", sans-serif;
+    font-size: 0.85rem;
+}
+
+.learning-path {
+    height: calc(100vh - 53px); /* full screen height minus navbar height */
+    margin: 53px auto 1rem auto;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.learning-path-header {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin: 1rem;
+    background-color: var(--clr-surface-a10);
+    padding: 1rem;
+    border: 1px solid var(--clr-surface-a20);
+    border-radius: 10px;
+}
+
+.learning-path-top-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.learning-path-title {
+    text-align: left;
+    font-size: 1.8rem;
+    font-weight: 700;
+}
+
+.major-tag {
+    font-size: 0.85rem;
+    background-color: var(--clr-primary-a0);
+    color: #f5f5f5;
+    padding: 0.25rem .5rem;
+    border-radius: 12px;
+}
+
+.learning-path-description {
+    color: var(--clr-contrast-a0);
+}
+
+.learning-container {
+    display: flex;
+    height: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding-bottom: 1rem;
+    scroll-snap-type: x mandatory;
+    scroll-padding: 1rem;
+}
+
+
+.category {
+    flex: 1;
+    min-width: 400px;
+    max-width: 25%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background: var(--clr-surface-a0);
+    border: 1px solid var(--clr-surface-a20);
+    border-radius: 10px;
+    padding: 0.8rem;
+    scroll-snap-align: start;
+    margin: 0 0.8rem;
+}
+
+.category-header {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.category h2 {
+    font-size: 1rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 1rem;
+}
+
+.tracking-number {
+    font-size: 0.7rem;
+    border-radius: 1rem;
+    border: 1px solid var(--clr-surface-a30);
+    padding: 0.25rem 0.5rem;
+}
+
+.category-header p{
+    color: var(--clr-contrast-a40);
+}
+
+.category-header i {
+    color: var(--clr-primary-a0)
+}
+
+.cards-container {
+    flex: 1;
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: fit-content;
+    scrollbar-width: none;
+    -ms-overflow-style: none; 
+}
+
+.cards-container::-webkit-scrollbar {
+    display: none;
+}
+
+
+.cards-container .course-card {
+    margin-top: 1rem;
+}
+
+.card {
+    background: var(--clr-surface-tonal-a20);
+    border-radius: 8px;
+    padding: 1rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+}
+
+.card:hover {
+    transform: translateY(-3px);
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+
+.code {
+    background: var(--clr-primary-a0);
+    color: white;
+    padding: 3px 8px;
+    border-radius: 5px;
+}
+
+/* mobile navigation */
+.mobile-nav {
+    display: none;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.mobile-nav button {
+    background: var(--clr-primary-a0);
+    color: white;
+    border: none;
+    padding: 0.75rem;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.mobile-nav button:active {
+    background: var(--clr-primary-a20);
+    transform: translateY(-0.3rem);
+}
+
+@media (max-width: 768px) {
+    .learning-path {
+        padding: 1rem 0;
+    }
+
+    .learning-path-description{
+        display: none;
+    }
+
+    .learning-container {
+        overflow-x: hidden;
+        scroll-snap-type: none;
+        flex-direction: column;
+        align-items: center;
+        scroll-padding: none;
+        padding: 0 1rem;
+    }
+
+    .category {
+        width: 100%;
+        max-width: none;
+        min-width: 300px;
+    }
+
+    .mobile-nav {
+        display: flex;
+    }
+
+    .learning-path-top-header {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .learning-path-title {
+        text-align: center;
+        font-size: 1.2rem;
+    }
+}
+
+@media (prefers-color-scheme: light) {
+    .learning-path-header {
+        background-color: var(--clr-surface-a0);
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    body {
+        background-image: url("../assets/imgs/unitrack-images/pattern-white.png");
+    }
+  }
+  

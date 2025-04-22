@@ -1,0 +1,38 @@
+.dark-mode-svg {
+  width: 12rem;
+  height: 12rem;
+  display: block;
+}
+
+.light-mode-svg {
+  width: 12rem;
+  height: 12rem;
+  display: none;
+}
+
+.failed-to-load {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: var(--clr-contrast-a40);
+  font-size: 1rem;
+  font-weight: 500;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.failed-to-load-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100px;
+  height: 100px;
+  background: var(--clr-surface-a10);
+  border-radius: 50%;
+  margin-bottom: 1rem;
+}

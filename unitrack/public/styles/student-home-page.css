@@ -1,0 +1,183 @@
+
+html {
+  overflow-x: hidden;
+}
+
+body {
+  background-color: var(--clr-surface-a0);
+  background-image: url("../assets/imgs/unitrack-images/pattern-blue.png");
+  background-repeat: repeat;
+  color: var(--clr-contrast-a0);
+  font-family: "Inter", sans-serif;
+  font-size: 0.85rem;
+}
+
+.student-home {
+  max-width: 1200px;
+  margin: 53px auto 0 auto;
+  padding: 2rem;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+}
+
+.hero {
+  background: var(--clr-surface-a0);
+  border: 1px solid var(--clr-surface-a20);
+  color: var(--clr-contrast-a0);
+  padding: 40px 20px;
+  border-radius: 10px;
+  margin-bottom: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.hero h1 {
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin-bottom: 10px;
+  max-width: 30rem;
+  text-align: center;
+}
+
+.hero h1 span {
+  color: var(--clr-contrast-a40);
+  transition: color 0.2s ease-in-out;
+}
+
+.cycle-text {
+  color: var(--clr-contrast-a40);
+  transition: color 0.5s ease-in-out;
+}
+
+.cycle-text.active {
+  color: var(--clr-primary-a0);
+}
+
+
+.courses {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+  margin-bottom: 2rem;
+}
+
+.courses-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+
+.courses-header-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-self: flex-end;
+}
+
+.courses-header-right {
+  align-self: flex-end;
+}
+
+.courses h2 {
+  text-align: left;
+}
+
+.courses p {
+  color: var(--clr-contrast-a30);
+  text-align: left;
+}
+
+.browse-courses {
+  display: inline-flex;
+  align-items: right;
+  justify-content: flex-end;
+  gap: .5rem;
+  text-decoration: none;
+  font-weight: 600;
+  color: var(--clr-primary-a0);
+  transition: color 0.3s ease-in-out;
+  text-align: right;
+}
+
+.browse-courses:hover {
+  color: var(--clr-primary-a20);
+}
+
+.browse-courses i {
+  font-size: 0.65rem;
+  transition: transform 0.3s ease-in-out;
+  transform: translateY(5px);
+}
+
+.browse-courses:hover i {
+  transform: translate(4px, 5px);
+}
+
+.course-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Ensures full width usage */
+  gap: 20px;
+  width: 100%;
+}
+
+/* MORE BTN */
+
+.more-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 12rem;
+  margin-top: 20px;
+  padding: 10px 20px;
+  border: none;
+  background: var(--clr-primary-a0);
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: center;
+  transition: 0.2s;
+}
+
+.more-btn:hover {
+  background: var(--clr-primary-a20);
+}
+
+
+@media (max-width: 768px) {
+  .course-grid {
+      flex-direction: column;
+      align-items: center;
+  }
+
+  .hero h1 {
+    font-size: 1.2rem;
+  }
+
+  .search-bar {
+    width: 90%;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+      background-image: url("../assets/imgs/unitrack-images/pattern-white.png");
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  .search-bar {
+    background-color: var(--clr-surface-a20);
+  }
+}

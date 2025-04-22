@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>UniTrack | Register Courses</title>
+    <link rel="stylesheet" href="../styles/theme.css" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <link rel="stylesheet" href="../styles/navbar.css" />
+    <link rel="stylesheet" href="../styles/footer.css" />
+    <link rel="stylesheet" href="../styles/scroll-up.css" />
+    <link rel="stylesheet" href="../styles/scrollbar.css" />
+    <link rel="stylesheet" href="../styles/register-course.css" />
+    <link rel="stylesheet" href="../styles/failed-to-load.css" />
+    <link rel="stylesheet" href="../styles/no-results.css" />
+    <link rel="stylesheet" href="../styles/custom-alert-modal.css" />
+    <link rel="stylesheet" href="../styles/class-modal.css" />
+  </head>
+  <body>
+    <!-- NAVBAR -->
+    <div id="navbarContent"></div>
+
+    <!-- Sidebar & User Dropdown-->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+    <div class="sidebar" id="sidebar"></div>
+    <div class="user-dropdown" id="userDropdown"></div>
+
+    <!-- MAIN CONTENT -->
+    <main class="register">
+      <header class="register-header">
+        <div class="register-top-header">
+          <h1 class="register-title">Register Your Courses</h1>
+          <span class="major-tag">BSc. Computer Science</span>
+        </div>
+        <p class="register-description">
+          Browse and register for courses that match your curriculum.
+        </p>
+      </header>
+
+      <section class="register-body">
+        <table class="register-table">
+          <thead id="tableHead">
+            <tr>
+              <th colspan="8">
+                <div class="search-bar-div">
+                  <div class="search-bar">
+                    <input
+                      autocomplete="off"
+                      type="text"
+                      id="searchBar"
+                      placeholder="Search by Course No, Name, or Instructor..."
+                    />
+                    <button><i class="fa-solid fa-search"></i></button>
+                  </div>
+                  <div
+                    id="searchInfo"
+                    class="search-info"
+                    style="display: none"
+                  ></div>
+                </div>
+              </th>
+            </tr>
+            <tr>
+              <th class="course-no">Course No.</th>
+              <div id="modalContainer"></div>
+              <th class="course-name">Name</th>
+              <th class = "course-campus">Campus</th>
+              <th class="course-instructor">Instructor</th>
+              <th class="course-section">Section</th>
+              <th class="course-enrollment">Enrollment</th>
+              <th class="course-status" title="Sort by status">Status <i class="bx bx-chevron-down dropdown-icon" ></i></th>
+              <th class="course-action">Action</th>
+            </tr>
+          </thead>
+
+          <tbody id="data-output"></tbody>
+        </table>
+
+        <div id="noResults" class="no-results" style="display: none"></div>
+        <div
+          id="failedToLoad"
+          class="failed-to-load"
+          style="display: none"
+        ></div>
+      </section>
+    </main>
+
+    <!-- FOOTER -->
+    <div id="footerContent"></div>
+
+    <script src="../scripts/script.js"></script>
+
+    <script src="../scripts/navbar.js"></script>
+    <script src="../scripts/dark-light-elements.js"></script>
+
+    <script src="../scripts/dark-light-elements.js"></script>
+    <script src="../scripts/footer.js"></script>
+
+    <script src="../scripts/register-course.js"></script>
+    <script src="../scripts/scroll-up.js"></script>
+
+    <script src="../scripts/failed-to-load.js"></script>
+    <script src="../scripts/no-results.js"></script>
+    <script src="../scripts/custom-alert-modal.js"></script>
+    <script src="../scripts/class-modal.js"></script>
+  </body>
+</html>

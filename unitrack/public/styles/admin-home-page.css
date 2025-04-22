@@ -1,0 +1,471 @@
+html {
+  overflow-x: hidden;
+}
+
+body {
+  background-color: var(--clr-surface-a0);
+  background-image: url("../assets/imgs/unitrack-images/pattern-blue.png");
+  background-repeat: repeat;
+  color: var(--clr-contrast-a0);
+  font-family: "Inter", sans-serif;
+  font-size: 0.85rem;
+}
+
+.admin-profile {
+  max-width: 1200px;
+  margin: 53px auto 0 auto;
+  padding: 2rem;
+  width: 100%;
+  display: grid; /* Use grid layout */
+  gap: 1.5rem;
+  grid-template-columns: 2fr 1fr;
+  grid-template-areas:
+    "greetings greetings"
+    "admin-profile-left admin-profile-right";
+  align-items: start; /* Aligns items properly */
+}
+
+.admin-profile-left {
+  grid-area: admin-profile-left;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.admin-profile-right {
+  grid-area: admin-profile-right;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.greetings {
+  grid-area: greetings;
+}
+
+.course-image-div {
+  background-color: var(--clr-surface-a10);
+  padding: 1rem;
+  height: fit-content;
+  border-radius: 8px;
+}
+
+.course-image-div .course-image {
+  background: var(--clr-surface-tonal-a20);
+  position: relative;
+  aspect-ratio: 1 / 1;
+  border-radius: 8px;
+  width: 100%;
+  max-height: 16rem;
+  height: auto;
+  transition: border 0.3s ease-out, box-shadow 0.3s ease-out;
+}
+
+.course-image-div .course-image:hover {
+  border: 2px solid var(--clr-contrast-a0);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+}
+
+.course-image-div .course-image img {
+  object-fit: contain;
+
+}
+
+.course-image-div .hover-icon {
+  position: absolute;
+  bottom: 1rem;
+  left: 1rem;
+  width: 2rem;
+  height: 2rem;
+  background: linear-gradient(
+    -45deg,
+    rgba(5, 5, 6, 0.8),
+    rgba(116, 116, 116, 0.8)
+  );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+
+.course-image-div .hover-icon i {
+  color: #f5f5f5;
+}
+
+.course-image-div .hover-icon:hover .hover-text {
+  opacity: 1;
+  visibility: visible;
+}
+
+.course-image-div .course-image:hover .hover-icon {
+  background: var(--clr-primary-a0);
+}
+
+@keyframes bounceIn {
+  0% {
+    transform: translateY(-10px) translateX(10px);
+    opacity: 0;
+  }
+  50% {
+    transform: translateY(2px) translateX(-2px);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(0) translateX(0);
+    opacity: 1;
+  }
+}
+
+.course-image-div.hover-icon .hover-text {
+  position: absolute;
+  bottom: 130%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--clr-contrast-a50);
+  color: var(--clr-surface-a0);
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.course-image-div.hover-icon:hover .hover-text {
+  opacity: 1;
+  visibility: visible;
+}
+
+.course-image-div.hover-icon .hover-text::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 6px;
+  border-style: solid;
+  border-color: var(--clr-contrast-a50) transparent transparent transparent;
+}
+
+.credit-hours-card {
+  background: var(--clr-surface-a10);
+  padding: 1.5rem;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: transform 0.3s ease;
+  overflow: hidden;
+}
+
+.credit-hours-card:hover {
+  transform: translateY(-3px);
+  background: linear-gradient(135deg, var(--clr-surface-a0) 30%, #2a81bf 100%);
+  border: 1px solid var(--clr-contrast-a0);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.credit-hours-text {
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: var(--clr-contrast-a0);
+  flex: 1;
+}
+
+.credit-hours-text h2 {
+  font-size: 1.4rem;
+  font-weight: bold;
+}
+
+.credit-hours-text strong {
+  color: var(--clr-primary-a0);
+}
+
+.credit-hours-image {
+  flex-shrink: 0;
+}
+
+.credit-hours-image img {
+  width: 10rem;
+  height: auto;
+  object-fit: contain;
+  border-radius: 8px;
+}
+
+.courses {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+  margin-bottom: 2rem;
+}
+
+.courses-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+
+.courses-header-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-self: flex-end;
+  padding-right: 1rem;
+}
+
+.courses-header-right {
+  align-self: flex-end;
+}
+
+.courses h2 {
+  text-align: left;
+}
+
+.courses p {
+  color: var(--clr-contrast-a30);
+  text-align: left;
+}
+
+.browse-courses {
+  display: inline-flex;
+  align-items: right;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  text-decoration: none;
+  font-weight: 600;
+  color: var(--clr-primary-a0);
+  transition: color 0.3s ease-in-out;
+  text-align: right;
+}
+
+.browse-courses:hover {
+  color: var(--clr-primary-a20);
+}
+
+.browse-courses i {
+  font-size: 0.65rem;
+  transition: transform 0.3s ease-in-out;
+  transform: translateY(5px);
+}
+
+.browse-courses:hover i {
+  transform: translate(4px, 5px);
+}
+
+.course-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  width: 100%;
+}
+
+.about-me-div {
+  background-color: var(--clr-surface-a10);
+  padding: 1rem 1rem 2rem 1rem;
+  border-radius: 8px;
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 1rem;
+}
+
+.about-me-div h3 {
+  font-size: 1.2rem;
+}
+
+.about-me-content {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  justify-self: center;
+  height: 100%;
+}
+
+.about-me-avatar {
+  border-radius: 50%;
+  height: 6rem;
+  width: 6rem;
+}
+
+.about-me-content-right {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.department-tag,
+.college-tag {
+  color: #f5f5f5;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-weight: bold;
+  width: fit-content;
+  white-space: nowrap;
+}
+
+.department-tag {
+  background: var(--clr-primary-a0);
+}
+
+.college-tag {
+  background: var(--clr-surface-a20);
+}
+
+.university-info-div {
+  background-color: var(--clr-surface-a10);
+  padding: 1rem 1rem 2rem 1rem;
+  border-radius: 8px;
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 1rem;
+}
+
+.university-info-div h3 {
+  font-size: 1.2rem;
+}
+
+.info-card {
+  background: var(--clr-surface-a10);
+  padding: 1rem;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  gap: 1rem;
+}
+
+.info-card:hover {
+  transform: translateY(-3px);
+  background: linear-gradient(135deg, var(--clr-surface-a0) 30%, #2a81bf 100%);
+  border: 1px solid var(--clr-contrast-a0);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.info-text {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  color: var(--clr-contrast-a0);
+  border-radius: 12px;
+  font-weight: 600;
+  line-height: 1.2;
+  justify-content: flex-start;
+}
+
+.number-tag {
+  font-size: 2rem;
+  font-weight: bold;
+  width: 8.5rem;
+  text-align: right;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.info-text p {
+  flex-grow: 1;
+  word-wrap: break-word;
+  text-align: left;
+}
+
+
+.info-text p span {
+  color: var(--clr-primary-a0);
+}
+
+@media (max-width: 768px) {
+  .admin-profile {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "greetings"
+      "admin-profile-left"
+      "admin-profile-right";
+  }
+
+  .admin-profile-left,
+  .admin-profile-right {
+    width: 100%;
+  }
+
+  .credit-hours-card {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .credit-hours-image img {
+    width: 16rem;
+  }
+
+  .info-content {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .info-text {
+    align-items: center;
+  }
+
+  .about-me-content {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .about-me-avatar {
+    height: 5rem;
+    width: 5rem;
+  }
+
+  .course-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .browse-courses {
+    justify-content: center;
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  .course-image-div .course-image:hover {
+    border: 2px solid var(--clr-primary-a0);
+  }
+
+  .college-tag {
+    background-color: var(--clr-surface-a50);
+  }
+
+  .section-tag {
+    background-color: var(--clr-surface-a50);
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background-image: url("../assets/imgs/unitrack-images/pattern-white.png");
+  }
+}
