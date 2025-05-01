@@ -1,0 +1,144 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../app/generated/prisma"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+//added template models based on class diagram
+
+model User {
+  email           String          @id
+  firstName       String
+  lastName        String
+  password        String
+  role            String
+  themePreference ThemePreference
+  userType        String
+  gender          String
+}
+
+model Student {
+  studentId          String               @id
+  email              String               @unique
+  college            String
+  department         String
+  completedCourses   CompletedCourse[]
+  semesterEnrollment SemesterEnrollment[]
+
+  majorId      Major?  @relation(fields: [majorIdField], references: [majorId])
+  majorIdField String?
+}
+
+model Instructor {
+  instructorId    String  @id
+  email           String  @unique
+  college         String
+  department      String
+  expertise       String
+  teachingClasses Class[] @relation("TeachingClasses")
+  gradedClasses   Class[] @relation("GradedClasses")
+}
+
+model Admin {
+  adminId String @id
+  email   String @unique
+}
+
+model Major {
+  majorId         String   @id
+  majorName       String
+  college         String
+  department      String
+  requiredCourses Course[]
+
+  students Student[]
+}
+
+model CompletedCourse {
+  id          Int    @id @default(autoincrement())
+  courseId    String
+  letterGrade String
+  studentId   String
+
+  student Student @relation(fields: [studentId], references: [studentId])
+}
+
+model SemesterEnrollment {
+  id        Int    @id @default(autoincrement())
+  semester  String
+  studentId String
+
+  student Student           @relation(fields: [studentId], references: [studentId])
+  classes ClassEnrollment[]
+}
+
+model ClassEnrollment {
+  id          Int    @id @default(autoincrement())
+  classId     String
+  courseId    String
+  gradeStatus String
+  letterGrade String
+
+  semesterEnrollmentId Int
+  semesterEnrollment   SemesterEnrollment @relation(fields: [semesterEnrollmentId], references: [id])
+}
+
+model Class {
+  classId             String @id
+  courseId            String
+  semester            String
+  instructionalMethod String
+  campus              String
+  enrollmentActual    Int
+  enrollmentMaximum   Int
+  classStatus         String
+
+  instructors         Instructor[] @relation("TeachingClasses")
+  gradedByInstructors Instructor[] @relation("GradedClasses")
+  schedule            Schedule?
+
+  course Course @relation(fields: [courseId], references: [courseId])
+}
+
+model Schedule {
+  scheduleType String @id
+  startTime    String
+  endTime      String
+
+  classId String @unique
+  class   Class  @relation(fields: [classId], references: [classId])
+}
+
+model Course {
+  courseId       String         @id
+  courseName     String
+  creditHours    Int
+  subject        String
+  courseNumber   String
+  prerequisites  Prerequisite[]
+  majorsOffered  Major[]
+  currentClasses Class[]
+  description    String
+  courseImage    String
+}
+
+model Prerequisite {
+  id       Int    @id @default(autoincrement())
+  courseId String
+  minGrade String
+
+  course Course @relation(fields: [courseId], references: [courseId])
+}
+
+enum ThemePreference {
+  system
+  dark
+  light
+}
