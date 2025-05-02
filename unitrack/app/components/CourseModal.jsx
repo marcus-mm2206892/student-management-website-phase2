@@ -37,13 +37,9 @@ export default function CourseModal({ course, onClose }) {
         <div className={styles["modal-content"]}>
           <div className={styles["course-title-div"]}>
             <h2 className={styles["course-title"]}>{course.courseName}</h2>
-            <div className={styles["course-tags-div"]}>
-              {course.majorsOffered.map((major) => (
-                <span key={major} className={styles["course-tag"]}>
-                  {major}
-                </span>
-              ))}
-            </div>
+            <span className={styles["course-tag"]}>
+              {course.courseId || "Unknown"}
+            </span>
           </div>
 
           <div className={styles["course-info"]}>

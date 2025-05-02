@@ -35,29 +35,36 @@ function isEligible(course, completedMap) {
 
 const dummyCourses = [
   {
-    courseId: 'CMPS350',
-    courseImage: '/assets/imgs/course-placeholder.png',
-    courseName: 'Web Development Fundamentals',
-    description: 'Concepts, protocols and enabling technologies related to the development of...',
+    courseId: "CMPS101",
+    courseName: "Intro to CS",
+    description: "Learn the basics of programming and computational thinking.",
     creditHours: 3,
-    majorsOffered: ['CMPS'],
+    courseImage: "/assets/imgs/course-placeholder.png",
+    majorsOffered: ["CMPS", "CMPE"],
+    subject: "Computer Science",
+    prerequisites: [],
   },
   {
-    courseId: 'CMPS360',
-    courseImage: '/assets/imgs/course-placeholder.png',
-    courseName: 'App Development with Flutter',
-    description: 'Introduction to building natively compiled applications for mobile, web, and desktop...',
+    courseId: "CMPE202",
+    courseName: "Digital Logic Design",
+    description: "Understand circuits, logic gates, and system architecture.",
     creditHours: 3,
-    majorsOffered: ['CMPS'],
+    courseImage: "/assets/imgs/course-placeholder.png",
+    majorsOffered: ["CE"],
+    subject: "Computer Engineering",
+    prerequisites: ["PHYS101"],
   },
   {
-    courseId: 'CMPE101',
-    courseImage: '/assets/imgs/course-placeholder.png',
-    courseName: 'Introduction to Engineering',
-    description: 'Overview of engineering disciplines, principles, and career pathways...',
-    creditHours: 2,
-    majorsOffered: ['CMPE'],
-  }
+    courseId: "CHEM101",
+    courseName: "General Chemistry 1",
+    description:
+      "Chemistry and Measurement and significant figures. Atoms, molecules and ions. Formulas and...",
+    creditHours: 3,
+    courseImage: "/assets/imgs/course-placeholder.png",
+    majorsOffered: ["CMPE", "CMPS"],
+    subject: "Chemistry",
+    prerequisites: [],
+  },
 ];
 
 export default function StudentHome() {
