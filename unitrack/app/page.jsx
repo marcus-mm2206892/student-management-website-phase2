@@ -14,17 +14,31 @@ export default function LoginPage() {
   const handleLogin = (e) => {
     e.preventDefault();
 
-    // Fake role-based routing, for now!
+    let role = "";
+    let name = "";
+
     if (username === "admin@qu.com") {
-      router.push("/admin-home-page");
+      role = "admin";
+      name = "Admin";
     } else if (username === "instructor@qu.com") {
-      router.push("/instructor-home-page");
+      role = "instructor";
+      name = "Dr. Instructor";
     } else if (username === "student@qu.com") {
-      router.push("/student-home-page");
+      role = "student";
+      name = "Student";
     } else {
       alert("Invalid credentials");
+      return;
     }
+
+    // Store in localStorage
+    const user = { name, email: username, role };
+    localStorage.setItem("user", JSON.stringify(user));
+
+    // Navigate cleanly
+    router.push(`/${role}/home`);
   };
+
 
   return (
     <>
