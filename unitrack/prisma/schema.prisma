@@ -3,7 +3,6 @@
 
 generator client {
   provider = "prisma-client-js"
-  output   = "../app/generated/prisma"
 }
 
 datasource db {
@@ -13,97 +12,112 @@ datasource db {
 
 //added template models based on class diagram
 
-model User {
-  email           String   @id
-  firstName       String
-  lastName        String
-  password        String
-  role            String
-  themePreference ThemePreference
-  userType        String
-  gender          String
-
-}
-
-model Student {
-  studentId         String    @id
-  email             String    @unique
-  college           String
-  department        String
-  completedCourses  CompletedCourse[]
-  semesterEnrollment SemesterEnrollment[]
-
-  majorId Major? @relation(fields: [majorIdField], references: [majorId])
-  majorIdField String?
-}
-
-model Instructor {
-  instructorId      String    @id
-  email             String    @unique
-  college           String
-  department        String
-  expertise         String
-  teachingClasses   Class[]   @relation("TeachingClasses")
-  gradedClasses     Class[]   @relation("GradedClasses")
-}
+// Note: majors.json has majorName and department, which is baiscally the same thing
 
 model Admin {
   adminId String @id
   email   String @unique
 }
 
-model Major {
-  majorId        String  @id
-  majorName      String
-  college        String
-  department     String
-  requiredCourses Course[]
+model User {
+  email           String          @id
+  firstName       String
+  lastName        String
+  password        String
+  role            String
+  gender          String
+  themePreference ThemePreference
+  profileImage    String //In users.json, its referred to as profile-image
+  // userType        String
+}
 
-  students       Student[]
+enum ThemePreference {
+  system
+  dark
+  light
+}
+
+model Student {
+  studentId          String               @id
+  email              String               @unique
+  college            String
+  department         String // Major
+  completedCourses   CompletedCourse[]
+  semesterEnrollment SemesterEnrollment[]
+
+  majorId      Major?  @relation(fields: [majorIdField], references: [majorId])
+  majorIdField String? //Not sure about major fieds, means same as departments
 }
 
 model CompletedCourse {
-  id         Int     @id @default(autoincrement())
-  courseId   String
+  id          Int    @id @default(autoincrement())
+  courseId    String
   letterGrade String
-  studentId  String
+  studentId   String
 
   student Student @relation(fields: [studentId], references: [studentId])
 }
 
 model SemesterEnrollment {
-  id       Int    @id @default(autoincrement())
-  semester String
+  id        Int    @id @default(autoincrement())
+  semester  String
   studentId String
 
-  student Student @relation(fields: [studentId], references: [studentId])
+  student Student           @relation(fields: [studentId], references: [studentId])
   classes ClassEnrollment[]
 }
 
+model Major {
+  majorId         String   @id
+  majorName       String
+  college         String
+  department      String
+  requiredCourses Course[]
+
+  students Student[]
+}
+
+model Instructor {
+  instructorId    String      @id
+  email           String      @unique
+  college         String
+  department      String
+  teachingClasses Class[]     @relation("TeachingClasses")
+  gradedClasses   Class[]     @relation("GradedClasses")
+  Expertise       Expertise[] // We need an expertise model
+}
+
+model Expertise {
+  id           Int        @id @default(autoincrement())
+  expertise    String
+  instructorId String
+  instructor   Instructor @relation(fields: [instructorId], references: [instructorId])
+}
+
 model ClassEnrollment {
-  id           Int    @id @default(autoincrement())
-  classId      String 
-  courseId     String
-  gradeStatus  String
-  letterGrade  String
+  id          Int    @id @default(autoincrement())
+  classId     String
+  courseId    String
+  gradeStatus String
+  letterGrade String
 
   semesterEnrollmentId Int
-  semesterEnrollment SemesterEnrollment @relation(fields: [semesterEnrollmentId], references: [id])
+  semesterEnrollment   SemesterEnrollment @relation(fields: [semesterEnrollmentId], references: [id])
 }
 
 model Class {
-  classId           String   @id 
-  courseId          String
-  semester          String
+  classId             String @id
+  courseId            String
+  semester            String
   instructionalMethod String
-  campus            String
-  enrollmentActual  Int
-  enrollmentMaximum Int
-  classStatus       String
+  campus              String
+  enrollmentActual    Int
+  enrollmentMaximum   Int
+  classStatus         String
 
-  instructors       Instructor[] @relation("TeachingClasses")
+  instructors         Instructor[] @relation("TeachingClasses")
   gradedByInstructors Instructor[] @relation("GradedClasses")
-  schedule           Schedule?
+  schedule            Schedule?
 
   course Course @relation(fields: [courseId], references: [courseId])
 }
@@ -114,32 +128,27 @@ model Schedule {
   endTime      String
 
   classId String @unique
-  class   Class @relation(fields: [classId], references: [classId])
+  class   Class  @relation(fields: [classId], references: [classId])
 }
 
 model Course {
-  courseId      String  @id
-  courseName    String
-  creditHours   Int
-  subject       String
-  courseNumber  String
-  prerequisites Prerequisite[]
-  majorsOffered Major[]
+  courseId     String @id
+  courseName   String
+  creditHours  Int
+  subject      String
+  courseNumber String
+  description  String
+  courseImage  String
+
+  prerequisites  Prerequisite[]
+  majorsOffered  Major[]
   currentClasses Class[]
-  description   String
-  courseImage   String
 }
 
 model Prerequisite {
-  id         Int     @id @default(autoincrement())
-  courseId   String
-  minGrade   String
+  id       Int    @id @default(autoincrement())
+  courseId String
+  minGrade String
 
   course Course @relation(fields: [courseId], references: [courseId])
-}
-
-enum ThemePreference {
-  system
-  dark
-  light
 }
