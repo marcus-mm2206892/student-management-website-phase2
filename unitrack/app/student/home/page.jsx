@@ -4,6 +4,8 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import EmptyContent from "@/app/components/EmptyContent";
 import NoResults from "@/app/components/NoResults";
+import CourseModal from "@/app/components/CourseModal";
+
 
 import styles from '@/app/styles/student-home-page.module.css';
 import discoverStyles from '@/app/styles/course-card-discover.module.css';
@@ -34,7 +36,7 @@ function isEligible(course, completedMap) {
 const dummyCourses = [
   {
     courseId: 'CMPS350',
-    courseImage: '/assets/imgs/course-placeholder.jpg',
+    courseImage: '/assets/imgs/course-placeholder.png',
     courseName: 'Web Development Fundamentals',
     description: 'Concepts, protocols and enabling technologies related to the development of...',
     creditHours: 3,
@@ -42,7 +44,7 @@ const dummyCourses = [
   },
   {
     courseId: 'CMPS360',
-    courseImage: '/assets/imgs/course-placeholder.jpg',
+    courseImage: '/assets/imgs/course-placeholder.png',
     courseName: 'App Development with Flutter',
     description: 'Introduction to building natively compiled applications for mobile, web, and desktop...',
     creditHours: 3,
@@ -50,7 +52,7 @@ const dummyCourses = [
   },
   {
     courseId: 'CMPE101',
-    courseImage: '/assets/imgs/course-placeholder.jpg',
+    courseImage: '/assets/imgs/course-placeholder.png',
     courseName: 'Introduction to Engineering',
     description: 'Overview of engineering disciplines, principles, and career pathways...',
     creditHours: 2,
@@ -61,6 +63,8 @@ const dummyCourses = [
 export default function StudentHome() {
   const router = useRouter();
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [selectedCourse, setSelectedCourse] = useState(null);
+
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -70,6 +74,7 @@ export default function StudentHome() {
   }, []);
 
   const recommendedCourses = dummyCourses.slice(0, 2);
+  // const recommendedCourses = [];
   const supplementaryCourses = dummyCourses.slice(1);
   const electiveCourses = dummyCourses.slice(0, 2);
 
@@ -99,6 +104,7 @@ export default function StudentHome() {
           courses={recommendedCourses}
           onBrowse={() => router.push('/browse')}
           router={router}
+          onCourseClick={setSelectedCourse}
         />
 
         <CourseSection
@@ -107,6 +113,7 @@ export default function StudentHome() {
           courses={supplementaryCourses}
           onBrowse={() => router.push('/browse')}
           router={router}
+          onCourseClick={setSelectedCourse}
         />
 
         <CourseSection
@@ -115,6 +122,7 @@ export default function StudentHome() {
           courses={electiveCourses}
           onBrowse={() => router.push('/browse')}
           router={router}
+          onCourseClick={setSelectedCourse}
         />
 
         <button
@@ -126,12 +134,17 @@ export default function StudentHome() {
         >
           Browse All Courses
         </button>
+
+        {selectedCourse && (
+          <CourseModal course={selectedCourse} onClose={() => setSelectedCourse(null)} />
+        )}
+
       </main>
     </>
   );
 }
 
-function CourseSection({ title, subtitle, courses, onBrowse, router }) {
+function CourseSection({ title, subtitle, courses, onBrowse, router, onCourseClick }) {
   return (
     <section className={styles.courses}>
       <div className={styles["courses-header"]}>
@@ -153,18 +166,18 @@ function CourseSection({ title, subtitle, courses, onBrowse, router }) {
             <CourseCard
               key={course.courseId}
               course={course}
-              onClick={() => console.log(`openCourseModal: ${course.courseId}`)}
+              onClick={() => onCourseClick(course)}
               onPlusClick={(e) => {
                 e.stopPropagation();
                 router.push('/student/register');
               }}
             />
+
           ))}
         </div>
       ) : (
         <EmptyContent />
       )}
-      <NoResults />
     </section>
   );
 }
