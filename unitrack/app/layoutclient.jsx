@@ -4,6 +4,8 @@ import { useSearchParams, usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import "./globals.css";
 import NavBar from "@/app/components/NavBar";
+import ScrollUpButton from "./components/ScrollUpButton";
+import Footer from "@/app/components/Footer";
 
 export default function LayoutClient({ children }) {
   const pathname = usePathname();
@@ -49,6 +51,8 @@ export default function LayoutClient({ children }) {
     <>
       {shouldShowNavbar && user && <NavBar user={user} />}
       {children}
+      <ScrollUpButton />
+      <Footer user={user} />
     </>
   );
 }

@@ -1,11 +1,4 @@
-/* Body Styling */
-*,
-*::before,
-*::after {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+@import url("https://fonts.googleapis.com/css2?family=Signika:wght@400;500;600;700&display=swap");
 
 .footer {
   margin-top: auto;
@@ -75,7 +68,7 @@
   gap: 2rem;
 }
 
-footer .unitrack-logo {
+.unitrack-logo {
   width: 4rem;
 }
 
