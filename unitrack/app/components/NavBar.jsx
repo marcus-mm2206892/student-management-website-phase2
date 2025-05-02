@@ -10,6 +10,15 @@ export default function NavBar({ user }) {
   const { name, email, role } = user || {};
   const avatar = "/assets/imgs/user-profile-images/male1.png";
 
+  const homeLink =
+  user?.role === "student"
+    ? "/student/home"
+    : user?.role === "instructor"
+    ? "/instructor/home"
+    : user?.role === "admin"
+    ? "/admin/home"
+    : "/";
+
   useEffect(() => {
     const sidebar = document.getElementById("sidebar");
     const overlay = document.getElementById("sidebarOverlay");
@@ -165,10 +174,12 @@ export default function NavBar({ user }) {
         </div>
 
         <div className={className('nav-bar-logo', 'bordered-div')}>
-          <ThemeResponsiveLogo
-            type="icon"
-            className={className("unitrack-logo")}
-          />
+          <Link href={homeLink}>
+            <ThemeResponsiveLogo
+              type="icon"
+              className={className("unitrack-logo")}
+            />
+          </Link>
         </div>
 
 
@@ -195,10 +206,13 @@ export default function NavBar({ user }) {
         <div className={`${styles.circle} ${styles["small-circle"]}`}></div>
 
         <div className={styles["sidebar-content"]}>
-          <ThemeResponsiveLogo
-            type="text"
-            className={className("unitrack-logo-text")}
-          />
+            <Link href={homeLink}>
+                <ThemeResponsiveLogo
+                    type="text"
+                    className={styles["unitrack-logo-text"]}
+                    alt="UniTrack Logo"
+                />
+            </Link>
           <ul className={styles["menu"]}>{renderSidebarLinks()}</ul>
         </div>
       </div>

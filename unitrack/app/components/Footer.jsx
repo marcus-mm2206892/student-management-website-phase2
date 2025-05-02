@@ -7,6 +7,15 @@ import { useEffect, useState } from "react";
 export default function Footer({ user }) {
   const [links, setLinks] = useState([]);
 
+  const homeLink =
+  user?.role === "student"
+    ? "/student/home"
+    : user?.role === "instructor"
+    ? "/instructor/home"
+    : user?.role === "admin"
+    ? "/admin/home"
+    : "/";
+
   useEffect(() => {
     if (!user?.role) return;
 
@@ -41,16 +50,18 @@ export default function Footer({ user }) {
     <footer className={styles.footer}>
       <div className={styles["top-half"]}>
         <div className={styles["contact-div"]}>
-            <ThemeResponsiveLogo
-                type="icon"
-                className={styles["unitrack-logo"]}
-                alt="UniTrack Logo"
-            />
+            <Link href={homeLink}>
+                <ThemeResponsiveLogo
+                    type="icon"
+                    className={styles["unitrack-logo"]}
+                    alt="UniTrack Logo"
+                />
+            </Link>
+
 
             <div className={styles["contact-texts"]}>
                 <h1>Contact Us</h1>
                 <a href="mailto:unitrack@qu.edu.qa">unitrack@qu.edu.qa</a>
-                <a href="tel:+97412345678">+974 1234 5678</a>
             </div>
             <div className={styles["social-media-buttons"]}>
                 <div id="discord"><i className="fa-brands fa-discord"></i></div>
@@ -74,17 +85,83 @@ export default function Footer({ user }) {
               ))}
             </ul>
           </div>
+
+          <div className={styles["links-content"]}>
+            <h3>Legal & Policies</h3>
+            <ul>
+            <li>
+                <i className="fa-solid fa-scroll"></i>
+                <Link href="#terms-and-conditions" className={styles["text-link"]}>
+                Terms & Conditions
+                </Link>
+            </li>
+            <li>
+                <i className="fa-solid fa-user-shield"></i>
+                <Link href="#privacy-policy" className={styles["text-link"]}>
+                Privacy Policy
+                </Link>
+            </li>
+            <li>
+                <i className="fa-solid fa-shield-halved"></i>
+                <Link href="#data-protection" className={styles["text-link"]}>
+                Data Protection
+                </Link>
+            </li>
+            </ul>
         </div>
+
+        <div className={styles["links-content"]}>
+            <h3>Others</h3>
+            <ul>
+            <li>
+                <i className="fa-solid fa-circle-question"></i>
+                <Link href="#help" className={styles["text-link"]}>
+                Help & Support
+                </Link>
+            </li>
+            <li>
+                <i className="fa-solid fa-university"></i>
+                <Link href="#location" className={styles["text-link"]}>
+                Qatar University
+                </Link>
+            </li>
+            </ul>
+        </div>
+        </div>
+
+        
+
+        
       </div>
 
       <hr className={styles.hr} />
 
       <div className={styles["bottom-half"]}>
         <div className={styles["footer-info"]}>
-          <span>© 2025 UniTrack. All rights reserved.</span>
+            <span>
+                Made with ♥️ & ☕️ by{" "}
+                <a className={`${styles["text-link"]} ${styles["dev-name"]}`} href="">
+                    @marcusmonteiro
+                </a>
+                ,{" "}
+                <a className={`${styles["text-link"]} ${styles["dev-name"]}`} href="">
+                    @joshcalma
+                </a>
+                ,{" "}
+                <a className={`${styles["text-link"]} ${styles["dev-name"]}`} href="">
+                    @mohdbashar
+                </a>
+                , &{" "}
+                <a className={`${styles["text-link"]} ${styles["dev-name"]}`} href="">
+                    @audrecaraig
+                </a>
+            </span>
+
           <div>
+            <div>
+              <span>©2025 UniTrack</span>
+            </div>
             <span className={styles["version-tag"]}>v1.0</span>
-            <span className={styles["dev-name"]}>Made with 💙 by Team UniTrack</span>
           </div>
         </div>
         <div className={styles["unitrack-name"]}>

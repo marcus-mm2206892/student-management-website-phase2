@@ -41,13 +41,13 @@
   width: 1.75rem;
 }
 
-.nav-bar-logo > .unitrack-logo {
+.unitrack-logo {
   width: 2.25rem;
   height: 2.25rem;
   object-fit: cover;
 }
 
-.nav-bar-logo > .unitrack-logo:hover {
+.unitrack-logo:hover {
   cursor: pointer;
 }
 
