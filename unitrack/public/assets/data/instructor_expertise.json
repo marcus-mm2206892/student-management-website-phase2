@@ -1,0 +1,198 @@
+[
+  {
+    "instructorId": "I1001",
+    "expertise": "Computer Science"
+  },
+  {
+    "instructorId": "I1001",
+    "expertise": "Computer Engineering"
+  },
+  {
+    "instructorId": "I1002",
+    "expertise": "Computer Science"
+  },
+  {
+    "instructorId": "I1002",
+    "expertise": "Computer Engineering"
+  },
+  {
+    "instructorId": "I1003",
+    "expertise": "Computer Science"
+  },
+  {
+    "instructorId": "I1004",
+    "expertise": "Computer Science"
+  },
+  {
+    "instructorId": "I1004",
+    "expertise": "Computer Engineering"
+  },
+  {
+    "instructorId": "I1005",
+    "expertise": "Computer Science"
+  },
+  {
+    "instructorId": "I1005",
+    "expertise": "Computer Engineering"
+  },
+  {
+    "instructorId": "I1006",
+    "expertise": "Computer Science"
+  },
+  {
+    "instructorId": "I1007",
+    "expertise": "Computer Science"
+  },
+  {
+    "instructorId": "I1007",
+    "expertise": "Computer Engineering"
+  },
+  {
+    "instructorId": "I1008",
+    "expertise": "Computer Science"
+  },
+  {
+    "instructorId": "I1009",
+    "expertise": "Computer Science"
+  },
+  {
+    "instructorId": "I1010",
+    "expertise": "Computer Science"
+  },
+  {
+    "instructorId": "I1010",
+    "expertise": "Computer Engineering"
+  },
+  {
+    "instructorId": "I1011",
+    "expertise": "Computer Science"
+  },
+  {
+    "instructorId": "I1011",
+    "expertise": "Computer Engineering"
+  },
+  {
+    "instructorId": "I1012",
+    "expertise": "Computer Science"
+  },
+  {
+    "instructorId": "I1013",
+    "expertise": "Computer Science"
+  },
+  {
+    "instructorId": "I1014",
+    "expertise": "Computer Science"
+  },
+  {
+    "instructorId": "I1015",
+    "expertise": "Computer Engineering"
+  },
+  {
+    "instructorId": "I1016",
+    "expertise": "Computer Engineering"
+  },
+  {
+    "instructorId": "I1017",
+    "expertise": "Computer Engineering"
+  },
+  {
+    "instructorId": "I1018",
+    "expertise": "Computer Science"
+  },
+  {
+    "instructorId": "I1018",
+    "expertise": "Computer Engineering"
+  },
+  {
+    "instructorId": "I1019",
+    "expertise": "Computer Science"
+  },
+  {
+    "instructorId": "I1019",
+    "expertise": "Computer Engineering"
+  },
+  {
+    "instructorId": "I1020",
+    "expertise": "Computer Science"
+  },
+  {
+    "instructorId": "I1020",
+    "expertise": "Computer Engineering"
+  },
+  {
+    "instructorId": "I1021",
+    "expertise": "Computer Science"
+  },
+  {
+    "instructorId": "I1021",
+    "expertise": "Computer Engineering"
+  },
+  {
+    "instructorId": "I1022",
+    "expertise": "Computer Engineering"
+  },
+  {
+    "instructorId": "I1023",
+    "expertise": "Computer Science"
+  },
+  {
+    "instructorId": "I1023",
+    "expertise": "Computer Engineering"
+  },
+  {
+    "instructorId": "I1024",
+    "expertise": "Computer Engineering"
+  },
+  {
+    "instructorId": "I1025",
+    "expertise": "General Engineering"
+  },
+  {
+    "instructorId": "I1026",
+    "expertise": "General Engineering"
+  },
+  {
+    "instructorId": "I1027",
+    "expertise": "General Engineering"
+  },
+  {
+    "instructorId": "I1028",
+    "expertise": "General Engineering"
+  },
+  {
+    "instructorId": "I1029",
+    "expertise": "Mathematics"
+  },
+  {
+    "instructorId": "I1030",
+    "expertise": "Mathematics"
+  },
+  {
+    "instructorId": "I1031",
+    "expertise": "Mathematics"
+  },
+  {
+    "instructorId": "I1032",
+    "expertise": "History"
+  },
+  {
+    "instructorId": "I1033",
+    "expertise": "English"
+  },
+  {
+    "instructorId": "I1034",
+    "expertise": "Physics"
+  },
+  {
+    "instructorId": "I1035",
+    "expertise": "Physics"
+  },
+  {
+    "instructorId": "I1036",
+    "expertise": "Dawa and Islamic Culture"
+  },
+  {
+    "instructorId": "I1037",
+    "expertise": "Computer Science"
+  }
+]

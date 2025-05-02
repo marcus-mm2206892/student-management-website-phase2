@@ -1,0 +1,322 @@
+[
+  {
+    "courseId": "CMPS151",
+    "majorId": "CMPS"
+  },
+  {
+    "courseId": "CMPS151",
+    "majorId": "CMPE"
+  },
+  {
+    "courseId": "CHEM101",
+    "majorId": "CMPS"
+  },
+  {
+    "courseId": "CHEM101",
+    "majorId": "CMPE"
+  },
+  {
+    "courseId": "CHEM103",
+    "majorId": "CMPS"
+  },
+  {
+    "courseId": "CHEM103",
+    "majorId": "CMPE"
+  },
+  {
+    "courseId": "MATH101",
+    "majorId": "CMPS"
+  },
+  {
+    "courseId": "MATH101",
+    "majorId": "CMPE"
+  },
+  {
+    "courseId": "ENGL202",
+    "majorId": "CMPS"
+  },
+  {
+    "courseId": "ENGL202",
+    "majorId": "CMPE"
+  },
+  {
+    "courseId": "HIST121",
+    "majorId": "CMPS"
+  },
+  {
+    "courseId": "HIST121",
+    "majorId": "CMPE"
+  },
+  {
+    "courseId": "CMPS251",
+    "majorId": "CMPS"
+  },
+  {
+    "courseId": "CMPS251",
+    "majorId": "CMPE"
+  },
+  {
+    "courseId": "PHYS191",
+    "majorId": "CMPS"
+  },
+  {
+    "courseId": "PHYS191",
+    "majorId": "CMPE"
+  },
+  {
+    "courseId": "PHYS192",
+    "majorId": "CMPS"
+  },
+  {
+    "courseId": "PHYS192",
+    "majorId": "CMPE"
+  },
+  {
+    "courseId": "MATH231",
+    "majorId": "CMPS"
+  },
+  {
+    "courseId": "MATH231",
+    "majorId": "CMPE"
+  },
+  {
+    "courseId": "MATH102",
+    "majorId": "CMPS"
+  },
+  {
+    "courseId": "MATH102",
+    "majorId": "CMPE"
+  },
+  {
+    "courseId": "ENGL203",
+    "majorId": "CMPS"
+  },
+  {
+    "courseId": "ENGL203",
+    "majorId": "CMPE"
+  },
+  {
+    "courseId": "GENG107",
+    "majorId": "CMPE"
+  },
+  {
+    "courseId": "CMPS200",
+    "majorId": "CMPS"
+  },
+  {
+    "courseId": "CMPS205",
+    "majorId": "CMPS"
+  },
+  {
+    "courseId": "CMPS205",
+    "majorId": "CMPE"
+  },
+  {
+    "courseId": "CMPS303",
+    "majorId": "CMPS"
+  },
+  {
+    "courseId": "CMPS303",
+    "majorId": "CMPE"
+  },
+  {
+    "courseId": "PHYS193",
+    "majorId": "CMPS"
+  },
+  {
+    "courseId": "PHYS193",
+    "majorId": "CMPE"
+  },
+  {
+    "courseId": "PHYS194",
+    "majorId": "CMPS"
+  },
+  {
+    "courseId": "PHYS194",
+    "majorId": "CMPE"
+  },
+  {
+    "courseId": "ARAB100",
+    "majorId": "CMPS"
+  },
+  {
+    "courseId": "ARAB100",
+    "majorId": "CMPE"
+  },
+  {
+    "courseId": "CMPS323",
+    "majorId": "CMPS"
+  },
+  {
+    "courseId": "CMPS351",
+    "majorId": "CMPS"
+  },
+  {
+    "courseId": "CMPE263",
+    "majorId": "CMPS"
+  },
+  {
+    "courseId": "CMPE263",
+    "majorId": "CMPE"
+  },
+  {
+    "courseId": "GENG200",
+    "majorId": "CMPS"
+  },
+  {
+    "courseId": "GENG200",
+    "majorId": "CMPE"
+  },
+  {
+    "courseId": "CMPE261",
+    "majorId": "CMPE"
+  },
+  {
+    "courseId": "ELEC201",
+    "majorId": "CMPE"
+  },
+  {
+    "courseId": "MATH211",
+    "majorId": "CMPE"
+  },
+  {
+    "courseId": "ELEC351",
+    "majorId": "CMPE"
+  },
+  {
+    "courseId": "ELEC231",
+    "majorId": "CMPE"
+  },
+  {
+    "courseId": "CMPS310",
+    "majorId": "CMPS"
+  },
+  {
+    "courseId": "CMPE355",
+    "majorId": "CMPS"
+  },
+  {
+    "courseId": "CMPE355",
+    "majorId": "CMPE"
+  },
+  {
+    "courseId": "CMPS380",
+    "majorId": "CMPS"
+  },
+  {
+    "courseId": "CMPS380",
+    "majorId": "CMPE"
+  },
+  {
+    "courseId": "CMPS497",
+    "majorId": "CMPS"
+  },
+  {
+    "courseId": "CMPS482",
+    "majorId": "CMPS"
+  },
+  {
+    "courseId": "CMPS482",
+    "majorId": "CMPE"
+  },
+  {
+    "courseId": "CMPS360",
+    "majorId": "CMPS"
+  },
+  {
+    "courseId": "CMPS360",
+    "majorId": "CMPE"
+  },
+  {
+    "courseId": "CMPS350",
+    "majorId": "CMPS"
+  },
+  {
+    "courseId": "CMPS405",
+    "majorId": "CMPS"
+  },
+  {
+    "courseId": "CMPS405",
+    "majorId": "CMPE"
+  },
+  {
+    "courseId": "GENG300",
+    "majorId": "CMPS"
+  },
+  {
+    "courseId": "GENG300",
+    "majorId": "CMPE"
+  },
+  {
+    "courseId": "DAWA111",
+    "majorId": "CMPS"
+  },
+  {
+    "courseId": "DAWA111",
+    "majorId": "CMPE"
+  },
+  {
+    "courseId": "CMPE363",
+    "majorId": "CMPE"
+  },
+  {
+    "courseId": "CMPE370",
+    "majorId": "CMPE"
+  },
+  {
+    "courseId": "MATH217",
+    "majorId": "CMPE"
+  },
+  {
+    "courseId": "CMPE364",
+    "majorId": "CMPE"
+  },
+  {
+    "courseId": "CMPE457",
+    "majorId": "CMPE"
+  },
+  {
+    "courseId": "CMPE476",
+    "majorId": "CMPE"
+  },
+  {
+    "courseId": "GENG360",
+    "majorId": "CMPE"
+  },
+  {
+    "courseId": "CMPE483",
+    "majorId": "CMPE"
+  },
+  {
+    "courseId": "CMPE471",
+    "majorId": "CMPE"
+  },
+  {
+    "courseId": "CMPS493",
+    "majorId": "CMPS"
+  },
+  {
+    "courseId": "CMPS499",
+    "majorId": "CMPS"
+  },
+  {
+    "courseId": "CMPS307",
+    "majorId": "CMPS"
+  },
+  {
+    "courseId": "MAGT101",
+    "majorId": "CMPS"
+  },
+  {
+    "courseId": "CMPE462",
+    "majorId": "CMPE"
+  },
+  {
+    "courseId": "CMPE498",
+    "majorId": "CMPE"
+  },
+  {
+    "courseId": "CMPE499",
+    "majorId": "CMPE"
+  }
+]
