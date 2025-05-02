@@ -4,6 +4,7 @@
 import React, { useEffect } from 'react';
 import styles from '@/app/styles/navbar.module.css';
 import ThemeResponsiveLogo from './ThemeResponsiveLogo';
+import Link from 'next/link';
 
 export default function NavBar({ user }) {
   const { name, email, role } = user || {};
@@ -65,7 +66,7 @@ export default function NavBar({ user }) {
     overlay?.addEventListener("click", closeSidebarFn);
     userButton?.addEventListener("click", toggleDropdown);
     closeDropdown?.addEventListener("click", toggleDropdown);
-    document.addEventListener("mousedown", handleClickOutside); // 👈 more reliable than "click"
+    document.addEventListener("mousedown", handleClickOutside);
 
     return () => {
       browseBtn?.removeEventListener("click", openSidebar);
@@ -86,64 +87,67 @@ export default function NavBar({ user }) {
     if (role === "student") {
       return (
         <>
-          <li className={styles['nav-item']}><a href="#">Explore</a></li>
-          <li className={styles['nav-item']}><a href="#">Browse Courses</a></li>
-          <li className={styles['nav-item']}><a href="#">Register Courses</a></li>
-          <li className={styles['nav-item']}><a href="#">View Profile</a></li>
+          <li className={styles['nav-item']}><Link href="/student/home">Explore</Link></li>
+          <li className={styles['nav-item']}><Link href="/browse">Browse Courses</Link></li>
+          <li className={styles['nav-item']}><Link href="/student/register">Register Courses</Link></li>
+          <li className={styles['nav-item']}><Link href="/student/profile">View Profile</Link></li>
         </>
       );
     }
     if (role === "instructor") {
       return (
         <>
-          <li className={styles['nav-item']}><a href="#">Dashboard</a></li>
-          <li className={styles['nav-item']}><a href="#">Browse Courses</a></li>
+          <li className={styles['nav-item']}><Link href="/instructor/home">Dashboard</Link></li>
+          <li className={styles['nav-item']}><Link href="/browse">Browse Courses</Link></li>
         </>
       );
     }
     if (role === "admin") {
       return (
         <>
-          <li className={styles['nav-item']}><a href="#">Browse</a></li>
-          <li className={styles['nav-item']}><a href="#">Statistics</a></li>
-          <li className={styles['nav-item']}><a href="#">Create Course</a></li>
-          <li className={styles['nav-item']}><a href="#">Create Class</a></li>
-          <li className={styles['nav-item']}><a href="#">View Schedules</a></li>
+          <li className={styles['nav-item']}><Link href="/browse">Browse</Link></li>
+          <li className={styles['nav-item']}><Link href="/admin/statistics">Statistics</Link></li>
+          <li className={styles['nav-item']}><Link href="/admin/create-course">Create Course</Link></li>
+          <li className={styles['nav-item']}><Link href="/admin/create-class">Create Class</Link></li>
+          <li className={styles['nav-item']}><Link href="/admin/schedules">View Schedules</Link></li>
         </>
       );
     }
   };
 
+
   const renderSidebarLinks = () => {
     if (role === "student") {
       return (
         <>
-          <li><span className="hover-circle"></span><a href="#">Explore</a></li>
-          <li><span className="hover-circle"></span><a href="#">Browse Courses</a></li>
-          <li><span className="hover-circle"></span><a href="#">Register Courses</a></li>
-          <li><span className="hover-circle"></span><a href="#">View Profile</a></li>
-          <li><span className="hover-circle"></span><a href="#">View Learning Path</a></li>
+          <li><span className="hover-circle"></span><Link href="/student/home">Explore</Link></li>
+          <li><span className="hover-circle"></span><Link href="/browse">Browse Courses</Link></li>
+          <li><span className="hover-circle"></span><Link href="/student/register">Register Courses</Link></li>
+          <li><span className="hover-circle"></span><Link href="/student/profile">View Profile</Link></li>
+          <li><span className="hover-circle"></span><Link href="/student/learning-path">View Learning Path</Link></li>
         </>
       );
     }
+
     if (role === "instructor") {
       return (
         <>
-          <li><span className="hover-circle"></span><a href="#">Dashboard</a></li>
-          <li><span className="hover-circle"></span><a href="#">Browse Courses</a></li>
-          <li><span className="hover-circle"></span><a href="#">View Grades</a></li>
+          <li><span className="hover-circle"></span><Link href="/instructor/home">Dashboard</Link></li>
+          <li><span className="hover-circle"></span><Link href="/browse">Browse Courses</Link></li>
+          <li><span className="hover-circle"></span><Link href="/instructor/grades">View Grades</Link></li>
         </>
       );
     }
+
     if (role === "admin") {
       return (
         <>
-          <li><span className="hover-circle"></span><a href="#">Browse Courses</a></li>
-          <li><span className="hover-circle"></span><a href="#">Statistics</a></li>
-          <li><span className="hover-circle"></span><a href="#">Create Course</a></li>
-          <li><span className="hover-circle"></span><a href="#">Create Class</a></li>
-          <li><span className="hover-circle"></span><a href="#">View Schedules</a></li>
-          <li><span className="hover-circle"></span><a href="#">Class Status</a></li>
+          <li><span className="hover-circle"></span><Link href="/browse">Browse Courses</Link></li>
+          <li><span className="hover-circle"></span><Link href="/admin/statistics">Statistics</Link></li>
+          <li><span className="hover-circle"></span><Link href="/admin/create-course">Create Course</Link></li>
+          <li><span className="hover-circle"></span><Link href="/admin/create-class">Create Class</Link></li>
+          <li><span className="hover-circle"></span><Link href="/admin/schedules">View Schedules</Link></li>
+          <li><span className="hover-circle"></span><Link href="/admin/class-status">Class Status</Link></li>
         </>
       );
     }
