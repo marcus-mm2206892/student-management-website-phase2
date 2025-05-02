@@ -3,6 +3,7 @@
 import Head from "next/head";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { useEffect } from "react";
 import styles from "../app/styles/login-page.module.css";
 import ThemeResponsiveLogo from "./components/ThemeResponsiveLogo";
 
@@ -10,6 +11,10 @@ export default function LoginPage() {
   const router = useRouter();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+
+  useEffect(() => {
+    localStorage.removeItem("user");
+  }, []);
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -35,8 +40,8 @@ export default function LoginPage() {
     const user = { name, email: username, role };
     localStorage.setItem("user", JSON.stringify(user));
 
-    // Navigate cleanly
-    router.push(`/${role}/home`);
+    router.push(`/${role}/home?name=${encodeURIComponent(name)}&email=${encodeURIComponent(username)}&role=${role}`);
+
   };
 
 

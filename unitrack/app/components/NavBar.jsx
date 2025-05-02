@@ -3,6 +3,7 @@
 
 import React, { useEffect } from 'react';
 import styles from '@/app/styles/navbar.module.css';
+import ThemeResponsiveLogo from './ThemeResponsiveLogo';
 
 export default function NavBar({ user }) {
   const { name, email, role } = user || {};
@@ -28,6 +29,7 @@ export default function NavBar({ user }) {
     };
 
     const toggleDropdown = () => {
+      if (!userDropdown) return;
       if (userDropdown.style.display === "block") {
         userDropdown.style.opacity = "0";
         userDropdown.style.transform = "translateY(-20px)";
@@ -41,11 +43,29 @@ export default function NavBar({ user }) {
       }
     };
 
+    const handleClickOutside = (e) => {
+      const target = e.target;
+
+      if (
+        userDropdown &&
+        userButton &&
+        !userDropdown.contains(target) &&
+        !userButton.contains(target)
+      ) {
+        userDropdown.style.opacity = "0";
+        userDropdown.style.transform = "translateY(-20px)";
+        setTimeout(() => {
+          userDropdown.style.display = "none";
+        }, 300);
+      }
+    };
+
     browseBtn?.addEventListener("click", openSidebar);
     closeSidebar?.addEventListener("click", closeSidebarFn);
     overlay?.addEventListener("click", closeSidebarFn);
     userButton?.addEventListener("click", toggleDropdown);
     closeDropdown?.addEventListener("click", toggleDropdown);
+    document.addEventListener("mousedown", handleClickOutside); // 👈 more reliable than "click"
 
     return () => {
       browseBtn?.removeEventListener("click", openSidebar);
@@ -53,8 +73,10 @@ export default function NavBar({ user }) {
       overlay?.removeEventListener("click", closeSidebarFn);
       userButton?.removeEventListener("click", toggleDropdown);
       closeDropdown?.removeEventListener("click", toggleDropdown);
+      document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
+
 
   if (!role) return null;
 
@@ -83,6 +105,7 @@ export default function NavBar({ user }) {
       return (
         <>
           <li className={styles['nav-item']}><a href="#">Browse</a></li>
+          <li className={styles['nav-item']}><a href="#">Statistics</a></li>
           <li className={styles['nav-item']}><a href="#">Create Course</a></li>
           <li className={styles['nav-item']}><a href="#">Create Class</a></li>
           <li className={styles['nav-item']}><a href="#">View Schedules</a></li>
@@ -116,6 +139,7 @@ export default function NavBar({ user }) {
       return (
         <>
           <li><span className="hover-circle"></span><a href="#">Browse Courses</a></li>
+          <li><span className="hover-circle"></span><a href="#">Statistics</a></li>
           <li><span className="hover-circle"></span><a href="#">Create Course</a></li>
           <li><span className="hover-circle"></span><a href="#">Create Class</a></li>
           <li><span className="hover-circle"></span><a href="#">View Schedules</a></li>
@@ -137,8 +161,12 @@ export default function NavBar({ user }) {
         </div>
 
         <div className={className('nav-bar-logo', 'bordered-div')}>
-          <img className={styles['unitrack-logo']} src="/assets/imgs/unitrack-images/unitrack-logo-blue.png" alt="UniTrack Logo" />
+          <ThemeResponsiveLogo
+            type="icon"
+            className={className("unitrack-logo")}
+          />
         </div>
+
 
         <div className={className('use-cases', 'bordered-div')}>
           <ul className={styles['navbar-menu']}>{renderNavLinks()}</ul>
@@ -155,14 +183,22 @@ export default function NavBar({ user }) {
 
       <div className={styles['sidebar-overlay']} id="sidebarOverlay"></div>
       <div className={styles.sidebar} id="sidebar">
-        <button className={styles['close-btn']} id="closeSidebar"><i className="fa-solid fa-xmark"></i></button>
-        <div className="circle big-circle"></div>
-        <div className="circle small-circle"></div>
-        <div>
-          <img className={styles['unitrack-logo-text']} src="/assets/imgs/unitrack-images/unitrack-logo-text-white.png" alt="UniTrack Logo" />
-          <ul className="menu">{renderSidebarLinks()}</ul>
+        <button className={styles['close-btn']} id="closeSidebar">
+          <i className="fa-solid fa-xmark"></i>
+        </button>
+
+        <div className={`${styles.circle} ${styles["big-circle"]}`}></div>
+        <div className={`${styles.circle} ${styles["small-circle"]}`}></div>
+
+        <div className={styles["sidebar-content"]}>
+          <ThemeResponsiveLogo
+            type="text"
+            className={className("unitrack-logo-text")}
+          />
+          <ul className={styles["menu"]}>{renderSidebarLinks()}</ul>
         </div>
       </div>
+
 
       <div className={styles['user-dropdown']} id="userDropdown">
         <div className={styles['dropdown-header']}>
