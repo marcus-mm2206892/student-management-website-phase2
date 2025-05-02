@@ -1,0 +1,257 @@
+[
+  {
+    "courseId": "CHEM103",
+    "prerequisiteId": "CHEM101",
+    "minGrade": "D"
+  },
+  {
+    "courseId": "PHYS192",
+    "prerequisiteId": "PHYS191",
+    "minGrade": "D"
+  },
+  {
+    "courseId": "MATH231",
+    "prerequisiteId": "MATH101",
+    "minGrade": "D"
+  },
+  {
+    "courseId": "MATH102",
+    "prerequisiteId": "MATH101",
+    "minGrade": "D"
+  },
+  {
+    "courseId": "ENGL203",
+    "prerequisiteId": "ENGL202",
+    "minGrade": "D"
+  },
+  {
+    "courseId": "CMPS303",
+    "prerequisiteId": "CMPS251",
+    "minGrade": "D"
+  },
+  {
+    "courseId": "PHYS193",
+    "prerequisiteId": "PHYS191",
+    "minGrade": "D"
+  },
+  {
+    "courseId": "PHYS194",
+    "prerequisiteId": "PHYS191",
+    "minGrade": "D"
+  },
+  {
+    "courseId": "PHYS194",
+    "prerequisiteId": "PHYS192",
+    "minGrade": "D"
+  },
+  {
+    "courseId": "PHYS194",
+    "prerequisiteId": "PHYS193",
+    "minGrade": "D"
+  },
+  {
+    "courseId": "CMPS323",
+    "prerequisiteId": "CMPS303",
+    "minGrade": "D"
+  },
+  {
+    "courseId": "CMPS351",
+    "prerequisiteId": "CMPS251",
+    "minGrade": "D"
+  },
+  {
+    "courseId": "CMPE263",
+    "prerequisiteId": "CMPS205",
+    "minGrade": "D"
+  },
+  {
+    "courseId": "CMPE263",
+    "prerequisiteId": "CMPS151",
+    "minGrade": "D"
+  },
+  {
+    "courseId": "GENG200",
+    "prerequisiteId": "MATH102",
+    "minGrade": "D"
+  },
+  {
+    "courseId": "CMPE261",
+    "prerequisiteId": "CMPS205",
+    "minGrade": "D"
+  },
+  {
+    "courseId": "ELEC201",
+    "prerequisiteId": "MATH102",
+    "minGrade": "D"
+  },
+  {
+    "courseId": "ELEC201",
+    "prerequisiteId": "PHYS193",
+    "minGrade": "D"
+  },
+  {
+    "courseId": "MATH211",
+    "prerequisiteId": "MATH102",
+    "minGrade": "D"
+  },
+  {
+    "courseId": "ELEC351",
+    "prerequisiteId": "ELEC231",
+    "minGrade": "D"
+  },
+  {
+    "courseId": "ELEC231",
+    "prerequisiteId": "ELEC201",
+    "minGrade": "D"
+  },
+  {
+    "courseId": "CMPS310",
+    "prerequisiteId": "CMPS251",
+    "minGrade": "D"
+  },
+  {
+    "courseId": "CMPE355",
+    "prerequisiteId": "CMPS303",
+    "minGrade": "D"
+  },
+  {
+    "courseId": "CMPE355",
+    "prerequisiteId": "CMPE263",
+    "minGrade": "D"
+  },
+  {
+    "courseId": "CMPS380",
+    "prerequisiteId": "CMPS303",
+    "minGrade": "D"
+  },
+  {
+    "courseId": "CMPS482",
+    "prerequisiteId": "CMPS385",
+    "minGrade": "D"
+  },
+  {
+    "courseId": "CMPS360",
+    "prerequisiteId": "CMPS351",
+    "minGrade": "D"
+  },
+  {
+    "courseId": "CMPS350",
+    "prerequisiteId": "CMPS251",
+    "minGrade": "D"
+  },
+  {
+    "courseId": "CMPS405",
+    "prerequisiteId": "CMPS303",
+    "minGrade": "D"
+  },
+  {
+    "courseId": "CMPS405",
+    "prerequisiteId": "CMPE263",
+    "minGrade": "D"
+  },
+  {
+    "courseId": "GENG300",
+    "prerequisiteId": "CMPS151",
+    "minGrade": "D"
+  },
+  {
+    "courseId": "GENG300",
+    "prerequisiteId": "MATH102",
+    "minGrade": "D"
+  },
+  {
+    "courseId": "CMPE363",
+    "prerequisiteId": "CMPE263",
+    "minGrade": "D"
+  },
+  {
+    "courseId": "CMPE363",
+    "prerequisiteId": "CMPE261",
+    "minGrade": "D"
+  },
+  {
+    "courseId": "CMPE370",
+    "prerequisiteId": "CMPE261",
+    "minGrade": "D"
+  },
+  {
+    "courseId": "CMPE370",
+    "prerequisiteId": "ELEC201",
+    "minGrade": "D"
+  },
+  {
+    "courseId": "CMPE370",
+    "prerequisiteId": "ELEC231",
+    "minGrade": "D"
+  },
+  {
+    "courseId": "MATH217",
+    "prerequisiteId": "MATH211",
+    "minGrade": "D"
+  },
+  {
+    "courseId": "CMPE364",
+    "prerequisiteId": "CMPE363",
+    "minGrade": "D"
+  },
+  {
+    "courseId": "CMPE457",
+    "prerequisiteId": "CMPE355",
+    "minGrade": "D"
+  },
+  {
+    "courseId": "CMPE476",
+    "prerequisiteId": "ELEC351",
+    "minGrade": "D"
+  },
+  {
+    "courseId": "GENG360",
+    "prerequisiteId": "MATH102",
+    "minGrade": "D"
+  },
+  {
+    "courseId": "CMPE483",
+    "prerequisiteId": "CMPE261",
+    "minGrade": "D"
+  },
+  {
+    "courseId": "CMPE483",
+    "prerequisiteId": "CMPS151",
+    "minGrade": "D"
+  },
+  {
+    "courseId": "CMPS493",
+    "prerequisiteId": "CMPS310",
+    "minGrade": "D"
+  },
+  {
+    "courseId": "CMPS493",
+    "prerequisiteId": "CMPS405",
+    "minGrade": "D"
+  },
+  {
+    "courseId": "CMPS499",
+    "prerequisiteId": "CMPS493",
+    "minGrade": "D"
+  },
+  {
+    "courseId": "MAGT101",
+    "prerequisiteId": "ENGL202",
+    "minGrade": "D"
+  },
+  {
+    "courseId": "CMPE462",
+    "prerequisiteId": "CMPE364",
+    "minGrade": "D"
+  },
+  {
+    "courseId": "CMPE498",
+    "prerequisiteId": "CMPE370",
+    "minGrade": "D"
+  },
+  {
+    "courseId": "CMPE499",
+    "prerequisiteId": "CMPE498",
+    "minGrade": "D"
+  }
+]

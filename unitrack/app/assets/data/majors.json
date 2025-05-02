@@ -1,0 +1,14 @@
+[
+  {
+    "majorId": "CMPS",
+    "majorName": "Computer Science",
+    "college": "Engineering",
+    "department": "Computer Science"
+  },
+  {
+    "majorId": "CMPE",
+    "majorName": "Computer Engineering",
+    "college": "Engineering",
+    "department": "Computer Engineering"
+  }
+]

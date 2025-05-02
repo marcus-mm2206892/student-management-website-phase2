@@ -1,0 +1,1186 @@
+[
+  {
+    "studentId": "S1001",
+    "semester": "Spring 2025",
+    "classId": "25543",
+    "courseId": "DAWA111",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A"
+  },
+  {
+    "studentId": "S1001",
+    "semester": "Spring 2025",
+    "classId": "25515",
+    "courseId": "CMPS405",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A"
+  },
+  {
+    "studentId": "S1001",
+    "semester": "Spring 2025",
+    "classId": "25501",
+    "courseId": "CMPS482",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A"
+  },
+  {
+    "studentId": "S1002",
+    "semester": "Spring 2025",
+    "classId": "25505",
+    "courseId": "CMPS497",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A"
+  },
+  {
+    "studentId": "S1002",
+    "semester": "Spring 2025",
+    "classId": "25543",
+    "courseId": "DAWA111",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A"
+  },
+  {
+    "studentId": "S1002",
+    "semester": "Spring 2025",
+    "classId": "25517",
+    "courseId": "CMPS360",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A"
+  },
+  {
+    "studentId": "S1002",
+    "semester": "Spring 2025",
+    "classId": "25501",
+    "courseId": "CMPS482",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A"
+  },
+  {
+    "studentId": "S1002",
+    "semester": "Spring 2025",
+    "classId": "25515",
+    "courseId": "CMPS405",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A"
+  },
+  {
+    "studentId": "S1003",
+    "semester": "Spring 2025",
+    "classId": "25515",
+    "courseId": "CMPS405",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A"
+  },
+  {
+    "studentId": "S1003",
+    "semester": "Spring 2025",
+    "classId": "25517",
+    "courseId": "CMPS360",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A"
+  },
+  {
+    "studentId": "S1003",
+    "semester": "Spring 2025",
+    "classId": "25501",
+    "courseId": "CMPS482",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A"
+  },
+  {
+    "studentId": "S1003",
+    "semester": "Spring 2025",
+    "classId": "25519",
+    "courseId": "CMPS350",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A"
+  },
+  {
+    "studentId": "S1003",
+    "semester": "Spring 2025",
+    "classId": "25543",
+    "courseId": "DAWA111",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A"
+  },
+  {
+    "studentId": "S1004",
+    "semester": "Spring 2025",
+    "classId": "25517",
+    "courseId": "CMPS360",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A"
+  },
+  {
+    "studentId": "S1004",
+    "semester": "Spring 2025",
+    "classId": "25505",
+    "courseId": "CMPS497",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A"
+  },
+  {
+    "studentId": "S1004",
+    "semester": "Spring 2025",
+    "classId": "25515",
+    "courseId": "CMPS405",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A"
+  },
+  {
+    "studentId": "S1004",
+    "semester": "Spring 2025",
+    "classId": "25501",
+    "courseId": "CMPS482",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A"
+  },
+  {
+    "studentId": "S1004",
+    "semester": "Spring 2025",
+    "classId": "25543",
+    "courseId": "DAWA111",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A"
+  },
+  {
+    "studentId": "S1005",
+    "semester": "Spring 2025",
+    "classId": "25517",
+    "courseId": "CMPS360",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A"
+  },
+  {
+    "studentId": "S1005",
+    "semester": "Spring 2025",
+    "classId": "25505",
+    "courseId": "CMPS497",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A"
+  },
+  {
+    "studentId": "S1005",
+    "semester": "Spring 2025",
+    "classId": "25519",
+    "courseId": "CMPS350",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A"
+  },
+  {
+    "studentId": "S1005",
+    "semester": "Spring 2025",
+    "classId": "25501",
+    "courseId": "CMPS482",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A"
+  },
+  {
+    "studentId": "S1005",
+    "semester": "Spring 2025",
+    "classId": "25543",
+    "courseId": "DAWA111",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A"
+  },
+  {
+    "studentId": "S1006",
+    "semester": "Spring 2025",
+    "classId": "25519",
+    "courseId": "CMPS350",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A"
+  },
+  {
+    "studentId": "S1006",
+    "semester": "Spring 2025",
+    "classId": "25505",
+    "courseId": "CMPS497",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A"
+  },
+  {
+    "studentId": "S1006",
+    "semester": "Spring 2025",
+    "classId": "25515",
+    "courseId": "CMPS405",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A"
+  },
+  {
+    "studentId": "S1006",
+    "semester": "Spring 2025",
+    "classId": "25517",
+    "courseId": "CMPS360",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A"
+  },
+  {
+    "studentId": "S1006",
+    "semester": "Spring 2025",
+    "classId": "25501",
+    "courseId": "CMPS482",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A"
+  },
+  {
+    "studentId": "S1007",
+    "semester": "Spring 2025",
+    "classId": "25543",
+    "courseId": "DAWA111",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A"
+  },
+  {
+    "studentId": "S1007",
+    "semester": "Spring 2025",
+    "classId": "25515",
+    "courseId": "CMPS405",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A"
+  },
+  {
+    "studentId": "S1007",
+    "semester": "Spring 2025",
+    "classId": "25505",
+    "courseId": "CMPS497",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A"
+  },
+  {
+    "studentId": "S1007",
+    "semester": "Spring 2025",
+    "classId": "25519",
+    "courseId": "CMPS350",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A"
+  },
+  {
+    "studentId": "S1007",
+    "semester": "Spring 2025",
+    "classId": "25517",
+    "courseId": "CMPS360",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A"
+  },
+  {
+    "studentId": "S1008",
+    "semester": "Spring 2025",
+    "classId": "25543",
+    "courseId": "DAWA111",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A"
+  },
+  {
+    "studentId": "S1008",
+    "semester": "Spring 2025",
+    "classId": "25505",
+    "courseId": "CMPS497",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A"
+  },
+  {
+    "studentId": "S1008",
+    "semester": "Spring 2025",
+    "classId": "25501",
+    "courseId": "CMPS482",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A"
+  },
+  {
+    "studentId": "S1008",
+    "semester": "Spring 2025",
+    "classId": "25515",
+    "courseId": "CMPS405",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A"
+  },
+  {
+    "studentId": "S1008",
+    "semester": "Spring 2025",
+    "classId": "25517",
+    "courseId": "CMPS360",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A"
+  },
+  {
+    "studentId": "S1009",
+    "semester": "Spring 2025",
+    "classId": "25521",
+    "courseId": "CMPE364",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A"
+  },
+  {
+    "studentId": "S1009",
+    "semester": "Spring 2025",
+    "classId": "25525",
+    "courseId": "GENG360",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A"
+  },
+  {
+    "studentId": "S1009",
+    "semester": "Spring 2025",
+    "classId": "25527",
+    "courseId": "GENG300",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A"
+  },
+  {
+    "studentId": "S1009",
+    "semester": "Spring 2025",
+    "classId": "25523",
+    "courseId": "CMPE476",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A"
+  },
+  {
+    "studentId": "S1009",
+    "semester": "Spring 2025",
+    "classId": "25507",
+    "courseId": "CMPE457",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A"
+  },
+  {
+    "studentId": "S1010",
+    "semester": "Spring 2025",
+    "classId": "25507",
+    "courseId": "CMPE457",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A"
+  },
+  {
+    "studentId": "S1010",
+    "semester": "Spring 2025",
+    "classId": "25527",
+    "courseId": "GENG300",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A"
+  },
+  {
+    "studentId": "S1010",
+    "semester": "Spring 2025",
+    "classId": "25525",
+    "courseId": "GENG360",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A"
+  },
+  {
+    "studentId": "S1010",
+    "semester": "Spring 2025",
+    "classId": "25523",
+    "courseId": "CMPE476",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A"
+  },
+  {
+    "studentId": "S1010",
+    "semester": "Spring 2025",
+    "classId": "25521",
+    "courseId": "CMPE364",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A"
+  },
+  {
+    "studentId": "S1011",
+    "semester": "Spring 2025",
+    "classId": "25507",
+    "courseId": "CMPE457",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A"
+  },
+  {
+    "studentId": "S1011",
+    "semester": "Spring 2025",
+    "classId": "25525",
+    "courseId": "GENG360",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A"
+  },
+  {
+    "studentId": "S1011",
+    "semester": "Spring 2025",
+    "classId": "25527",
+    "courseId": "GENG300",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A"
+  },
+  {
+    "studentId": "S1011",
+    "semester": "Spring 2025",
+    "classId": "25521",
+    "courseId": "CMPE364",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A"
+  },
+  {
+    "studentId": "S1011",
+    "semester": "Spring 2025",
+    "classId": "25523",
+    "courseId": "CMPE476",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A"
+  },
+  {
+    "studentId": "S1012",
+    "semester": "Spring 2025",
+    "classId": "25507",
+    "courseId": "CMPE457",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A"
+  },
+  {
+    "studentId": "S1012",
+    "semester": "Spring 2025",
+    "classId": "25521",
+    "courseId": "CMPE364",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A"
+  },
+  {
+    "studentId": "S1012",
+    "semester": "Spring 2025",
+    "classId": "25527",
+    "courseId": "GENG300",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A"
+  },
+  {
+    "studentId": "S1012",
+    "semester": "Spring 2025",
+    "classId": "25525",
+    "courseId": "GENG360",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A"
+  },
+  {
+    "studentId": "S1012",
+    "semester": "Spring 2025",
+    "classId": "25523",
+    "courseId": "CMPE476",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A"
+  },
+  {
+    "studentId": "S1013",
+    "semester": "Spring 2025",
+    "classId": "25523",
+    "courseId": "CMPE476",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A"
+  },
+  {
+    "studentId": "S1013",
+    "semester": "Spring 2025",
+    "classId": "25507",
+    "courseId": "CMPE457",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A"
+  },
+  {
+    "studentId": "S1013",
+    "semester": "Spring 2025",
+    "classId": "25525",
+    "courseId": "GENG360",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A"
+  },
+  {
+    "studentId": "S1013",
+    "semester": "Spring 2025",
+    "classId": "25527",
+    "courseId": "GENG300",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A"
+  },
+  {
+    "studentId": "S1013",
+    "semester": "Spring 2025",
+    "classId": "25521",
+    "courseId": "CMPE364",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A"
+  },
+  {
+    "studentId": "S1014",
+    "semester": "Spring 2025",
+    "classId": "25521",
+    "courseId": "CMPE364",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A"
+  },
+  {
+    "studentId": "S1014",
+    "semester": "Spring 2025",
+    "classId": "25525",
+    "courseId": "GENG360",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A"
+  },
+  {
+    "studentId": "S1014",
+    "semester": "Spring 2025",
+    "classId": "25507",
+    "courseId": "CMPE457",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A"
+  },
+  {
+    "studentId": "S1014",
+    "semester": "Spring 2025",
+    "classId": "25523",
+    "courseId": "CMPE476",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A"
+  },
+  {
+    "studentId": "S1014",
+    "semester": "Spring 2025",
+    "classId": "25527",
+    "courseId": "GENG300",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A"
+  },
+  {
+    "studentId": "S1015",
+    "semester": "Spring 2025",
+    "classId": "25525",
+    "courseId": "GENG360",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A"
+  },
+  {
+    "studentId": "S1015",
+    "semester": "Spring 2025",
+    "classId": "25521",
+    "courseId": "CMPE364",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A"
+  },
+  {
+    "studentId": "S1015",
+    "semester": "Spring 2025",
+    "classId": "25507",
+    "courseId": "CMPE457",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A"
+  },
+  {
+    "studentId": "S1015",
+    "semester": "Spring 2025",
+    "classId": "25523",
+    "courseId": "CMPE476",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A"
+  },
+  {
+    "studentId": "S1015",
+    "semester": "Spring 2025",
+    "classId": "25527",
+    "courseId": "GENG300",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A"
+  },
+  {
+    "studentId": "S1016",
+    "semester": "Spring 2025",
+    "classId": "25516",
+    "courseId": "CMPS405",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A"
+  },
+  {
+    "studentId": "S1016",
+    "semester": "Spring 2025",
+    "classId": "25506",
+    "courseId": "CMPS497",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A"
+  },
+  {
+    "studentId": "S1016",
+    "semester": "Spring 2025",
+    "classId": "25520",
+    "courseId": "CMPS350",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A"
+  },
+  {
+    "studentId": "S1016",
+    "semester": "Spring 2025",
+    "classId": "25518",
+    "courseId": "CMPS360",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A"
+  },
+  {
+    "studentId": "S1016",
+    "semester": "Spring 2025",
+    "classId": "25502",
+    "courseId": "CMPS482",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A"
+  },
+  {
+    "studentId": "S1017",
+    "semester": "Spring 2025",
+    "classId": "25518",
+    "courseId": "CMPS360",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A"
+  },
+  {
+    "studentId": "S1017",
+    "semester": "Spring 2025",
+    "classId": "25502",
+    "courseId": "CMPS482",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A"
+  },
+  {
+    "studentId": "S1017",
+    "semester": "Spring 2025",
+    "classId": "25520",
+    "courseId": "CMPS350",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A"
+  },
+  {
+    "studentId": "S1017",
+    "semester": "Spring 2025",
+    "classId": "25516",
+    "courseId": "CMPS405",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A"
+  },
+  {
+    "studentId": "S1017",
+    "semester": "Spring 2025",
+    "classId": "25506",
+    "courseId": "CMPS497",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A"
+  },
+  {
+    "studentId": "S1018",
+    "semester": "Spring 2025",
+    "classId": "25516",
+    "courseId": "CMPS405",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A"
+  },
+  {
+    "studentId": "S1018",
+    "semester": "Spring 2025",
+    "classId": "25518",
+    "courseId": "CMPS360",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A"
+  },
+  {
+    "studentId": "S1018",
+    "semester": "Spring 2025",
+    "classId": "25520",
+    "courseId": "CMPS350",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A"
+  },
+  {
+    "studentId": "S1018",
+    "semester": "Spring 2025",
+    "classId": "25544",
+    "courseId": "DAWA111",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A"
+  },
+  {
+    "studentId": "S1018",
+    "semester": "Spring 2025",
+    "classId": "25506",
+    "courseId": "CMPS497",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A"
+  },
+  {
+    "studentId": "S1019",
+    "semester": "Spring 2025",
+    "classId": "25516",
+    "courseId": "CMPS405",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A"
+  },
+  {
+    "studentId": "S1019",
+    "semester": "Spring 2025",
+    "classId": "25520",
+    "courseId": "CMPS350",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A"
+  },
+  {
+    "studentId": "S1019",
+    "semester": "Spring 2025",
+    "classId": "25518",
+    "courseId": "CMPS360",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A"
+  },
+  {
+    "studentId": "S1019",
+    "semester": "Spring 2025",
+    "classId": "25502",
+    "courseId": "CMPS482",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A"
+  },
+  {
+    "studentId": "S1019",
+    "semester": "Spring 2025",
+    "classId": "25506",
+    "courseId": "CMPS497",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A"
+  },
+  {
+    "studentId": "S1020",
+    "semester": "Spring 2025",
+    "classId": "25520",
+    "courseId": "CMPS350",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A"
+  },
+  {
+    "studentId": "S1020",
+    "semester": "Spring 2025",
+    "classId": "25506",
+    "courseId": "CMPS497",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A"
+  },
+  {
+    "studentId": "S1020",
+    "semester": "Spring 2025",
+    "classId": "25516",
+    "courseId": "CMPS405",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A"
+  },
+  {
+    "studentId": "S1020",
+    "semester": "Spring 2025",
+    "classId": "25544",
+    "courseId": "DAWA111",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A"
+  },
+  {
+    "studentId": "S1020",
+    "semester": "Spring 2025",
+    "classId": "25518",
+    "courseId": "CMPS360",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A"
+  },
+  {
+    "studentId": "S1021",
+    "semester": "Spring 2025",
+    "classId": "25544",
+    "courseId": "DAWA111",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A"
+  },
+  {
+    "studentId": "S1021",
+    "semester": "Spring 2025",
+    "classId": "25520",
+    "courseId": "CMPS350",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A"
+  },
+  {
+    "studentId": "S1021",
+    "semester": "Spring 2025",
+    "classId": "25516",
+    "courseId": "CMPS405",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A"
+  },
+  {
+    "studentId": "S1021",
+    "semester": "Spring 2025",
+    "classId": "25502",
+    "courseId": "CMPS482",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A"
+  },
+  {
+    "studentId": "S1021",
+    "semester": "Spring 2025",
+    "classId": "25518",
+    "courseId": "CMPS360",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A"
+  },
+  {
+    "studentId": "S1022",
+    "semester": "Spring 2025",
+    "classId": "25516",
+    "courseId": "CMPS405",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A"
+  },
+  {
+    "studentId": "S1022",
+    "semester": "Spring 2025",
+    "classId": "25544",
+    "courseId": "DAWA111",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A"
+  },
+  {
+    "studentId": "S1022",
+    "semester": "Spring 2025",
+    "classId": "25520",
+    "courseId": "CMPS350",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A"
+  },
+  {
+    "studentId": "S1022",
+    "semester": "Spring 2025",
+    "classId": "25518",
+    "courseId": "CMPS360",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A"
+  },
+  {
+    "studentId": "S1022",
+    "semester": "Spring 2025",
+    "classId": "25506",
+    "courseId": "CMPS497",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A"
+  },
+  {
+    "studentId": "S1023",
+    "semester": "Spring 2025",
+    "classId": "25544",
+    "courseId": "DAWA111",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A"
+  },
+  {
+    "studentId": "S1023",
+    "semester": "Spring 2025",
+    "classId": "25518",
+    "courseId": "CMPS360",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A"
+  },
+  {
+    "studentId": "S1023",
+    "semester": "Spring 2025",
+    "classId": "25516",
+    "courseId": "CMPS405",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A"
+  },
+  {
+    "studentId": "S1023",
+    "semester": "Spring 2025",
+    "classId": "25502",
+    "courseId": "CMPS482",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A"
+  },
+  {
+    "studentId": "S1023",
+    "semester": "Spring 2025",
+    "classId": "25506",
+    "courseId": "CMPS497",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A"
+  },
+  {
+    "studentId": "S1024",
+    "semester": "Spring 2025",
+    "classId": "25526",
+    "courseId": "GENG360",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A"
+  },
+  {
+    "studentId": "S1024",
+    "semester": "Spring 2025",
+    "classId": "25524",
+    "courseId": "CMPE476",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A"
+  },
+  {
+    "studentId": "S1024",
+    "semester": "Spring 2025",
+    "classId": "25528",
+    "courseId": "GENG300",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A"
+  },
+  {
+    "studentId": "S1024",
+    "semester": "Spring 2025",
+    "classId": "25508",
+    "courseId": "CMPE457",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A"
+  },
+  {
+    "studentId": "S1024",
+    "semester": "Spring 2025",
+    "classId": "25522",
+    "courseId": "CMPE364",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A"
+  },
+  {
+    "studentId": "S1025",
+    "semester": "Spring 2025",
+    "classId": "25528",
+    "courseId": "GENG300",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A"
+  },
+  {
+    "studentId": "S1025",
+    "semester": "Spring 2025",
+    "classId": "25526",
+    "courseId": "GENG360",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A"
+  },
+  {
+    "studentId": "S1025",
+    "semester": "Spring 2025",
+    "classId": "25522",
+    "courseId": "CMPE364",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A"
+  },
+  {
+    "studentId": "S1025",
+    "semester": "Spring 2025",
+    "classId": "25524",
+    "courseId": "CMPE476",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A"
+  },
+  {
+    "studentId": "S1025",
+    "semester": "Spring 2025",
+    "classId": "25508",
+    "courseId": "CMPE457",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A"
+  },
+  {
+    "studentId": "S1026",
+    "semester": "Spring 2025",
+    "classId": "25526",
+    "courseId": "GENG360",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A"
+  },
+  {
+    "studentId": "S1026",
+    "semester": "Spring 2025",
+    "classId": "25508",
+    "courseId": "CMPE457",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A"
+  },
+  {
+    "studentId": "S1026",
+    "semester": "Spring 2025",
+    "classId": "25522",
+    "courseId": "CMPE364",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A"
+  },
+  {
+    "studentId": "S1026",
+    "semester": "Spring 2025",
+    "classId": "25528",
+    "courseId": "GENG300",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A"
+  },
+  {
+    "studentId": "S1026",
+    "semester": "Spring 2025",
+    "classId": "25524",
+    "courseId": "CMPE476",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A"
+  },
+  {
+    "studentId": "S1027",
+    "semester": "Spring 2025",
+    "classId": "25508",
+    "courseId": "CMPE457",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A"
+  },
+  {
+    "studentId": "S1027",
+    "semester": "Spring 2025",
+    "classId": "25528",
+    "courseId": "GENG300",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A"
+  },
+  {
+    "studentId": "S1027",
+    "semester": "Spring 2025",
+    "classId": "25522",
+    "courseId": "CMPE364",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A"
+  },
+  {
+    "studentId": "S1027",
+    "semester": "Spring 2025",
+    "classId": "25524",
+    "courseId": "CMPE476",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A"
+  },
+  {
+    "studentId": "S1027",
+    "semester": "Spring 2025",
+    "classId": "25526",
+    "courseId": "GENG360",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A"
+  },
+  {
+    "studentId": "S1028",
+    "semester": "Spring 2025",
+    "classId": "25524",
+    "courseId": "CMPE476",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A"
+  },
+  {
+    "studentId": "S1028",
+    "semester": "Spring 2025",
+    "classId": "25526",
+    "courseId": "GENG360",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A"
+  },
+  {
+    "studentId": "S1028",
+    "semester": "Spring 2025",
+    "classId": "25522",
+    "courseId": "CMPE364",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A"
+  },
+  {
+    "studentId": "S1028",
+    "semester": "Spring 2025",
+    "classId": "25528",
+    "courseId": "GENG300",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A"
+  },
+  {
+    "studentId": "S1028",
+    "semester": "Spring 2025",
+    "classId": "25508",
+    "courseId": "CMPE457",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A"
+  },
+  {
+    "studentId": "S1029",
+    "semester": "Spring 2025",
+    "classId": "25528",
+    "courseId": "GENG300",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A"
+  },
+  {
+    "studentId": "S1029",
+    "semester": "Spring 2025",
+    "classId": "25526",
+    "courseId": "GENG360",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A"
+  },
+  {
+    "studentId": "S1029",
+    "semester": "Spring 2025",
+    "classId": "25508",
+    "courseId": "CMPE457",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A"
+  },
+  {
+    "studentId": "S1029",
+    "semester": "Spring 2025",
+    "classId": "25522",
+    "courseId": "CMPE364",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A"
+  },
+  {
+    "studentId": "S1029",
+    "semester": "Spring 2025",
+    "classId": "25524",
+    "courseId": "CMPE476",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A"
+  },
+  {
+    "studentId": "S1030",
+    "semester": "Spring 2025",
+    "classId": "25528",
+    "courseId": "GENG300",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A"
+  },
+  {
+    "studentId": "S1030",
+    "semester": "Spring 2025",
+    "classId": "25524",
+    "courseId": "CMPE476",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A"
+  },
+  {
+    "studentId": "S1030",
+    "semester": "Spring 2025",
+    "classId": "25508",
+    "courseId": "CMPE457",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A"
+  },
+  {
+    "studentId": "S1030",
+    "semester": "Spring 2025",
+    "classId": "25522",
+    "courseId": "CMPE364",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A"
+  },
+  {
+    "studentId": "S1030",
+    "semester": "Spring 2025",
+    "classId": "25526",
+    "courseId": "GENG360",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A"
+  }
+]

@@ -1,0 +1,224 @@
+[
+  {
+    "instructorId": "I1001",
+    "email": "qutaibah.malluhi@qu.com",
+    "college": "Engineering",
+    "department": "Computer Science"
+  },
+  {
+    "instructorId": "I1002",
+    "email": "junaid.qadir@qu.com",
+    "college": "Engineering",
+    "department": "Computer Engineering"
+  },
+  {
+    "instructorId": "I1003",
+    "email": "salem.saeed@qu.com",
+    "college": "Engineering",
+    "department": "Computer Science"
+  },
+  {
+    "instructorId": "I1004",
+    "email": "uvais.qidwai@qu.com",
+    "college": "Engineering",
+    "department": "Computer Engineering"
+  },
+  {
+    "instructorId": "I1005",
+    "email": "ihab.elaf@qu.com",
+    "college": "Engineering",
+    "department": "Computer Engineering"
+  },
+  {
+    "instructorId": "I1006",
+    "email": "khaled.khan@qu.com",
+    "college": "Engineering",
+    "department": "Computer Science"
+  },
+  {
+    "instructorId": "I1007",
+    "email": "aws.el-din@qu.com",
+    "college": "Engineering",
+    "department": "Computer Science"
+  },
+  {
+    "instructorId": "I1008",
+    "email": "tamer.elsayed@qu.com",
+    "college": "Engineering",
+    "department": "Computer Science"
+  },
+  {
+    "instructorId": "I1009",
+    "email": "abdelkarim.erradi@qu.com",
+    "college": "Engineering",
+    "department": "Computer Science"
+  },
+  {
+    "instructorId": "I1010",
+    "email": "heba.dawoud@qu.com",
+    "college": "Engineering",
+    "department": "Computer Engineering"
+  },
+  {
+    "instructorId": "I1011",
+    "email": "loay.ismail@qu.com",
+    "college": "Engineering",
+    "department": "Computer Science"
+  },
+  {
+    "instructorId": "I1012",
+    "email": "mahmoud.barhamgi@qu.com",
+    "college": "Engineering",
+    "department": "Computer Science"
+  },
+  {
+    "instructorId": "I1013",
+    "email": "abdullahi.hassen@qu.com",
+    "college": "Engineering",
+    "department": "Computer Science"
+  },
+  {
+    "instructorId": "I1014",
+    "email": "georges.younes@qu.com",
+    "college": "Engineering",
+    "department": "Computer Science"
+  },
+  {
+    "instructorId": "I1015",
+    "email": "amal.al-masri@qu.com",
+    "college": "Engineering",
+    "department": "Computer Engineering"
+  },
+  {
+    "instructorId": "I1016",
+    "email": "khalid.abualsaud@qu.com",
+    "college": "Engineering",
+    "department": "Computer Science"
+  },
+  {
+    "instructorId": "I1017",
+    "email": "amelle.bedair@qu.com",
+    "college": "Engineering",
+    "department": "Computer Science"
+  },
+  {
+    "instructorId": "I1018",
+    "email": "moutaz.saleh@qu.com",
+    "college": "Engineering",
+    "department": "Computer Science"
+  },
+  {
+    "instructorId": "I1019",
+    "email": "fady.elhanal@qu.com",
+    "college": "Engineering",
+    "department": "Computer Engineering"
+  },
+  {
+    "instructorId": "I1020",
+    "email": "hela.chamkia@qu.com",
+    "college": "Engineering",
+    "department": "Computer Science"
+  },
+  {
+    "instructorId": "I1021",
+    "email": "ahmed.badawy@qu.com",
+    "college": "Engineering",
+    "department": "Computer Engineering"
+  },
+  {
+    "instructorId": "I1022",
+    "email": "naveed.nawaz@qu.com",
+    "college": "Engineering",
+    "department": "Computer Engineering"
+  },
+  {
+    "instructorId": "I1023",
+    "email": "leila.gastli@qu.com",
+    "college": "Engineering",
+    "department": "Computer Engineering"
+  },
+  {
+    "instructorId": "I1024",
+    "email": "mohamed.al-meer@qu.com",
+    "college": "Engineering",
+    "department": "Computer Engineering"
+  },
+  {
+    "instructorId": "I1025",
+    "email": "rania.ibrahim@qu.com",
+    "college": "Engineering",
+    "department": "Mechanical and Industrial Engineering"
+  },
+  {
+    "instructorId": "I1026",
+    "email": "kim.donghyun@qu.com",
+    "college": "Engineering",
+    "department": "Chemical Engineering"
+  },
+  {
+    "instructorId": "I1027",
+    "email": "ahmed.ghannoum@qu.com",
+    "college": "Engineering",
+    "department": "Chemical Engineering"
+  },
+  {
+    "instructorId": "I1028",
+    "email": "evangelos.plevris@qu.com",
+    "college": "Engineering",
+    "department": "Civil & Environmental Engineering"
+  },
+  {
+    "instructorId": "I1029",
+    "email": "mohamed.ben.haj.rhouma@qu.com",
+    "college": "Arts and Sciences",
+    "department": "Mathematics and Statistics"
+  },
+  {
+    "instructorId": "I1030",
+    "email": "mustafa.el-sanfaz@qu.com",
+    "college": "Arts and Sciences",
+    "department": "Mathematics and Statistics"
+  },
+  {
+    "instructorId": "I1031",
+    "email": "hussein.al-qassem@qu.com",
+    "college": "Arts and Sciences",
+    "department": "Mathematics and Statistics"
+  },
+  {
+    "instructorId": "I1032",
+    "email": "mohamed.tarig@qu.com",
+    "college": "Arts and Sciences",
+    "department": "History"
+  },
+  {
+    "instructorId": "I1033",
+    "email": "fabia.grisalez@qu.com",
+    "college": "Arts and Sciences",
+    "department": "Linguistics"
+  },
+  {
+    "instructorId": "I1034",
+    "email": "essam.yasin@qu.com",
+    "college": "Arts and Sciences",
+    "department": "Physics"
+  },
+  {
+    "instructorId": "I1035",
+    "email": "hocine.merabet@qu.com",
+    "college": "Arts and Sciences",
+    "department": "Physics"
+  },
+  {
+    "instructorId": "I1036",
+    "email": "lazhar.chaoiki@qu.com",
+    "college": "Arts and Sciences",
+    "department": "Islamic Studies"
+  },
+  {
+    "instructorId": "I1037",
+    "email": "dunia.ponce@qu.com",
+    "college": "Business and Economics",
+    "department": "Management and Marketing"
+  }
+]
