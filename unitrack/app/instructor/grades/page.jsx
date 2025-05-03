@@ -5,6 +5,7 @@ import styles from "@/app/styles/grade-submission.module.css";
 import cardStyles from "@/app/styles/course-card-view.module.css";
 import AlertModal from "@/app/components/AlertModal";
 import ClassModal from "@/app/components/ClassModal";
+import EmptyContent from "@/app/components/EmptyContent";
 
 export default function Grades() {
   const [selectedClass, setSelectedClass] = useState(null);
@@ -156,32 +157,37 @@ export default function Grades() {
           </div>
 
           <div className={styles["cards-container"]}>
-            {instructorClassesWithName.map((ic) => (
-              <div
-                key={ic.classId}
-                className={cardStyles["course-card"]}
-                onClick={() => handleClassClick(ic)}
-              >
-                <div className={styles["course-header"]}>
-                  <span className={cardStyles["course-tag"]}>{ic.courseId}</span>
-                  <span className={cardStyles["section-tag"]}>{ic.section}</span>
-                  <span className={cardStyles["campus-tag"]}>{ic.campus}</span>
-                </div>
-                <div className={cardStyles["course-completed-main"]}>
-                  <div className={cardStyles["course-grade"]}>
-                    <div><h3>{ic.courseName}</h3></div>
-                    <div className={styles["status-container"]}>
-                      <span className={styles["status"]}>{ic.submitted}</span>
+            {instructorClassesWithName.length === 0 ? (
+              <EmptyContent />
+            ) : (
+              instructorClassesWithName.map((ic) => (
+                <div
+                  key={ic.classId}
+                  className={cardStyles["course-card"]}
+                  onClick={() => handleClassClick(ic)}
+                >
+                  <div className={styles["course-header"]}>
+                    <span className={cardStyles["course-tag"]}>{ic.courseId}</span>
+                    <span className={cardStyles["section-tag"]}>{ic.section}</span>
+                    <span className={cardStyles["campus-tag"]}>{ic.campus}</span>
+                  </div>
+                  <div className={cardStyles["course-completed-main"]}>
+                    <div className={cardStyles["course-grade"]}>
+                      <div><h3>{ic.courseName}</h3></div>
+                      <div className={styles["status-container"]}>
+                        <span className={styles["status"]}>{ic.submitted}</span>
+                      </div>
+                    </div>
+                    <div className={cardStyles["course-tags"]}>
+                      <span className={cardStyles["tag"]}>
+                        <i className="fa-solid fa-user-graduate"></i> {ic.enrollmentActual} Students
+                      </span>
                     </div>
                   </div>
-                  <div className={cardStyles["course-tags"]}>
-                    <span className={cardStyles["tag"]}>
-                      <i className="fa-solid fa-user-graduate"></i> {ic.enrollmentActual} Students
-                    </span>
-                  </div>
                 </div>
-              </div>
-            ))}
+              ))
+            )}
+
           </div>
         </div>
 
