@@ -196,16 +196,18 @@ export default function Grades() {
             <>
               <div className={styles["class-header"]}>
                 <div className={styles["course-tags-div"]}>
+                  <h3>{selectedClass.courseName}</h3>
                   <span className={cardStyles["course-tag"]}>{selectedClass.courseId}</span>
                   <span className={cardStyles["section-tag"]}>Section {selectedClass.section}</span>
                   <span className={cardStyles["campus-tag"]}>{selectedClass.campus}</span>
-                  <h3>{selectedClass.courseName}</h3>
                 </div>
 
                 <div className={styles["course-tags-div"]}>
-                  <span className={cardStyles["tag"]}>
-                    <i className="fa-solid fa-user-graduate"></i> {enrolledStudents.length} Students
-                  </span>
+                  {enrolledStudents.length > 0 && (
+                    <span className={cardStyles["tag"]}>
+                      <i className="fa-solid fa-user-graduate"></i> {enrolledStudents.length} Students
+                    </span>
+                  )}
                 </div>
 
               </div>
