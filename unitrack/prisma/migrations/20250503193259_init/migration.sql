@@ -131,7 +131,7 @@ CREATE TABLE "CourseMajorOfferings" (
 
 -- CreateTable
 CREATE TABLE "Prerequisite" (
-    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "prerequisiteId" TEXT NOT NULL PRIMARY KEY,
     "courseId" TEXT NOT NULL,
     "minGrade" TEXT NOT NULL,
     CONSTRAINT "Prerequisite_courseId_fkey" FOREIGN KEY ("courseId") REFERENCES "Course" ("courseId") ON DELETE RESTRICT ON UPDATE CASCADE

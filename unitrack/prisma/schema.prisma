@@ -166,9 +166,9 @@ model CourseMajorOfferings {
 }
 
 model Prerequisite {
-  id       Int    @id @default(autoincrement())
-  courseId String
-  minGrade String
+  prerequisiteId String @id
+  courseId       String
+  minGrade       String
 
   course Course @relation(fields: [courseId], references: [courseId])
 }
