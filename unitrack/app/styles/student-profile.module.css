@@ -1,8 +1,4 @@
-html {
-  overflow-x: hidden;
-}
-
-body {
+:global(body) {
   background-color: var(--clr-surface-a0);
   background-image: url("../assets/imgs/unitrack-images/pattern-blue.png");
   background-repeat: repeat;
@@ -117,7 +113,7 @@ body {
   }
 }
 
-.course-image-div.hover-icon .hover-text {
+.course-image-div .hover-icon .hover-text {
   position: absolute;
   bottom: 130%;
   left: 50%;
@@ -131,14 +127,15 @@ body {
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.3s ease-in-out;
+  z-index: 2;
 }
 
-.course-image-div.hover-icon:hover .hover-text {
+.course-image-div .hover-icon:hover .hover-text {
   opacity: 1;
   visibility: visible;
 }
 
-.course-image-div.hover-icon .hover-text::after {
+.course-image-div .hover-icon .hover-text::after {
   content: "";
   position: absolute;
   top: 100%;
@@ -425,18 +422,16 @@ body {
 }
 
 .pie-wrapper {
+  --progress: 0;
   height: 6rem;
   width: 6rem;
   position: relative;
 }
 
 .pie-wrapper .pie {
+  position: absolute;
   height: 100%;
   width: 100%;
-  clip: rect(0, 6rem, 6rem, 3rem);
-  position: absolute;
-  top: 0;
-  left: 0;
 }
 
 .pie-wrapper .pie .half-circle {
@@ -444,10 +439,21 @@ body {
   width: 100%;
   border: 0.4rem solid var(--clr-primary-a0);
   border-radius: 50%;
-  clip: rect(0, 3rem, 6rem, 0);
   position: absolute;
   top: 0;
   left: 0;
+  transform: rotate(0deg);
+  transition: transform 0.4s ease-in-out;
+}
+
+.pie-wrapper .pie .right-side {
+  clip: rect(0, 6rem, 6rem, 3rem);
+  transform: rotate(calc(min(var(--progress), 50) * 3.6deg));
+}
+
+.pie-wrapper .pie .left-side {
+  clip: rect(0, 3rem, 6rem, 0);
+  transform: rotate(calc(max(var(--progress) - 50, 0) * 3.6deg));
 }
 
 .pie-wrapper .label {
@@ -469,19 +475,6 @@ body {
 .pie-wrapper .label .smaller {
   font-size: 0.8rem;
   vertical-align: super;
-}
-
-/* Pie Chart Animation */
-.pie-wrapper.progress-66 .pie {
-  clip: rect(auto, auto, auto, auto);
-}
-
-.pie-wrapper.progress-66 .pie .right-side {
-  transform: rotate(180deg);
-}
-
-.pie-wrapper.progress-66 .pie .left-side {
-  transform: rotate(237.6deg); /* 66% of 360 degrees */
 }
 
 .pie-wrapper .shadow {
@@ -559,7 +552,7 @@ body {
 }
 
 @media (prefers-color-scheme: dark) {
-  body {
+  :global(body) {
     background-image: url("../assets/imgs/unitrack-images/pattern-white.png");
   }
 }

@@ -24,7 +24,8 @@ export default function ScrollUpButton() {
       onClick={scrollToTop}
       aria-label="Scroll to top"
     >
-      ↑
+      <i className="fa-solid fa-arrow-up"></i>
+
     </button>
   );
 }
