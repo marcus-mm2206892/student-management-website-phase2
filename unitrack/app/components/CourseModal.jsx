@@ -1,19 +1,33 @@
 "use client";
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 import styles from "@/app/styles/course-modal.module.css";
 
 export default function CourseModal({ course, onClose }) {
   const modalRef = useRef(null);
+  const [role, setRole] = useState("");
 
   useEffect(() => {
+    const storedUser = localStorage.getItem("user");
+    if (storedUser) {
+      try {
+        const parsed = JSON.parse(storedUser);
+        setRole(parsed.role?.toLowerCase() || "");
+      } catch (e) {
+        console.error("Invalid user JSON");
+      }
+    }
+
     function handleClickOutside(event) {
       if (modalRef.current && !modalRef.current.contains(event.target)) {
         onClose();
       }
     }
+
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [onClose]);
+
+  const isStaff = role === "admin" || role === "instructor";
 
   return (
     <div className={styles.modal}>
@@ -26,12 +40,19 @@ export default function CourseModal({ course, onClose }) {
           <img
             src={course.courseImage}
             alt={course.courseName}
-            style={{ width: "100%", height: "100%", objectFit: "cover", borderRadius: "8px" }}
+            style={{
+              width: "100%",
+              height: "100%",
+              objectFit: "cover",
+              borderRadius: "8px",
+            }}
           />
-          <div className={styles["hover-icon"]}>
-            <i className="fa-solid fa-plus"></i>
-            <span className={styles["hover-text"]}>Register Course</span>
-          </div>
+          {!isStaff && (
+            <div className={styles["hover-icon"]}>
+              <i className="fa-solid fa-plus"></i>
+              <span className={styles["hover-text"]}>Register Course</span>
+            </div>
+          )}
         </div>
 
         <div className={styles["modal-content"]}>
@@ -50,11 +71,10 @@ export default function CourseModal({ course, onClose }) {
               <i className="fa-solid fa-clock"></i> {course.creditHours}{" "}
               {course.creditHours === 1 ? "Credit Hour" : "Credit Hours"}
             </p>
-
           </div>
 
           <div className={styles["course-description"]}>
-            <h3 className={styles["content-info-attribute"]}>What You'll Learn</h3>
+            <h3 className={styles["content-info-attribute"]}>What Students Learn</h3>
             <p className={styles["content-info-paragraph"]}>{course.description}</p>
           </div>
 
@@ -80,12 +100,13 @@ export default function CourseModal({ course, onClose }) {
               )}
             </div>
           </div>
-
         </div>
 
-        <button className={styles["register-btn"]} onClick={() => alert("Registered!")}>
-          Register
-        </button>
+        {!isStaff && (
+          <button className={styles["register-btn"]} onClick={() => alert("Registered!")}>
+            Register
+          </button>
+        )}
       </div>
     </div>
   );

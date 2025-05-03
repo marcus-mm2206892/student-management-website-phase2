@@ -5,11 +5,6 @@ import discoverStyles from "@/app/styles/course-card-discover.module.css";
 import NoResults from "@/app/components/NoResults";
 import CourseModal from "@/app/components/CourseModal";
 
-const loggedInUser = {
-  role: "student",
-  completedCourses: [{ courseId: "CMPE202" }],
-};
-
 const dummyCourses = [
   {
     courseId: "CMPS101",
@@ -49,6 +44,23 @@ export default function BrowsePage() {
   const [filteredCourses, setFilteredCourses] = useState(dummyCourses);
   const [selectedCourse, setSelectedCourse] = useState(null);
 
+  const [loggedInUser, setLoggedInUser] = useState({ role: "", completedCourses: [] });
+
+  useEffect(() => {
+    const stored = localStorage.getItem("user");
+    if (stored) {
+      try {
+        const parsed = JSON.parse(stored);
+        setLoggedInUser({
+          role: parsed.role?.toLowerCase() || "",
+          completedCourses: parsed.completedCourses || [],
+        });
+      } catch (err) {
+        console.error("Failed to parse user from localStorage", err);
+      }
+    }
+  }, []);
+  
   const isStudent = loggedInUser?.role === "student";
   const completedSet = new Set(
     loggedInUser?.completedCourses?.map((c) => c.courseId) || []
@@ -109,7 +121,7 @@ export default function BrowsePage() {
                     src={course.courseImage}
                     alt={course.courseName}
                   />
-                  {isStudent && (
+                  {loggedInUser?.role === "student" ? (
                     <div
                       className={discoverStyles["hover-icon"]}
                       onClick={(e) => {
@@ -118,11 +130,15 @@ export default function BrowsePage() {
                       }}
                     >
                       <i className="fa-solid fa-plus"></i>
-                      <span className={discoverStyles["hover-text"]}>
-                        Register Course
-                      </span>
+                      <span className={discoverStyles["hover-text"]}>Register Course</span>
+                    </div>
+                  ) : (
+                    <div className={discoverStyles["hover-icon"]}>
+                      <i className="fa-solid fa-eye"></i>
+                      <span className={discoverStyles["hover-text"]}>View More</span>
                     </div>
                   )}
+
                   <i
                     className={`fa-solid fa-turn-up ${discoverStyles["top-right-icon"]}`}
                   ></i>

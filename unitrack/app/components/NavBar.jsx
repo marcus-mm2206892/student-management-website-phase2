@@ -191,8 +191,8 @@ export default function NavBar({ user }) {
             </div>
           </div>
           {role === "student" && <Link href="/student/learning-path"><button className={styles['learningpath-btn']}>Learning Path</button></Link>}
-          {role === "instructor" && <button className={styles['viewgrades-btn']}>View Grades</button>}
-          {role === "admin" && <button className={styles['classstatus-btn']}>Class Status</button>}
+          {role === "instructor" && <Link href="/instructor/grades"><button className={styles['viewgrades-btn']}>View Grades</button></Link>}
+          {role === "admin" && <Link href="/admin/class-status"><button className={styles['classstatus-btn']}>Class Status</button></Link>}
         </div>
       </nav>
 

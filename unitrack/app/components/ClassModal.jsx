@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import styles from "@/app/styles/class-modal.module.css";
 
 export default function ClassModal({ isVisible, onClose }) {
-
+  const [userRole, setUserRole] = useState("");
   const modalRef = useRef(null);
   const [selectedTab, setSelectedTab] = useState("Class Details");
 
@@ -73,6 +73,27 @@ export default function ClassModal({ isVisible, onClose }) {
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [onClose]);
+
+  useEffect(() => {
+    // Load user role from localStorage
+    const storedUser = localStorage.getItem("user");
+    if (storedUser) {
+      try {
+        const parsed = JSON.parse(storedUser);
+        setUserRole(parsed.role?.toLowerCase() || "");
+      } catch (e) {
+        console.error("Invalid user JSON in localStorage");
+      }
+    }
+  
+    const handleClickOutside = (e) => {
+      if (modalRef.current && !modalRef.current.contains(e.target)) onClose();
+    };
+  
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, [onClose]);
+  
 
   if (!isVisible) return null;
 
@@ -349,7 +370,10 @@ export default function ClassModal({ isVisible, onClose }) {
 
         </div>
 
-        <button className={styles["register-btn"]}>Register Class</button>
+        {userRole !== "admin" && userRole !== "instructor" && (
+          <button className={styles["register-btn"]}>Register Class</button>
+        )}
+
       </div>
     </div>
   );

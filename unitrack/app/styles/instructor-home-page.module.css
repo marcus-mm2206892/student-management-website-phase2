@@ -1,8 +1,4 @@
-html {
-  overflow-x: hidden;
-}
-
-body {
+:global(body) {
   background-color: var(--clr-surface-a0);
   background-image: url("../assets/imgs/unitrack-images/pattern-blue.png");
   background-repeat: repeat;
@@ -400,7 +396,7 @@ body {
 }
 
 @media (prefers-color-scheme: dark) {
-  body {
+  :global(body) {
     background-image: url("../assets/imgs/unitrack-images/pattern-white.png");
   }
 }
