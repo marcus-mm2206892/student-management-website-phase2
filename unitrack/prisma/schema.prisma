@@ -74,7 +74,8 @@ model Major {
   department      String
   requiredCourses Course[]
 
-  students Student[]
+  students             Student[]
+  CourseMajorOfferings CourseMajorOfferings[]
 }
 
 model Instructor {
@@ -119,7 +120,8 @@ model Class {
   gradedByInstructors Instructor[] @relation("GradedClasses")
   schedule            Schedule?
 
-  course Course @relation(fields: [courseId], references: [courseId])
+  course               Course                 @relation(fields: [courseId], references: [courseId])
+  CourseCurrentClasses CourseCurrentClasses[]
 }
 
 model Schedule {
@@ -140,9 +142,27 @@ model Course {
   description  String
   courseImage  String
 
-  prerequisites  Prerequisite[]
-  majorsOffered  Major[]
-  currentClasses Class[]
+  prerequisites        Prerequisite[]
+  majorsOffered        Major[]
+  currentClasses       Class[]
+  CourseCurrentClasses CourseCurrentClasses[]
+  CourseMajorOfferings CourseMajorOfferings[]
+}
+
+model CourseCurrentClasses {
+  id       Int    @id @default(autoincrement())
+  courseId String
+  classId  String
+  course   Course @relation(fields: [courseId], references: [courseId])
+  class    Class  @relation(fields: [classId], references: [classId])
+}
+
+model CourseMajorOfferings {
+  id       Int    @id @default(autoincrement())
+  courseId String
+  majorId  String
+  Course   Course @relation(fields: [courseId], references: [courseId])
+  Major    Major  @relation(fields: [majorId], references: [majorId])
 }
 
 model Prerequisite {

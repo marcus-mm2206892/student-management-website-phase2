@@ -112,6 +112,24 @@ CREATE TABLE "Course" (
 );
 
 -- CreateTable
+CREATE TABLE "CourseCurrentClasses" (
+    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "courseId" TEXT NOT NULL,
+    "classId" TEXT NOT NULL,
+    CONSTRAINT "CourseCurrentClasses_courseId_fkey" FOREIGN KEY ("courseId") REFERENCES "Course" ("courseId") ON DELETE RESTRICT ON UPDATE CASCADE,
+    CONSTRAINT "CourseCurrentClasses_classId_fkey" FOREIGN KEY ("classId") REFERENCES "Class" ("classId") ON DELETE RESTRICT ON UPDATE CASCADE
+);
+
+-- CreateTable
+CREATE TABLE "CourseMajorOfferings" (
+    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "courseId" TEXT NOT NULL,
+    "majorId" TEXT NOT NULL,
+    CONSTRAINT "CourseMajorOfferings_courseId_fkey" FOREIGN KEY ("courseId") REFERENCES "Course" ("courseId") ON DELETE RESTRICT ON UPDATE CASCADE,
+    CONSTRAINT "CourseMajorOfferings_majorId_fkey" FOREIGN KEY ("majorId") REFERENCES "Major" ("majorId") ON DELETE RESTRICT ON UPDATE CASCADE
+);
+
+-- CreateTable
 CREATE TABLE "Prerequisite" (
     "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
     "courseId" TEXT NOT NULL,
