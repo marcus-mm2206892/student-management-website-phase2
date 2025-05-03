@@ -70,6 +70,10 @@
 
 .unitrack-logo {
   width: 4rem;
+  object-fit: contain;
+  display: block;
+  margin: 0;
+  padding: 0;
 }
 
 .contact-texts {

@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const tableBody = document.querySelector("#data-output");
   const searchInfo = document.querySelector("#searchInfo");
   const registerTable = document.querySelector(".register-table");
-  const timesClicked = JSON.parse(localStorage.getItem("timesClicked"))??0;
+  const timesClicked = JSON.parse(localStorage.getItem("timesClicked")) ?? 0;
 
   let allCourses = JSON.parse(localStorage.getItem("courses"));
   let allClasses = JSON.parse(localStorage.getItem("classes"));
@@ -17,83 +17,93 @@ document.addEventListener("DOMContentLoaded", function () {
   console.log("Classes Loaded:", allClasses);
 
   console.log("Users Loaded:", allUsers);
-  
+
   //2. When admin closes a section, it should automatically unregister the student if he has been registered
   renderClasses(allClasses);
-  function renderClasses(allClasses){
+  function renderClasses(allClasses) {
     try {
       let out = "";
       const user = JSON.parse(localStorage.loggedInUser);
       const student = allStudents.find((s) => s.email == user.email);
       const enrolledClasses = student.semesterEnrollment?.classes || [];
 
-      if (timesClicked===0){
+      if (timesClicked === 0) {
         allClasses.sort((a, b) => b.enrollmentActual - a.enrollmentActual);
       }
       // Filter out completed classes
-      allClasses.filter(c => c.classStatus !== "completed").forEach((classItem) => {
-        let course = allCourses.find((c) => c.courseId === classItem.courseId);
-        if (!course) return;
+      allClasses
+        .filter((c) => c.classStatus !== "completed")
+        .forEach((classItem) => {
+          let course = allCourses.find(
+            (c) => c.courseId === classItem.courseId
+          );
+          if (!course) return;
 
-        const instructorNames =
-          (classItem.instructors || [])
-            .map((email) => {
-              const user = allUsers.find((u) => u.email === email);
-              return user ? `${user.firstName} ${user.lastName}` : email;
-            })
-            .join("<br>") || "TBA";
-        const status = classItem.classStatus?.toLowerCase() || "unknown";
-        const isAlreadyEnrolled = enrolledClasses.some(
-          (enrolled) => enrolled.classId === classItem.classId
-        );
+          const instructorNames =
+            (classItem.instructors || [])
+              .map((email) => {
+                const user = allUsers.find((u) => u.email === email);
+                return user ? `${user.firstName} ${user.lastName}` : email;
+              })
+              .join("<br>") || "TBA";
+          const status = classItem.classStatus?.toLowerCase() || "unknown";
+          const isAlreadyEnrolled = enrolledClasses.some(
+            (enrolled) => enrolled.classId === classItem.classId
+          );
 
-        let statusClass = "";
-        let buttonText = "";
-        let buttonDisabled = "";
-        let buttonStyle = "";
-        let buttonClass = "";
+          let statusClass = "";
+          let buttonText = "";
+          let buttonDisabled = "";
+          let buttonStyle = "";
+          let buttonClass = "";
 
-        if (isAlreadyEnrolled) {
-          buttonText = "Unregister";
-          buttonClass = isAlreadyEnrolled ? "registered-button" : "";
-        } else {
-          switch (status) {
-            case "open":
-              statusClass = "status-approved";
-              if (classItem.enrollmentActual >= classItem.enrollmentMaximum) {
+          if (isAlreadyEnrolled) {
+            buttonText = "Unregister";
+            buttonClass = isAlreadyEnrolled ? "registered-button" : "";
+          } else {
+            switch (status) {
+              case "open":
+                statusClass = "status-approved";
+                if (classItem.enrollmentActual >= classItem.enrollmentMaximum) {
+                  buttonDisabled = "disabled";
+                  buttonText = "Full";
+                } else {
+                  buttonText = "Register";
+                }
+                break;
+              case "closed":
+                statusClass = "status-rejected";
+                buttonText = "N/A";
                 buttonDisabled = "disabled";
-                buttonText = "Full";
-              } else {
-                buttonText = "Register";
-              }
-              break;
-            case "closed":
-              statusClass = "status-rejected";
-              buttonText = "N/A";
-              buttonDisabled = "disabled";
-              break;
-            case "pending":
-              statusClass = "status-pending";
-              buttonText = "Waitlist";
-              buttonDisabled = "Register";
-              break;
-            default:
-              statusClass = "status-default";
-              buttonText = "N/A";
-              buttonDisabled = "disabled";
+                break;
+              case "pending":
+                statusClass = "status-pending";
+                buttonText = "Waitlist";
+                buttonDisabled = "Register";
+                break;
+              default:
+                statusClass = "status-default";
+                buttonText = "N/A";
+                buttonDisabled = "disabled";
+            }
           }
-        }
 
-        out += `
+          out += `
           <tr class="course-row" data-class-id="${classItem.classId}">
-            <td class="data course-no"><span class="open-modal" data-class-id="${classItem.classId}">${course.courseId}</span></td>
+            <td class="data course-no"><span class="open-modal" data-class-id="${
+              classItem.classId
+            }">${course.courseId}</span></td>
             <td class="data course-name"><span>${course.courseName}</span></td>
-            <td class="data course-campus"><span>${classItem.campus==="Female"?"F":"M"}</span></td>
-            <td class="data course-instructor"><span>${instructorNames}</span></td>
-            <td class="data course-section"><span>${classItem.section}</span></td>
-            <td class="data course-enrollment"><span>${classItem.enrollmentActual}/${
-              classItem.enrollmentMaximum
+            <td class="data course-campus"><span>${
+              classItem.campus === "Female" ? "F" : "M"
             }</span></td>
+            <td class="data course-instructor"><span>${instructorNames}</span></td>
+            <td class="data course-section"><span>${
+              classItem.section
+            }</span></td>
+            <td class="data course-enrollment"><span>${
+              classItem.enrollmentActual
+            }/${classItem.enrollmentMaximum}</span></td>
             <td class="data course-status">
               <span class="status-badge ${statusClass}">
                 <span class="status-circle"></span>
@@ -110,9 +120,8 @@ document.addEventListener("DOMContentLoaded", function () {
             </td>
           </tr>
         `;
-      });
+        });
       tableBody.innerHTML = out;
-      
 
       console.log("Courses successfully loaded into table.");
 
@@ -123,7 +132,8 @@ document.addEventListener("DOMContentLoaded", function () {
       console.error("Error fetching course/class data:", error);
       failedToLoad.style.display = "flex";
       registerTable.style.display = "none";
-    }}
+    }
+  }
 
   // search functionality
   searchBar.addEventListener("input", function () {
@@ -233,7 +243,6 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
   });
-  
 
   function handleCourseRegistration(courseId, classId) {
     const user = JSON.parse(localStorage.loggedInUser);
@@ -265,8 +274,9 @@ document.addEventListener("DOMContentLoaded", function () {
     const totalAfterAdd = enrolledCourseCredits + courseCredit;
 
     // 1. Completed Course Restriction
-    if (completedCourses.find(c => c === course.courseId)) {
-      openAlertModal("Course Already Completed",
+    if (completedCourses.find((c) => c === course.courseId)) {
+      openAlertModal(
+        "Course Already Completed",
         "You have already completed this course."
       );
       return;
@@ -425,31 +435,32 @@ document.addEventListener("DOMContentLoaded", function () {
     );
     setTimeout(() => location.reload(), 1200);
   }
-       // sorting Status
-       const statusOrders = [
-        ['open', 'pending', 'closed'],
-        ['pending', 'closed', 'open'],
-        ['closed', 'open', 'pending']
-      ];
-      
-    document.querySelector(".course-status").addEventListener("click", () => {
-      const timesClicked = JSON.parse(localStorage.getItem("timesClicked"))??0;
-        if(timesClicked===0){
-            localStorage.setItem("timesClicked",1);
-        }
-        
-        const currentOrder = statusOrders[timesClicked % 3];
-        const currentPriority = Object.fromEntries(
-            currentOrder.map((status, index) => [status, index + 1])
-        );
+  // sorting Status
+  const statusOrders = [
+    ["open", "pending", "closed"],
+    ["pending", "closed", "open"],
+    ["closed", "open", "pending"],
+  ];
 
-        allClasses.sort((a, b) => { // fixed
-            const aPriority = currentPriority[a.classStatus];
-            const bPriority = currentPriority[b.classStatus];
-            return aPriority - bPriority;
-        });
-        console.log("sorted by: " + currentOrder); 
-        localStorage.setItem("timesClicked", timesClicked+1);
-        renderClasses(allClasses);
+  document.querySelector(".course-status").addEventListener("click", () => {
+    const timesClicked = JSON.parse(localStorage.getItem("timesClicked")) ?? 0;
+    if (timesClicked === 0) {
+      localStorage.setItem("timesClicked", 1);
+    }
+
+    const currentOrder = statusOrders[timesClicked % 3];
+    const currentPriority = Object.fromEntries(
+      currentOrder.map((status, index) => [status, index + 1])
+    );
+
+    allClasses.sort((a, b) => {
+      // fixed
+      const aPriority = currentPriority[a.classStatus];
+      const bPriority = currentPriority[b.classStatus];
+      return aPriority - bPriority;
     });
+    console.log("sorted by: " + currentOrder);
+    localStorage.setItem("timesClicked", timesClicked + 1);
+    renderClasses(allClasses);
+  });
 });

@@ -42,9 +42,12 @@
 }
 
 .unitrack-logo {
+  display: block;
   width: 2.25rem;
   height: 2.25rem;
-  object-fit: cover;
+  object-fit: contain;
+  margin: 0;
+  padding: 0;
 }
 
 .unitrack-logo:hover {

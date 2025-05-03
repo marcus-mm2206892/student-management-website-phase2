@@ -162,6 +162,10 @@
     flex-direction: column;
   }
 
+  .queryTopHeader {
+    text-align: center;
+  }
+
   .courseGrid {
     flex-direction: column;
     align-items: center;

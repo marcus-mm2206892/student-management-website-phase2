@@ -190,7 +190,7 @@ export default function NavBar({ user }) {
               <button className={styles['browse-btn']}><i className="fa-solid fa-list"></i> Browse</button>
             </div>
           </div>
-          {role === "student" && <button className={styles['learningpath-btn']}>Learning Path</button>}
+          {role === "student" && <Link href="/student/learning-path"><button className={styles['learningpath-btn']}>Learning Path</button></Link>}
           {role === "instructor" && <button className={styles['viewgrades-btn']}>View Grades</button>}
           {role === "admin" && <button className={styles['classstatus-btn']}>Class Status</button>}
         </div>

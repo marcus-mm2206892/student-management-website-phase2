@@ -12,6 +12,10 @@
   align-items: center;
 }
 
+.modal.show {
+  display: flex;
+}
+
 .modal-popup {
   position: relative;
   background: var(--clr-surface-a0);

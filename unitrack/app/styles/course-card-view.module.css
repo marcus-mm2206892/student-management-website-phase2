@@ -14,26 +14,24 @@
   grid-template-columns: 1fr;
   grid-template-rows: auto auto;
   transition: transform 0.2s, box-shadow 0.2s;
+  margin-top: 1rem;
+  gap: 1rem;
 }
 
 .course-card:hover {
   transform: translateY(-0.5rem); /* move card slightly up */
-  background: linear-gradient(
-      135deg,
-      var(--clr-surface-a0) 30%,
-      #2a81bf 100%
-  );
+  background: linear-gradient(135deg, var(--clr-surface-a0) 30%, #2a81bf 100%);
   border: 1px solid var(--clr-contrast-a0);
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
   cursor: pointer;
 }
 
-@media(prefers-color-scheme: light) {
+@media (prefers-color-scheme: light) {
   .course-card:hover {
     background: linear-gradient(
-        135deg,
-        var(--clr-surface-a0) 30%,
-        #75a4c6 100%
+      135deg,
+      var(--clr-surface-a0) 30%,
+      #75a4c6 100%
     );
     border: 1px solid var(--clr-primary-a0);
   }
@@ -56,7 +54,6 @@
 }
 
 .course-grade {
-  margin-top: 1rem;
   display: flex;
   align-items: center;
   gap: 1rem;
@@ -86,7 +83,7 @@
   background: var(--clr-surface-a20);
 }
 
-@media(prefers-color-scheme: light) {
+@media (prefers-color-scheme: light) {
   .letter-grade-container {
     background: var(--clr-surface-a50);
   }
@@ -99,7 +96,11 @@
   left: 1rem;
   width: 2rem;
   height: 2rem;
-  background: linear-gradient(-45deg, rgba(5, 5, 6, 0.8), rgba(116, 116, 116, 0.8));
+  background: linear-gradient(
+    -45deg,
+    rgba(5, 5, 6, 0.8),
+    rgba(116, 116, 116, 0.8)
+  );
   display: none;
   align-items: center;
   justify-content: center;
@@ -107,7 +108,7 @@
   cursor: pointer;
 }
 
-.hover-icon i{
+.hover-icon i {
   color: #f5f5f5;
 }
 
@@ -272,26 +273,26 @@
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
-  -webkit-line-clamp: 2;
+  line-clamp: 2;
   -webkit-box-orient: vertical;
 }
 
 /* TAGS */
 .course-tags {
   display: flex;
-  gap: .5rem;
+  gap: 0.5rem;
   flex-wrap: wrap;
 }
 
 .tag {
   color: var(--clr-contrast-a0);
   border: 1px solid var(--clr-surface-a20);
-  padding: .25rem .5rem;
+  padding: 0.25rem 0.5rem;
   border-radius: 12px;
   font-size: 0.7rem;
   display: flex;
   align-items: center;
-  gap: .25rem;
+  gap: 0.25rem;
 }
 
 .tag i {

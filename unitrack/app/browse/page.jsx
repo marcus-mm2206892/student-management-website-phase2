@@ -67,7 +67,7 @@ export default function BrowsePage() {
   return (
     <main className={styles.userQuery}>
       <div className={styles.queryHeader}>
-        <div>
+        <div className={styles.queryTopHeader}>
           <p className={styles.queryTitle}>
             Results for <b>{search || "All Courses"}</b>
           </p>

@@ -1,14 +1,15 @@
 "use client";
+
 import { useEffect, useRef, useState } from "react";
 import styles from "@/app/styles/class-modal.module.css";
 
-export default function ClassModal() {
+export default function ClassModal({ isVisible, onClose }) {
+
   const modalRef = useRef(null);
-  const [isOpen, setIsOpen] = useState(false);
   const [selectedTab, setSelectedTab] = useState("Class Details");
 
   const dummyClass = {
-    classId: "25501",
+    classId: "25517",
     section: "L01",
     semester: "Spring 2025",
     instructionalMethods: "English",
@@ -18,30 +19,35 @@ export default function ClassModal() {
     schedule: {
       startTime: "09:00",
       endTime: "10:00",
-      scheduleType: "MW"
+      scheduleType: "MW",
     },
     instructors: [
       {
         name: "John Doe",
         department: "Computer Science",
-        college: "Engineering"
-      }
-    ]
+        college: "Engineering",
+      }, 
+      {
+        name: "John Doe",
+        department: "Computer Science",
+        college: "Engineering",
+      },
+    ],
   };
 
   const dummyCourse = {
     courseId: "CMPS303",
     courseName: "Data Structures",
     subject: "Computer Science",
-    creditHours: 4,
-    description: "Study of data structures and algorithms.",
+    creditHours: 3,
+    description: "Learn how to organize, store, and manipulate data efficiently using arrays, linked lists, stacks, queues, trees, and graphs.",
     courseImage: "https://miro.medium.com/v2/resize:fit:1400/1*J38nYZU7gzu-4lQmtjlSUw.jpeg",
     prerequisites: [
       {
         courseId: "CMPS251",
-        minGrade: "D"
-      }
-    ]
+        minGrade: "D",
+      },
+    ],
   };
 
   const to12Hour = (timeStr) => {
@@ -52,136 +58,298 @@ export default function ClassModal() {
   };
 
   const generateWeekdaySpans = (type) => {
-    const days = ["S", "M", "T", "W", "R", "F", "A"];
+    const days = ["S", "M", "T", "W", "T", "F", "S"];
     return days.map((day, index) => (
-      <span
-        key={index}
-        className={`${styles.day} ${type.includes(day) ? styles.active : ""}`}
-      >
+      <span key={index} className={`${styles.day} ${type.includes(day) ? styles.active : ""}`}>
         {day}
       </span>
     ));
   };
 
   useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (modalRef.current && !modalRef.current.contains(event.target)) {
-        setIsOpen(false);
-      }
+    const handleClickOutside = (e) => {
+      if (modalRef.current && !modalRef.current.contains(e.target)) onClose();
     };
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, []);
+  }, [onClose]);
 
-  if (!isOpen) {
-    return <button onClick={() => setIsOpen(true)}>Open Class Modal</button>;
-  }
+  if (!isVisible) return null;
 
   return (
-    <div className={styles.overlay}>
-      <div className={styles.modal} ref={modalRef}>
-        <button className={styles.close} onClick={() => setIsOpen(false)}>
-          &times;
+    <div className={`${styles.modal} ${isVisible ? styles.show : ""}`}>
+      <div className={styles["modal-popup"]} ref={modalRef}>
+        <button className={styles["close-btn"]} onClick={onClose}>
+          <i className="fa-solid fa-xmark"></i>
         </button>
 
-        <div className={styles.header}>
-          <h2 className={styles.courseTitle}>{dummyCourse.courseName}</h2>
-          <div className={styles.tags}>
-            <span className={styles.courseTag}>{dummyCourse.courseId}</span>
-            <span className={styles.campusTag}>{dummyClass.campus}</span>
-            <span className={styles.crnTag}>CRN {dummyClass.classId}</span>
-            <span className={styles.sectionTag}>Section {dummyClass.section}</span>
-          </div>
-          <div className={styles.dropdown}>
-            <div className={styles.dropdownToggle}>
-              <span>{selectedTab}</span>
-              <i className="fas fa-chevron-down"></i>
+        <div className={styles["modal-header"]}>
+          <div className={styles["course-title-div"]}>
+            <h2 className={styles["course-title"]}>{dummyCourse.courseName}</h2>
+            <div className={styles["course-tags-div"]}>
+              <span className={styles["course-tag"]}>
+                {dummyCourse.courseId}
+              </span>
+              <span className={styles["campus-tag"]}>
+                {dummyClass.campus}
+              </span>
+              <span className={styles["crn-tag"]}>
+                {dummyClass.classId}
+              </span>
+              <span className={styles["section-tag"]}>
+                Section {dummyClass.section}
+              </span>
             </div>
-            <div className={styles.dropdownMenu}>
-              {["Class Details", "Course Description", "Instructors", "Class Schedule", "Enrollment", "Eligibility"].map(tab => (
-                <div key={tab} onClick={() => setSelectedTab(tab)}>{tab}</div>
-              ))}
+          </div>
+
+          <div className={styles["dropdown-div"]}>
+            <span className={["dropdown-text"]}>
+              <i className={["fas fa-info-circle"]}></i>
+            </span>  
+            <div className={styles.dropdown}>
+              <div
+                className={styles["dropdown-toggle"]}
+                onClick={() => {
+                  const dropdown = document.getElementById("dropdown-menu");
+                  dropdown.style.display = dropdown.style.display === "block" ? "none" : "block";
+                }}
+              >
+                <span>{selectedTab}</span>
+                <i className="fa-solid fa-chevron-down"></i>
+              </div>
+              <div className={styles["dropdown-menu"]} id="dropdown-menu">
+                {["Class Details", "Course Description", "Instructors", "Class Schedule", "Enrollment", "Eligibility"].map(
+                  (tab) => (
+                    <div
+                      key={tab}
+                      onClick={() => {
+                        setSelectedTab(tab);
+                        document.getElementById("dropdown-menu").style.display = "none";
+                      }}
+                    >
+                      {tab}
+                    </div>
+                  )
+                )}
+              </div>
             </div>
           </div>
         </div>
 
-        <div className={styles.content}>
+        <div className={styles["modal-content"]}>
+          {/* CLASS DETAILS */}
           {selectedTab === "Class Details" && (
-            <>
-              <h3>Associated Term</h3>
-              <p>{dummyClass.semester}</p>
-              <h3>Campus</h3>
-              <p>{dummyClass.campus}</p>
-              <h3>Instructional Method</h3>
-              <p>{dummyClass.instructionalMethods}</p>
-              <h3>Subject</h3>
-              <p>{dummyCourse.subject}</p>
-              <h3>Credit Hours</h3>
-              <p>{dummyCourse.creditHours} credit hours</p>
-            </>
+            <div className={`${styles["content-section"]} ${styles.active} ${styles["class-details"]}`}>
+              <div className={styles["content-info-div"]}>
+                <h3>Associated Term</h3>
+                <div className={styles["content-info-text"]}>
+                  <i className="fa-solid fa-calendar-days"></i>
+                  <span>{dummyClass.semester}</span>
+                </div>
+              </div>
+              <div className={styles["content-info-div"]}>
+                <h3>CRN</h3>
+                <div className={styles["content-info-text"]}>
+                  <i className="fa-solid fa-hashtag"></i>
+                  <span>{dummyClass.classId}</span>
+                </div>
+              </div>
+              <div className={styles["content-info-div"]}>
+                <h3>Campus</h3>
+                <div className={styles["content-info-text"]}>
+                  <i className="fa-solid fa-building"></i>
+                  <span>{dummyClass.campus}</span>
+                </div>
+              </div>
+              <div className={styles["content-info-div"]}>
+                <h3>Instructional Method</h3>
+                <div className={styles["content-info-text"]}>
+                  <i className="fa-solid fa-language"></i>
+                  <span>{dummyClass.instructionalMethods}</span>
+                </div>
+              </div>
+              <div className={styles["content-info-div"]}>
+                <h3>Course Subject</h3>
+                <div className={styles["content-info-text"]}>
+                  <i className="fa-solid fa-book-open"></i>
+                  <span>{dummyCourse.subject}</span>
+                </div>
+              </div>
+              <div className={styles["content-info-div"]}>
+                <h3>Credit Hours</h3>
+                <div className={styles["content-info-text"]}>
+                  <i className="fa-solid fa-clock"></i>
+                  <span>{dummyCourse.creditHours} credit hours</span>
+                </div>
+              </div>
+            </div>
           )}
 
+          {/* COURSE DESCRIPTION */}
           {selectedTab === "Course Description" && (
-            <>
-              <div className={styles.courseImage} style={{ backgroundImage: `url(${dummyCourse.courseImage})` }}></div>
-              <h3>What you'll learn</h3>
-              <p>{dummyCourse.description}</p>
-              <h3>Course Syllabus</h3>
-              <p><i className="fa-solid fa-file-pdf"></i> Course-Syllabus.pdf</p>
-            </>
+            <div id="Course Description" className={`${styles["content-section"]} ${styles.active}`}>
+              <div
+                className={styles["course-image"]}
+                style={{
+                  backgroundImage: `url(${dummyCourse.courseImage || ""})`,
+                  backgroundSize: "cover",
+                  backgroundPosition: "center",
+                }}
+              >
+                <div className={styles["hover-icon"]}>
+                  <i className="fa-solid fa-eye"></i>
+                  <span className={styles["hover-text"]}>Learn More</span>
+                </div>
+                <i className={`fa-solid fa-turn-up ${styles["top-right-icon"]}`}></i>
+              </div>
+
+              <div className={styles["content-info-div"]}>
+                <h3 className={styles["content-info-attribute"]}>What you'll learn</h3>
+                <p className={`${styles["content-info-paragraph"]} ${styles["description"]}`}>
+                  {dummyCourse.description || "No description available."}
+                </p>
+              </div>
+
+              <div className={styles["content-info-div"]}>
+                <h3 className={styles["content-info-attribute"]}>Course Syllabus</h3>
+                <p className={`${styles["content-info-paragraph"]} ${styles["attachment"]}`}>
+                  <i className="fa-solid fa-file-pdf"></i> Course-Syllabus.pdf
+                </p>
+              </div>
+            </div>
           )}
 
+
+          {/* INSTRUCTORS */}
           {selectedTab === "Instructors" && (
-            <>
+            <div className={`${styles["instructors-container"]} ${styles.active}`}>
               <h3>Course Instructors</h3>
-              {dummyClass.instructors.map((inst, i) => (
-                <div key={i} className={styles.instructorCard}>
-                  <i className="fa-solid fa-user"></i>
-                  <div>
-                    <p className={styles.instructorName}>{inst.name}</p>
-                    <p className={styles.instructorDesc}>{inst.department} Department, College of {inst.college}</p>
+              <div className={styles["instructors-list"]}>
+                {dummyClass.instructors.map((inst, i) => (
+                  <div className={styles.instructor} key={i}>
+                    <i className="fa-solid fa-user"></i>
+                    <div className={styles["instructor-info"]}>
+                      <p className={styles["instructor-name"]}>{inst.name}</p>
+                      <p className={styles["instructor-description"]}>{`${inst.department} Department, College of ${inst.college}`}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* SCHEDULE */}
+          {selectedTab === "Class Schedule" && (
+            <div id="Class Schedule" className={`${styles["content-section"]} ${styles.active}`}>
+              <div className={`${styles["content-info-div"]} ${styles["class-schedule-container"]}`}>
+                <div className={styles["class-schedule"]}>
+                  <h3 className={styles["content-info-attribute"]}>Class Schedule</h3>
+                  <div className={styles["schedule"]}>
+                    <i className="fa-solid fa-calendar-days"></i>
+                    <div className={styles["schedule-info"]}>
+                      <div className={styles["weekdays"]}>
+                        {generateWeekdaySpans(dummyClass.schedule.scheduleType)}
+                      </div>
+                      <p className={styles["date-range"]}>01/19/2025 - 05/08/2025</p>
+                    </div>
                   </div>
                 </div>
-              ))}
-            </>
-          )}
+              </div>
 
-          {selectedTab === "Class Schedule" && (
-            <>
-              <h3>Weekdays</h3>
-              <div className={styles.weekdays}>{generateWeekdaySpans(dummyClass.schedule.scheduleType)}</div>
-              <h3>Timings</h3>
-              <p>{to12Hour(dummyClass.schedule.startTime)} - {to12Hour(dummyClass.schedule.endTime)}</p>
-            </>
-          )}
-
-          {selectedTab === "Enrollment" && (
-            <>
-              <h3>Enrollment Actual</h3>
-              <p>{dummyClass.enrollmentActual}</p>
-              <h3>Enrollment Maximum</h3>
-              <p>{dummyClass.enrollmentMaximum}</p>
-              <h3>Seats Available</h3>
-              <p>{dummyClass.enrollmentMaximum - dummyClass.enrollmentActual}</p>
-            </>
-          )}
-
-          {selectedTab === "Eligibility" && (
-            <>
-              <h3>Prerequisite Courses</h3>
-              {dummyCourse.prerequisites.length > 0 ? dummyCourse.prerequisites.map((p, i) => (
-                <div key={i} className={styles.prerequisiteCard}>
-                  <span className={styles.courseTag}>{p.courseId}</span>
-                  <span className={styles.letterGrade}>Minimum Grade: {p.minGrade}</span>
+              <div className={`${styles["content-info-div"]} ${styles["class-schedule-container"]}`}>
+                <div className={styles["class-time"]}>
+                  <h3 className={styles["content-info-attribute"]}>Class Timings</h3>
+                  <div className={styles["time"]}>
+                    <i className="fa-solid fa-clock"></i>
+                    <div className={styles["time-info"]}>
+                      <p className={styles["time"]}>
+                        {to12Hour(dummyClass.schedule.startTime)} – {to12Hour(dummyClass.schedule.endTime)}
+                      </p>
+                    </div>
+                  </div>
                 </div>
-              )) : (
-                <p>No prerequisite courses required for this class.</p>
-              )}
-            </>
+              </div>
+            </div>
           )}
+
+
+          {/* ENROLLMENT */}
+          {selectedTab === "Enrollment" && (
+            <div id="Enrollment" className={`${styles["content-section"]} ${styles.active}`}>
+              <div className={`${styles["content-info-div"]} ${styles["enrollment-container"]}`}>
+                <h3 className={styles["content-info-attribute"]}>Enrollment Information</h3>
+                <div className={styles["enrollment-info"]}>
+                  <div className={styles["enrollment-item"]}>
+                    <i className="fa-solid fa-users"></i>
+                    <span className={styles.label}>Enrollment Actual:</span>
+                    <span className={styles.value}>{dummyClass?.enrollmentActual || 0}</span>
+                  </div>
+                  <div className={styles["enrollment-item"]}>
+                    <i className="fa-solid fa-user-group"></i>
+                    <span className={styles.label}>Enrollment Maximum:</span>
+                    <span className={styles.value}>{dummyClass?.enrollmentMaximum || 0}</span>
+                  </div>
+                  <div className={`${styles["enrollment-item"]} ${styles["seats-available"]}`}>
+                    <i className="fa-solid fa-chair"></i>
+                    <span className={styles.label}>Enrollment Seats Available:</span>
+                    <span className={styles.value}>
+                      {Math.max(0, (dummyClass?.enrollmentMaximum || 0) - (dummyClass?.enrollmentActual || 0))}
+                    </span>
+                  </div>
+                </div>
+                <p className={styles["enrollment-note"]}>
+                  Open for all students. Enrollment ends on <strong>March 1st</strong>.
+                </p>
+              </div>
+            </div>
+          )}
+
+
+          {/* ELIGIBILITY */}
+          {selectedTab === "Eligibility" && (
+            <div id="Eligibility" className={`${styles["content-section"]} ${styles.active}`}>
+              <div className={`${styles["content-info-div"]} ${styles["eligibility-container"]}`}>
+                <h3 className={styles["content-info-attribute"]}>Prerequisite Courses</h3>
+                <div className={styles["prerequisite-list"]}>
+                  {dummyCourse?.prerequisites?.length ? (
+                    dummyCourse.prerequisites.map((pr, index) => (
+                      <div className={styles["prerequisite-card"]} key={index}>
+                        <div className={styles["prerequisite-header"]}>
+                          <span className={styles["course-tag"]}>
+                            {typeof pr === "string" ? pr : pr.courseId}
+                          </span>
+                        </div>
+                        <div className={styles["prerequisite-details"]}>
+                          <div className={styles["letter-grade-container"]}>
+                            <span className={styles["letter-grade"]}>
+                              {typeof pr === "object" ? pr.minGrade : "D"}
+                            </span>
+                          </div>
+                          <div className={styles["course-info"]}>
+                            <p className={styles["minimum-grade"]}>Minimum Grade Required</p>
+                            <h3>{typeof pr === "string" ? pr : pr.courseId}</h3>
+                          </div>
+                        </div>
+                      </div>
+                    ))
+                  ) : (
+                    <p className={styles["no-prerequisites"]}>
+                      No prerequisite courses required for this class.
+                    </p>
+                  )}
+                </div>
+                {dummyCourse?.prerequisites?.length > 0 && (
+                  <p className={styles["eligibility-note"]}>
+                    Students must complete the above courses before enrolling.
+                  </p>
+                )}
+              </div>
+            </div>
+          )}
+
         </div>
 
-        <button className={styles.registerBtn}>Register Class</button>
+        <button className={styles["register-btn"]}>Register Class</button>
       </div>
     </div>
   );
