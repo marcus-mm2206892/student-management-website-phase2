@@ -230,13 +230,13 @@ export default function AdminCreateClassPage() {
                 readOnly
               />
             </div>
+          </div>
 
-            <div className={styles["field-div"]}>
+          <div className={styles["field-div"]}>
               <button type="submit" className={styles["input-submit"]}>
                 Create Class
               </button>
             </div>
-          </div>
         </form>
       </section>
     </main>

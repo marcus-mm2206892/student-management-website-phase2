@@ -4,8 +4,17 @@ import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import styles from "@/app/styles/admin-home-page.module.css";
 import cardStyles from "@/app/styles/course-card-instructor-admin.module.css";
+import ClassModal from "@/app/components/ClassModal";
 
 export default function AdminHome() {
+  const [selectedClass, setSelectedClass] = useState(null);
+  const [showClassModal, setShowClassModal] = useState(false);
+
+  const openClassModal = (cls) => {
+    setSelectedClass(cls);
+    setShowClassModal(true);
+  };
+
   const [user, setUser] = useState({
     firstName: "Marcus",
     lastName: "Monteiro",
@@ -112,7 +121,7 @@ export default function AdminHome() {
               <p>Classes with 5 or more waitlisted students waiting for your approval.</p>
             </div>
             <div className={styles["courses-header-right"]}>
-              <a href="/admin-approve-class" className={styles["browse-courses"]}>
+              <a href="/admin/class-status" className={styles["browse-courses"]}>
                 View all class status list <i className="fa-solid fa-chevron-right"></i>
               </a>
             </div>
@@ -145,7 +154,7 @@ export default function AdminHome() {
                   <div
                     className={cardStyles["course-card"]}
                     key={index}
-                    onClick={() => console.log("Open modal for", cls.classId)}
+                    onClick={() => openClassModal(cls)}
                   >
                     
                     <div className={cardStyles["course-image"]}>
@@ -280,6 +289,10 @@ export default function AdminHome() {
           </div>
         </section>
       </section>
+
+      {showClassModal && (
+        <ClassModal isVisible={showClassModal} onClose={() => setShowClassModal(false)} />
+      )}
 
     </main>
   );

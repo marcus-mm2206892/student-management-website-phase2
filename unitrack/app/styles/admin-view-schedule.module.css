@@ -8,7 +8,7 @@
 }
 
 .view-schedule {
-  height: calc(100vh - 53px);
+  height: calc(100vh - 53px - 1rem);
   margin: 53px auto 1rem auto;
   display: flex;
   flex-direction: column;

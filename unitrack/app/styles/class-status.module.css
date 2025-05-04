@@ -14,14 +14,13 @@
 }
 
 .approve {
-  height: calc(100vh - 53px); /* full screen height minus navbar height */
+  height: calc(100vh - 53px);
   margin: 50px auto 1rem auto;
   display: flex;
   flex-direction: column;
   overflow: hidden;
 }
 
-/* LEARNING PATH HEADER */
 .approve-header {
   display: flex;
   flex-direction: column;
@@ -43,6 +42,21 @@
   text-align: left;
   font-size: 1.8rem;
   font-weight: 700;
+}
+
+.approve-description {
+  color: var(--clr-contrast-a0);
+}
+
+.approve-body {
+  position: relative;
+  height: 100%;
+  background-color: var(--clr-surface-a10);
+  margin: 1rem;
+  border-radius: 0.6rem;
+  overflow: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
 }
 
 .major-tag {
@@ -138,12 +152,6 @@
   cursor: pointer;
 }
 
-@media (max-width: 768px) {
-  .search-bar {
-    width: 90%;
-  }
-}
-
 /* NO RESULTS FOUND */
 .no-results {
   display: none;
@@ -177,13 +185,13 @@
   color: var(--clr-contrast-a30);
 }
 
-table {
+.table {
   width: 100%;
   border-collapse: collapse;
   text-align: left;
 }
 
-thead {
+.table thead {
   position: sticky;
   top: 0;
   z-index: 10;
@@ -191,44 +199,43 @@ thead {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-thead th[colspan="8"] {
-  padding: 0;
-  background-color: var(--clr-primary-a20);
-}
-
-thead tr:nth-child(2) th {
-  padding: 1rem 1rem 1rem 1rem;
+.table thead tr:nth-child(2) th {
+  padding: 1rem;
   white-space: nowrap;
 }
 
-td {
+.table td {
   padding: 1rem;
+  font-size: 0.85rem;
+  border-bottom: 1px solid var(--clr-surface-a20);
 }
 
-tbody tr:nth-child(even) {
+.table tbody tr:nth-child(even) {
   background-color: #819fea0b;
 }
 
-tbody tr:hover {
+.table tbody tr:hover {
   background-color: var(--clr-surface-tonal-a10);
 }
 
-.data.course-no span {
+.data {
+  vertical-align: middle;
+}
+
+.course-no-span {
+  display: inline-block;
   height: 2.5rem;
   width: 5rem;
-  padding: 0.5rem 0.5rem;
+  padding: 0.5rem;
   border-radius: 0.7rem;
   background-color: var(--clr-primary-a0);
   color: #f5f5f5;
   font-weight: 600;
-  border: 0;
-}
-
-.data.course-no span {
   cursor: pointer;
+  text-align: center;
 }
 
-.data.course-enrollment span {
+.course-enrollment-span {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -239,13 +246,14 @@ tbody tr:hover {
   text-align: center;
 }
 
-.course-status .status-badge {
+.status-badge {
   display: flex;
   align-items: center;
   gap: 0.5rem;
   padding: 0.4rem 0.8rem;
   border-radius: 12px;
   background-color: var(--contrast-a0);
+  cursor: pointer;
 }
 
 .course-status:hover {
@@ -300,6 +308,10 @@ tbody tr:hover {
 }
 
 @media (max-width: 768px) {
+  .search-bar {
+    width: 90%;
+  }
+
   .approve-description {
     display: none;
   }

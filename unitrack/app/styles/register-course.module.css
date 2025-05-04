@@ -179,7 +179,7 @@
 }
 
 :global(thead tr:nth-child(2) th) {
-  padding: 1rem 1rem 1rem 1rem;
+  padding: 1rem;
   white-space: nowrap;
 }
 
