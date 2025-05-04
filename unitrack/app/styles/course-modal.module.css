@@ -282,4 +282,8 @@
   .modal-content {
     background: var(--clr-surface-a10);
   }
+
+  .close-btn {
+    border: 1px solid var(--clr-surface-a50);
+  }
 }

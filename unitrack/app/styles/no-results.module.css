@@ -1,13 +1,7 @@
-.dark-mode-svg {
+.svg {
   width: 12rem;
   height: 12rem;
   display: block;
-}
-
-.light-mode-svg {
-  width: 12rem;
-  height: 12rem;
-  display: none;
 }
 
 /* NO RESULTS FOUND */

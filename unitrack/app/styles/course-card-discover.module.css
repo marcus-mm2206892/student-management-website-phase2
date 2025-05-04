@@ -283,4 +283,16 @@
   .crn-tag {
     background: var(--clr-surface-a50);
   }
+
+  .tag {
+    border: 1px solid var(--clr-surface-a50);
+  }
+
+  .course-card .top-right-icon {
+    color: var(--clr-primary-a0);
+  }
+
+  /* close-btn{
+    border
+  } */
 }
