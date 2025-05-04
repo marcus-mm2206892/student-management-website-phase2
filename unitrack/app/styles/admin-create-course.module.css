@@ -1,16 +1,4 @@
-*,
-*::before,
-*::after {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-html {
-  overflow-x: hidden;
-}
-
-body {
+:global(body) {
   background-color: var(--clr-surface-a0);
   background-image: url("../assets/imgs/unitrack-images/pattern-blue.png");
   background-repeat: repeat;
@@ -77,116 +65,9 @@ body {
   color: var(--clr-surface-a40);
 }
 
-.field-div.schedule {
-  display: flex;
-  flex-direction: row;
-  gap: 1rem;
-}
-
-.field-div.schedule > div {
-  width: 100%;
-}
-
-.schedule-left-div {
-  flex: 2;
-}
-
-.schedule-middle-div {
-  flex: 1;
-}
-
-.schedule-right-div {
-  flex: 1;
-}
-
-/* dropdown stuff */
-
-.dropdown-div {
-  min-width: 0;
-  display: flex;
-}
-
-.dropdown-div {
-  flex-direction: row;
-  align-items: center;
-  flex: 1;
-}
-
-.dropdown-text {
-  color: var(--clr-contrast-a0);
-  flex: auto;
-  white-space: nowrap;
-  flex-shrink: 0;
-}
-
-.dropdown-text i {
-  color: var(--clr-contrast-a0);
-  font-size: 1rem;
-}
-
-.selectedOption {
-  padding-right: 0.5rem;
-}
-
-.dropdown {
-  display: flex;
-  justify-content: flex-end;
-  position: relative;
-  width: 100%;
-  color: var(--clr-contrast-a0);
-  flex: 1fr;
+.field-div textarea {
   font-size: 0.85rem;
-  white-space: nowrap;
-}
-
-.dropdown-toggle {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0.75rem;
-  border: 1px solid var(--clr-surface-a20);
-  border-radius: 0.5rem;
-  cursor: pointer;
-  background: var(--clr-surface-a10);
-  transition: background 0.3s ease;
-}
-
-.dropdown.active .dropdown-toggle {
-  border-radius: 0.5rem 0.5rem 0 0;
-}
-
-.dropdown-menu {
-  display: none;
-  position: absolute;
-  top: 100%;
-  left: 0;
-  width: 100%;
-  font-size: 0.85rem;
-  background: var(--clr-surface-a0);
-  border: 1px solid var(--clr-surface-a20);
-  border-radius: 0rem 0rem 0.5rem 0.5rem;
-  box-shadow: 0 4px 0.5rem rgba(0, 0, 0, 0.1);
-  overflow: hidden;
-  z-index: 1000;
-  max-height: 200px;
-  overflow-y: auto;
-  overflow-x: hidden;
-}
-
-.dropdown-menu div {
-  padding: 10px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  transition: background 0.3s;
-  font-weight: 500;
-}
-
-.dropdown-menu div:hover {
-  background: var(--clr-primary-a0);
-  color: white;
+  font-family: "Inter", sans-serif;
 }
 
 .input-field {
@@ -226,18 +107,79 @@ body {
   background-color: var(--clr-primary-a20);
 }
 
-input[type="number"]::-webkit-inner-spin-button,
-input[type="number"]::-webkit-outer-spin-button {
+.input-field[type="number"]::-webkit-inner-spin-button,
+.input-field[type="number"]::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
 
-input[type="number"] {
-  -moz-appearance: textfield;
+.input-field[type="number"] {
+  appearance: textfield;
 }
 
-.field-div:last-child {
-  padding-bottom: 3rem;
+/* Dropdown styling (shared with class form) */
+.dropdown {
+  display: flex;
+  justify-content: flex-end;
+  position: relative;
+  width: 100%;
+  color: var(--clr-contrast-a0);
+  font-size: 0.85rem;
+  white-space: nowrap;
+}
+
+.dropdown-toggle {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem;
+  border: 1px solid var(--clr-surface-a20);
+  border-radius: 0.5rem;
+  cursor: pointer;
+  background: var(--clr-surface-a10);
+  transition: background 0.3s ease;
+}
+
+.dropdown-menu {
+  display: block;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  font-size: 0.85rem;
+  background: var(--clr-surface-a0);
+  border: 1px solid var(--clr-surface-a20);
+  border-radius: 0 0 0.5rem 0.5rem;
+  box-shadow: 0 4px 0.5rem rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  z-index: 1000;
+  max-height: 200px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.dropdown-menu div {
+  padding: 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: background 0.3s;
+  font-weight: 500;
+}
+
+.dropdown-menu div:hover {
+  background: var(--clr-primary-a0);
+  color: white;
+}
+
+/* Tag container for multi-select (same as instructor tag area) */
+.tag-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.5rem;
 }
 
 .tag {
@@ -260,6 +202,10 @@ input[type="number"] {
   cursor: pointer;
 }
 
+.field-div:last-child {
+  padding-bottom: 3rem;
+}
+
 /* Responsive */
 @media (max-width: 768px) {
   .create {
@@ -270,8 +216,8 @@ input[type="number"] {
   .create-class-form {
     padding-top: 1rem;
   }
-  .field-div.schedule {
-    flex-direction: column;
+  .field-div:last-child {
+    padding-bottom: 3rem;
   }
 }
 
@@ -286,7 +232,7 @@ input[type="number"] {
 }
 
 @media (prefers-color-scheme: dark) {
-  body {
+  :global(body) {
     background-image: url("../assets/imgs/unitrack-images/pattern-white.png");
   }
 }

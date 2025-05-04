@@ -1,16 +1,4 @@
-*,
-*::before,
-*::after {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-html {
-  overflow-x: hidden;
-}
-
-body {
+:global(body) {
   background-color: var(--clr-surface-a0);
   background-image: url("../assets/imgs/unitrack-images/pattern-blue.png");
   background-repeat: repeat;
@@ -157,7 +145,6 @@ body {
 }
 
 .dropdown-menu {
-  display: none;
   position: absolute;
   top: 100%;
   left: 0;
@@ -226,14 +213,14 @@ body {
   background-color: var(--clr-primary-a20);
 }
 
-input[type="number"]::-webkit-inner-spin-button,
-input[type="number"]::-webkit-outer-spin-button {
+.input-field[type="number"]::-webkit-inner-spin-button,
+.input-field[type="number"]::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
 
-input[type="number"] {
-  -moz-appearance: textfield;
+.input-field[type="number"] {
+  appearance: textfield;
 }
 
 .field-div:last-child {
@@ -286,7 +273,7 @@ input[type="number"] {
 }
 
 @media (prefers-color-scheme: dark) {
-  body {
+  :global(body) {
     background-image: url("../assets/imgs/unitrack-images/pattern-white.png");
   }
 }
