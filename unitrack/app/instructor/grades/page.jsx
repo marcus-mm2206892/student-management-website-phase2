@@ -6,6 +6,8 @@ import cardStyles from "@/app/styles/course-card-view.module.css";
 import AlertModal from "@/app/components/AlertModal";
 import ClassModal from "@/app/components/ClassModal";
 import EmptyContent from "@/app/components/EmptyContent";
+import NoneSelected from "@/app/components/NoneSelected";
+
 
 export default function Grades() {
   const [selectedClass, setSelectedClass] = useState(null);
@@ -193,11 +195,10 @@ export default function Grades() {
 
         <div className={`${styles["classes"]} ${styles["selected"]}`}>
           {!selectedClass ? (
-            <div className={styles["no-class-selected"]}>
-              <i className="fa-regular fa-folder-open" style={{ fontSize: "3rem", color: "#aaa" }}></i>
-              <p>No class selected</p>
-              <span>Please select a class to view and submit grades.</span>
-            </div>
+            <NoneSelected
+              title="No class selected"
+              subtitle="Please select a class to view and submit grades."
+            />
           ) : (
             <>
               <div className={styles["class-header"]}>

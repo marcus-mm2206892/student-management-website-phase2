@@ -212,9 +212,9 @@ body {
   box-shadow: 0 4px 0.5rem rgba(0, 0, 0, 0.1);
   overflow: hidden;
   z-index: 1000;
-  max-height: 300px; 
+  max-height: 300px;
   overflow-y: auto;
-  overflow-x: auto; 
+  overflow-x: auto;
 }
 
 .dropdown-menu div {
@@ -507,7 +507,7 @@ body {
   .content-info-div {
     background-color: var(--clr-surface-a0);
   }
-  
+
   .modal-content {
     background: var(--clr-surface-a10);
   }

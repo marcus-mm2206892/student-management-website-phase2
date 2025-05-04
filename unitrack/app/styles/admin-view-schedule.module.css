@@ -188,7 +188,7 @@
 }
 
 .dropdown-menu {
-  display: none;
+  display: block;
   position: absolute;
   top: 100%;
   left: 0;

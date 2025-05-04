@@ -1,0 +1,19 @@
+.no-class-selected {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  text-align: center;
+  padding: 2rem;
+  color: var(--clr-contrast-a50);
+}
+
+.no-class-selected p {
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.no-class-selected i {
+  margin-bottom: 0.5rem;
+}
