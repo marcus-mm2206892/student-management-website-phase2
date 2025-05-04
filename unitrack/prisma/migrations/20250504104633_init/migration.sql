@@ -88,12 +88,14 @@ CREATE TABLE "Class" (
     "enrollmentActual" INTEGER NOT NULL,
     "enrollmentMaximum" INTEGER NOT NULL,
     "classStatus" TEXT NOT NULL,
+    "section" TEXT NOT NULL,
     CONSTRAINT "Class_courseId_fkey" FOREIGN KEY ("courseId") REFERENCES "Course" ("courseId") ON DELETE RESTRICT ON UPDATE CASCADE
 );
 
 -- CreateTable
 CREATE TABLE "Schedule" (
-    "scheduleType" TEXT NOT NULL PRIMARY KEY,
+    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "scheduleType" TEXT NOT NULL,
     "startTime" TEXT NOT NULL,
     "endTime" TEXT NOT NULL,
     "classId" TEXT NOT NULL,
@@ -131,7 +133,8 @@ CREATE TABLE "CourseMajorOfferings" (
 
 -- CreateTable
 CREATE TABLE "Prerequisite" (
-    "prerequisiteId" TEXT NOT NULL PRIMARY KEY,
+    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "prerequisiteId" TEXT NOT NULL,
     "courseId" TEXT NOT NULL,
     "minGrade" TEXT NOT NULL,
     CONSTRAINT "Prerequisite_courseId_fkey" FOREIGN KEY ("courseId") REFERENCES "Course" ("courseId") ON DELETE RESTRICT ON UPDATE CASCADE

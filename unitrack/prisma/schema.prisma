@@ -115,6 +115,7 @@ model Class {
   enrollmentActual    Int
   enrollmentMaximum   Int
   classStatus         String
+  section             String
 
   instructors         Instructor[] @relation("TeachingClasses")
   gradedByInstructors Instructor[] @relation("GradedClasses")
@@ -125,7 +126,8 @@ model Class {
 }
 
 model Schedule {
-  scheduleType String @id
+  id           Int    @id @default(autoincrement())
+  scheduleType String
   startTime    String
   endTime      String
 
@@ -166,7 +168,8 @@ model CourseMajorOfferings {
 }
 
 model Prerequisite {
-  prerequisiteId String @id
+  id             Int    @id @default(autoincrement())
+  prerequisiteId String
   courseId       String
   minGrade       String
 
