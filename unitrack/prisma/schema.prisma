@@ -101,7 +101,7 @@ model ClassEnrollment {
   courseId    String
   gradeStatus String
   letterGrade String
-
+  
   semesterEnrollmentId Int
   semesterEnrollment   SemesterEnrollment @relation(fields: [semesterEnrollmentId], references: [id])
 }

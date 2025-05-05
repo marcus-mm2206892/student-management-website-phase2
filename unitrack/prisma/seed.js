@@ -86,11 +86,11 @@ async function seed() {
     }
 
     for (const cmo of courseMajorOfferings) {
-    await prisma.courseMajorOffering.create({ data: cmo });
+    await prisma.courseMajorOfferings.create({ data: cmo });
     }
       
     for (const ccc of courseCurrentClasses) {
-    await prisma.courseCurrentClass.create({ data: ccc });
+    await prisma.courseCurrentClasses.create({ data: ccc });
     }
 
     console.log('Seeding completed successfully.');
