@@ -18,7 +18,7 @@ export default function AdminViewSchedule() {
 
   const classes = [
     { crn: "25501", section: "L01", schedule: "MW", time: "09:00 - 10:00", instructor: "Dr. John Smith" },
-    { crn: "25502", section: "L02", schedule: "TR", time: "10:30 - 12:00", instructor: "Prof. Jane Lee" },
+    { crn: "25502", section: "L02", schedule: "STT", time: "10:30 - 12:00", instructor: "Prof. Jane Lee" },
     { crn: "25503", section: "L03", schedule: "MW", time: "14:00 - 15:30", instructor: "Dr. Ahmed Zaki" }
   ];
 
@@ -65,45 +65,50 @@ export default function AdminViewSchedule() {
       </header>
 
       <div className={styles["view-schedule-container"]}>
-        <div className={styles["modal-header"]}>
-          {classSelected ? (
-            <div className={styles["course-title-div"]}>
-              <h2 className={styles["course-title"]}>
-                {courses.find(c => c.id === selectedCourse)?.title || "Course Title Unavailable"}
-              </h2>
-              <div className={styles["course-tags-div"]}>
-                <span className={cardStyles["course-tag"]}>{selectedCourse}</span>
-                <span className={cardStyles["campus-tag"]}>Male</span>
-                <span className={cardStyles["section-tag"]}>{selectedClass.crn}</span>
-                <span className={cardStyles["section-tag"]}>{selectedClass.section}</span>
-              </div>
-            </div>
-          ) : (
-            <h2 className={styles["course-title"]}>Select a Class</h2>
-          )}
-
-          <div className={styles["dropdown-div"]}>
-            <span className={styles["dropdown-text"]}><i className="fas fa-info-circle"></i></span>
-            <div className={styles.dropdown}>
-              <div className={styles["dropdown-toggle"]} onClick={() => toggleDropdown("crn")}>
-                <span>{selectedCRN}</span>
-                <i className="fas fa-chevron-down"></i>
-              </div>
-              {dropdownOpen === "crn" && (
-                <div className={styles["dropdown-menu"]}>
-                  {classes.map((cls, i) => (
-                    <div key={i} onClick={() => {
-                      setSelectedCRN(`CRN ${cls.crn}`);
-                      toggleDropdown(null);
-                    }}>
-                      CRN {cls.crn}
-                    </div>
-                  ))}
+        {courseSelected && (
+          <div className={styles["modal-header"]}>
+            {classSelected ? (
+              <div className={styles["course-title-div"]}>
+                <h2 className={styles["course-title"]}>
+                  {courses.find(c => c.id === selectedCourse)?.title || "Course Title Unavailable"}
+                </h2>
+                <div className={styles["course-tags-div"]}>
+                  <span className={cardStyles["course-tag"]}>{selectedCourse}</span>
+                  <span className={cardStyles["campus-tag"]}>Male</span>
+                  <span className={cardStyles["section-tag"]}>{selectedClass.crn}</span>
+                  <span className={cardStyles["section-tag"]}>{selectedClass.section}</span>
                 </div>
-              )}
+              </div>
+            ) : (
+              <h2 className={styles["course-title"]}>Select a Class</h2>
+            )}
+
+            <div className={styles["dropdown-div"]}>
+              <span className={styles["dropdown-text"]}>
+                <i className="fas fa-info-circle"></i>
+              </span>
+              <div className={styles.dropdown}>
+                <div className={styles["dropdown-toggle"]} onClick={() => toggleDropdown("crn")}>
+                  <span>{selectedCRN}</span>
+                  <i className="fas fa-chevron-down"></i>
+                </div>
+                {dropdownOpen === "crn" && (
+                  <div className={styles["dropdown-menu"]}>
+                    {classes.map((cls, i) => (
+                      <div key={i} onClick={() => {
+                        setSelectedCRN(`CRN ${cls.crn}`);
+                        toggleDropdown(null);
+                      }}>
+                        CRN {cls.crn}
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
             </div>
           </div>
-        </div>
+        )}
+
 
         {!courseSelected ? (
           <NoneSelected

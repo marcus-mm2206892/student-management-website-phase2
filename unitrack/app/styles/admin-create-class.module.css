@@ -133,7 +133,7 @@
   align-items: center;
   justify-content: space-between;
   padding: 0.75rem;
-  border: 1px solid var(--clr-surface-a20);
+  border: 1px solid var(--clr-surface-a30);
   border-radius: 0.5rem;
   cursor: pointer;
   background: var(--clr-surface-a10);
@@ -188,6 +188,7 @@
 
 .input-field::placeholder {
   font-size: 0.85rem;
+  color: var(--clr-surface-a30);
 }
 
 .input-field:focus {

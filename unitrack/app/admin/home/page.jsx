@@ -27,7 +27,54 @@ export default function AdminHome() {
   });
   
   const pendingCourses = [
-    
+    {
+      classId: "25501",
+      courseId: "CMPS303",
+      courseName: "Data Structures",
+      section: "L01",
+      semester: "Spring 2025",
+      creditHours: 3,
+      majors: ["CMPS"],
+      description:
+        "Explore foundational data structures including arrays, stacks, queues, linked lists, trees, and graphs, and understand how to implement them efficiently.",
+      courseImage: "/assets/imgs/course-placeholder.png",
+    },
+    {
+      classId: "25502",
+      courseId: "CMPS350",
+      courseName: "Web Development",
+      section: "L02",
+      semester: "Fall 2024",
+      creditHours: 4,
+      majors: ["CMPE"],
+      description:
+        "Learn the principles of front-end and back-end web development including HTML, CSS, JavaScript, APIs, and modern frameworks.",
+      courseImage: "/assets/imgs/course-placeholder.png",
+    },
+    {
+      classId: "25503",
+      courseId: "CMPS405",
+      courseName: "Operating Systems",
+      section: "L01",
+      semester: "Spring 2025",
+      creditHours: 3,
+      majors: ["CMPS", "CMPE"],
+      description:
+        "Introduction to OS concepts: processes, threads, scheduling, memory management, file systems, and concurrency.",
+      courseImage: "/assets/imgs/course-placeholder.png",
+    },
+    {
+      classId: "25504",
+      courseId: "CMPS497",
+      courseName: "Advanced Topics in Computing",
+      section: "L51",
+      semester: "Spring 2025",
+      creditHours: 3,
+      majors: ["CMPS"],
+      description:
+        "Dive into current research and emerging topics in AI, cybersecurity, quantum computing, or human-computer interaction.",
+      courseImage: "/assets/imgs/course-placeholder.png",
+    },
   ];
 
   const approvedClasses = pendingCourses.slice(0, 1);
