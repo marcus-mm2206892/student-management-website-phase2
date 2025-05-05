@@ -105,6 +105,7 @@
   color: var(--clr-primary-a0);
   transition: color 0.3s ease-in-out;
   text-align: right;
+  cursor: pointer;
 }
 
 .browse-courses:hover {

@@ -272,11 +272,14 @@ export default function Grades() {
               </div>
 
 
-              <div className={styles["submit-container"]}>
-                <button className={styles["submit-btn"]} onClick={handleSubmit}>
-                  Submit Grades
-                </button>
-              </div>
+              {selectedClass.classStatus !== "completed" && (
+                <div className={styles["submit-container"]}>
+                  <button className={styles["submit-btn"]} onClick={handleSubmit}>
+                    Submit Grades
+                  </button>
+                </div>
+              )}
+
             </>
           )}
         </div>

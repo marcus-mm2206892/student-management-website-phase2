@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import styles from "@/app/styles/admin-home-page.module.css";
-import cardStyles from "@/app/styles/course-card-instructor-admin.module.css";
+import cardStyles from "@/app/styles/course-card-profile.module.css";
 import ClassModal from "@/app/components/ClassModal";
 import EmptyContent from "@/app/components/EmptyContent";
 

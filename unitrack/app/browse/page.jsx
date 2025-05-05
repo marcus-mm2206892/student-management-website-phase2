@@ -135,7 +135,7 @@ export default function BrowsePage() {
                   ) : (
                     <div className={discoverStyles["hover-icon"]}>
                       <i className="fa-solid fa-eye"></i>
-                      <span className={discoverStyles["hover-text"]}>View More</span>
+                      <span className={discoverStyles["hover-text"]}>View Course</span>
                     </div>
                   )}
 

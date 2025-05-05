@@ -152,7 +152,6 @@
   cursor: pointer;
 }
 
-/* NO RESULTS FOUND */
 .no-results {
   display: none;
   flex-direction: column;
@@ -224,8 +223,6 @@
 
 .course-no-span {
   display: inline-block;
-  height: 2.5rem;
-  width: 5rem;
   padding: 0.5rem;
   border-radius: 0.7rem;
   background-color: var(--clr-primary-a0);

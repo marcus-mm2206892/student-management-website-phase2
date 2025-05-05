@@ -84,12 +84,6 @@
   background: var(--clr-surface-a20);
 }
 
-@media (prefers-color-scheme: light) {
-  .letter-grade-container {
-    background: var(--clr-surface-a50);
-  }
-}
-
 /* HOVER ICON */
 .hover-icon {
   position: absolute;
