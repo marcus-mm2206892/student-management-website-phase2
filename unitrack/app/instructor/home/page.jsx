@@ -119,11 +119,11 @@ export default function InstructorHomePage() {
     );
   };
 
-  const classCount = courses.length * 2;
+  if (!user || !instructor) return <p>Loading</p>
+
+  const classCount = instructor.teachingClasses.length * 2;
   const classesTaughtText = classCount === 1 ? "class" : "classes";
   const coursesTaughtText = courses.length === 1 ? "course" : "courses";
-
-  if (!user || !instructor) return <p>Loading</p>
 
   return (
     <>

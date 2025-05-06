@@ -22,6 +22,7 @@ const dataPaths = {
     classEnrollments: 'class_enrollments.json',
     courseMajorOfferings: 'course_major_offerings.json',
     courseCurrentClasses: 'course_current_classes.json',
+    teachingClasses: 'teaching_classes.json'
 };
 
 const dataDir = path.join(process.cwd(), 'app/assets/data');
@@ -47,6 +48,7 @@ async function seed() {
     const classEnrollments = await loadData(dataPaths.classEnrollments);
     const courseMajorOfferings = await loadData(dataPaths.courseMajorOfferings);
     const courseCurrentClasses = await loadData(dataPaths.courseCurrentClasses);
+    const teachingClasses = await loadData(dataPaths.teachingClasses)
 
     console.log(users[0]); // or cleanedUsers[0]
 
@@ -91,6 +93,23 @@ async function seed() {
       
     for (const ccc of courseCurrentClasses) {
     await prisma.courseCurrentClasses.create({ data: ccc });
+    }
+
+    for (const teaching of teachingClasses) {
+        const instructor = await prisma.instructor.findUnique({
+            where: { id: teaching.instructorId },
+        });
+
+        if (instructor) {
+            await prisma.instructor.update({
+                where: { id: instructor.id },
+                data: {
+                    teachingClasses: {
+                        connect: teaching.classIds.map(classId => ({ id: classId })),
+                    },
+                },
+            });
+        }
     }
 
     console.log('Seeding completed successfully.');
