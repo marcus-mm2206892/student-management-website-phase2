@@ -46,6 +46,10 @@ class UniTrackRepo {
     return await prisma.course.delete({ where: { courseId: id } });
   }
 
+  async getCourses() {
+    return await prisma.course.findMany({ include: { CourseMajorOfferings: true }});
+  }
+
   // ---------------------- COMPLETED COURSE ----------------------
   async getAllCompletedCourses() {
     return await prisma.completedCourse.findMany();
