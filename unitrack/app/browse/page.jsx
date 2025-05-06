@@ -1,66 +1,58 @@
 "use client";
+
+import { getCoursesAction, getCompletedCoursesByStudentEmailAction } from "@/app/action/server-actions";
 import { useEffect, useState } from "react";
 import styles from "@/app/styles/browse.module.css";
 import discoverStyles from "@/app/styles/course-card-discover.module.css";
 import NoResults from "@/app/components/NoResults";
 import CourseModal from "@/app/components/CourseModal";
 
-const dummyCourses = [
-  {
-    courseId: "CMPS101",
-    courseName: "Intro to CS",
-    description: "Learn the basics of programming and computational thinking.",
-    creditHours: 3,
-    courseImage: "/assets/imgs/course-placeholder.png",
-    majorsOffered: ["CMPS", "CMPE"],
-    subject: "Computer Science",
-    prerequisites: [],
-  },
-  {
-    courseId: "CMPE202",
-    courseName: "Digital Logic Design",
-    description: "Understand circuits, logic gates, and system architecture.",
-    creditHours: 3,
-    courseImage: "/assets/imgs/course-placeholder.png",
-    majorsOffered: ["CE"],
-    subject: "Computer Engineering",
-    prerequisites: ["PHYS101"],
-  },
-  {
-    courseId: "CHEM101",
-    courseName: "General Chemistry 1",
-    description:
-      "Chemistry and Measurement and significant figures. Atoms, molecules and ions. Formulas and...",
-    creditHours: 3,
-    courseImage: "/assets/imgs/course-placeholder.png",
-    majorsOffered: ["CMPE", "CMPS"],
-    subject: "Chemistry",
-    prerequisites: [],
-  },
-];
-
 export default function BrowsePage() {
   const [search, setSearch] = useState("");
-  const [filteredCourses, setFilteredCourses] = useState(dummyCourses);
+  const [courses, setCourses] = useState([]);
+  const [filteredCourses, setFilteredCourses] = useState([]);
   const [selectedCourse, setSelectedCourse] = useState(null);
-
   const [loggedInUser, setLoggedInUser] = useState({ role: "", completedCourses: [] });
+
+  async function loadCourses() {
+    const initialCourses = await getCoursesAction();
+    setCourses(initialCourses);
+    setFilteredCourses(initialCourses);
+  }
+
+  useEffect(() => {
+    loadCourses();
+  }, []);
 
   useEffect(() => {
     const stored = localStorage.getItem("user");
     if (stored) {
       try {
-        const parsed = JSON.parse(stored);
-        setLoggedInUser({
-          role: parsed.role?.toLowerCase() || "",
-          completedCourses: parsed.completedCourses || [],
-        });
+        const user = JSON.parse(stored);
+        const role = user.role?.toLowerCase() || "";
+  
+        if (role === "student") {
+          (async () => {
+            const completed = await getCompletedCoursesByStudentEmailAction(user.email);
+            setLoggedInUser({
+              role,
+              completedCourses: completed || [],
+            });
+          })();
+        } else {
+          setLoggedInUser({
+            role,
+            completedCourses: [],
+          });
+        }
       } catch (err) {
         console.error("Failed to parse user from localStorage", err);
       }
     }
   }, []);
   
+  
+
   const isStudent = loggedInUser?.role === "student";
   const completedSet = new Set(
     loggedInUser?.completedCourses?.map((c) => c.courseId) || []
@@ -68,13 +60,13 @@ export default function BrowsePage() {
 
   useEffect(() => {
     const query = search.toLowerCase();
-    const results = dummyCourses.filter((course) =>
+    const results = courses.filter((course) =>
       `${course.courseId} ${course.courseName} ${course.description}`
         .toLowerCase()
         .includes(query)
     );
     setFilteredCourses(results);
-  }, [search]);
+  }, [search, courses]);
 
   return (
     <main className={styles.userQuery}>
@@ -121,7 +113,7 @@ export default function BrowsePage() {
                     src={course.courseImage}
                     alt={course.courseName}
                   />
-                  {loggedInUser?.role === "student" ? (
+                  {isStudent ? (
                     <div
                       className={discoverStyles["hover-icon"]}
                       onClick={(e) => {
@@ -187,8 +179,7 @@ export default function BrowsePage() {
 
       {filteredCourses.length > 0 && (
         <span className={styles.endOfResults}>End of Results</span>
-        )}
-
+      )}
 
       {selectedCourse && (
         <CourseModal

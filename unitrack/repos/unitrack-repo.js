@@ -37,8 +37,6 @@ class UniTrackRepo {
     return await prisma.user.delete({ where: { email } });
   }
 
-
-
   // Student
   async getAllStudents() {
     return await prisma.student.findMany();
@@ -65,6 +63,15 @@ class UniTrackRepo {
     return await prisma.course.findMany();
   }
 
+  async getCourseWithPrerequisites(id) {
+    return await prisma.course.findUnique({
+      where: { courseId: id },
+      include: {
+        prerequisites: true, // loads prerequisiteId and minGrade
+      },
+    });
+  }
+
   async getCourseById(id) {
     return await prisma.course.findUnique({ where: { courseId: id } });
   }
@@ -82,7 +89,9 @@ class UniTrackRepo {
   }
 
   async getCourses() {
-    return await prisma.course.findMany({ include: { CourseMajorOfferings: true }});
+    return await prisma.course.findMany({
+      include: { CourseMajorOfferings: true },
+    });
   }
 
   // Completed Course
@@ -91,7 +100,22 @@ class UniTrackRepo {
   }
 
   async getCompletedCourseById(id) {
-    return await prisma.completedCourse.findUnique({ where: { id: Number(id) } });
+    return await prisma.completedCourse.findUnique({
+      where: { id: Number(id) },
+    });
+  }
+
+  async getCompletedCoursesByStudentEmail(email) {
+    const student = await prisma.student.findUnique({
+      where: { email: email },
+      include: {
+        completedCourses: true,
+      },
+    });
+
+    if (!student) return [];
+
+    return student.completedCourses;
   }
 
   async createCompletedCourse(data) {
@@ -99,7 +123,10 @@ class UniTrackRepo {
   }
 
   async updateCompletedCourse(id, data) {
-    return await prisma.completedCourse.update({ where: { id: Number(id) }, data });
+    return await prisma.completedCourse.update({
+      where: { id: Number(id) },
+      data,
+    });
   }
 
   async deleteCompletedCourse(id) {
@@ -112,7 +139,9 @@ class UniTrackRepo {
   }
 
   async getSemesterEnrollmentById(id) {
-    return await prisma.semesterEnrollment.findUnique({ where: { id: Number(id) } });
+    return await prisma.semesterEnrollment.findUnique({
+      where: { id: Number(id) },
+    });
   }
 
   async createSemesterEnrollment(data) {
@@ -120,24 +149,39 @@ class UniTrackRepo {
   }
 
   async updateSemesterEnrollment(id, data) {
-    return await prisma.semesterEnrollment.update({ where: { id: Number(id) }, data });
+    return await prisma.semesterEnrollment.update({
+      where: { id: Number(id) },
+      data,
+    });
   }
 
   async deleteSemesterEnrollment(id) {
-    return await prisma.semesterEnrollment.delete({ where: { id: Number(id) } });
+    return await prisma.semesterEnrollment.delete({
+      where: { id: Number(id) },
+    });
   }
 
   // Instructor
   async getAllInstructors() {
-    return await prisma.instructor.findMany({include: {teachingClasses: true, gradedClasses: true}});
+    return await prisma.instructor.findMany({
+      include: { teachingClasses: true, gradedClasses: true },
+    });
   }
 
   async getInstructorById(id) {
-    return await prisma.instructor.findUnique({ where: { instructorId: id, include: {teachingClasses: true, gradedClasses: true} } });
+    return await prisma.instructor.findUnique({
+      where: {
+        instructorId: id,
+        include: { teachingClasses: true, gradedClasses: true },
+      },
+    });
   }
 
   async getInstructorByEmail(email) {
-    return await prisma.instructor.findUnique({ where: {email: email}, include: {teachingClasses: true, gradedClasses: true}});
+    return await prisma.instructor.findUnique({
+      where: { email: email },
+      include: { teachingClasses: true, gradedClasses: true },
+    });
   }
 
   async createInstructor(data) {
@@ -145,7 +189,10 @@ class UniTrackRepo {
   }
 
   async updateInstructor(id, data) {
-    return await prisma.instructor.update({ where: { instructorId: id }, data });
+    return await prisma.instructor.update({
+      where: { instructorId: id },
+      data,
+    });
   }
 
   async deleteInstructor(id) {
@@ -200,7 +247,9 @@ class UniTrackRepo {
   }
 
   async getClassEnrollmentById(id) {
-    return await prisma.classEnrollment.findUnique({ where: { id: Number(id) } });
+    return await prisma.classEnrollment.findUnique({
+      where: { id: Number(id) },
+    });
   }
 
   async createClassEnrollment(data) {
@@ -208,7 +257,10 @@ class UniTrackRepo {
   }
 
   async updateClassEnrollment(id, data) {
-    return await prisma.classEnrollment.update({ where: { id: Number(id) }, data });
+    return await prisma.classEnrollment.update({
+      where: { id: Number(id) },
+      data,
+    });
   }
 
   async deleteClassEnrollment(id) {

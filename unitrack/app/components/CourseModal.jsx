@@ -1,10 +1,12 @@
 "use client";
 import { useRef, useEffect, useState } from "react";
 import styles from "@/app/styles/course-modal.module.css";
+import { getCourseWithPrerequisitesAction } from "@/app/action/server-actions";
 
 export default function CourseModal({ course, onClose }) {
   const modalRef = useRef(null);
   const [role, setRole] = useState("");
+  const [prerequisites, setPrerequisites] = useState([]);
 
   useEffect(() => {
     const storedUser = localStorage.getItem("user");
@@ -17,6 +19,13 @@ export default function CourseModal({ course, onClose }) {
       }
     }
 
+    async function loadPrereqs() {
+      const detailed = await getCourseWithPrerequisitesAction(course.courseId);
+      setPrerequisites(detailed?.prerequisites || []);
+    }
+
+    loadPrereqs();
+
     function handleClickOutside(event) {
       if (modalRef.current && !modalRef.current.contains(event.target)) {
         onClose();
@@ -25,7 +34,7 @@ export default function CourseModal({ course, onClose }) {
 
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, [onClose]);
+  }, [onClose, course.courseId]);
 
   const isStaff = role === "admin" || role === "instructor";
 
@@ -81,18 +90,12 @@ export default function CourseModal({ course, onClose }) {
           <div className={styles["prerequisite-courses"]}>
             <h3 className={styles["content-info-attribute"]}>Prerequisites</h3>
             <div className={styles["prerequisite-tags"]}>
-              {course.prerequisites && course.prerequisites.length > 0 ? (
-                course.prerequisites.map((p) =>
-                  typeof p === "string" ? (
-                    <span key={p} className={styles["course-tag"]}>
-                      {p}
-                    </span>
-                  ) : (
-                    <span key={p.courseId} className={styles["course-tag"]}>
-                      {p.courseId} (Min: {p.minGrade})
-                    </span>
-                  )
-                )
+              {prerequisites.length > 0 ? (
+                prerequisites.map((p) => (
+                  <span key={p.prerequisiteId} className={styles["course-tag"]}>
+                    {p.prerequisiteId} (Min: {p.minGrade})
+                  </span>
+                ))
               ) : (
                 <span className={styles["course-tag"]}>
                   <i className="fa-solid fa-ban"></i> None
@@ -100,6 +103,7 @@ export default function CourseModal({ course, onClose }) {
               )}
             </div>
           </div>
+
         </div>
 
         {!isStaff && (

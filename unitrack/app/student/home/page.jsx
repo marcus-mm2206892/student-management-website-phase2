@@ -18,57 +18,6 @@ const cycleTexts = [
   'plan your academic journey'
 ];
 
-function compareGrades(student, required) {
-  const order = ['F', 'D', 'D+', 'C', 'C+', 'B', 'B+', 'A', 'A+'];
-  return order.indexOf(student) - order.indexOf(required);
-}
-
-function isEligible(course, completedMap) {
-  if (!course.prerequisites || course.prerequisites.length === 0) return true;
-  return course.prerequisites.every((req) => {
-    if (typeof req === 'string') {
-      return completedMap[req];
-    }
-    const { courseId, minGrade } = req;
-    const grade = completedMap[courseId];
-    return grade && compareGrades(grade, minGrade) >= 0;
-  });
-}
-
-const dummyCourses = [
-  {
-    courseId: "CMPS101",
-    courseName: "Intro to CS",
-    description: "Learn the basics of programming and computational thinking.",
-    creditHours: 3,
-    courseImage: "/assets/imgs/course-placeholder.png",
-    majorsOffered: ["CMPS", "CMPE"],
-    subject: "Computer Science",
-    prerequisites: [],
-  },
-  {
-    courseId: "CMPE202",
-    courseName: "Digital Logic Design",
-    description: "Understand circuits, logic gates, and system architecture.",
-    creditHours: 3,
-    courseImage: "/assets/imgs/course-placeholder.png",
-    majorsOffered: ["CE"],
-    subject: "Computer Engineering",
-    prerequisites: ["PHYS101"],
-  },
-  {
-    courseId: "CHEM101",
-    courseName: "General Chemistry 1",
-    description:
-      "Chemistry and Measurement and significant figures. Atoms, molecules and ions. Formulas and...",
-    creditHours: 3,
-    courseImage: "/assets/imgs/course-placeholder.png",
-    majorsOffered: ["CMPE", "CMPS"],
-    subject: "Chemistry",
-    prerequisites: [],
-  },
-];
-
 export default function StudentHome() {
   const router = useRouter();
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -89,10 +38,9 @@ export default function StudentHome() {
     return () => clearInterval(interval);
   }, []);
 
-  const recommendedCourses = dummyCourses.slice(0, 2);
-  // const recommendedCourses = [];
-  const supplementaryCourses = dummyCourses.slice(1);
-  const electiveCourses = dummyCourses.slice(0, 2);
+  const recommendedCourses = [];
+  const supplementaryCourses = [];
+  const electiveCourses = [];
 
   return (
     <>

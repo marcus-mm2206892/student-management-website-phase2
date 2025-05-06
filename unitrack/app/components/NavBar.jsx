@@ -7,7 +7,7 @@ import ThemeResponsiveLogo from './ThemeResponsiveLogo';
 import Link from 'next/link';
 
 export default function NavBar({ user }) {
-  const { name, email, role } = user || {};
+  const { firstName, lastName, email, role } = user || {};
   const avatar = "/assets/imgs/user-profile-images/male1.png";
 
   const homeLink =
@@ -168,7 +168,7 @@ export default function NavBar({ user }) {
         <div className={className('navbar-user', 'bordered-div')} id="userMenuButton">
           <div className={styles['nav-item']}>
             <img src={avatar} alt="User" className={className('nav-image', 'user-avatar')} />
-            <span className={styles.username}>{name}</span>
+            <span className={styles.username}>{firstName} {lastName}</span>
             <i className={`bx bx-chevron-down ${styles['dropdown-icon']}`}></i>
           </div>
         </div>
@@ -225,7 +225,7 @@ export default function NavBar({ user }) {
             <button className={styles['close-btn']} id="closeDropdown"><i className="fa-solid fa-xmark"></i></button>
           </div>
           <div className={styles['bottom-header']}>
-            <h4 className={styles['dropdown-name']}>{name}</h4>
+            <h4 className={styles['dropdown-name']}>{firstName} {lastName}</h4>
             <p className={styles['dropdown-email']}>{email}</p>
           </div>
         </div>

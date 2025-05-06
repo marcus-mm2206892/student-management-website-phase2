@@ -6,7 +6,7 @@
     "subject": "Computer Science",
     "courseNumber": "151",
     "description": "Problem solving techniques such as pseudo-code of flowcharts, algorithmic thinking. Basic prigramming concepts including: variables, arithmetic and logical operations, input/ output, conditional statements, loops, arrays, functions, and file processing. The laboratory provides a practical programming experience.",
-    "courseImage": "https://apps.weber.edu/wsuimages/DOCE/badgeup/BasicProgrammingConceptsBanner-AdobeStock_348397404.jpg"
+    "courseImage": "https://bairesdev.mo.cloudinary.net/blog/2023/08/How-to-Choose-the-Right-Programming-Language-for-a-New-Project.jpg?tx=w_1920,q_auto"
   },
   {
     "courseId": "CHEM101",
@@ -132,7 +132,7 @@
     "subject": "Computer Science",
     "courseNumber": "205",
     "description": "Introduction to the elements of mathematics applicable to the computing field. Logic and methods of proof; logic gates; Boolean algebra and minimization; set theory; relations and functions; sequences and sums; induction; numbering systems and combinatorics.",
-    "courseImage": "https://blog-media.byjusfutureschool.com/bfs-blog/2022/09/21090501/Article-Page-86.png"
+    "courseImage": "https://img-c.udemycdn.com/course/480x270/614832_e3b0_4.jpg"
   },
   {
     "courseId": "CMPS303",
@@ -375,7 +375,7 @@
     "subject": "Computer Engineering",
     "courseNumber": "364",
     "description": "This course focuses on microprocessor hardware and software for embedded systems, CPU organization, Assembly programming language, Instruction Set Architecture (ISA), memory access, and programmable I/O peripherals. It also includes Hands-on lab to design, build and test embedded systems using latest microprocessor technology, development frameworks and tools.",
-    "courseImage": "https://www.microchipusa.com/wp-content/uploads/2024/07/microprocessor.png"
+    "courseImage": "https://www.totalphase.com/media/blog/2024/01/microprocessor-pok-rie-1432675-1024x683.jpg"
   },
   {
     "courseId": "CMPE457",
