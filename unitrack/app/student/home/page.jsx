@@ -1,4 +1,6 @@
 "use client";
+
+import { getCoursesAction } from "@/app/action/server-actions";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
@@ -71,7 +73,14 @@ export default function StudentHome() {
   const router = useRouter();
   const [currentIndex, setCurrentIndex] = useState(0);
   const [selectedCourse, setSelectedCourse] = useState(null);
+  const [courses, setCourses] = useState([])
 
+  async function loadCourses() {
+    const initialCourses = await getCoursesAction();
+    setCourses(initialCourses);
+  }
+
+  useEffect( () => {loadCourses()}, [] )
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -87,7 +96,7 @@ export default function StudentHome() {
 
   return (
     <>
-
+      {/* {JSON.stringify(courses[0])} */}
       <main className={styles["student-home"]}>
         <section className={styles.hero}>
           <h1>
@@ -108,7 +117,7 @@ export default function StudentHome() {
         <CourseSection
           title="Find Recommended Courses"
           subtitle="Explore uncompleted courses that fit your learning path."
-          courses={recommendedCourses}
+          courses={courses}
           onBrowse={() => router.push('/browse')}
           router={router}
           onCourseClick={setSelectedCourse}
@@ -212,9 +221,9 @@ function CourseCard({ course, onClick, onPlusClick }) {
           <span className={discoverStyles.tag}>
             <i className="fa-solid fa-hourglass-half"></i> {course.creditHours} {creditText}
           </span>
-          {course.majorsOffered.map((m) => (
-            <span key={m} className={discoverStyles.tag}>
-              <i className={`fa-solid ${m === 'CMPE' ? 'fa-microchip' : 'fa-laptop-code'}`}></i> {m}
+          {course.CourseMajorOfferings?.map((m) => (
+            <span key={m.majorId} className={discoverStyles.tag}>
+              <i className={`fa-solid ${m.majorId === 'CMPE' ? 'fa-microchip' : 'fa-laptop-code'}`}></i> {m.majorId}
             </span>
           ))}
         </div>
