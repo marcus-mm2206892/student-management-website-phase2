@@ -3,8 +3,43 @@ import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 
 class UniTrackRepo {
+  // Admin
+  async getAllAdmins() {
+    return await prisma.admin.findMany();
+  }
+  async getAdminById(adminId) {
+    return await prisma.admin.findUnique({ where: { adminId } });
+  }
+  async createAdmin(data) {
+    return await prisma.admin.create({ data });
+  }
+  async updateAdmin(adminId, data) {
+    return await prisma.admin.update({ where: { adminId }, data });
+  }
+  async deleteAdmin(adminId) {
+    return await prisma.admin.delete({ where: { adminId } });
+  }
 
-  // ---------------------- STUDENT ----------------------
+  // User
+  async getAllUsers() {
+    return await prisma.user.findMany();
+  }
+  async getUserById(email) {
+    return await prisma.user.findUnique({ where: { email } });
+  }
+  async createUser(data) {
+    return await prisma.user.create({ data });
+  }
+  async updateUser(email, data) {
+    return await prisma.user.update({ where: { email }, data });
+  }
+  async deleteUser(email) {
+    return await prisma.user.delete({ where: { email } });
+  }
+
+
+
+  // Student
   async getAllStudents() {
     return await prisma.student.findMany();
   }
@@ -25,7 +60,7 @@ class UniTrackRepo {
     return await prisma.student.delete({ where: { studentId: id } });
   }
 
-  // ---------------------- COURSE ----------------------
+  // Course
   async getAllCourses() {
     return await prisma.course.findMany();
   }
@@ -50,7 +85,7 @@ class UniTrackRepo {
     return await prisma.course.findMany({ include: { CourseMajorOfferings: true }});
   }
 
-  // ---------------------- COMPLETED COURSE ----------------------
+  // Completed Course
   async getAllCompletedCourses() {
     return await prisma.completedCourse.findMany();
   }
@@ -71,7 +106,7 @@ class UniTrackRepo {
     return await prisma.completedCourse.delete({ where: { id: Number(id) } });
   }
 
-  // ---------------------- SEMESTER ENROLLMENT ----------------------
+  // Semester Enrollment
   async getAllSemesterEnrollments() {
     return await prisma.semesterEnrollment.findMany();
   }
@@ -92,7 +127,7 @@ class UniTrackRepo {
     return await prisma.semesterEnrollment.delete({ where: { id: Number(id) } });
   }
 
-  // ---------------------- INSTRUCTOR ----------------------
+  // Instructor
   async getAllInstructors() {
     return await prisma.instructor.findMany();
   }
@@ -113,7 +148,7 @@ class UniTrackRepo {
     return await prisma.instructor.delete({ where: { instructorId: id } });
   }
 
-  // ---------------------- MAJOR ----------------------
+  // Major
   async getAllMajors() {
     return await prisma.major.findMany();
   }
@@ -134,7 +169,7 @@ class UniTrackRepo {
     return await prisma.major.delete({ where: { majorId: id } });
   }
 
-  // ---------------------- CLASS ----------------------
+  // Class
   async getAllClasses() {
     return await prisma.class.findMany();
   }
@@ -155,7 +190,7 @@ class UniTrackRepo {
     return await prisma.class.delete({ where: { classId: id } });
   }
 
-  // ---------------------- CLASS ENROLLMENT ----------------------
+  // Class Enrollment
   async getAllClassEnrollments() {
     return await prisma.classEnrollment.findMany();
   }
@@ -176,7 +211,7 @@ class UniTrackRepo {
     return await prisma.classEnrollment.delete({ where: { id: Number(id) } });
   }
 
-  // ---------------------- EXPERTISE ----------------------
+  // Expertise
   async getAllExpertise() {
     return await prisma.expertise.findMany();
   }
@@ -197,7 +232,7 @@ class UniTrackRepo {
     return await prisma.expertise.delete({ where: { id: Number(id) } });
   }
 
-  // ---------------------- SCHEDULE ----------------------
+  // Schedule
   async getAllSchedules() {
     return await prisma.schedule.findMany();
   }
@@ -216,6 +251,57 @@ class UniTrackRepo {
 
   async deleteSchedule(id) {
     return await prisma.schedule.delete({ where: { id: Number(id) } });
+  }
+
+  // CourseCurrentClasses
+  async getAllCourseCurrentClasses() {
+    return await prisma.courseCurrentClasses.findMany();
+  }
+  async getCourseCurrentClassById(id) {
+    return await prisma.courseCurrentClasses.findUnique({ where: { id } });
+  }
+  async createCourseCurrentClass(data) {
+    return await prisma.courseCurrentClasses.create({ data });
+  }
+  async updateCourseCurrentClass(id, data) {
+    return await prisma.courseCurrentClasses.update({ where: { id }, data });
+  }
+  async deleteCourseCurrentClass(id) {
+    return await prisma.courseCurrentClasses.delete({ where: { id } });
+  }
+
+  // CourseMajorOfferings
+  async getAllCourseMajorOfferings() {
+    return await prisma.courseMajorOfferings.findMany();
+  }
+  async getCourseMajorOfferingById(id) {
+    return await prisma.courseMajorOfferings.findUnique({ where: { id } });
+  }
+  async createCourseMajorOffering(data) {
+    return await prisma.courseMajorOfferings.create({ data });
+  }
+  async updateCourseMajorOffering(id, data) {
+    return await prisma.courseMajorOfferings.update({ where: { id }, data });
+  }
+  async deleteCourseMajorOffering(id) {
+    return await prisma.courseMajorOfferings.delete({ where: { id } });
+  }
+
+  // Prerequisite
+  async getAllPrerequisites() {
+    return await prisma.prerequisite.findMany();
+  }
+  async getPrerequisiteById(id) {
+    return await prisma.prerequisite.findUnique({ where: { id } });
+  }
+  async createPrerequisite(data) {
+    return await prisma.prerequisite.create({ data });
+  }
+  async updatePrerequisite(id, data) {
+    return await prisma.prerequisite.update({ where: { id }, data });
+  }
+  async deletePrerequisite(id) {
+    return await prisma.prerequisite.delete({ where: { id } });
   }
 }
 

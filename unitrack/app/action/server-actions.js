@@ -2,7 +2,7 @@
 
 import unitrackRepo from "@/repos/unitrack-repo"
 
-// ---------------------- STUDENT ----------------------
+// Student
 export async function getAllStudentsAction() {
     return await unitrackRepo.getAllStudents();
   }
@@ -23,7 +23,7 @@ export async function getAllStudentsAction() {
     return await unitrackRepo.deleteStudent(id);
   }
   
-  // ---------------------- COURSE ----------------------
+  // Course
   export async function getAllCoursesAction() {
     return await unitrackRepo.getAllCourses();
   }
@@ -48,7 +48,7 @@ export async function getAllStudentsAction() {
     return await unitrackRepo.getCourses();
   }
   
-  // ---------------------- COMPLETED COURSE ----------------------
+  // Completed Course
   export async function getAllCompletedCoursesAction() {
     return await unitrackRepo.getAllCompletedCourses();
   }
@@ -69,7 +69,7 @@ export async function getAllStudentsAction() {
     return await unitrackRepo.deleteCompletedCourse(id);
   }
   
-  // ---------------------- SEMESTER ENROLLMENT ----------------------
+  // Semester Enrollment
   export async function getAllSemesterEnrollmentsAction() {
     return await unitrackRepo.getAllSemesterEnrollments();
   }
@@ -90,7 +90,7 @@ export async function getAllStudentsAction() {
     return await unitrackRepo.deleteSemesterEnrollment(id);
   }
   
-  // ---------------------- INSTRUCTOR ----------------------
+  // Instructor
   export async function getAllInstructorsAction() {
     return await unitrackRepo.getAllInstructors();
   }
@@ -111,7 +111,7 @@ export async function getAllStudentsAction() {
     return await unitrackRepo.deleteInstructor(id);
   }
   
-  // ---------------------- MAJOR ----------------------
+  // Major
   export async function getAllMajorsAction() {
     return await unitrackRepo.getAllMajors();
   }
@@ -132,7 +132,7 @@ export async function getAllStudentsAction() {
     return await unitrackRepo.deleteMajor(id);
   }
   
-  // ---------------------- CLASS ----------------------
+  // Class
   export async function getAllClassesAction() {
     return await unitrackRepo.getAllClasses();
   }
@@ -153,7 +153,7 @@ export async function getAllStudentsAction() {
     return await unitrackRepo.deleteClass(id);
   }
   
-  // ---------------------- CLASS ENROLLMENT ----------------------
+  // Class Enrollment
   export async function getAllClassEnrollmentsAction() {
     return await unitrackRepo.getAllClassEnrollments();
   }
@@ -174,7 +174,7 @@ export async function getAllStudentsAction() {
     return await unitrackRepo.deleteClassEnrollment(id);
   }
   
-  // ---------------------- EXPERTISE ----------------------
+  // Expertise
   export async function getAllExpertiseAction() {
     return await unitrackRepo.getAllExpertise();
   }
@@ -195,7 +195,7 @@ export async function getAllStudentsAction() {
     return await unitrackRepo.deleteExpertise(id);
   }
   
-  // ---------------------- SCHEDULE ----------------------
+  // Schedule
   export async function getAllSchedulesAction() {
     return await unitrackRepo.getAllSchedules();
   }
@@ -214,4 +214,109 @@ export async function getAllStudentsAction() {
   
   export async function deleteScheduleAction(id) {
     return await unitrackRepo.deleteSchedule(id);
+  }
+
+  // Admin 
+export async function getAllAdminsAction() {
+    return await unitrackRepo.getAllAdmins();
+  }
+  
+  export async function getAdminByIdAction(adminId) {
+    return await unitrackRepo.getAdminById(adminId);
+  }
+  
+  export async function createAdminAction(data) {
+    return await unitrackRepo.createAdmin(data);
+  }
+  
+  export async function updateAdminAction(adminId, data) {
+    return await unitrackRepo.updateAdmin(adminId, data);
+  }
+  
+  export async function deleteAdminAction(adminId) {
+    return await unitrackRepo.deleteAdmin(adminId);
+  }
+  
+  // User 
+  export async function getAllUsersAction() {
+    return await unitrackRepo.getAllUsers();
+  }
+  
+  export async function getUserByIdAction(email) {
+    return await unitrackRepo.getUserById(email);
+  }
+  
+  export async function createUserAction(data) {
+    return await unitrackRepo.createUser(data);
+  }
+  
+  export async function updateUserAction(email, data) {
+    return await unitrackRepo.updateUser(email, data);
+  }
+  
+  export async function deleteUserAction(email) {
+    return await unitrackRepo.deleteUser(email);
+  }
+  
+  // CourseCurrentClasses 
+  export async function getAllCourseCurrentClassesAction() {
+    return await unitrackRepo.getAllCourseCurrentClasses();
+  }
+  
+  export async function getCourseCurrentClassByIdAction(id) {
+    return await unitrackRepo.getCourseCurrentClassById(id);
+  }
+  
+  export async function createCourseCurrentClassAction(data) {
+    return await unitrackRepo.createCourseCurrentClass(data);
+  }
+  
+  export async function updateCourseCurrentClassAction(id, data) {
+    return await unitrackRepo.updateCourseCurrentClass(id, data);
+  }
+  
+  export async function deleteCourseCurrentClassAction(id) {
+    return await unitrackRepo.deleteCourseCurrentClass(id);
+  }
+  
+  // CourseMajorOfferings 
+  export async function getAllCourseMajorOfferingsAction() {
+    return await unitrackRepo.getAllCourseMajorOfferings();
+  }
+  
+  export async function getCourseMajorOfferingByIdAction(id) {
+    return await unitrackRepo.getCourseMajorOfferingById(id);
+  }
+  
+  export async function createCourseMajorOfferingAction(data) {
+    return await unitrackRepo.createCourseMajorOffering(data);
+  }
+  
+  export async function updateCourseMajorOfferingAction(id, data) {
+    return await unitrackRepo.updateCourseMajorOffering(id, data);
+  }
+  
+  export async function deleteCourseMajorOfferingAction(id) {
+    return await unitrackRepo.deleteCourseMajorOffering(id);
+  }
+  
+  // Prerequisite
+  export async function getAllPrerequisitesAction() {
+    return await unitrackRepo.getAllPrerequisites();
+  }
+  
+  export async function getPrerequisiteByIdAction(id) {
+    return await unitrackRepo.getPrerequisiteById(id);
+  }
+  
+  export async function createPrerequisiteAction(data) {
+    return await unitrackRepo.createPrerequisite(data);
+  }
+  
+  export async function updatePrerequisiteAction(id, data) {
+    return await unitrackRepo.updatePrerequisite(id, data);
+  }
+  
+  export async function deletePrerequisiteAction(id) {
+    return await unitrackRepo.deletePrerequisite(id);
   }
