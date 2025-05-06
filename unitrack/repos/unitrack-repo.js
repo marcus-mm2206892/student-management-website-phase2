@@ -129,11 +129,15 @@ class UniTrackRepo {
 
   // Instructor
   async getAllInstructors() {
-    return await prisma.instructor.findMany();
+    return await prisma.instructor.findMany({include: {teachingClasses: true, gradedClasses: true}});
   }
 
   async getInstructorById(id) {
-    return await prisma.instructor.findUnique({ where: { instructorId: id } });
+    return await prisma.instructor.findUnique({ where: { instructorId: id, include: {teachingClasses: true, gradedClasses: true} } });
+  }
+
+  async getInstructorByEmail(email) {
+    return await prisma.instructor.findUnique({ where: {email: email}, include: {teachingClasses: true, gradedClasses: true}});
   }
 
   async createInstructor(data) {

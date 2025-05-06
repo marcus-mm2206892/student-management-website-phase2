@@ -98,6 +98,10 @@ export async function getAllStudentsAction() {
   export async function getInstructorByIdAction(id) {
     return await unitrackRepo.getInstructorById(id);
   }
+
+  export async function getInstructorByEmailAction(email) {
+    return await unitrackRepo.getInstructorByEmail(email);
+  }
   
   export async function createInstructorAction(data) {
     return await unitrackRepo.createInstructor(data);
@@ -242,7 +246,7 @@ export async function getAllAdminsAction() {
     return await unitrackRepo.getAllUsers();
   }
   
-  export async function getUserByIdAction(email) {
+  export async function getUserByEmailAction(email) {
     return await unitrackRepo.getUserById(email);
   }
   

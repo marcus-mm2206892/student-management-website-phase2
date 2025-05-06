@@ -1,22 +1,46 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import styles from "@/app/styles/instructor-home-page.module.css";
 import cardStyles from "@/app/styles/course-card-profile.module.css";
 import EmptyContent from "@/app/components/EmptyContent";
 import ClassModal from "@/app/components/ClassModal";
+import { useSearchParams } from "next/navigation";
+import { getInstructorByEmailAction } from "@/app/action/server-actions";
 
 export default function InstructorHomePage() {
   const [isModalVisible, setIsModalVisible] = useState(false);
+  const [instructor, setInstructor] = useState(null);
+  const [user, setUser] = useState(null);
+  const searchParams = useSearchParams();
 
-  const [user] = useState({
-    name: "Dr. Marcus Monteiro",
-    email: "marcus.monteiro@qu.edu.qa",
-    department: "Computer Science",
-    college: "College of Engineering",
-    avatar: "/assets/imgs/user-profile-images/male1.png",
-  });
+  const email = searchParams.get('email');
+  useEffect(() => {
+    async function fetchInstructor() {
+      if (email) {
+        const result = await getInstructorByEmailAction(email);
+        setInstructor(result);
+      }
+    }
+
+    fetchInstructor();
+  }, [email]);
+
+  console.log(instructor)
+
+  useEffect(() => {
+    if (instructor) {
+      setUser({
+        firstName: searchParams.get('firstName'),
+        lastName: searchParams.get('lastName'),
+        email: email,
+        department: instructor.department,
+        college: instructor.college,
+        avatar: "/assets/imgs/user-profile-images/male1.png",
+      });
+    }
+  }, [instructor, searchParams, email]);
 
   const [courses] = useState([
     {
@@ -99,11 +123,13 @@ export default function InstructorHomePage() {
   const classesTaughtText = classCount === 1 ? "class" : "classes";
   const coursesTaughtText = courses.length === 1 ? "course" : "courses";
 
+  if (!user || !instructor) return <p>Loading</p>
+
   return (
     <>
       <main className={styles["instructor-profile"]}>
         <div className={styles["greetings"]}>
-          <h1>Welcome back, {user.name.split(" ")[0]} 👋</h1>
+          <h1>Welcome back, Dr. {user.firstName} {user.lastName} 👋</h1>
           <p>Here’s your teaching overview for this semester.</p>
         </div>
 

@@ -6,6 +6,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import styles from "../app/styles/login-page.module.css";
 import ThemeResponsiveLogo from "./components/ThemeResponsiveLogo";
+import { getUserByEmailAction } from "./action/server-actions";
 
 export default function LoginPage() {
   const router = useRouter();
@@ -16,33 +17,25 @@ export default function LoginPage() {
     localStorage.removeItem("user");
   }, []);
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
-
-    let role = "";
-    let name = "";
-
-    if (username === "admin@qu.com") {
-      role = "admin";
-      name = "Admin";
-    } else if (username === "instructor@qu.com") {
-      role = "instructor";
-      name = "Dr. Instructor";
-    } else if (username === "student@qu.com") {
-      role = "student";
-      name = "Student";
-    } else {
-      alert("Invalid credentials");
-      return;
+  
+    try {
+      const user = await getUserByEmailAction(username);
+  
+      if (!user || user.password !== password) {
+        alert("Invalid credentials");
+        return;
+      }
+  
+      localStorage.setItem("user", JSON.stringify(user));
+  
+      router.push(`/${user.role}/home?firstName=${encodeURIComponent(user.firstName)}&lastName=${encodeURIComponent(user.lastName)}&email=${encodeURIComponent(user.email)}&role=${user.role}`);
+    } catch (error) {
+      console.error("Login error:", error);
+      alert("Error logging in. Please try again.");
     }
-
-    // Store in localStorage
-    const user = { name, email: username, role };
-    localStorage.setItem("user", JSON.stringify(user));
-
-    router.push(`/${role}/home?name=${encodeURIComponent(name)}&email=${encodeURIComponent(username)}&role=${role}`);
-
-  };
+  }
 
 
   return (
