@@ -8,7 +8,7 @@ import ClassModal from "@/app/components/ClassModal";
 import EmptyContent from "@/app/components/EmptyContent";
 import NoneSelected from "@/app/components/NoneSelected";
 import { useSearchParams } from "next/navigation";
-import { getInstructorByEmailAction, getClassByIdAction, getCourseByIdAction, getAllStudentsAction } from "@/app/action/server-actions";
+import { getInstructorByEmailAction, getClassByIdAction, getCourseByIdAction, getAllStudentsAction, getUserByEmailAction, getUsersByRoleAction } from "@/app/action/server-actions";
 
 
 export default function Grades() {
@@ -24,6 +24,7 @@ export default function Grades() {
   const [openDropdownId, setOpenDropdownId] = useState(null);
   const [grades, setGrades] = useState([]);
   const [students, setStudents] = useState([]);
+  const [users, setUsers] = useState([]);
 
   const email = searchParams.get('email');
     useEffect(() => {
@@ -159,8 +160,26 @@ export default function Grades() {
   }, [classes])
 
   useEffect(() => {
+    async function fetchUsers() {
+      const userStudents = await getUsersByRoleAction("student")
+      return userStudents
+    }
+
+    async function loadUsers() {
+      const userStudents = await fetchUsers(); 
+      setUsers(userStudents);               
+    }
+  
+    loadUsers();
+  }, [classes])
+
+  useEffect(() => {
     console.log("Updated students:", students);
   }, [students]);
+
+  useEffect(() => {
+    console.log("Updated users:", users);
+  }, [users]);
 
   const openInstructorClasses = classes.filter(
     (ic) => ic.classStatus === "open" || ic.classStatus === "completed"
@@ -182,10 +201,22 @@ export default function Grades() {
     .sort((a, b) => (a.classStatus === "open" ? -1 : 1));
 
   const handleClassClick = (cls) => {
+    if (!students.length || !users.length) {
+      console.log("Loading...")
+      return;
+    }
     const matchedClass = classes.find((c) => c.classId === cls.classId);
+
+    students.forEach(s => {
+      console.log("Checking student:", s.email, s.semesterEnrollment);
+    });
+
     const matchedStudents = students.filter((s) =>
-      s.semesterEnrollment?.classes?.some((cl) => cl.classId === matchedClass.classId)
+      s.semesterEnrollment.some((enrollment) =>
+        enrollment.classes.some((cl) => cl.classId === matchedClass.classId)
+      )
     );
+
     const gradeList = matchedStudents.map((student) => {
       const profile = users.find((u) => u.email === student.email);
       return {

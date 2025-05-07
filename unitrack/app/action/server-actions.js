@@ -258,6 +258,10 @@ export async function getUserByEmailAction(email) {
   return await unitrackRepo.getUserById(email);
 }
 
+export async function getUsersByRoleAction(role) {
+  return await unitrackRepo.getUsersByRole(role);
+}
+
 export async function createUserAction(data) {
   return await unitrackRepo.createUser(data);
 }

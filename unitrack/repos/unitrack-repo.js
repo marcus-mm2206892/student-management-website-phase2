@@ -37,9 +37,13 @@ class UniTrackRepo {
     return await prisma.user.delete({ where: { email } });
   }
 
+  async getUsersByRole(role) {
+    return await prisma.user.findMany({where: {role: role}})
+  }
+
   // Student
   async getAllStudents() {
-    return await prisma.student.findMany();
+    return await prisma.student.findMany({include: {semesterEnrollment: {include: { classes: true}}}});
   }
 
   async getStudentById(id) {
