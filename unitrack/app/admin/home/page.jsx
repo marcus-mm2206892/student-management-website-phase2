@@ -6,25 +6,38 @@ import styles from "@/app/styles/admin-home-page.module.css";
 import cardStyles from "@/app/styles/course-card-profile.module.css";
 import ClassModal from "@/app/components/ClassModal";
 import EmptyContent from "@/app/components/EmptyContent";
-import { getPendingApprovalClassesAction } from "@/app/action/server-actions";
+
+import {
+  getAllClassesAction,
+  getApprovedClassesAction,
+  getPendingClassesAction,
+  getRejectedClassesAction,
+  getAllStudentsAction,
+  getAllInstructorsAction,
+  getAllMajorsAction,
+  getPendingApprovalClassesAction,
+} from "@/app/action/server-actions";
 
 export default function AdminHome() {
+  const [allClasses, setAllClasses] = useState([]);
+  const [approvedClasses, setApprovedClasses] = useState([]);
   const [pendingClasses, setPendingClasses] = useState([]);
+  const [rejectedClasses, setRejectedClasses] = useState([]);
+  const [eligiblePendingClasses, setEligiblePendingClasses] = useState([]);
+  const [students, setStudents] = useState([]);
+  const [instructors, setInstructors] = useState([]);
+  const [majors, setMajors] = useState([]);
+
   const [selectedClass, setSelectedClass] = useState(null);
   const [showClassModal, setShowClassModal] = useState(false);
   const [user, setUser] = useState({
     firstName: "Admin",
     lastName: "",
     email: "admin@qu.com",
-    profileImage: "/assets/imgs/user-profileImages/male1.png",
+    profileImage: "/assets/imgs/user-profile-images/male1.png",
   });
 
   useEffect(() => {
-    const fetchData = async () => {
-      const response = await getPendingApprovalClassesAction();
-      if (Array.isArray(response)) setPendingClasses(response);
-    };
-
     const stored = localStorage.getItem("user");
     if (stored) {
       try {
@@ -40,7 +53,40 @@ export default function AdminHome() {
       }
     }
 
-    fetchData();
+    const fetchStats = async () => {
+      const [
+        all,
+        approved,
+        pending,
+        rejected,
+        studentList,
+        instructorList,
+        majorList,
+        approvalCandidates,
+      ] = await Promise.all([
+        getAllClassesAction(),
+        getApprovedClassesAction(),
+        getPendingClassesAction(),
+        getRejectedClassesAction(),
+        getAllStudentsAction(),
+        getAllInstructorsAction(),
+        getAllMajorsAction(),
+        getPendingApprovalClassesAction(),
+      ]);
+
+      setAllClasses(all || []);
+      setApprovedClasses(approved || []);
+      setPendingClasses(pending || []);
+      setRejectedClasses(rejected || []);
+      setStudents(studentList || []);
+      setInstructors(instructorList || []);
+      setMajors(majorList || []);
+      setEligiblePendingClasses(
+        (approvalCandidates || []).filter((cls) => cls.enrollmentActual >= 5)
+      );
+    };
+
+    fetchStats();
   }, []);
 
   const openClassModal = (cls) => {
@@ -48,13 +94,8 @@ export default function AdminHome() {
     setShowClassModal(true);
   };
 
-  const approvedClasses = pendingClasses.filter(c => c.classStatus === "approved");
-  const closedClasses = pendingClasses.filter(c => c.classStatus === "rejected");
-  const totalClasses = pendingClasses.length;
-  const students = new Array(432).fill({});
-  const instructors = new Array(25).fill({});
-  const majors = ["CMPS", "CMPE"];
-  const majorsText = "Computer Science and Computer Engineering";
+  const majorsText = majors.map((m) => m.majorName).join(" and ");
+  const totalClasses = allClasses.length;
 
   return (
     <main className={styles["admin-profile"]}>
@@ -66,12 +107,11 @@ export default function AdminHome() {
 
       {/* LEFT PANEL */}
       <section className={styles["admin-profile-left"]}>
-
         {/* Approval Notice Card */}
         <div className={styles["credit-hours-card"]}>
           <div className={styles["credit-hours-text"]}>
             <h2>
-              You have <strong>{pendingClasses.length} courses</strong> awaiting approval.
+              You have <strong>{eligiblePendingClasses.length} courses</strong> awaiting approval.
             </h2>
           </div>
           <div className={styles["credit-hours-image"]}>
@@ -99,10 +139,10 @@ export default function AdminHome() {
           </div>
 
           <div className={styles["course-grid"]}>
-            {pendingClasses.length === 0 ? (
+            {eligiblePendingClasses.length === 0 ? (
               <EmptyContent />
             ) : (
-              pendingClasses.slice(0, 10).map((cls, index) => {
+              eligiblePendingClasses.slice(0, 10).map((cls, index) => {
                 const creditHoursText = "credit hour" + (cls.creditHours === 1 ? "" : "s");
                 return (
                   <div
@@ -122,7 +162,6 @@ export default function AdminHome() {
                       </div>
                       <i className={`fa-solid fa-turn-up ${cardStyles["top-right-icon"]}`}></i>
                     </div>
-
                     <div className={cardStyles["course-info"]}>
                       <div className={cardStyles["course-header"]}>
                         <div className={cardStyles["card-tags-div"]}>
@@ -135,8 +174,7 @@ export default function AdminHome() {
                       <p className={cardStyles["course-subtitle"]}>{cls.description}</p>
                       <div className={cardStyles["course-tags"]}>
                         <span className={cardStyles["tag"]}>
-                          <i className="fa-solid fa-hourglass-half"></i>{" "}
-                          {cls.creditHours} {creditHoursText}
+                          <i className="fa-solid fa-hourglass-half"></i> {cls.creditHours} {creditHoursText}
                         </span>
                         {cls.majors?.map((major, i) => (
                           <span className={cardStyles["tag"]} key={i}>
@@ -151,15 +189,11 @@ export default function AdminHome() {
               })
             )}
           </div>
-
         </div>
-
-       
       </section>
 
       {/* RIGHT PANEL */}
       <section className={styles["admin-profile-right"]}>
-        {/* About Me Section */}
         <section className={styles["about-me-div"]}>
           <h3>About Me</h3>
           <div className={styles["about-me-content"]}>
@@ -168,7 +202,6 @@ export default function AdminHome() {
               alt="User Avatar"
               className={styles["about-me-avatar"]}
             />
-
             <div className={styles["about-me-content-right"]}>
               <h2>{user.firstName} {user.lastName}</h2>
               <span>{user.email}</span>
@@ -177,56 +210,13 @@ export default function AdminHome() {
           </div>
         </section>
 
-        {/* University Info Section */}
         <section className={styles["university-info-div"]}>
           <h3>University Information</h3>
 
-          <div className={`${styles["info-card"]} ${styles["approved-classes-total"]}`}>
-            <h3 className={styles["content-info-attribute"]}>Number of Approved Classes</h3>
-            <div className={styles["info-text"]}>
-              <h2 className={styles["number-tag"]}>{approvedClasses.length} of {totalClasses}</h2>
-              <p><span>{Math.round((approvedClasses.length / totalClasses) * 100)}%</span> of all courses are approved</p>
-            </div>
-          </div>
-
-          <div className={`${styles["info-card"]} ${styles["pending-classes-total"]}`}>
-            <h3 className={styles["content-info-attribute"]}>Number of Eligible Classes</h3>
-            <div className={styles["info-text"]}>
-              <h2 className={styles["number-tag"]}>
-                {pendingClasses.length} of {totalClasses}
-              </h2>
-              <p>
-                <span>
-                  {Math.round((pendingClasses.length / totalClasses) * 100)}%
-                </span>{" "}
-                of all courses are ready to be approved
-              </p>
-
-            </div>
-          </div>
-
-          <div className={`${styles["info-card"]} ${styles["pending-classes-total"]}`}>
-            <h3 className={styles["content-info-attribute"]}>Number of Pending Classes</h3>
-            <div className={styles["info-text"]}>
-              <h2 className={styles["number-tag"]}>
-              {pendingClasses.length} of {totalClasses}
-              </h2>
-              <p>
-                <span>
-                  {Math.round((pendingClasses.length / totalClasses) * 100)}%
-                </span>{" "}
-                of all courses are pending
-              </p>
-            </div>
-          </div>
-
-          <div className={`${styles["info-card"]} ${styles["rejected-classes-total"]}`}>
-            <h3 className={styles["content-info-attribute"]}>Number of Rejected Classes</h3>
-            <div className={styles["info-text"]}>
-              <h2 className={styles["number-tag"]}>{closedClasses.length} of {totalClasses}</h2>
-              <p><span>{Math.round((closedClasses.length / totalClasses) * 100)}%</span> of all courses are rejected</p>
-            </div>
-          </div>
+          <InfoCard label="Number of Approved Classes" value={approvedClasses.length} total={totalClasses} />
+          <InfoCard label="Number of Eligible Classes" value={eligiblePendingClasses.length} total={totalClasses} />
+          <InfoCard label="Number of Pending Classes" value={pendingClasses.length} total={totalClasses} />
+          <InfoCard label="Number of Rejected Classes" value={rejectedClasses.length} total={totalClasses} />
 
           <div className={`${styles["info-card"]} ${styles["students-total"]}`}>
             <h3 className={styles["content-info-attribute"]}>Total Students</h3>
@@ -255,9 +245,24 @@ export default function AdminHome() {
       </section>
 
       {showClassModal && (
-        <ClassModal isVisible={showClassModal} onClose={() => setShowClassModal(false)} />
+        <ClassModal
+          isVisible={showClassModal}
+          onClose={() => setShowClassModal(false)}
+        />
       )}
-
     </main>
+  );
+}
+
+function InfoCard({ label, value, total }) {
+  const percent = Math.round((value / total) * 100) || 0;
+  return (
+    <div className={styles["info-card"]}>
+      <h3 className={styles["content-info-attribute"]}>{label}</h3>
+      <div className={styles["info-text"]}>
+        <h2 className={styles["number-tag"]}>{value} of {total}</h2>
+        <p><span>{percent}%</span> of all courses are {label.toLowerCase().replace("number of ", "")}</p>
+      </div>
+    </div>
   );
 }

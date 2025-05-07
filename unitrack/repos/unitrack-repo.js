@@ -38,12 +38,17 @@ class UniTrackRepo {
   }
 
   async getUsersByRole(role) {
-    return await prisma.user.findMany({where: {role: role}})
+    return await prisma.user.findMany({ where: { role: role } });
   }
 
   // Student
   async getAllStudents() {
-    return await prisma.student.findMany({include: {semesterEnrollment: {include: { classes: true}}, completedCourses: true}});
+    return await prisma.student.findMany({
+      include: {
+        semesterEnrollment: { include: { classes: true } },
+        completedCourses: true,
+      },
+    });
   }
 
   async getStudentById(id) {
@@ -104,13 +109,13 @@ class UniTrackRepo {
         },
       },
     });
-  
+
     if (!student) return [];
     // Flatten and extract all courseIds from current semester classes
-    const courseIds = student.semesterEnrollment.flatMap(enrollment =>
-      enrollment.classes.map(cls => cls.courseId)
+    const courseIds = student.semesterEnrollment.flatMap((enrollment) =>
+      enrollment.classes.map((cls) => cls.courseId)
     );
-  
+
     return courseIds;
   }
 
@@ -125,12 +130,11 @@ class UniTrackRepo {
         },
       },
     });
-  
+
     if (!student) return [];
-  
-    const studentClasses = student.semesterEnrollment.flatMap(enrollment =>
-      enrollment.classes
-        .map(cls => cls.classId)
+
+    const studentClasses = student.semesterEnrollment.flatMap((enrollment) =>
+      enrollment.classes.map((cls) => cls.classId)
     );
 
     const pendingClasses = await prisma.class.findMany({
@@ -144,10 +148,10 @@ class UniTrackRepo {
         courseId: true,
       },
     });
-  
+
     // Extracting courseIds from the result
-    const courseIds = pendingClasses.map(cls => cls.courseId);
-  
+    const courseIds = pendingClasses.map((cls) => cls.courseId);
+
     return studentClasses;
   }
 
@@ -215,7 +219,8 @@ class UniTrackRepo {
 
   async getSemesterEnrollmentByStudentId(id) {
     return await prisma.semesterEnrollment.findUnique({
-      where: { studentId: id }, include: {classes : true, student: true},
+      where: { studentId: id },
+      include: { classes: true, student: true },
     });
   }
 
@@ -305,6 +310,18 @@ class UniTrackRepo {
       where: { classId: id },
       include: { schedule: true, instructors: true },
     });
+  }
+
+  async getApprovedClasses() {
+    return await prisma.class.findMany({ where: { classStatus: "open" } });
+  }
+
+  async getPendingClasses() {
+    return await prisma.class.findMany({ where: { classStatus: "pending" } });
+  }
+
+  async getRejectedClasses() {
+    return await prisma.class.findMany({ where: { classStatus: "rejected" } });
   }
 
   async createClass(data) {
@@ -424,10 +441,10 @@ class UniTrackRepo {
     const results = await prisma.courseMajorOfferings.findMany({
       where: { majorId },
       select: {
-        courseId: true
-      }
-    })
-    return results.map(r => r.courseId);
+        courseId: true,
+      },
+    });
+    return results.map((r) => r.courseId);
   }
 
   async getCourseMajorOfferingById(id) {

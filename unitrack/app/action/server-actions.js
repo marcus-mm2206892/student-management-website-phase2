@@ -38,7 +38,7 @@ export async function getCourseByIdAction(id) {
 
 export async function getCurrentCoursesByStudentIdAction(studentId) {
   return await unitrackRepo.getCurrentCoursesByStudentId(studentId);
-} 
+}
 
 export async function getPendingCourseIdsByStudentIdAction(studentId) {
   return await unitrackRepo.getPendingCourseIdsByStudentId(studentId);
@@ -155,6 +155,18 @@ export async function deleteMajorAction(id) {
 // Class
 export async function getAllClassesAction() {
   return await unitrackRepo.getAllClasses();
+}
+
+export async function getApprovedClassesAction() {
+  return await unitrackRepo.getApprovedClasses();
+}
+
+export async function getPendingClassesAction() {
+  return await unitrackRepo.getPendingClasses();
+}
+
+export async function getRejectedClassesAction() {
+  return await unitrackRepo.getRejectedClasses();
 }
 
 export async function getClassByIdAction(id) {
