@@ -125,7 +125,7 @@ class UniTrackRepo {
   
     if (!student) return [];
   
-    const pendingClassIds = student.semesterEnrollment.flatMap(enrollment =>
+    const studentClasses = student.semesterEnrollment.flatMap(enrollment =>
       enrollment.classes
         .map(cls => cls.classId)
     );
@@ -133,8 +133,9 @@ class UniTrackRepo {
     const pendingClasses = await prisma.class.findMany({
       where: {
         classId: {
-          in: pendingClassIds,
+          in: studentClasses,
         },
+        classStatus: "pending",
       },
       select: {
         courseId: true,
@@ -144,7 +145,7 @@ class UniTrackRepo {
     // Extracting courseIds from the result
     const courseIds = pendingClasses.map(cls => cls.courseId);
   
-    return courseIds;
+    return studentClasses;
   }
 
   async createCourse(data) {
