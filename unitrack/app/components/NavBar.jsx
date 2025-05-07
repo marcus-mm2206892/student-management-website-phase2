@@ -144,9 +144,9 @@ export default function NavBar({ user }) {
     if (role === "instructor") {
       return (
         <>
-          <li><span className="hover-circle"></span><Link href="/instructor/home">Dashboard</Link></li>
-          <li><span className="hover-circle"></span><Link href="/browse">Browse Courses</Link></li>
-          <li><span className="hover-circle"></span><Link href="/instructor/grades">View Grades</Link></li>
+          <li><span className="hover-circle"></span><Link href={`/instructor/home${queryString ? `?${queryString}` : ''}`}>Dashboard</Link></li>
+          <li><span className="hover-circle"></span><Link href={`/browse${queryString ? `?${queryString}` : ''}`}>Browse Courses</Link></li>
+          <li><span className="hover-circle"></span><Link href={`/instructor/grades${queryString ? `?${queryString}` : ''}`}>View Grades</Link></li>
         </>
       );
     }
@@ -194,7 +194,7 @@ export default function NavBar({ user }) {
             </div>
           </div>
           {role === "student" && <Link href="/student/learning-path"><button className={styles['learningpath-btn']}>Learning Path</button></Link>}
-          {role === "instructor" && <Link href="/instructor/grades"><button className={styles['viewgrades-btn']}>View Grades</button></Link>}
+          {role === "instructor" && <Link href={`/instructor/grades${queryString ? `?${queryString}` : ''}`}><button className={styles['viewgrades-btn']}>View Grades</button></Link>}
           {role === "admin" && <Link href="/admin/class-status"><button className={styles['classstatus-btn']}>Class Status</button></Link>}
         </div>
       </nav>

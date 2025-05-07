@@ -291,10 +291,10 @@ export default function Grades() {
         isOpen={showAlert}
         onClose={() => setShowAlert(false)}
       />
-      <ClassModal
+      {/* <ClassModal
         isVisible={showClassModal}
         onClose={() => setShowClassModal(false)}
-      />
+      /> */}
     </main>
   );
 }
