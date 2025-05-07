@@ -7,9 +7,15 @@ import AlertModal from "@/app/components/AlertModal";
 import ClassModal from "@/app/components/ClassModal";
 import EmptyContent from "@/app/components/EmptyContent";
 import NoneSelected from "@/app/components/NoneSelected";
+import { useSearchParams } from "next/navigation";
+import { getInstructorByEmailAction, getClassByIdAction, getCourseByIdAction, getAllStudentsAction } from "@/app/action/server-actions";
 
 
 export default function Grades() {
+  const searchParams = useSearchParams();
+  const [courses, setCourses] = useState([]);
+  const [classes, setClasses] = useState([]);
+  const [instructor, setInstructor] = useState(null);
   const [selectedClass, setSelectedClass] = useState(null);
   const [enrolledStudents, setEnrolledStudents] = useState([]);
   const [showAlert, setShowAlert] = useState(false);
@@ -17,68 +23,152 @@ export default function Grades() {
   const [alertContent, setAlertContent] = useState({ title: "", description: "" });
   const [openDropdownId, setOpenDropdownId] = useState(null);
   const [grades, setGrades] = useState([]);
+  const [students, setStudents] = useState([]);
 
-  const user = { email: "dr.instructor@qu.edu.qa" };
+  const email = searchParams.get('email');
+    useEffect(() => {
+      async function fetchInstructor() {
+        if (email) {
+          const result = await getInstructorByEmailAction(email);
+          setInstructor(result);
+        }
+      }
+  
+      fetchInstructor();
+    }, [email]);
 
-  const courses = [
-    { courseId: "CMPS303", courseName: "Data Structures" },
-    { courseId: "CMPS350", courseName: "Web Development" },
-    { courseId: "CMPE202", courseName: "Digital Systems" },
-  ];
+    useEffect(() => {
+      console.log("Updated instructor:", instructor);
+    }, [instructor]);
 
-  const classes = [
-    {
-      classId: "25501",
-      courseId: "CMPS303",
-      section: "L01",
-      campus: "Male",
-      instructors: ["dr.instructor@qu.edu.qa"],
-      enrollmentActual: 2,
-      classStatus: "open",
-    },
-    {
-      classId: "25502",
-      courseId: "CMPS350",
-      section: "L02",
-      campus: "Female",
-      instructors: ["dr.instructor@qu.edu.qa"],
-      enrollmentActual: 3,
-      classStatus: "completed",
-    },
-  ];
+    useEffect(() => {
+      async function fetchClasses() {
+        const newClasses = []
+        if (instructor) {
+          for (const tc of instructor.teachingClasses) {
+            const c = await getClassByIdAction(tc.classId);
+            newClasses.push(c);
+          }
+        }
+        return newClasses;
+      }
+    
+      async function loadClasses() {
+        const resolvedClasses = await fetchClasses(); 
+        setClasses(resolvedClasses);               
+      }
+    
+      loadClasses();
+    }, [instructor]);
+  
+    useEffect(() => {
+      console.log("Updated classes:", classes);
+    }, [classes]);
+  
+    useEffect(() => {
+  
+      async function fetchCourses() {
+        const newCourses = []
+        if (classes.length) {
+          for (const c of classes) {
+            const course = await getCourseByIdAction(c.courseId);
+            if (!newCourses.find(crs => crs.courseId === course.courseId))
+              newCourses.push(course);
+          }
+        }
+        return newCourses
+      }
+  
+      async function loadCourses() {
+        const resolvedCourses = await fetchCourses(); 
+        setCourses(resolvedCourses);               
+      }
+    
+      loadCourses();
+    }, [classes])
+  
+    useEffect(() => {
+      console.log("Updated courses:", courses);
+    }, [courses]);
+  
 
-  const users = [
-    { email: "layla.hassan@qu.com", firstName: "Layla", lastName: "Hassan" },
-    { email: "zayd.rahman@qu.com", firstName: "Zayd", lastName: "Rahman" },
-    { email: "nour.hakim@qu.com", firstName: "Nour", lastName: "Hakim" },
-  ];
+  // const courses = [
+  //   { courseId: "CMPS303", courseName: "Data Structures" },
+  //   { courseId: "CMPS350", courseName: "Web Development" },
+  //   { courseId: "CMPE202", courseName: "Digital Systems" },
+  // ];
 
-  const students = [
-    {
-      studentId: "S001",
-      email: "layla.hassan@qu.com",
-      semesterEnrollment: {
-        classes: [{ classId: "25501", courseId: "CMPS303" }],
-      },
-      completedCourses: [],
-    },
-    {
-      studentId: "S002",
-      email: "zayd.rahman@qu.com",
-      semesterEnrollment: {
-        classes: [{ classId: "25501", courseId: "CMPS303" }],
-      },
-      completedCourses: [],
-    },
-  ];
+  // const classes = [
+  //   {
+  //     classId: "25501",
+  //     courseId: "CMPS303",
+  //     section: "L01",
+  //     campus: "Male",
+  //     instructors: ["dr.instructor@qu.edu.qa"],
+  //     enrollmentActual: 2,
+  //     classStatus: "open",
+  //   },
+  //   {
+  //     classId: "25502",
+  //     courseId: "CMPS350",
+  //     section: "L02",
+  //     campus: "Female",
+  //     instructors: ["dr.instructor@qu.edu.qa"],
+  //     enrollmentActual: 3,
+  //     classStatus: "completed",
+  //   },
+  // ];
 
-  const instructorClasses = classes.filter((c) =>
-    c.instructors.includes(user.email)
-  );
+  // const users = [
+  //   { email: "layla.hassan@qu.com", firstName: "Layla", lastName: "Hassan" },
+  //   { email: "zayd.rahman@qu.com", firstName: "Zayd", lastName: "Rahman" },
+  //   { email: "nour.hakim@qu.com", firstName: "Nour", lastName: "Hakim" },
+  // ];
 
-  const openInstructorClasses = instructorClasses.filter(
+  // const students = [
+  //   {
+  //     studentId: "S001",
+  //     email: "layla.hassan@qu.com",
+  //     semesterEnrollment: {
+  //       classes: [{ classId: "25501", courseId: "CMPS303" }],
+  //     },
+  //     completedCourses: [],
+  //   },
+  //   {
+  //     studentId: "S002",
+  //     email: "zayd.rahman@qu.com",
+  //     semesterEnrollment: {
+  //       classes: [{ classId: "25501", courseId: "CMPS303" }],
+  //     },
+  //     completedCourses: [],
+  //   },
+  // ];
+
+  useEffect(() => {
+    async function fetchStudents() {
+      const allStudents = await getAllStudentsAction()
+      return allStudents
+    }
+
+    async function loadStudents() {
+      const allStudents = await fetchStudents(); 
+      setStudents(allStudents);               
+    }
+  
+    loadStudents();
+  }, [classes])
+
+  useEffect(() => {
+    console.log("Updated students:", students);
+  }, [students]);
+
+  const openInstructorClasses = classes.filter(
     (ic) => ic.classStatus === "open" || ic.classStatus === "completed"
   );
+
+  useEffect(() => {
+    console.log("Updated open intrusctor classes:", openInstructorClasses);
+  }, [openInstructorClasses]);
 
   const instructorClassesWithName = openInstructorClasses
     .map((c) => {

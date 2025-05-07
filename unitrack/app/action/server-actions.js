@@ -83,7 +83,7 @@ export async function getAllSemesterEnrollmentsAction() {
 }
 
 export async function getSemesterEnrollmentByIdAction(id) {
-  return await unitrackRepo.getSemesterEnrollmentById(id);
+  return await unitrackRepo.getSemesterEnrollmentByStudentId(id);
 }
 
 export async function createSemesterEnrollmentAction(data) {

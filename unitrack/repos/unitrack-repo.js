@@ -148,9 +148,9 @@ class UniTrackRepo {
     return await prisma.semesterEnrollment.findMany();
   }
 
-  async getSemesterEnrollmentById(id) {
+  async getSemesterEnrollmentByStudentId(id) {
     return await prisma.semesterEnrollment.findUnique({
-      where: { id: Number(id) },
+      where: { studentId: id }, include: {classes : true, student: true},
     });
   }
 
@@ -160,7 +160,7 @@ class UniTrackRepo {
 
   async updateSemesterEnrollment(id, data) {
     return await prisma.semesterEnrollment.update({
-      where: { id: Number(id) },
+      where: { studentId: id },
       data,
     });
   }
