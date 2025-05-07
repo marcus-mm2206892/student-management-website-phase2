@@ -29,8 +29,10 @@ export default function LoginPage() {
       }
   
       localStorage.setItem("user", JSON.stringify(user));
-  
-      router.push(`/${user.role}/home?firstName=${encodeURIComponent(user.firstName)}&lastName=${encodeURIComponent(user.lastName)}&email=${encodeURIComponent(user.email)}&role=${user.role}`);
+      console.log(user);
+      router.push(
+        `/${user.role}/home?firstName=${encodeURIComponent(user.firstName)}&lastName=${encodeURIComponent(user.lastName)}&email=${encodeURIComponent(user.email)}&role=${user.role}&profileImage=${encodeURIComponent(user.profileImage)}`
+      );
     } catch (error) {
       console.error("Login error:", error);
       alert("Error logging in. Please try again.");

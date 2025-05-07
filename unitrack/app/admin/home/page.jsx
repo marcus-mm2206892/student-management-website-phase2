@@ -6,92 +6,61 @@ import styles from "@/app/styles/admin-home-page.module.css";
 import cardStyles from "@/app/styles/course-card-profile.module.css";
 import ClassModal from "@/app/components/ClassModal";
 import EmptyContent from "@/app/components/EmptyContent";
-
+import { getPendingApprovalClassesAction } from "@/app/action/server-actions";
 
 export default function AdminHome() {
+  const [pendingClasses, setPendingClasses] = useState([]);
   const [selectedClass, setSelectedClass] = useState(null);
   const [showClassModal, setShowClassModal] = useState(false);
+  const [user, setUser] = useState({
+    firstName: "Admin",
+    lastName: "",
+    email: "admin@qu.com",
+    profileImage: "/assets/imgs/user-profileImages/male1.png",
+  });
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await getPendingApprovalClassesAction();
+      if (Array.isArray(response)) setPendingClasses(response);
+    };
+
+    const stored = localStorage.getItem("user");
+    if (stored) {
+      try {
+        const parsed = JSON.parse(stored);
+        setUser({
+          firstName: parsed.firstName || "Admin",
+          lastName: parsed.lastName || "",
+          email: parsed.email || "admin@qu.com",
+          profileImage: parsed.profileImage || "/assets/imgs/user-profile-images/male1.png",
+        });
+      } catch (err) {
+        console.error("Error parsing user from localStorage:", err);
+      }
+    }
+
+    fetchData();
+  }, []);
 
   const openClassModal = (cls) => {
     setSelectedClass(cls);
     setShowClassModal(true);
   };
 
-  const [user, setUser] = useState({
-    firstName: "Marcus",
-    lastName: "Monteiro",
-    email: "marcus@qu.edu.qa",
-    department: "Computer Science",
-    college: "College of Engineering",
-    avatar: "/assets/imgs/user-profile-images/male1.png",
-  });
-  
-  const pendingCourses = [
-    {
-      classId: "25501",
-      courseId: "CMPS303",
-      courseName: "Data Structures",
-      section: "L01",
-      semester: "Spring 2025",
-      creditHours: 3,
-      majors: ["CMPS"],
-      description:
-        "Explore foundational data structures including arrays, stacks, queues, linked lists, trees, and graphs, and understand how to implement them efficiently.",
-      courseImage: "/assets/imgs/course-placeholder.png",
-    },
-    {
-      classId: "25502",
-      courseId: "CMPS350",
-      courseName: "Web Development",
-      section: "L02",
-      semester: "Fall 2024",
-      creditHours: 4,
-      majors: ["CMPE"],
-      description:
-        "Learn the principles of front-end and back-end web development including HTML, CSS, JavaScript, APIs, and modern frameworks.",
-      courseImage: "/assets/imgs/course-placeholder.png",
-    },
-    {
-      classId: "25503",
-      courseId: "CMPS405",
-      courseName: "Operating Systems",
-      section: "L01",
-      semester: "Spring 2025",
-      creditHours: 3,
-      majors: ["CMPS", "CMPE"],
-      description:
-        "Introduction to OS concepts: processes, threads, scheduling, memory management, file systems, and concurrency.",
-      courseImage: "/assets/imgs/course-placeholder.png",
-    },
-    {
-      classId: "25504",
-      courseId: "CMPS497",
-      courseName: "Advanced Topics in Computing",
-      section: "L51",
-      semester: "Spring 2025",
-      creditHours: 3,
-      majors: ["CMPS"],
-      description:
-        "Dive into current research and emerging topics in AI, cybersecurity, quantum computing, or human-computer interaction.",
-      courseImage: "/assets/imgs/course-placeholder.png",
-    },
-  ];
-
-  const approvedClasses = pendingCourses.slice(0, 1);
-  const closedClasses = pendingCourses.slice(0, 1);
-  const classes = pendingCourses.map(c => ({ ...c, classStatus: "pending" }));
-  const totalClasses = pendingCourses.length;
+  const approvedClasses = pendingClasses.filter(c => c.classStatus === "approved");
+  const closedClasses = pendingClasses.filter(c => c.classStatus === "rejected");
+  const totalClasses = pendingClasses.length;
   const students = new Array(432).fill({});
   const instructors = new Array(25).fill({});
   const majors = ["CMPS", "CMPE"];
   const majorsText = "Computer Science and Computer Engineering";
-  
 
   return (
     <main className={styles["admin-profile"]}>
       {/* GREETINGS */}
       <section className={styles["greetings"]}>
-        <h2>Welcome back, Admin!</h2>
+        <h2>Welcome back, {user.firstName}!</h2>
         <p>Manage courses and view university stats from your dashboard.</p>
       </section>
 
@@ -102,7 +71,7 @@ export default function AdminHome() {
         <div className={styles["credit-hours-card"]}>
           <div className={styles["credit-hours-text"]}>
             <h2>
-              You have <strong>{pendingCourses.length} courses</strong> awaiting approval.
+              You have <strong>{pendingClasses.length} courses</strong> awaiting approval.
             </h2>
           </div>
           <div className={styles["credit-hours-image"]}>
@@ -130,37 +99,21 @@ export default function AdminHome() {
           </div>
 
           <div className={styles["course-grid"]}>
-            {pendingCourses.slice(0, 10).length === 0 ? (
-                <EmptyContent />
-              ) : (
-              pendingCourses.slice(0, 10).map((cls, index) => {
+            {pendingClasses.length === 0 ? (
+              <EmptyContent />
+            ) : (
+              pendingClasses.slice(0, 10).map((cls, index) => {
                 const creditHoursText = "credit hour" + (cls.creditHours === 1 ? "" : "s");
-                const tags = (
-                  <>
-                    <span className={cardStyles["tag"]}>
-                      <i className="fa-solid fa-hourglass-half"></i>{" "}
-                      {cls.creditHours} {creditHoursText}
-                    </span>
-                    {cls.majors?.map((major, i) => (
-                      <span className={cardStyles["tag"]} key={i}>
-                        <i className={`fa-solid ${major === "CMPE" ? "fa-microchip" : "fa-laptop-code"}`}></i>{" "}
-                        {major === "CMPS" ? "CS" : "CE"}
-                      </span>
-                    ))}
-                  </>
-                );
-
                 return (
                   <div
                     className={cardStyles["course-card"]}
                     key={index}
                     onClick={() => openClassModal(cls)}
                   >
-                    
                     <div className={cardStyles["course-image"]}>
                       <img
                         src={cls.courseImage}
-                        alt="Course Image"
+                        alt="Course"
                         style={{ width: "100%", height: "100%", objectFit: "cover" }}
                       />
                       <div className={cardStyles["hover-icon"]}>
@@ -170,7 +123,6 @@ export default function AdminHome() {
                       <i className={`fa-solid fa-turn-up ${cardStyles["top-right-icon"]}`}></i>
                     </div>
 
-                    
                     <div className={cardStyles["course-info"]}>
                       <div className={cardStyles["course-header"]}>
                         <div className={cardStyles["card-tags-div"]}>
@@ -181,13 +133,25 @@ export default function AdminHome() {
                       </div>
                       <h3>{cls.courseName}</h3>
                       <p className={cardStyles["course-subtitle"]}>{cls.description}</p>
-                      <div className={cardStyles["course-tags"]}>{tags}</div>
+                      <div className={cardStyles["course-tags"]}>
+                        <span className={cardStyles["tag"]}>
+                          <i className="fa-solid fa-hourglass-half"></i>{" "}
+                          {cls.creditHours} {creditHoursText}
+                        </span>
+                        {cls.majors?.map((major, i) => (
+                          <span className={cardStyles["tag"]} key={i}>
+                            <i className={`fa-solid ${major === "CMPE" ? "fa-microchip" : "fa-laptop-code"}`}></i>{" "}
+                            {major === "CMPS" ? "CS" : "CE"}
+                          </span>
+                        ))}
+                      </div>
                     </div>
                   </div>
                 );
               })
             )}
           </div>
+
         </div>
 
        
@@ -200,7 +164,7 @@ export default function AdminHome() {
           <h3>About Me</h3>
           <div className={styles["about-me-content"]}>
             <img
-              src={user.avatar}
+              src={user.profileImage}
               alt="User Avatar"
               className={styles["about-me-avatar"]}
             />
@@ -229,11 +193,11 @@ export default function AdminHome() {
             <h3 className={styles["content-info-attribute"]}>Number of Eligible Classes</h3>
             <div className={styles["info-text"]}>
               <h2 className={styles["number-tag"]}>
-                {pendingCourses.length} of {totalClasses}
+                {pendingClasses.length} of {totalClasses}
               </h2>
               <p>
                 <span>
-                  {Math.round((pendingCourses.length / totalClasses) * 100)}%
+                  {Math.round((pendingClasses.length / totalClasses) * 100)}%
                 </span>{" "}
                 of all courses are ready to be approved
               </p>
@@ -245,11 +209,11 @@ export default function AdminHome() {
             <h3 className={styles["content-info-attribute"]}>Number of Pending Classes</h3>
             <div className={styles["info-text"]}>
               <h2 className={styles["number-tag"]}>
-                {classes.filter((c) => c.classStatus === "pending").length} of {totalClasses}
+              {pendingClasses.length} of {totalClasses}
               </h2>
               <p>
                 <span>
-                  {Math.round((classes.filter((c) => c.classStatus === "pending").length / totalClasses) * 100)}%
+                  {Math.round((pendingClasses.length / totalClasses) * 100)}%
                 </span>{" "}
                 of all courses are pending
               </p>

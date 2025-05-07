@@ -64,12 +64,12 @@ class UniTrackRepo {
 
   // Course
   async getAllCourses() {
-    return await prisma.course.findMany( {
+    return await prisma.course.findMany({
       include: {
         CourseMajorOfferings: true,
         prerequisites: true,
-        CourseCurrentClasses: true
-      }
+        CourseCurrentClasses: true,
+      },
     });
   }
 
@@ -83,11 +83,14 @@ class UniTrackRepo {
   }
 
   async getCourseById(id) {
-    return await prisma.course.findUnique({ where: { courseId: id }, include: {
-      CourseMajorOfferings: true,
-      prerequisites: true,
-      CourseCurrentClasses: true
-    } });
+    return await prisma.course.findUnique({
+      where: { courseId: id },
+      include: {
+        CourseMajorOfferings: true,
+        prerequisites: true,
+        CourseCurrentClasses: true,
+      },
+    });
   }
 
   async getCurrentCoursesByStudentId(studentId) {
@@ -298,7 +301,10 @@ class UniTrackRepo {
   }
 
   async getClassById(id) {
-    return await prisma.class.findUnique({ where: { classId: id }, include: {schedule: true, instructors: true} });
+    return await prisma.class.findUnique({
+      where: { classId: id },
+      include: { schedule: true, instructors: true },
+    });
   }
 
   async createClass(data) {
@@ -311,6 +317,17 @@ class UniTrackRepo {
 
   async deleteClass(id) {
     return await prisma.class.delete({ where: { classId: id } });
+  }
+
+  async getPendingApprovalClasses() {
+    return await prisma.class.findMany({
+      where: {
+        classStatus: "pending",
+        enrollmentActual: {
+          gte: 5,
+        },
+      },
+    });
   }
 
   // Class Enrollment

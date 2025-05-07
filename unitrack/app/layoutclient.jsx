@@ -26,14 +26,16 @@ export default function LayoutClient({ children }) {
       }
     }
 
-    // If not available, use query params (e.g., after login redirect)
+    // Fallback to URL query if needed (e.g., post-login redirect)
     if (!userObj) {
-      const name = searchParams.get("name");
+      const firstName = searchParams.get("firstName");
+      const lastName = searchParams.get("lastName");
       const email = searchParams.get("email");
       const role = searchParams.get("role");
+      const profileImage = searchParams.get("profileImage");
 
-      if (name && email && role) {
-        userObj = { name, email, role };
+      if (firstName && lastName && email && role) {
+        userObj = { firstName, lastName, email, role, profileImage };
         localStorage.setItem("user", JSON.stringify(userObj));
       }
     }

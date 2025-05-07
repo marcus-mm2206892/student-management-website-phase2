@@ -11,7 +11,7 @@ export default function NavBar({ user }) {
   const { firstName, lastName, email, role } = user || {};
   const searchParams = useSearchParams();
   const queryString = searchParams.toString();
-  const avatar = "/assets/imgs/user-profile-images/male1.png";
+  const avatar = user?.profileImage || "/assets/imgs/user-profile-images/male1.png";
 
   const homeLink =
   user?.role === "student"

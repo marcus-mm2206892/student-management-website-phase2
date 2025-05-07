@@ -7,7 +7,7 @@
     "role": "student",
     "gender": "male",
     "themePreference": "system",
-    "profileImage": "assets/imgs/user-profileImages/male1.png"
+    "profileImage": "/assets/imgs/user-profile-images/male1.png"
   },
   {
     "email": "calma.josh@qu.com",
@@ -17,7 +17,7 @@
     "role": "student",
     "gender": "male",
     "themePreference": "system",
-    "profileImage": "assets/imgs/user-profileImages/male4.png"
+    "profileImage": "/assets/imgs/user-profile-images/male4.png"
   },
   {
     "email": "audre.caraig@qu.com",
@@ -27,7 +27,7 @@
     "role": "student",
     "gender": "male",
     "themePreference": "system",
-    "profileImage": "assets/imgs/user-profileImages/male1.png"
+    "profileImage": "/assets/imgs/user-profile-images/male1.png"
   },
   {
     "email": "mohd.bashar@qu.com",
@@ -37,7 +37,7 @@
     "role": "student",
     "gender": "male",
     "themePreference": "system",
-    "profileImage": "assets/imgs/user-profileImages/male4.png"
+    "profileImage": "/assets/imgs/user-profile-images/male4.png"
   },
   {
     "email": "liam.johnson@qu.com",
@@ -47,7 +47,7 @@
     "role": "student",
     "gender": "male",
     "themePreference": "system",
-    "profileImage": "assets/imgs/user-profileImages/male4.png"
+    "profileImage": "/assets/imgs/user-profile-images/male4.png"
   },
   {
     "email": "nico.weiss@qu.com",
@@ -57,7 +57,7 @@
     "role": "student",
     "gender": "male",
     "themePreference": "system",
-    "profileImage": "assets/imgs/user-profileImages/male3.png"
+    "profileImage": "/assets/imgs/user-profile-images/male3.png"
   },
   {
     "email": "wei.zhang@qu.com",
@@ -67,7 +67,7 @@
     "role": "student",
     "gender": "male",
     "themePreference": "system",
-    "profileImage": "assets/imgs/user-profileImages/male2.png"
+    "profileImage": "/assets/imgs/user-profile-images/male2.png"
   },
   {
     "email": "hassan.kareem@qu.com",
@@ -77,7 +77,7 @@
     "role": "student",
     "gender": "male",
     "themePreference": "system",
-    "profileImage": "assets/imgs/user-profileImages/male4.png"
+    "profileImage": "/assets/imgs/user-profile-images/male4.png"
   },
   {
     "email": "arjun.patel@qu.com",
@@ -87,7 +87,7 @@
     "role": "student",
     "gender": "male",
     "themePreference": "system",
-    "profileImage": "assets/imgs/user-profileImages/male4.png"
+    "profileImage": "/assets/imgs/user-profile-images/male4.png"
   },
   {
     "email": "ethan.williams@qu.com",
@@ -97,7 +97,7 @@
     "role": "student",
     "gender": "male",
     "themePreference": "system",
-    "profileImage": "assets/imgs/user-profileImages/male2.png"
+    "profileImage": "/assets/imgs/user-profile-images/male2.png"
   },
   {
     "email": "omar.farouq@qu.com",
@@ -107,7 +107,7 @@
     "role": "student",
     "gender": "male",
     "themePreference": "system",
-    "profileImage": "assets/imgs/user-profileImages/male1.png"
+    "profileImage": "/assets/imgs/user-profile-images/male1.png"
   },
   {
     "email": "kenji.tanaka@qu.com",
@@ -117,7 +117,7 @@
     "role": "student",
     "gender": "male",
     "themePreference": "system",
-    "profileImage": "assets/imgs/user-profileImages/male2.png"
+    "profileImage": "/assets/imgs/user-profile-images/male2.png"
   },
   {
     "email": "miguel.santos@qu.com",
@@ -127,7 +127,7 @@
     "role": "student",
     "gender": "male",
     "themePreference": "system",
-    "profileImage": "assets/imgs/user-profileImages/male3.png"
+    "profileImage": "/assets/imgs/user-profile-images/male3.png"
   },
   {
     "email": "ali.mubarak@qu.com",
@@ -137,7 +137,7 @@
     "role": "student",
     "gender": "male",
     "themePreference": "system",
-    "profileImage": "assets/imgs/user-profileImages/male1.png"
+    "profileImage": "/assets/imgs/user-profile-images/male1.png"
   },
   {
     "email": "minh.nguyen@qu.com",
@@ -147,7 +147,7 @@
     "role": "student",
     "gender": "male",
     "themePreference": "system",
-    "profileImage": "assets/imgs/user-profileImages/male2.png"
+    "profileImage": "/assets/imgs/user-profile-images/male2.png"
   },
   {
     "email": "layla.hassan@qu.com",
@@ -157,7 +157,7 @@
     "role": "student",
     "gender": "female",
     "themePreference": "system",
-    "profileImage": "assets/imgs/user-profileImages/female2.png"
+    "profileImage": "/assets/imgs/user-profile-images/female2.png"
   },
   {
     "email": "emily.davis@qu.com",
@@ -167,7 +167,7 @@
     "role": "student",
     "gender": "female",
     "themePreference": "system",
-    "profileImage": "assets/imgs/user-profileImages/female1.png"
+    "profileImage": "/assets/imgs/user-profile-images/female1.png"
   },
   {
     "email": "aisha.yousef@qu.com",
@@ -177,7 +177,7 @@
     "role": "student",
     "gender": "female",
     "themePreference": "system",
-    "profileImage": "assets/imgs/user-profileImages/female1.png"
+    "profileImage": "/assets/imgs/user-profile-images/female1.png"
   },
   {
     "email": "hana.suzuki@qu.com",
@@ -187,7 +187,7 @@
     "role": "student",
     "gender": "female",
     "themePreference": "system",
-    "profileImage": "assets/imgs/user-profileImages/female3.png"
+    "profileImage": "/assets/imgs/user-profile-images/female3.png"
   },
   {
     "email": "chloe.martin@qu.com",
@@ -197,7 +197,7 @@
     "role": "student",
     "gender": "female",
     "themePreference": "system",
-    "profileImage": "assets/imgs/user-profileImages/female3.png"
+    "profileImage": "/assets/imgs/user-profile-images/female3.png"
   },
   {
     "email": "sara.al-sabah@qu.com",
@@ -207,7 +207,7 @@
     "role": "student",
     "gender": "female",
     "themePreference": "system",
-    "profileImage": "assets/imgs/user-profileImages/female3.png"
+    "profileImage": "/assets/imgs/user-profile-images/female3.png"
   },
   {
     "email": "anika.sharma@qu.com",
@@ -217,7 +217,7 @@
     "role": "student",
     "gender": "female",
     "themePreference": "system",
-    "profileImage": "assets/imgs/user-profileImages/female1.png"
+    "profileImage": "/assets/imgs/user-profile-images/female1.png"
   },
   {
     "email": "mariam.khalid@qu.com",
@@ -227,7 +227,7 @@
     "role": "student",
     "gender": "female",
     "themePreference": "system",
-    "profileImage": "assets/imgs/user-profileImages/female3.png"
+    "profileImage": "/assets/imgs/user-profile-images/female3.png"
   },
   {
     "email": "isabella.garcia@qu.com",
@@ -237,7 +237,7 @@
     "role": "student",
     "gender": "female",
     "themePreference": "system",
-    "profileImage": "assets/imgs/user-profileImages/female4.png"
+    "profileImage": "/assets/imgs/user-profile-images/female4.png"
   },
   {
     "email": "noor.fahmy@qu.com",
@@ -247,7 +247,7 @@
     "role": "student",
     "gender": "female",
     "themePreference": "system",
-    "profileImage": "assets/imgs/user-profileImages/female4.png"
+    "profileImage": "/assets/imgs/user-profile-images/female4.png"
   },
   {
     "email": "sakura.yamamoto@qu.com",
@@ -257,7 +257,7 @@
     "role": "student",
     "gender": "female",
     "themePreference": "system",
-    "profileImage": "assets/imgs/user-profileImages/female2.png"
+    "profileImage": "/assets/imgs/user-profile-images/female2.png"
   },
   {
     "email": "nora.hussein@qu.com",
@@ -267,7 +267,7 @@
     "role": "student",
     "gender": "female",
     "themePreference": "system",
-    "profileImage": "assets/imgs/user-profileImages/female1.png"
+    "profileImage": "/assets/imgs/user-profile-images/female1.png"
   },
   {
     "email": "siti.aminah@qu.com",
@@ -277,7 +277,7 @@
     "role": "student",
     "gender": "female",
     "themePreference": "system",
-    "profileImage": "assets/imgs/user-profileImages/female2.png"
+    "profileImage": "/assets/imgs/user-profile-images/female2.png"
   },
   {
     "email": "amira.rahman@qu.com",
@@ -287,7 +287,7 @@
     "role": "student",
     "gender": "female",
     "themePreference": "system",
-    "profileImage": "assets/imgs/user-profileImages/female2.png"
+    "profileImage": "/assets/imgs/user-profile-images/female2.png"
   },
   {
     "email": "jasmine.lee@qu.com",
@@ -297,7 +297,7 @@
     "role": "student",
     "gender": "female",
     "themePreference": "system",
-    "profileImage": "assets/imgs/user-profileImages/female2.png"
+    "profileImage": "/assets/imgs/user-profile-images/female2.png"
   },
   {
     "email": "qutaibah.malluhi@qu.com",
@@ -307,7 +307,7 @@
     "role": "instructor",
     "gender": "male",
     "themePreference": "system",
-    "profileImage": "assets/imgs/user-profileImages/male3.png"
+    "profileImage": "/assets/imgs/user-profile-images/male3.png"
   },
   {
     "email": "junaid.qadir@qu.com",
@@ -317,7 +317,7 @@
     "role": "instructor",
     "gender": "male",
     "themePreference": "system",
-    "profileImage": "assets/imgs/user-profileImages/male1.png"
+    "profileImage": "/assets/imgs/user-profile-images/male1.png"
   },
   {
     "email": "salem.saeed@qu.com",
@@ -327,7 +327,7 @@
     "role": "instructor",
     "gender": "male",
     "themePreference": "system",
-    "profileImage": "assets/imgs/user-profileImages/male4.png"
+    "profileImage": "/assets/imgs/user-profile-images/male4.png"
   },
   {
     "email": "uvais.qidwai@qu.com",
@@ -337,7 +337,7 @@
     "role": "instructor",
     "gender": "male",
     "themePreference": "system",
-    "profileImage": "assets/imgs/user-profileImages/male2.png"
+    "profileImage": "/assets/imgs/user-profile-images/male2.png"
   },
   {
     "email": "ihab.elaf@qu.com",
@@ -347,7 +347,7 @@
     "role": "instructor",
     "gender": "male",
     "themePreference": "system",
-    "profileImage": "assets/imgs/user-profileImages/male2.png"
+    "profileImage": "/assets/imgs/user-profile-images/male2.png"
   },
   {
     "email": "khaled.khan@qu.com",
@@ -357,7 +357,7 @@
     "role": "instructor",
     "gender": "male",
     "themePreference": "system",
-    "profileImage": "assets/imgs/user-profileImages/male4.png"
+    "profileImage": "/assets/imgs/user-profile-images/male4.png"
   },
   {
     "email": "aws.el-din@qu.com",
@@ -367,7 +367,7 @@
     "role": "instructor",
     "gender": "male",
     "themePreference": "system",
-    "profileImage": "assets/imgs/user-profileImages/male2.png"
+    "profileImage": "/assets/imgs/user-profile-images/male2.png"
   },
   {
     "email": "tamer.elsayed@qu.com",
@@ -377,7 +377,7 @@
     "role": "instructor",
     "gender": "male",
     "themePreference": "system",
-    "profileImage": "assets/imgs/user-profileImages/male1.png"
+    "profileImage": "/assets/imgs/user-profile-images/male1.png"
   },
   {
     "email": "abdelkarim.erradi@qu.com",
@@ -387,7 +387,7 @@
     "role": "instructor",
     "gender": "male",
     "themePreference": "system",
-    "profileImage": "assets/imgs/user-profileImages/male1.png"
+    "profileImage": "/assets/imgs/user-profile-images/male1.png"
   },
   {
     "email": "heba.dawoud@qu.com",
@@ -397,7 +397,7 @@
     "role": "instructor",
     "gender": "female",
     "themePreference": "system",
-    "profileImage": "assets/imgs/user-profileImages/female2.png"
+    "profileImage": "/assets/imgs/user-profile-images/female2.png"
   },
   {
     "email": "loay.ismail@qu.com",
@@ -407,7 +407,7 @@
     "role": "instructor",
     "gender": "male",
     "themePreference": "system",
-    "profileImage": "assets/imgs/user-profileImages/male1.png"
+    "profileImage": "/assets/imgs/user-profile-images/male1.png"
   },
   {
     "email": "mahmoud.barhamgi@qu.com",
@@ -417,7 +417,7 @@
     "role": "instructor",
     "gender": "male",
     "themePreference": "system",
-    "profileImage": "assets/imgs/user-profileImages/male1.png"
+    "profileImage": "/assets/imgs/user-profile-images/male1.png"
   },
   {
     "email": "abdullahi.hassen@qu.com",
@@ -427,7 +427,7 @@
     "role": "instructor",
     "gender": "male",
     "themePreference": "system",
-    "profileImage": "assets/imgs/user-profileImages/male1.png"
+    "profileImage": "/assets/imgs/user-profile-images/male1.png"
   },
   {
     "email": "georges.younes@qu.com",
@@ -437,7 +437,7 @@
     "role": "instructor",
     "gender": "male",
     "themePreference": "system",
-    "profileImage": "assets/imgs/user-profileImages/male2.png"
+    "profileImage": "/assets/imgs/user-profile-images/male2.png"
   },
   {
     "email": "amal.al-masri@qu.com",
@@ -447,7 +447,7 @@
     "role": "instructor",
     "gender": "male",
     "themePreference": "system",
-    "profileImage": "assets/imgs/user-profileImages/female4.png"
+    "profileImage": "/assets/imgs/user-profile-images/female4.png"
   },
   {
     "email": "khalid.abualsaud@qu.com",
@@ -457,7 +457,7 @@
     "role": "instructor",
     "gender": "male",
     "themePreference": "system",
-    "profileImage": "assets/imgs/user-profileImages/male1.png"
+    "profileImage": "/assets/imgs/user-profile-images/male1.png"
   },
   {
     "email": "amelle.bedair@qu.com",
@@ -467,7 +467,7 @@
     "role": "instructor",
     "gender": "male",
     "themePreference": "system",
-    "profileImage": "assets/imgs/user-profileImages/female3.png"
+    "profileImage": "/assets/imgs/user-profile-images/female3.png"
   },
   {
     "email": "moutaz.saleh@qu.com",
@@ -477,7 +477,7 @@
     "role": "instructor",
     "gender": "male",
     "themePreference": "system",
-    "profileImage": "assets/imgs/user-profileImages/male2.png"
+    "profileImage": "/assets/imgs/user-profile-images/male2.png"
   },
   {
     "email": "fady.elhanal@qu.com",
@@ -487,7 +487,7 @@
     "role": "instructor",
     "gender": "male",
     "themePreference": "system",
-    "profileImage": "assets/imgs/user-profileImages/male2.png"
+    "profileImage": "/assets/imgs/user-profile-images/male2.png"
   },
   {
     "email": "hela.chamkia@qu.com",
@@ -497,7 +497,7 @@
     "role": "instructor",
     "gender": "female",
     "themePreference": "system",
-    "profileImage": "assets/imgs/user-profileImages/female1.png"
+    "profileImage": "/assets/imgs/user-profile-images/female1.png"
   },
   {
     "email": "ahmed.badawy@qu.com",
@@ -507,7 +507,7 @@
     "role": "instructor",
     "gender": "male",
     "themePreference": "system",
-    "profileImage": "assets/imgs/user-profileImages/male1.png"
+    "profileImage": "/assets/imgs/user-profile-images/male1.png"
   },
   {
     "email": "naveed.nawaz@qu.com",
@@ -517,7 +517,7 @@
     "role": "instructor",
     "gender": "male",
     "themePreference": "system",
-    "profileImage": "assets/imgs/user-profileImages/male1.png"
+    "profileImage": "/assets/imgs/user-profile-images/male1.png"
   },
   {
     "email": "leila.gastli@qu.com",
@@ -527,7 +527,7 @@
     "role": "instructor",
     "gender": "female",
     "themePreference": "system",
-    "profileImage": "assets/imgs/user-profileImages/female4.png"
+    "profileImage": "/assets/imgs/user-profile-images/female4.png"
   },
   {
     "email": "mohamed.al-meer@qu.com",
@@ -537,7 +537,7 @@
     "role": "instructor",
     "gender": "male",
     "themePreference": "system",
-    "profileImage": "assets/imgs/user-profileImages/male3.png"
+    "profileImage": "/assets/imgs/user-profile-images/male3.png"
   },
   {
     "email": "rania.ibrahim@qu.com",
@@ -547,7 +547,7 @@
     "role": "instructor",
     "gender": "female",
     "themePreference": "system",
-    "profileImage": "assets/imgs/user-profileImages/female2.png"
+    "profileImage": "/assets/imgs/user-profile-images/female2.png"
   },
   {
     "email": "kim.donghyun@qu.com",
@@ -557,7 +557,7 @@
     "role": "instructor",
     "gender": "male",
     "themePreference": "system",
-    "profileImage": "assets/imgs/user-profileImages/male1.png"
+    "profileImage": "/assets/imgs/user-profile-images/male1.png"
   },
   {
     "email": "ahmed.ghannoum@qu.com",
@@ -567,7 +567,7 @@
     "role": "instructor",
     "gender": "male",
     "themePreference": "system",
-    "profileImage": "assets/imgs/user-profileImages/male2.png"
+    "profileImage": "/assets/imgs/user-profile-images/male2.png"
   },
   {
     "email": "evangelos.plevris@qu.com",
@@ -577,7 +577,7 @@
     "role": "instructor",
     "gender": "male",
     "themePreference": "system",
-    "profileImage": "assets/imgs/user-profileImages/male3.png"
+    "profileImage": "/assets/imgs/user-profile-images/male3.png"
   },
   {
     "email": "mohamed.ben.haj.rhouma@qu.com",
@@ -587,7 +587,7 @@
     "role": "instructor",
     "gender": "male",
     "themePreference": "system",
-    "profileImage": "assets/imgs/user-profileImages/male2.png"
+    "profileImage": "/assets/imgs/user-profile-images/male2.png"
   },
   {
     "email": "mustafa.el-sanfaz@qu.com",
@@ -597,7 +597,7 @@
     "role": "instructor",
     "gender": "male",
     "themePreference": "system",
-    "profileImage": "assets/imgs/user-profileImages/male2.png"
+    "profileImage": "/assets/imgs/user-profile-images/male2.png"
   },
   {
     "email": "hussein.al-qassem@qu.com",
@@ -607,7 +607,7 @@
     "role": "instructor",
     "gender": "male",
     "themePreference": "system",
-    "profileImage": "assets/imgs/user-profileImages/male3.png"
+    "profileImage": "/assets/imgs/user-profile-images/male3.png"
   },
   {
     "email": "mohamed.tarig@qu.com",
@@ -617,7 +617,7 @@
     "role": "instructor",
     "gender": "male",
     "themePreference": "system",
-    "profileImage": "assets/imgs/user-profileImages/male3.png"
+    "profileImage": "/assets/imgs/user-profile-images/male3.png"
   },
   {
     "email": "fabia.grisalez@qu.com",
@@ -627,7 +627,7 @@
     "role": "instructor",
     "gender": "male",
     "themePreference": "system",
-    "profileImage": "assets/imgs/user-profileImages/female3.png"
+    "profileImage": "/assets/imgs/user-profile-images/female3.png"
   },
   {
     "email": "essam.yasin@qu.com",
@@ -637,7 +637,7 @@
     "role": "instructor",
     "gender": "male",
     "themePreference": "system",
-    "profileImage": "assets/imgs/user-profileImages/male3.png"
+    "profileImage": "/assets/imgs/user-profile-images/male3.png"
   },
   {
     "email": "hocine.merabet@qu.com",
@@ -647,7 +647,7 @@
     "role": "instructor",
     "gender": "male",
     "themePreference": "system",
-    "profileImage": "assets/imgs/user-profileImages/male1.png"
+    "profileImage": "/assets/imgs/user-profile-images/male1.png"
   },
   {
     "email": "lazhar.chaoiki@qu.com",
@@ -657,7 +657,7 @@
     "role": "instructor",
     "gender": "male",
     "themePreference": "system",
-    "profileImage": "assets/imgs/user-profileImages/male3.png"
+    "profileImage": "/assets/imgs/user-profile-images/male3.png"
   },
   {
     "email": "dunia.ponce@qu.com",
@@ -667,7 +667,7 @@
     "role": "instructor",
     "gender": "female",
     "themePreference": "system",
-    "profileImage": "assets/imgs/user-profileImages/female3.png"
+    "profileImage": "/assets/imgs/user-profile-images/female3.png"
   },
   {
     "email": "admin@qu.com",
@@ -677,6 +677,6 @@
     "role": "admin",
     "gender": "male",
     "themePreference": "system",
-    "profileImage": "assets/imgs/user-profileImages/male1.png"
+    "profileImage": "/assets/imgs/user-profile-images/male1.png"
   }
 ]

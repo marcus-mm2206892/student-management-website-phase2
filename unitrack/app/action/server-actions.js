@@ -169,6 +169,12 @@ export async function updateClassAction(id, data) {
   return await unitrackRepo.updateClass(id, data);
 }
 
+//Pending Approval Classes
+
+export async function getPendingApprovalClassesAction() {
+  return await unitrackRepo.getPendingApprovalClasses();
+}
+
 export async function deleteClassAction(id) {
   return await unitrackRepo.deleteClass(id);
 }
