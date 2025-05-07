@@ -17,7 +17,7 @@ export default function NavBar({ user }) {
   user?.role === "student"
     ? "/student/home"
     : user?.role === "instructor"
-    ? "/instructor/home"
+    ? `/instructor/home${queryString ? `?${queryString}` : ''}`
     : user?.role === "admin"
     ? "/admin/home"
     : "/";
