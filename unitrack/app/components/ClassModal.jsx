@@ -2,53 +2,13 @@
 
 import { useEffect, useRef, useState } from "react";
 import styles from "@/app/styles/class-modal.module.css";
+import { getUserByEmailAction } from "../action/server-actions";
 
 export default function ClassModal({ cls, course, isVisible, onClose }) {
   const [userRole, setUserRole] = useState("");
   const modalRef = useRef(null);
   const [selectedTab, setSelectedTab] = useState("Class Details");
-
-  const dummyClass = {
-    classId: "25517",
-    section: "L01",
-    semester: "Spring 2025",
-    instructionalMethods: "English",
-    campus: "Male",
-    enrollmentActual: 7,
-    enrollmentMaximum: 35,
-    schedule: {
-      startTime: "09:00",
-      endTime: "10:00",
-      scheduleType: "MW",
-    },
-    instructors: [
-      {
-        name: "John Doe",
-        department: "Computer Science",
-        college: "Engineering",
-      }, 
-      {
-        name: "John Doe",
-        department: "Computer Science",
-        college: "Engineering",
-      },
-    ],
-  };
-
-  const dummyCourse = {
-    courseId: "CMPS303",
-    courseName: "Data Structures",
-    subject: "Computer Science",
-    creditHours: 3,
-    description: "Learn how to organize, store, and manipulate data efficiently using arrays, linked lists, stacks, queues, trees, and graphs.",
-    courseImage: "https://miro.medium.com/v2/resize:fit:1400/1*J38nYZU7gzu-4lQmtjlSUw.jpeg",
-    prerequisites: [
-      {
-        courseId: "CMPS251",
-        minGrade: "D",
-      },
-    ],
-  };
+  const [instructors, setInstructors] = useState([]);
 
   const to12Hour = (timeStr) => {
     const [hour, minute] = timeStr.split(":").map(Number);
@@ -93,6 +53,26 @@ export default function ClassModal({ cls, course, isVisible, onClose }) {
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [onClose]);
+
+  useEffect(() => {
+    const fetchInstructors = async () => {
+      if (!cls.instructors?.length) return;
+  
+      try {
+        const results = await Promise.all(
+          cls.instructors.map(async (inst) => {
+            const user = await getUserByEmailAction(inst.email);
+            return { ...inst, ...user }; // Combine dummy info with real user data
+          })
+        );
+        setInstructors(results);
+      } catch (error) {
+        console.error("Error fetching instructor data:", error);
+      }
+    };
+  
+    fetchInstructors();
+  }, [cls.instructors]);
   
 
   if (!isVisible) return null;
@@ -246,11 +226,11 @@ export default function ClassModal({ cls, course, isVisible, onClose }) {
             <div className={`${styles["instructors-container"]} ${styles.active}`}>
               <h3>Course Instructors</h3>
               <div className={styles["instructors-list"]}>
-                {cls.instructors.map((inst, i) => (
+                {instructors.map((inst, i) => (
                   <div className={styles.instructor} key={i}>
                     <i className="fa-solid fa-user"></i>
                     <div className={styles["instructor-info"]}>
-                      <p className={styles["instructor-name"]}>{inst.name}</p>
+                      <p className={styles["instructor-name"]}>{inst.firstName} {inst.lastName}</p>
                       <p className={styles["instructor-description"]}>{`${inst.department} Department, College of ${inst.college}`}</p>
                     </div>
                   </div>

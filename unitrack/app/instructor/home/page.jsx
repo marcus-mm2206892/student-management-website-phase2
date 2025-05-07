@@ -20,6 +20,7 @@ export default function InstructorHomePage() {
   const searchParams = useSearchParams();
   const [selectedClass, setSelectedClass] = useState(null)
   const [selectedCourse, setSelectedCourse] = useState(null)
+  const [coursesBeingTaught, setCoursesBeingTaught] = useState([])
 
   const email = searchParams.get('email');
   useEffect(() => {
@@ -109,6 +110,21 @@ export default function InstructorHomePage() {
     }
   }, [classes]);
 
+  useEffect(() => {
+    if (teachingClasses.length && courses.length) {
+      const uniqueCourses = [];
+  
+      for (const cls of teachingClasses) {
+        const course = courses.find((c) => c.courseId === cls.courseId);
+        if (course && !uniqueCourses.some((uc) => uc.courseId === course.courseId)) {
+          uniqueCourses.push(course);
+        }
+      }
+  
+      setCoursesBeingTaught(uniqueCourses);
+    }
+  }, [teachingClasses, courses]);
+
   const handleClassClick = (cls, course) => {
     setSelectedClass(cls);
     setSelectedCourse(course);
@@ -170,7 +186,7 @@ export default function InstructorHomePage() {
   // const courses = new Set(instructor.teachingClasses)
 
   const classesTaughtText = classCount === 1 ? "class" : "classes";
-  const coursesTaughtText = courses.length === 1 ? "course" : "courses";
+  const coursesTaughtText = coursesBeingTaught.length === 1 ? "course" : "courses";
 
   return (
     <>
@@ -185,7 +201,7 @@ export default function InstructorHomePage() {
             <div className={styles["credit-hours-text"]}>
               <h2>
                 You are teaching <strong>{classCount} {classesTaughtText}</strong> and{" "}
-                <strong>{courses.length} {coursesTaughtText}</strong> this semester.
+                <strong>{coursesBeingTaught.length} {coursesTaughtText}</strong> this semester.
               </h2>
             </div>
             <div className={styles["credit-hours-image"]}>

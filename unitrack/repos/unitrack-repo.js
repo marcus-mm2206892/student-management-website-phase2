@@ -236,7 +236,7 @@ class UniTrackRepo {
   }
 
   async getClassById(id) {
-    return await prisma.class.findUnique({ where: { classId: id } });
+    return await prisma.class.findUnique({ where: { classId: id }, include: {schedule: true, instructors: true} });
   }
 
   async createClass(data) {

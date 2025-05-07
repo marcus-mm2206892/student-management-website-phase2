@@ -5,9 +5,12 @@ import React, { useEffect } from 'react';
 import styles from '@/app/styles/navbar.module.css';
 import ThemeResponsiveLogo from './ThemeResponsiveLogo';
 import Link from 'next/link';
+import { useSearchParams } from 'next/navigation';
 
 export default function NavBar({ user }) {
   const { firstName, lastName, email, role } = user || {};
+  const searchParams = useSearchParams();
+  const queryString = searchParams.toString();
   const avatar = "/assets/imgs/user-profile-images/male1.png";
 
   const homeLink =
@@ -106,8 +109,8 @@ export default function NavBar({ user }) {
     if (role === "instructor") {
       return (
         <>
-          <li className={styles['nav-item']}><Link href="/instructor/home">Dashboard</Link></li>
-          <li className={styles['nav-item']}><Link href="/browse">Browse Courses</Link></li>
+          <li className={styles['nav-item']}><Link href={`/instructor/home${queryString ? `?${queryString}` : ''}`}>Dashboard</Link></li>
+          <li className={styles['nav-item']}><Link href={`/browse${queryString ? `?${queryString}` : ''}`}>Browse Courses</Link></li>
         </>
       );
     }

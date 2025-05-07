@@ -282,8 +282,8 @@
     "courseId": "CMPS497",
     "courseName": "Special Topics in Computing",
     "creditHours": 3,
-    "subject": "",
-    "courseNumber": "",
+    "subject": "Computer Science",
+    "courseNumber": "497",
     "description": "Selected topics in computing concerning content not normally covered in the formal curriculum. Topics vary",
     "courseImage": "https://www.bolton.ac.uk/assets/Uploads/benifitsofcomputing.jpg"
   },
