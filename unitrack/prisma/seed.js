@@ -23,7 +23,8 @@ const dataPaths = {
     courseMajorOfferings: 'course_major_offerings.json',
     courseCurrentClasses: 'course_current_classes.json',
     teachingClasses: 'teaching_classes.json',
-    gradedClasses: 'graded_classes.json'
+    gradedClasses: 'graded_classes.json',
+    majorRequiredCourses: 'major_required_course.json',
 };
 
 const dataDir = path.join(process.cwd(), 'app/assets/data');
@@ -51,6 +52,7 @@ async function seed() {
     const courseCurrentClasses = await loadData(dataPaths.courseCurrentClasses);
     const teachingClasses = await loadData(dataPaths.teachingClasses);
     const gradedClasses = await loadData(dataPaths.gradedClasses);
+    // const majorRequiredCourses = await loadData(dataPaths.majorRequiredCourses);
 
     console.log(users[0]); // or cleanedUsers[0]
 
@@ -122,11 +124,6 @@ async function seed() {
             },
         });
     }
-
-
-    // for (const graded of gradedClasses) {
-    //     await prisma.gradedClasses.create({data: graded});
-    // }
 
     console.log('Seeding completed successfully.');
 }

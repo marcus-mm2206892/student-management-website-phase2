@@ -75,7 +75,7 @@ model Major {
   requiredCourses Course[]
 
   students             Student[]
-  CourseMajorOfferings CourseMajorOfferings[]
+  CourseMajorOfferings CourseMajorOfferings[] @relation("MajorToCourseOfferings")
 }
 
 model Instructor {
@@ -101,7 +101,7 @@ model ClassEnrollment {
   courseId    String
   gradeStatus String
   letterGrade String
-  
+
   semesterEnrollmentId Int
   semesterEnrollment   SemesterEnrollment @relation(fields: [semesterEnrollmentId], references: [id])
 }
@@ -122,7 +122,7 @@ model Class {
   schedule            Schedule?
 
   course               Course                 @relation(fields: [courseId], references: [courseId])
-  CourseCurrentClasses CourseCurrentClasses[]
+  CourseCurrentClasses CourseCurrentClasses[] @relation("ClasstoCurrentCourses")
 }
 
 model Schedule {
@@ -147,24 +147,24 @@ model Course {
   prerequisites        Prerequisite[]
   majorsOffered        Major[]
   currentClasses       Class[]
-  CourseCurrentClasses CourseCurrentClasses[]
-  CourseMajorOfferings CourseMajorOfferings[]
+  CourseCurrentClasses CourseCurrentClasses[] @relation("CourseToCurrentClasses")
+  CourseMajorOfferings CourseMajorOfferings[] @relation("CourseToMajorOfferings")
 }
 
 model CourseCurrentClasses {
   id       Int    @id @default(autoincrement())
   courseId String
   classId  String
-  course   Course @relation(fields: [courseId], references: [courseId])
-  class    Class  @relation(fields: [classId], references: [classId])
+  course   Course @relation(fields: [courseId], references: [courseId], name: "CourseToCurrentClasses")
+  class    Class  @relation(fields: [classId], references: [classId], name: "ClasstoCurrentCourses")
 }
 
 model CourseMajorOfferings {
   id       Int    @id @default(autoincrement())
   courseId String
   majorId  String
-  Course   Course @relation(fields: [courseId], references: [courseId])
-  Major    Major  @relation(fields: [majorId], references: [majorId])
+  Course   Course @relation(fields: [courseId], references: [courseId], name: "CourseToMajorOfferings")
+  Major    Major  @relation(fields: [majorId], references: [majorId], name: "MajorToCourseOfferings")
 }
 
 model Prerequisite {

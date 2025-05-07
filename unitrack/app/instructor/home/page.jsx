@@ -7,12 +7,16 @@ import cardStyles from "@/app/styles/course-card-profile.module.css";
 import EmptyContent from "@/app/components/EmptyContent";
 import ClassModal from "@/app/components/ClassModal";
 import { useSearchParams } from "next/navigation";
-import { getInstructorByEmailAction } from "@/app/action/server-actions";
+import { getClassByIdAction, getCourseByIdAction, getInstructorByEmailAction } from "@/app/action/server-actions";
 
 export default function InstructorHomePage() {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [instructor, setInstructor] = useState(null);
   const [user, setUser] = useState(null);
+  const [classes, setClasses] = useState([]);
+  const [courses, setCourses] = useState([]);
+  const [teachingClasses, setTeachingClasses] = useState([]);
+  const [pendingClasses, setPendingClasses] = useState([]);
   const searchParams = useSearchParams();
 
   const email = searchParams.get('email');
@@ -27,8 +31,6 @@ export default function InstructorHomePage() {
     fetchInstructor();
   }, [email]);
 
-  console.log(instructor)
-
   useEffect(() => {
     if (instructor) {
       setUser({
@@ -42,33 +44,66 @@ export default function InstructorHomePage() {
     }
   }, [instructor, searchParams, email]);
 
-  const [courses] = useState([
-    {
-      courseId: "CMPS350",
-      courseName: "Web Development",
-      creditHours: 3,
-      courseImage: "/assets/imgs/course-placeholder.png",
-      description: "Client-server interaction fundamentals.",
-      majorsOffered: ["CMPS", "CMPE"],
-    },
-    {
-      courseId: "CMPS482",
-      courseName: "Cyber Physical Systems",
-      creditHours: 3,
-      courseImage: "/assets/imgs/course-placeholder.png",
-      description: "Security in smart devices and embedded systems.",
-      majorsOffered: ["CMPE"],
-    },
-  ]);
+  useEffect(() => {
+    async function fetchClasses() {
+      const newClasses = []
+      if (instructor) {
+        for (const tc of instructor.teachingClasses) {
+          const c = await getClassByIdAction(tc.classId);
+          newClasses.push(c);
+        }
+      }
+      return newClasses;
+    }
+  
+    async function loadClasses() {
+      const resolvedClasses = await fetchClasses(); 
+      setClasses(resolvedClasses);               
+    }
+  
+    loadClasses();
+  }, [instructor]);
 
-  const [teachingClasses] = useState([
-    { classId: "101", courseId: "CMPS350", section: "L01", semester: "Spring 2025" },
-    { classId: "102", courseId: "CMPS482", section: "L02", semester: "Spring 2025" },
-  ]);
+  useEffect(() => {
+    console.log("Updated classes:", classes);
+  }, [classes]);
 
-  const [pendingClasses] = useState([
-    { classId: "103", courseId: "CMPS350", section: "L02", semester: "Spring 2025" },
-  ]);
+  useEffect(() => {
+
+    async function fetchCourses() {
+      const newCourses = []
+      if (classes.length) {
+        for (const c of classes) {
+          const course = await getCourseByIdAction(c.courseId);
+          if (!newCourses.find(crs => crs.courseId === course.courseId))
+            newCourses.push(course);
+        }
+      }
+      return newCourses
+    }
+
+    async function loadCourses() {
+      const resolvedCourses = await fetchCourses(); 
+      setCourses(resolvedCourses);               
+    }
+  
+    loadCourses();
+  }, [classes])
+
+  useEffect(() => {
+    console.log("Updated courses:", courses);
+  }, [courses]);
+
+  useEffect(() => {
+    if (classes.length) {
+      for (const c of classes) {
+        if (c.classStatus === "open")
+          teachingClasses.push(c)
+        else if (c.classStatus === "pending")
+          pendingClasses.push(c)
+      }
+    }
+  }, [classes])
 
   const handleClassClick = () => setIsModalVisible(true);
 
@@ -107,7 +142,7 @@ export default function InstructorHomePage() {
             <span className={cardStyles["tag"]}>
               <i className="fa-solid fa-hourglass-half"></i> {course.creditHours} {creditHoursText}
             </span>
-            {course.majorsOffered.map((major, i) => (
+            {course.CourseMajorsOffered.map((major, i) => (
               <span key={i} className={cardStyles["tag"]}>
                 <i className={`fa-solid ${major === "CMPE" ? "fa-microchip" : "fa-laptop-code"}`}></i>{" "}
                 {major === "CMPS" ? "CS" : "CE"}
@@ -121,7 +156,9 @@ export default function InstructorHomePage() {
 
   if (!user || !instructor) return <p>Loading</p>
 
-  const classCount = instructor.teachingClasses.length * 2;
+  const classCount = instructor.teachingClasses.length;
+  // const courses = new Set(instructor.teachingClasses)
+
   const classesTaughtText = classCount === 1 ? "class" : "classes";
   const coursesTaughtText = courses.length === 1 ? "course" : "courses";
 
