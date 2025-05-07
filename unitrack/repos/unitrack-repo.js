@@ -111,6 +111,42 @@ class UniTrackRepo {
     return courseIds;
   }
 
+  async getPendingCourseIdsByStudentId(studentId) {
+    const student = await prisma.student.findUnique({
+      where: { studentId },
+      include: {
+        semesterEnrollment: {
+          include: {
+            classes: true,
+          },
+        },
+      },
+    });
+  
+    if (!student) return [];
+  
+    const pendingClassIds = student.semesterEnrollment.flatMap(enrollment =>
+      enrollment.classes
+        .map(cls => cls.classId)
+    );
+
+    const pendingClasses = await prisma.class.findMany({
+      where: {
+        classId: {
+          in: pendingClassIds,
+        },
+      },
+      select: {
+        courseId: true,
+      },
+    });
+  
+    // Extracting courseIds from the result
+    const courseIds = pendingClasses.map(cls => cls.courseId);
+  
+    return courseIds;
+  }
+
   async createCourse(data) {
     return await prisma.course.create({ data });
   }

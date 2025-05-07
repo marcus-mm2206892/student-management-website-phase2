@@ -40,6 +40,10 @@ export async function getCurrentCoursesByStudentIdAction(studentId) {
   return await unitrackRepo.getCurrentCoursesByStudentId(studentId);
 } 
 
+export async function getPendingCourseIdsByStudentIdAction(studentId) {
+  return await unitrackRepo.getPendingCourseIdsByStudentId(studentId);
+}
+
 export async function createCourseAction(data) {
   return await unitrackRepo.createCourse(data);
 }

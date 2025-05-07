@@ -4,7 +4,7 @@
   import styles from "@/app/styles/learningpath.module.css";
   import cardStyles from "@/app/styles/course-card-view.module.css";
 
-  import { getCompletedCoursesByStudentEmailAction, getAllCoursesAction, getCurrentCoursesByStudentIdAction, getCourseIdsByMajorAction } from "@/app/action/server-actions";
+  import { getCompletedCoursesByStudentEmailAction, getAllCoursesAction, getCurrentCoursesByStudentIdAction, getCourseIdsByMajorAction, getPendingCourseIdsByStudentIdAction } from "@/app/action/server-actions";
 
 
   export default function LearningPath() {
@@ -24,11 +24,12 @@
         const majorId = "CMPS"; 
     
         // Getting all the data in parallel
-        const [allCourses, completed, current, required] = await Promise.all([
+        const [allCourses, completed, current, required, pending] = await Promise.all([
           getAllCoursesAction(),
           getCompletedCoursesByStudentEmailAction(studentEmail),
           getCurrentCoursesByStudentIdAction(studentId),
-          getCourseIdsByMajorAction(majorId) 
+          getCourseIdsByMajorAction(majorId),
+          getPendingCourseIdsByStudentIdAction(studentId)  
         ]);
     
         setCourses(allCourses);
@@ -57,6 +58,15 @@
           }));
         setInProgressCourses(inProgressCoursesWithInfo);
 
+        const pendingCoursesWithInfo = allCourses
+        .filter(course => pending.includes(course.courseId))
+        .map(course => ({
+          courseId: course.courseId,
+          courseName: course.courseName,
+          description: course.description
+        }));
+        setScheduledCourses(pendingCoursesWithInfo);
+
 
         // Remaining Courses
         const completedIds = completed.map(c => c.courseId);
@@ -75,12 +85,10 @@
           }));
           
         setUpcomingCourses(upcomingCoursesWithInfo);
-
       }
     
       loadAllCourseData();
     }, []);
-
 
     useEffect(() => {
       const handleResize = () => {
