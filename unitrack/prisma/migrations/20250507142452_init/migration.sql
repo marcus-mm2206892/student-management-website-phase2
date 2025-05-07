@@ -32,7 +32,8 @@ CREATE TABLE "CompletedCourse" (
     "courseId" TEXT NOT NULL,
     "letterGrade" TEXT NOT NULL,
     "studentId" TEXT NOT NULL,
-    CONSTRAINT "CompletedCourse_studentId_fkey" FOREIGN KEY ("studentId") REFERENCES "Student" ("studentId") ON DELETE RESTRICT ON UPDATE CASCADE
+    CONSTRAINT "CompletedCourse_studentId_fkey" FOREIGN KEY ("studentId") REFERENCES "Student" ("studentId") ON DELETE RESTRICT ON UPDATE CASCADE,
+    CONSTRAINT "CompletedCourse_courseId_fkey" FOREIGN KEY ("courseId") REFERENCES "Course" ("courseId") ON DELETE RESTRICT ON UPDATE CASCADE
 );
 
 -- CreateTable

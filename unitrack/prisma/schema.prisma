@@ -56,6 +56,7 @@ model CompletedCourse {
   studentId   String
 
   student Student @relation(fields: [studentId], references: [studentId])
+  course  Course  @relation(fields: [courseId], references: [courseId])
 }
 
 model SemesterEnrollment {
@@ -149,6 +150,7 @@ model Course {
   currentClasses       Class[]
   CourseCurrentClasses CourseCurrentClasses[] @relation("CourseToCurrentClasses")
   CourseMajorOfferings CourseMajorOfferings[] @relation("CourseToMajorOfferings")
+  CompletedCourse      CompletedCourse[]
 }
 
 model CourseCurrentClasses {
