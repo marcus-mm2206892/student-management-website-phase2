@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import styles from "@/app/styles/class-modal.module.css";
 
-export default function ClassModal({ isVisible, onClose }) {
+export default function ClassModal({ cls, course, isVisible, onClose }) {
   const [userRole, setUserRole] = useState("");
   const modalRef = useRef(null);
   const [selectedTab, setSelectedTab] = useState("Class Details");
@@ -106,19 +106,19 @@ export default function ClassModal({ isVisible, onClose }) {
 
         <div className={styles["modal-header"]}>
           <div className={styles["course-title-div"]}>
-            <h2 className={styles["course-title"]}>{dummyCourse.courseName}</h2>
+            <h2 className={styles["course-title"]}>{course.courseName}</h2>
             <div className={styles["course-tags-div"]}>
               <span className={styles["course-tag"]}>
-                {dummyCourse.courseId}
+                {course.courseId}
               </span>
               <span className={styles["campus-tag"]}>
-                {dummyClass.campus}
+                {cls.campus}
               </span>
               <span className={styles["crn-tag"]}>
-                {dummyClass.classId}
+                {cls.classId}
               </span>
               <span className={styles["section-tag"]}>
-                Section {dummyClass.section}
+                Section {cls.section}
               </span>
             </div>
           </div>
@@ -165,42 +165,42 @@ export default function ClassModal({ isVisible, onClose }) {
                 <h3>Associated Term</h3>
                 <div className={styles["content-info-text"]}>
                   <i className="fa-solid fa-calendar-days"></i>
-                  <span>{dummyClass.semester}</span>
+                  <span>{cls.semester}</span>
                 </div>
               </div>
               <div className={styles["content-info-div"]}>
                 <h3>CRN</h3>
                 <div className={styles["content-info-text"]}>
                   <i className="fa-solid fa-hashtag"></i>
-                  <span>{dummyClass.classId}</span>
+                  <span>{cls.classId}</span>
                 </div>
               </div>
               <div className={styles["content-info-div"]}>
                 <h3>Campus</h3>
                 <div className={styles["content-info-text"]}>
                   <i className="fa-solid fa-building"></i>
-                  <span>{dummyClass.campus}</span>
+                  <span>{cls.campus}</span>
                 </div>
               </div>
               <div className={styles["content-info-div"]}>
                 <h3>Instructional Method</h3>
                 <div className={styles["content-info-text"]}>
                   <i className="fa-solid fa-language"></i>
-                  <span>{dummyClass.instructionalMethods}</span>
+                  <span>{cls.instructionalMethod}</span>
                 </div>
               </div>
               <div className={styles["content-info-div"]}>
                 <h3>Course Subject</h3>
                 <div className={styles["content-info-text"]}>
                   <i className="fa-solid fa-book-open"></i>
-                  <span>{dummyCourse.subject}</span>
+                  <span>{course.subject}</span>
                 </div>
               </div>
               <div className={styles["content-info-div"]}>
                 <h3>Credit Hours</h3>
                 <div className={styles["content-info-text"]}>
                   <i className="fa-solid fa-clock"></i>
-                  <span>{dummyCourse.creditHours} credit hours</span>
+                  <span>{course.creditHours} credit hours</span>
                 </div>
               </div>
             </div>
@@ -212,7 +212,7 @@ export default function ClassModal({ isVisible, onClose }) {
               <div
                 className={styles["course-image"]}
                 style={{
-                  backgroundImage: `url(${dummyCourse.courseImage || ""})`,
+                  backgroundImage: `url(${course.courseImage || ""})`,
                   backgroundSize: "cover",
                   backgroundPosition: "center",
                 }}
@@ -227,7 +227,7 @@ export default function ClassModal({ isVisible, onClose }) {
               <div className={styles["content-info-div"]}>
                 <h3 className={styles["content-info-attribute"]}>What you'll learn</h3>
                 <p className={`${styles["content-info-paragraph"]} ${styles["description"]}`}>
-                  {dummyCourse.description || "No description available."}
+                  {course.description || "No description available."}
                 </p>
               </div>
 
@@ -246,7 +246,7 @@ export default function ClassModal({ isVisible, onClose }) {
             <div className={`${styles["instructors-container"]} ${styles.active}`}>
               <h3>Course Instructors</h3>
               <div className={styles["instructors-list"]}>
-                {dummyClass.instructors.map((inst, i) => (
+                {cls.instructors.map((inst, i) => (
                   <div className={styles.instructor} key={i}>
                     <i className="fa-solid fa-user"></i>
                     <div className={styles["instructor-info"]}>
@@ -269,7 +269,7 @@ export default function ClassModal({ isVisible, onClose }) {
                     <i className="fa-solid fa-calendar-days"></i>
                     <div className={styles["schedule-info"]}>
                       <div className={styles["weekdays"]}>
-                        {generateWeekdaySpans(dummyClass.schedule.scheduleType)}
+                        {generateWeekdaySpans(cls.schedule.scheduleType)}
                       </div>
                       <p className={styles["date-range"]}>01/19/2025 - 05/08/2025</p>
                     </div>
@@ -284,7 +284,7 @@ export default function ClassModal({ isVisible, onClose }) {
                     <i className="fa-solid fa-clock"></i>
                     <div className={styles["time-info"]}>
                       <p className={styles["time"]}>
-                        {to12Hour(dummyClass.schedule.startTime)} – {to12Hour(dummyClass.schedule.endTime)}
+                        {to12Hour(cls.schedule.startTime)} – {to12Hour(cls.schedule.endTime)}
                       </p>
                     </div>
                   </div>
@@ -303,18 +303,18 @@ export default function ClassModal({ isVisible, onClose }) {
                   <div className={styles["enrollment-item"]}>
                     <i className="fa-solid fa-users"></i>
                     <span className={styles.label}>Enrollment Actual:</span>
-                    <span className={styles.value}>{dummyClass?.enrollmentActual || 0}</span>
+                    <span className={styles.value}>{cls?.enrollmentActual || 0}</span>
                   </div>
                   <div className={styles["enrollment-item"]}>
                     <i className="fa-solid fa-user-group"></i>
                     <span className={styles.label}>Enrollment Maximum:</span>
-                    <span className={styles.value}>{dummyClass?.enrollmentMaximum || 0}</span>
+                    <span className={styles.value}>{cls?.enrollmentMaximum || 0}</span>
                   </div>
                   <div className={`${styles["enrollment-item"]} ${styles["seats-available"]}`}>
                     <i className="fa-solid fa-chair"></i>
                     <span className={styles.label}>Enrollment Seats Available:</span>
                     <span className={styles.value}>
-                      {Math.max(0, (dummyClass?.enrollmentMaximum || 0) - (dummyClass?.enrollmentActual || 0))}
+                      {Math.max(0, (cls?.enrollmentMaximum || 0) - (cls?.enrollmentActual || 0))}
                     </span>
                   </div>
                 </div>
@@ -332,8 +332,8 @@ export default function ClassModal({ isVisible, onClose }) {
               <div className={`${styles["content-info-div"]} ${styles["eligibility-container"]}`}>
                 <h3 className={styles["content-info-attribute"]}>Prerequisite Courses</h3>
                 <div className={styles["prerequisite-list"]}>
-                  {dummyCourse?.prerequisites?.length ? (
-                    dummyCourse.prerequisites.map((pr, index) => (
+                  {course?.prerequisites?.length ? (
+                    course.prerequisites.map((pr, index) => (
                       <div className={styles["prerequisite-card"]} key={index}>
                         <div className={styles["prerequisite-header"]}>
                           <span className={styles["course-tag"]}>
@@ -359,7 +359,7 @@ export default function ClassModal({ isVisible, onClose }) {
                     </p>
                   )}
                 </div>
-                {dummyCourse?.prerequisites?.length > 0 && (
+                {course?.prerequisites?.length > 0 && (
                   <p className={styles["eligibility-note"]}>
                     Students must complete the above courses before enrolling.
                   </p>

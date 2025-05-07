@@ -60,7 +60,13 @@ class UniTrackRepo {
 
   // Course
   async getAllCourses() {
-    return await prisma.course.findMany();
+    return await prisma.course.findMany( {
+      include: {
+        CourseMajorOfferings: true,
+        prerequisites: true,
+        CourseCurrentClasses: true
+      }
+    });
   }
 
   async getCourseWithPrerequisites(id) {
@@ -73,7 +79,11 @@ class UniTrackRepo {
   }
 
   async getCourseById(id) {
-    return await prisma.course.findUnique({ where: { courseId: id } });
+    return await prisma.course.findUnique({ where: { courseId: id }, include: {
+      CourseMajorOfferings: true,
+      prerequisites: true,
+      CourseCurrentClasses: true
+    } });
   }
 
   async createCourse(data) {

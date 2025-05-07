@@ -18,6 +18,8 @@ export default function InstructorHomePage() {
   const [teachingClasses, setTeachingClasses] = useState([]);
   const [pendingClasses, setPendingClasses] = useState([]);
   const searchParams = useSearchParams();
+  const [selectedClass, setSelectedClass] = useState(null)
+  const [selectedCourse, setSelectedCourse] = useState(null)
 
   const email = searchParams.get('email');
   useEffect(() => {
@@ -96,25 +98,33 @@ export default function InstructorHomePage() {
 
   useEffect(() => {
     if (classes.length) {
+      const teaching = [];
+      const pending = [];
       for (const c of classes) {
-        if (c.classStatus === "open")
-          teachingClasses.push(c)
-        else if (c.classStatus === "pending")
-          pendingClasses.push(c)
+        if (c.classStatus === "open") teaching.push(c);
+        else if (c.classStatus === "pending") pending.push(c);
       }
+      setTeachingClasses(teaching);
+      setPendingClasses(pending);
     }
-  }, [classes])
+  }, [classes]);
 
-  const handleClassClick = () => setIsModalVisible(true);
+  const handleClassClick = (cls, course) => {
+    setSelectedClass(cls);
+    setSelectedCourse(course);
+    setIsModalVisible(true);
+  };
 
   const renderClassCard = (cls) => {
     const course = courses.find((c) => c.courseId === cls.courseId);
     if (!course) return null;
 
+    const thisClass = cls
+
     const creditHoursText = course.creditHours === 1 ? "credit hour" : "credit hours";
 
     return (
-      <div key={cls.classId} className={cardStyles["course-card"]} onClick={handleClassClick}>
+      <div key={thisClass.classId} className={cardStyles["course-card"]} onClick={() => handleClassClick(thisClass, course)}>
         <div className={cardStyles["course-image"]}>
           <img
             src={course.courseImage}
@@ -131,10 +141,10 @@ export default function InstructorHomePage() {
         <div className={cardStyles["course-info"]}>
           <div className={cardStyles["course-header"]}>
             <div className={cardStyles["card-tags-div"]}>
-              <span className={cardStyles["course-tag"]}>{cls.courseId}</span>
-              <span className={cardStyles["section-tag"]}>{cls.section}</span>
+              <span className={cardStyles["course-tag"]}>{thisClass.courseId}</span>
+              <span className={cardStyles["section-tag"]}>{thisClass.section}</span>
             </div>
-            <span className={cardStyles["semester"]}>{cls.semester}</span>
+            <span className={cardStyles["semester"]}>{thisClass.semester}</span>
           </div>
           <h3>{course.courseName}</h3>
           <p className={cardStyles["course-subtitle"]}>{course.description}</p>
@@ -142,7 +152,7 @@ export default function InstructorHomePage() {
             <span className={cardStyles["tag"]}>
               <i className="fa-solid fa-hourglass-half"></i> {course.creditHours} {creditHoursText}
             </span>
-            {course.CourseMajorsOffered.map((major, i) => (
+            {course.CourseMajorOfferings.map((major, i) => (
               <span key={i} className={cardStyles["tag"]}>
                 <i className={`fa-solid ${major === "CMPE" ? "fa-microchip" : "fa-laptop-code"}`}></i>{" "}
                 {major === "CMPS" ? "CS" : "CE"}
@@ -156,7 +166,7 @@ export default function InstructorHomePage() {
 
   if (!user || !instructor) return <p>Loading</p>
 
-  const classCount = instructor.teachingClasses.length;
+  const classCount = teachingClasses.length
   // const courses = new Set(instructor.teachingClasses)
 
   const classesTaughtText = classCount === 1 ? "class" : "classes";
@@ -239,15 +249,26 @@ export default function InstructorHomePage() {
               <div className={styles["about-me-content-right"]}>
                 <h2>{user.name}</h2>
                 <span>{user.email}</span>
-                <span className={styles["department-tag"]}>CSE Department</span>
-                <span className={styles["college-tag"]}>College of Engineering</span>
+                <span className={styles["department-tag"]}>{user.department}</span>
+                <span className={styles["college-tag"]}>College of {user.college}</span>
               </div>
             </div>
           </section>
         </div>
+        {selectedClass && selectedCourse && (
+          <ClassModal
+            cls={selectedClass}
+            course={selectedCourse}
+            isVisible={isModalVisible}
+            onClose={() => {
+              setIsModalVisible(false);
+              setSelectedClass(null);
+              setSelectedCourse(null);
+            }}
+          />
+        )}
       </main>
 
-      <ClassModal isVisible={isModalVisible} onClose={() => setIsModalVisible(false)} />
     </>
   );
 }
