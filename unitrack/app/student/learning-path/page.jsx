@@ -4,7 +4,7 @@
   import styles from "@/app/styles/learningpath.module.css";
   import cardStyles from "@/app/styles/course-card-view.module.css";
 
-  import { getCompletedCoursesByStudentEmailAction, getAllCoursesAction, getCurrentCoursesByStudentIdAction } from "@/app/action/server-actions";
+  import { getCompletedCoursesByStudentEmailAction, getAllCoursesAction, getCurrentCoursesByStudentIdAction, getCourseIdsByMajorAction } from "@/app/action/server-actions";
 
 
   export default function LearningPath() {
@@ -21,12 +21,14 @@
       async function loadAllCourseData() {
         const studentEmail = "mohd.bashar@qu.com";
         const studentId = "S1003";
+        const majorId = "CMPS"; 
     
-        // Get all data in parallel
-        const [allCourses, completed, current] = await Promise.all([
+        // Getting all the data in parallel
+        const [allCourses, completed, current, required] = await Promise.all([
           getAllCoursesAction(),
           getCompletedCoursesByStudentEmailAction(studentEmail),
           getCurrentCoursesByStudentIdAction(studentId),
+          getCourseIdsByMajorAction(majorId) 
         ]);
     
         setCourses(allCourses);
@@ -54,11 +56,30 @@
             description: course.description
           }));
         setInProgressCourses(inProgressCoursesWithInfo);
+
+
+        // Remaining Courses
+        const completedIds = completed.map(c => c.courseId);
+        const inProgressIds = current;
+
+        const remainingIds = required.filter(
+        id => !completedIds.includes(id) && !inProgressIds.includes(id)
+        );
+
+        const upcomingCoursesWithInfo = allCourses.filter(course => 
+          remainingIds.includes(course.courseId))
+          .map(course => ({
+            courseId: course.courseId,
+            courseName: course.courseName,
+            description: course.description
+          }));
+          
+        setUpcomingCourses(upcomingCoursesWithInfo);
+
       }
     
       loadAllCourseData();
     }, []);
-    
 
 
     useEffect(() => {

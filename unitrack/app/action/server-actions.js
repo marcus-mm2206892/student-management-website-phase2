@@ -308,6 +308,10 @@ export async function getCourseMajorOfferingByIdAction(id) {
   return await unitrackRepo.getCourseMajorOfferingById(id);
 }
 
+export async function getCourseIdsByMajorAction(major) {
+  return await unitrackRepo.getCourseIdsByMajor(major);
+}
+
 export async function createCourseMajorOfferingAction(data) {
   return await unitrackRepo.createCourseMajorOffering(data);
 }

@@ -365,6 +365,17 @@ class UniTrackRepo {
   async getAllCourseMajorOfferings() {
     return await prisma.courseMajorOfferings.findMany();
   }
+
+  async getCourseIdsByMajor(majorId) {
+    const results = await prisma.courseMajorOfferings.findMany({
+      where: { majorId },
+      select: {
+        courseId: true
+      }
+    })
+    return results.map(r => r.courseId);
+  }
+
   async getCourseMajorOfferingById(id) {
     return await prisma.courseMajorOfferings.findUnique({ where: { id } });
   }
