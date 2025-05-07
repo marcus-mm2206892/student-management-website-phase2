@@ -36,6 +36,10 @@ export async function getCourseByIdAction(id) {
   return await unitrackRepo.getCourseById(id);
 }
 
+export async function getCurrentCoursesByStudentIdAction(studentId) {
+  return await unitrackRepo.getCurrentCoursesByStudentId(studentId);
+} 
+
 export async function createCourseAction(data) {
   return await unitrackRepo.createCourse(data);
 }

@@ -90,6 +90,27 @@ class UniTrackRepo {
     } });
   }
 
+  async getCurrentCoursesByStudentId(studentId) {
+    const student = await prisma.student.findUnique({
+      where: { studentId },
+      include: {
+        semesterEnrollment: {
+          include: {
+            classes: true,
+          },
+        },
+      },
+    });
+  
+    if (!student) return [];
+    // Flatten and extract all courseIds from current semester classes
+    const courseIds = student.semesterEnrollment.flatMap(enrollment =>
+      enrollment.classes.map(cls => cls.courseId)
+    );
+  
+    return courseIds;
+  }
+
   async createCourse(data) {
     return await prisma.course.create({ data });
   }
