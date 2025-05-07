@@ -43,7 +43,7 @@ class UniTrackRepo {
 
   // Student
   async getAllStudents() {
-    return await prisma.student.findMany({include: {semesterEnrollment: {include: { classes: true}}}});
+    return await prisma.student.findMany({include: {semesterEnrollment: {include: { classes: true}}, completedCourses: true}});
   }
 
   async getStudentById(id) {

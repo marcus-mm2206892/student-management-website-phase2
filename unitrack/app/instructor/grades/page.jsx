@@ -8,7 +8,7 @@ import ClassModal from "@/app/components/ClassModal";
 import EmptyContent from "@/app/components/EmptyContent";
 import NoneSelected from "@/app/components/NoneSelected";
 import { useSearchParams } from "next/navigation";
-import { getInstructorByEmailAction, getClassByIdAction, getCourseByIdAction, getAllStudentsAction, getUserByEmailAction, getUsersByRoleAction } from "@/app/action/server-actions";
+import { getInstructorByEmailAction, getClassByIdAction, getCourseByIdAction, getAllStudentsAction, getUserByEmailAction, getUsersByRoleAction, createCompletedCourseAction, updateClassAction } from "@/app/action/server-actions";
 
 
 export default function Grades() {
@@ -207,15 +207,17 @@ export default function Grades() {
     }
     const matchedClass = classes.find((c) => c.classId === cls.classId);
 
-    students.forEach(s => {
-      console.log("Checking student:", s.email, s.semesterEnrollment);
-    });
-
     const matchedStudents = students.filter((s) =>
       s.semesterEnrollment.some((enrollment) =>
         enrollment.classes.some((cl) => cl.classId === matchedClass.classId)
       )
     );
+
+    matchedStudents.forEach((student) => {
+      if (localStorage.getItem(student.email)) {
+        localStorage.removeItem(student.email);
+      }
+    });
 
     const gradeList = matchedStudents.map((student) => {
       const profile = users.find((u) => u.email === student.email);
@@ -229,7 +231,12 @@ export default function Grades() {
     setSelectedClass(cls);
     setEnrolledStudents(matchedStudents);
     setGrades(gradeList);
+
   };
+
+  useEffect(() => {
+    console.log("Selected class:",selectedClass);
+  }, [selectedClass]);
 
   const handleGradeChange = (id, value) => {
     setGrades((prev) =>
@@ -238,24 +245,45 @@ export default function Grades() {
     setOpenDropdownId(null);
   };
 
-  const handleSubmit = () => {
-    const missing = enrolledStudents.find((s) => !localStorage.getItem(s.email));
-    if (missing) {
-      const profile = users.find((u) => u.email === missing.email);
-      setAlertContent({
-        title: "Missing Grades",
-        description: `Please choose a grade for student ${profile?.firstName || ""} ${
-          profile?.lastName || ""}`,
-      });
-      setShowAlert(true);
-      return;
-    }
+  const handleSubmit = async () => {
+    if (selectedClass) {
+      const missing = enrolledStudents.find((s) => !localStorage.getItem(s.email));
+      if (missing) {
+        const profile = users.find((u) => u.email === missing.email);
+        setAlertContent({
+          title: "Missing Grades",
+          description: `Please choose a grade for student ${profile?.firstName || ""} ${
+            profile?.lastName || ""}`,
+        });
+        setShowAlert(true);
+        return;
+      }
 
-    setAlertContent({
-      title: "Grades Submitted",
-      description: `Grades for ${selectedClass.courseName} have been submitted.`,
-    });
-    setShowAlert(true);
+      await Promise.all(
+        enrolledStudents.map((student) =>
+          createCompletedCourseAction({
+            studentId: student.studentId,
+            courseId: selectedClass.courseId,
+            letterGrade: localStorage.getItem(student.email),
+          })
+        )
+      );
+
+      updateClassAction(selectedClass.classId, { classStatus: "completed" });
+
+      setAlertContent({
+        title: "Grades Submitted",
+        description: `Grades for ${selectedClass.courseName} have been submitted.`,
+      });
+
+      enrolledStudents.forEach((student) => {
+        if (localStorage.getItem(student.email)) {
+          localStorage.removeItem(student.email);
+        }
+      });
+
+      setShowAlert(true);
+    }
   };
 
   return (
