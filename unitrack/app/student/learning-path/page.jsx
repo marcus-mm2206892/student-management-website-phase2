@@ -4,59 +4,38 @@ import { useEffect, useRef, useState } from "react";
 import styles from "@/app/styles/learningpath.module.css";
 import cardStyles from "@/app/styles/course-card-view.module.css";
 
-const dummyUser = {
-  email: "jane.doe@student.qu.edu.qa",
-  department: "CMPS",
-  completedCourses: [
-    { courseId: "CMPS101", letterGrade: "A" },
-    { courseId: "CMPS201", letterGrade: "B+" }
-  ],
-  semesterEnrollment: {
-    classes: [
-      { classId: "1001", courseId: "CMPS301", classStatus: "open" },
-      { classId: "1002", courseId: "CMPS303", classStatus: "pending" }
-    ]
-  }
-};
+import { getCompletedCoursesByStudentEmailAction, getAllCoursesAction } from "@/app/action/server-actions";
 
-const dummyCourses = [
-  { courseId: "CMPS101", courseName: "Intro to Programming", description: "Learn the basics of programming.", majorsOffered: ["CMPS", "CMPE"] },
-  { courseId: "CMPS201", courseName: "Data Structures", description: "Explore efficient data structures.", majorsOffered: ["CMPS"] },
-  { courseId: "CMPS301", courseName: "Algorithms", description: "Algorithm design and analysis.", majorsOffered: ["CMPE"] },
-  { courseId: "CMPS303", courseName: "Operating Systems", description: "Study system-level software.", majorsOffered: ["CMPS"] },
-  { courseId: "CMPS499", courseName: "Capstone Project", description: "Final year project work.", majorsOffered: ["CMPS"] }
-];
-
-const dummyClasses = [
-  { classId: "1001", courseId: "CMPS301", classStatus: "open" },
-  { classId: "1002", courseId: "CMPS303", classStatus: "pending" }
-];
-
-const dummyMajors = [
-  { majorName: "CMPS", requiredCourses: ["CMPS101", "CMPS201", "CMPS301", "CMPS303", "CMPS499"] }
-];
 
 export default function LearningPath() {
   const containerRef = useRef(null);
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  const [student, setStudent] = useState(dummyUser);
-  const [courses, setCourses] = useState(dummyCourses);
-  const [classes, setClasses] = useState(dummyClasses);
-  const [majors, setMajors] = useState(dummyMajors);
+  const[courses, setCourses] = useState([]);
+  const[completedCourses, setCompletedCourses] = useState([]);
+  const[inProgressCourses, setInProgressCourses] = useState([]);
+  const[scheduledCourses, setScheduledCourses] = useState([]);
+  const[upcomingCourses, setUpcomingCourses] = useState([]);
 
-  const getCourse = id => courses.find(c => c.courseId === id);
+  async function loadCompletedCourses(studentId) {  //courseId, letterGrade, courseName & description
+    const initialCompleted = await getCompletedCoursesByStudentEmailAction(studentId);
+    const initialCourses = await getAllCoursesAction();
 
-  const completedCourses = student.completedCourses.map(c => ({ ...getCourse(c.courseId), letterGrade: c.letterGrade }));
+    // format the completed courses array
+    const completedCoursesWithInfo = initialCourses.filter(course =>
+      initialCompleted.some(completed => completed.courseId === course.courseId)
+    ).map(course => {
+      const matched = initialCompleted.find(c => c.courseId === course.courseId);
+      return {
+        courseId: course.courseId,
+        courseName: course.courseName,
+        description: course.description,
+        letterGrade: matched.letterGrade
+      };
+    });
 
-  const inProgressCourses = student.semesterEnrollment.classes.filter(c => c.classStatus === "open").map(c => getCourse(c.courseId));
-
-  const scheduledCourses = student.semesterEnrollment.classes.filter(c => c.classStatus === "pending").map(c => getCourse(c.courseId));
-
-  const requiredCourseIds = majors.find(m => m.majorName === student.department)?.requiredCourses || [];
-  const completedIds = student.completedCourses.map(c => c.courseId);
-  const currentIds = student.semesterEnrollment.classes.map(c => c.courseId);
-  const upcomingCourses = requiredCourseIds.filter(id => !completedIds.includes(id) && !currentIds.includes(id)).map(id => getCourse(id));
+    setCompletedCourses(completedCoursesWithInfo);
+  }
 
   useEffect(() => {
     const handleResize = () => {
@@ -67,6 +46,8 @@ export default function LearningPath() {
     handleResize();
     return () => window.removeEventListener("resize", handleResize);
   }, []);
+
+  useEffect(() => {loadCompletedCourses("mohd.bashar@qu.com")}, [])  //Need to put actual user
 
   const filteredCategory = (courses, label, icon, cssCategory) => (
     <div
@@ -117,13 +98,13 @@ export default function LearningPath() {
           )}
 
 
-            <div className={cardStyles["course-tags"]}>
+            {/* <div className={cardStyles["course-tags"]}>
               {c.majorsOffered?.map((major, idx) => (
                 <span key={idx} className={cardStyles["tag"]}>
                   <i className={`fa-solid ${major === "CMPE" ? "fa-microchip" : "fa-laptop-code"}`} /> {major === "CMPS" ? "CS" : "CE"}
                 </span>
               ))}
-            </div>
+            </div> */}
           </div>
         ))}
       </div>
