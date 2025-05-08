@@ -1,6 +1,8 @@
 "use server";
 
 import unitrackRepo from "@/repos/unitrack-repo";
+import { revalidatePath } from "next/cache";
+import { redirect } from "next/dist/server/api-utils";
 
 // Student
 export async function getAllStudentsAction() {
@@ -225,7 +227,9 @@ export async function updateClassEnrollmentAction(id, data) {
 }
 
 export async function deleteClassEnrollmentAction(classId, semesterEnrollmentId) {
-  return await unitrackRepo.deleteClassEnrollment(classId, semesterEnrollmentId);
+  const deleted = await unitrackRepo.deleteClassEnrollment(classId, semesterEnrollmentId)
+  revalidatePath('/') 
+  return deleted;
 }
 
 // Expertise

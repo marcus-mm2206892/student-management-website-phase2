@@ -174,8 +174,6 @@ export default function RegisterCourse() {
     const updated = registrableClasses.map((c) =>
       c.courseId === courseId ? { ...c, registered: !c.registered } : c
     );
-
-    setRegistrableClasses(updated);
   
     const task = () => {
       if (course.registered) {
@@ -205,6 +203,7 @@ export default function RegisterCourse() {
       const action = course.registered ? "unregistered from" : "registered for";
       setAlertMessage(`You have successfully ${action} ${course?.course.courseName}`);
       setAlertVisible(true);
+      setRegistrableClasses(updated);
     };
   
     // Set a timeout to delay the task (simulate async behavior)
