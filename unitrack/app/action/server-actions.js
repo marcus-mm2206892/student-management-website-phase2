@@ -11,6 +11,10 @@ export async function getStudentByIdAction(id) {
   return await unitrackRepo.getStudentById(id);
 }
 
+export async function getStudentByEmailAction(email) {
+  return await unitrackRepo.getStudentByEmail(email);
+}
+
 export async function createStudentAction(data) {
   return await unitrackRepo.createStudent(data);
 }
@@ -155,6 +159,10 @@ export async function deleteMajorAction(id) {
 // Class
 export async function getAllClassesAction() {
   return await unitrackRepo.getAllClasses();
+}
+
+export async function getAllAvailableClasses() {
+  return await unitrackRepo.getAllAvailableClasses();
 }
 
 export async function getClassIdsByCourseAction(courseId) {

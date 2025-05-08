@@ -46,13 +46,23 @@ class UniTrackRepo {
     return await prisma.student.findMany({
       include: {
         semesterEnrollment: { include: { classes: true } },
-        completedCourses: true,
+        completedCourses: {include: {course: true}},
       },
     });
   }
 
   async getStudentById(id) {
-    return await prisma.student.findUnique({ where: { studentId: id } });
+    return await prisma.student.findUnique({ where: { studentId: id }, include: {
+        semesterEnrollment: { include: { classes: true } },
+        completedCourses: {include: {course: true}},
+      } });
+  }
+
+  async getStudentByEmail(email) {
+    return await prisma.student.findUnique({where: {email: email}, include: {
+        semesterEnrollment: { include: { classes: true } },
+        completedCourses: {include: {course: true}},
+      }});
   }
 
   async createStudent(data) {
@@ -311,6 +321,16 @@ class UniTrackRepo {
       include: { schedule: true, instructors: true },
     });
   }
+
+  async getAllAvailableClasses() {
+  return await prisma.class.findMany({
+    where: {
+      classStatus: {
+        not: "completed"
+      }
+    }
+  });
+}
 
   async getClassIdsByCourse(courseId) {
     const classes = await prisma.courseCurrentClasses.findMany({

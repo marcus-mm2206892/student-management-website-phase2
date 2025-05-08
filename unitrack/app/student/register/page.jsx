@@ -4,6 +4,7 @@ import styles from "@/app/styles/register-course.module.css";
 import NoResults from "@/app/components/NoResults";
 import ClassModal from "@/app/components/ClassModal";
 import AlertModal from "@/app/components/AlertModal";
+import { getAllAvailableClasses, getAllClassesAction, getStudentByEmailAction } from "@/app/action/server-actions";
 
 export default function RegisterCourse() {
   const [alertVisible, setAlertVisible] = useState(false);
@@ -13,6 +14,116 @@ export default function RegisterCourse() {
   const [failedToLoad, setFailedToLoad] = useState(false);
   const [noResults, setNoResults] = useState(false);
   const [classModalVisible, setClassModalVisible] = useState(false);
+  const [student, setStudent] = useState(null);
+  const [classes, setClasses] = useState([]);
+  const [completedCourses, setCompletedCourses] = useState([]);
+  const [availableClasses, setAvailableClasses] = useState([]);
+  const [user, setUser] = useState(null);
+  const [registrableClasses, setRegistrableClasses] = useState([]);
+
+    useEffect(() => {
+      const storedUser = localStorage.getItem("user");
+      if (storedUser) {
+        setUser(JSON.parse(storedUser));
+      }
+    }, []);
+
+      useEffect(() => {
+        async function fetchStudent() {
+          if (user && user.email) {
+            const result = await getStudentByEmailAction(user.email);
+            setStudent(result);
+          }
+        }
+    
+        fetchStudent();
+      }, [user]);
+  
+      // useEffect(() => {
+      //   console.log("Updated student:", student);
+      // }, [user]);
+
+    useEffect(() => {
+        async function fetchClasses() {
+          const newClasses = [];
+          
+          if (student && student.semesterEnrollment && student.semesterEnrollment.length > 0) {
+            const lastEnrollment = student.semesterEnrollment[student.semesterEnrollment.length - 1];
+
+            for (const c of lastEnrollment.classes) {
+              newClasses.push(c);
+            }
+          }
+
+          return newClasses;
+        }
+      
+        async function loadClasses() {
+          const resolvedClasses = await fetchClasses(); 
+          setClasses(resolvedClasses);               
+        }
+      
+        loadClasses();
+      }, [student]);
+
+      // useEffect(() => {
+      //   console.log("Updated classes:", classes);
+      // }, [student]);
+  
+  useEffect(() => {
+        async function fetchCompletedCourses() {
+          const completedCourses = [];
+          
+          if (student && student.completedCourses) {
+            for (const c of student.completedCourses) {
+              completedCourses.push(c);
+            }
+          }
+
+          return completedCourses;
+        }
+      
+        async function loadCompletedCourses() {
+          const completedCourses = await fetchCompletedCourses(); 
+          setCompletedCourses(completedCourses);               
+        }
+      
+        loadCompletedCourses();
+      }, [student]);
+
+      // useEffect(() => {
+      //   console.log("Updated completed courses:", completedCourses);
+      // }, [student]);
+
+  useEffect(() => {
+        async function fetchAvailableClasses() {
+          const availableClasses = await getAllAvailableClasses();
+          
+          return availableClasses;
+        }
+      
+        async function loadAvailableClasses() {
+          const availableClasses = await fetchAvailableClasses(); 
+          setAvailableClasses(availableClasses);               
+        }
+      
+        loadAvailableClasses();
+      }, [student]);
+  
+  
+    useEffect(() => {
+      if (availableClasses.length > 0 && completedCourses.length > 0) {
+        const completedCourseIds = completedCourses.map((c) => c.courseId);
+        const filtered = availableClasses.filter(
+          (cls) => !completedCourseIds.includes(cls.courseId)
+        );
+        setRegistrableClasses(filtered);
+      }
+    }, [availableClasses, completedCourses]);
+
+      useEffect(() => {
+        console.log("Updated registrable classes:", registrableClasses);
+      }, [registrableClasses]);
 
   useEffect(() => {
     try {
@@ -52,7 +163,7 @@ export default function RegisterCourse() {
     } catch (error) {
       setFailedToLoad(true);
     }
-  }, []);
+  }, []); 
 
   const filteredCourses = courses.filter((course) =>
     `${course.courseId} ${course.courseName} ${course.instructor}`
@@ -204,7 +315,7 @@ export default function RegisterCourse() {
         )}
       </section>
 
-      <ClassModal isVisible={classModalVisible} onClose={() => setClassModalVisible(false)} />
+      {/* <ClassModal isVisible={classModalVisible} onClose={() => setClassModalVisible(false)} /> */}
 
       <AlertModal
         title="Registration Update"
