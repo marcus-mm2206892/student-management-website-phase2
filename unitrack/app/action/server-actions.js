@@ -157,6 +157,14 @@ export async function getAllClassesAction() {
   return await unitrackRepo.getAllClasses();
 }
 
+export async function getClassIdsByCourseAction(courseId) {
+  return await unitrackRepo.getClassIdsByCourse(courseId);
+}
+
+export async function getClassDetailsByIdAction(classId) {
+  return await unitrackRepo.getClassDetailsById(classId);
+}
+
 export async function getApprovedClassesAction() {
   return await unitrackRepo.getApprovedClasses();
 }
@@ -328,6 +336,10 @@ export async function getAllCourseMajorOfferingsAction() {
 
 export async function getCourseMajorOfferingByIdAction(id) {
   return await unitrackRepo.getCourseMajorOfferingById(id);
+}
+
+export async function getAllCourseIdsAction() {
+  return await unitrackRepo.getAllCourseIds();
 }
 
 export async function getCourseIdsByMajorAction(major) {

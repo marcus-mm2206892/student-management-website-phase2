@@ -312,6 +312,41 @@ class UniTrackRepo {
     });
   }
 
+  async getClassIdsByCourse(courseId) {
+    const classes = await prisma.courseCurrentClasses.findMany({
+      where: { courseId },
+    });
+    return classes.map((c) => c.classId);
+  }
+
+  async getClassDetailsById(classId) {
+    // fetch class info
+    const classObj = await prisma.class.findUnique({
+      where: { classId },
+    });
+
+    // fetch schedule info
+    const scheduleObj = await prisma.schedule.findUnique({
+      where: { classId },
+    });
+
+    // fetch instructor IDs
+    const teachingRecords = await prisma.teachingClass.findMany({
+      where: { classId },
+    });
+
+    return {
+      courseId: classObj.courseId,
+      campus: classObj.campus,
+      crn: classObj.classId,
+      section: classObj.section,
+      startTime: scheduleObj?.startTime ?? "N/A",
+      endTime: scheduleObj?.endTime ?? "N/A",
+      schedule: scheduleObj?.scheduleType?.split("") ?? [],
+      instructorIds: teachingRecords.map((t) => t.instructorId),
+    };
+  }
+
   async getApprovedClasses() {
     return await prisma.class.findMany({ where: { classStatus: "open" } });
   }
@@ -435,6 +470,12 @@ class UniTrackRepo {
   // CourseMajorOfferings
   async getAllCourseMajorOfferings() {
     return await prisma.courseMajorOfferings.findMany();
+  }
+
+  async getAllCourseIds() {
+    const all = await prisma.courseCurrentClasses.findMany();
+    const unique = [...new Set(all.map((e) => e.courseId))];
+    return unique;
   }
 
   async getCourseIdsByMajor(majorId) {
