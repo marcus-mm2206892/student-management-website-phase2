@@ -4,7 +4,8 @@ import styles from "@/app/styles/register-course.module.css";
 import NoResults from "@/app/components/NoResults";
 import ClassModal from "@/app/components/ClassModal";
 import AlertModal from "@/app/components/AlertModal";
-import { getAllAvailableClasses, getAllClassesAction, getAllUsersAction, getStudentByEmailAction } from "@/app/action/server-actions";
+import { createClassEnrollmentAction, deleteClassEnrollmentAction, getAllAvailableClasses, getAllClassesAction, getAllUsersAction, getStudentByEmailAction } from "@/app/action/server-actions";
+import { redirect, useRouter } from "next/navigation";
 
 export default function RegisterCourse() {
   const [alertVisible, setAlertVisible] = useState(false);
@@ -21,6 +22,8 @@ export default function RegisterCourse() {
   const [user, setUser] = useState(null);
   const [registrableClasses, setRegistrableClasses] = useState([]);
   const [users, setUsers] = useState([]);
+
+  const router = useRouter();
 
     useEffect(() => {
       const storedUser = localStorage.getItem("user");
@@ -42,7 +45,7 @@ export default function RegisterCourse() {
   
       // useEffect(() => {
       //   console.log("Updated student:", student);
-      // }, [user]);
+      // }, [student]);
 
     useEffect(() => {
         async function fetchClasses() {
@@ -67,9 +70,9 @@ export default function RegisterCourse() {
         loadClasses();
       }, [student]);
 
-      // useEffect(() => {
-      //   console.log("Updated classes:", classes);
-      // }, [student]);
+      useEffect(() => {
+        console.log("Updated classes:", classes);
+      }, [classes]);
   
   useEffect(() => {
         async function fetchCompletedCourses() {
@@ -130,12 +133,17 @@ export default function RegisterCourse() {
     useEffect(() => {
       if (availableClasses.length > 0 && completedCourses.length > 0) {
         const completedCourseIds = completedCourses.map((c) => c.courseId);
+
         const filtered = availableClasses.filter(
           (cls) => !completedCourseIds.includes(cls.courseId)
         ).sort((a, b) => b.enrollmentActual - a.enrollmentActual);
+
+        filtered.forEach((registrableClass) => {
+          const isRegistered = classes.some((c) => c.classId === registrableClass.classId);
+          registrableClass.registered = isRegistered;});
         setRegistrableClasses(filtered);
       }
-    }, [availableClasses, completedCourses]);
+    }, [availableClasses, completedCourses, classes]);
 
       useEffect(() => {
         console.log("Updated registrable classes:", registrableClasses);
@@ -152,19 +160,57 @@ export default function RegisterCourse() {
   }, [searchTerm, filteredCourses]);
 
   const handleRegisterToggle = (courseId) => {
-    setCourses((prev) => {
-      const updated = prev.map((c) =>
-        c.courseId === courseId ? { ...c, registered: !c.registered } : c
-      );
-
-      const course = prev.find((c) => c.courseId === courseId);
-      const action = course?.registered ? "unregistered from" : "registered for";
-      setAlertMessage(`You have successfully ${action} ${course?.courseName}`);
+    if (!registrableClasses) return;
+  
+    const course = registrableClasses.find((c) => c.classId === courseId);
+    if (!course) return;
+  
+    if (course.campus.toLowerCase() !== user.gender) {
+      setAlertMessage(`This class is offered on the ${course.campus} campus. Please register in a section available for ${user.gender.charAt(0).toUpperCase() + user.gender.slice(1)} students.`);
       setAlertVisible(true);
+      return;
+    }
+  
+    const updated = registrableClasses.map((c) =>
+      c.courseId === courseId ? { ...c, registered: !c.registered } : c
+    );
 
-      return updated;
-    });
-  };
+    setRegistrableClasses(updated);
+  
+    const task = () => {
+      if (course.registered) {
+        if (student?.semesterEnrollment?.length > 0) {
+          const lastEnrollment = student.semesterEnrollment[student.semesterEnrollment.length - 1];
+          deleteClassEnrollmentAction(course.classId, lastEnrollment.id);
+        }
+      } else {
+        if (student?.semesterEnrollment?.length > 0) {
+          if (classes.find((c) => c.courseId === course.courseId)) {
+            setAlertMessage(`You are already registered in another class for ${course.course.courseName} (${course.courseId}).`);
+            setAlertVisible(true);
+            return;
+          }
+
+          const lastEnrollment = student.semesterEnrollment[student.semesterEnrollment.length - 1];
+          createClassEnrollmentAction({
+            classId: course.classId,
+            courseId: course.courseId,
+            semesterEnrollmentId: lastEnrollment.id,
+            letterGrade: "N/A",
+            gradeStatus: "ungraded",
+          });
+        }
+      }
+
+      const action = course.registered ? "unregistered from" : "registered for";
+      setAlertMessage(`You have successfully ${action} ${course?.course.courseName}`);
+      setAlertVisible(true);
+    };
+  
+    // Set a timeout to delay the task (simulate async behavior)
+    setTimeout(task, 500); // 500ms delay (you can adjust the delay as needed)
+  }
+  
 
   const getStatusBadgeClass = (status) => {
     return status === "open"
@@ -284,7 +330,7 @@ export default function RegisterCourse() {
                     className={`${styles["course-button"]} ${
                       course.registered ? styles["registered-button"] : ""
                     }`}
-                    onClick={() => handleRegisterToggle(course.courseId)}
+                    onClick={() => handleRegisterToggle(course.classId)}
                   >
                     {course.registered ? "Unregister" : "Register"}
                   </button>

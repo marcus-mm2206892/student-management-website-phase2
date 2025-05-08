@@ -224,8 +224,8 @@ export async function updateClassEnrollmentAction(id, data) {
   return await unitrackRepo.updateClassEnrollment(id, data);
 }
 
-export async function deleteClassEnrollmentAction(id) {
-  return await unitrackRepo.deleteClassEnrollment(id);
+export async function deleteClassEnrollmentAction(classId, semesterEnrollmentId) {
+  return await unitrackRepo.deleteClassEnrollment(classId, semesterEnrollmentId);
 }
 
 // Expertise

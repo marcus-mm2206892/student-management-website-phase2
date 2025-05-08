@@ -105,7 +105,9 @@ model ClassEnrollment {
   letterGrade String
 
   semesterEnrollmentId Int
-  semesterEnrollment   SemesterEnrollment @relation(fields: [semesterEnrollmentId], references: [id])
+  semesterEnrollment   SemesterEnrollment @relation(fields: [semesterEnrollmentId], references: [id], onDelete: Cascade)
+
+  @@unique([classId, semesterEnrollmentId])
 }
 
 model Class {

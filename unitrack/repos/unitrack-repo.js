@@ -437,9 +437,15 @@ class UniTrackRepo {
     });
   }
 
-  async deleteClassEnrollment(id) {
-    return await prisma.classEnrollment.delete({ where: { id: Number(id) } });
+  async deleteClassEnrollment(classId, semesterEnrollmentId) {
+    return await prisma.classEnrollment.deleteMany({
+      where: {
+        classId: classId,
+        semesterEnrollmentId: semesterEnrollmentId
+      }
+    });
   }
+  
 
   // Expertise
   async getAllExpertise() {
