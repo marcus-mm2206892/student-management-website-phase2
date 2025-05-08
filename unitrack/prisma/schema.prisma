@@ -80,13 +80,14 @@ model Major {
 }
 
 model Instructor {
-  instructorId    String      @id
-  email           String      @unique
+  instructorId    String            @id
+  email           String            @unique
   college         String
   department      String
-  teachingClasses Class[]     @relation("TeachingClasses")
-  gradedClasses   Class[]     @relation("GradedClasses")
+  teachingClasses Class[]           @relation("TeachingClasses")
+  gradedClasses   Class[]           @relation("GradedClasses")
   Expertise       Expertise[] // We need an expertise model
+  TeachingClasses TeachingClasses[]
 }
 
 model Expertise {
@@ -124,6 +125,7 @@ model Class {
 
   course               Course                 @relation(fields: [courseId], references: [courseId])
   CourseCurrentClasses CourseCurrentClasses[] @relation("ClasstoCurrentCourses")
+  TeachingClasses      TeachingClasses[]
 }
 
 model Schedule {
@@ -176,4 +178,13 @@ model Prerequisite {
   minGrade       String
 
   course Course @relation(fields: [courseId], references: [courseId])
+}
+
+model TeachingClasses {
+  id           Int    @id @default(autoincrement())
+  classId      String
+  instructorId String
+
+  class      Class      @relation(fields: [classId], references: [classId])
+  instructor Instructor @relation(fields: [instructorId], references: [instructorId])
 }

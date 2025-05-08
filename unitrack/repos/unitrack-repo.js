@@ -320,30 +320,43 @@ class UniTrackRepo {
   }
 
   async getClassDetailsById(classId) {
-    // fetch class info
     const classObj = await prisma.class.findUnique({
       where: { classId },
     });
 
-    // fetch schedule info
     const scheduleObj = await prisma.schedule.findUnique({
       where: { classId },
     });
 
-    // fetch instructor IDs
-    const teachingRecords = await prisma.teachingClass.findMany({
+    const teachingRecords = await prisma.teachingClasses.findMany({
       where: { classId },
     });
 
+    const instructorData = await Promise.all(
+      teachingRecords.map(async (t) => {
+        const inst = await prisma.instructor.findUnique({
+          where: { instructorId: t.instructorId },
+        });
+        return inst
+          ? {
+              id: inst.instructorId,
+              name: inst.name,
+              department: inst.department,
+              college: inst.college,
+            }
+          : null;
+      })
+    );
+
     return {
-      courseId: classObj.courseId,
-      campus: classObj.campus,
-      crn: classObj.classId,
-      section: classObj.section,
+      courseId: classObj?.courseId ?? "Unknown",
+      campus: classObj?.campus ?? "Unknown",
+      crn: classObj?.classId ?? "Unknown",
+      section: classObj?.section ?? "Unknown",
       startTime: scheduleObj?.startTime ?? "N/A",
       endTime: scheduleObj?.endTime ?? "N/A",
       schedule: scheduleObj?.scheduleType?.split("") ?? [],
-      instructorIds: teachingRecords.map((t) => t.instructorId),
+      instructors: instructorData.filter(Boolean),
     };
   }
 

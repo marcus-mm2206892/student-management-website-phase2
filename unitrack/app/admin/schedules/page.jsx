@@ -135,12 +135,14 @@ export default function AdminViewSchedule() {
               <div className={styles["content-info-div"] + " " + styles["instructors-container"]}>
                 <h3 className={styles["content-info-attribute"]}>Course Instructors</h3>
                 <div className={styles["instructors-list"]}>
-                  {selectedClassData.instructorIds.map((id, i) => (
+                  {selectedClassData.instructors?.map((inst, i) => (
                     <div className={styles["instructor"]} key={i}>
                       <i className="fa-solid fa-user"></i>
                       <div className={styles["instructor-info"]}>
-                        <span className={styles["instructor-name"]}>Instructor ID: {id}</span>
-                        <span className={styles["instructor-description"]}>Department of ???</span>
+                        <span className={styles["instructor-name"]}>{inst.name}</span>
+                        <span className={styles["instructor-description"]}>
+                          Professor at {inst.college}, {inst.department}
+                        </span>
                       </div>
                     </div>
                   ))}
