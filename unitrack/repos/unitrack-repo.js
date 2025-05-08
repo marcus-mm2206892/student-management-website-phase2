@@ -328,7 +328,7 @@ class UniTrackRepo {
       classStatus: {
         not: "completed"
       }
-    }
+    }, include: { instructors: true, schedule: true, course: true }
   });
 }
 

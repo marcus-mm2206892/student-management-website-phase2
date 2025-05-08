@@ -4,7 +4,7 @@ import styles from "@/app/styles/register-course.module.css";
 import NoResults from "@/app/components/NoResults";
 import ClassModal from "@/app/components/ClassModal";
 import AlertModal from "@/app/components/AlertModal";
-import { getAllAvailableClasses, getAllClassesAction, getStudentByEmailAction } from "@/app/action/server-actions";
+import { getAllAvailableClasses, getAllClassesAction, getAllUsersAction, getStudentByEmailAction } from "@/app/action/server-actions";
 
 export default function RegisterCourse() {
   const [alertVisible, setAlertVisible] = useState(false);
@@ -20,6 +20,7 @@ export default function RegisterCourse() {
   const [availableClasses, setAvailableClasses] = useState([]);
   const [user, setUser] = useState(null);
   const [registrableClasses, setRegistrableClasses] = useState([]);
+  const [users, setUsers] = useState([]);
 
     useEffect(() => {
       const storedUser = localStorage.getItem("user");
@@ -109,14 +110,29 @@ export default function RegisterCourse() {
       
         loadAvailableClasses();
       }, [student]);
-  
+
+
+  useEffect(() => {
+        async function fetchUsers() {
+          const users = await getAllUsersAction();
+          
+          return users;
+        }
+      
+        async function loadUsers() {
+          const users = await fetchUsers(); 
+          setUsers(users);               
+        }
+      
+        loadUsers();
+      }, [student]);
   
     useEffect(() => {
       if (availableClasses.length > 0 && completedCourses.length > 0) {
         const completedCourseIds = completedCourses.map((c) => c.courseId);
         const filtered = availableClasses.filter(
           (cls) => !completedCourseIds.includes(cls.courseId)
-        );
+        ).sort((a, b) => b.enrollmentActual - a.enrollmentActual);
         setRegistrableClasses(filtered);
       }
     }, [availableClasses, completedCourses]);
@@ -125,48 +141,8 @@ export default function RegisterCourse() {
         console.log("Updated registrable classes:", registrableClasses);
       }, [registrableClasses]);
 
-  useEffect(() => {
-    try {
-      const dummyData = [
-        {
-          courseId: "CMPS303",
-          courseName: "Data Structures",
-          campus: "Male",
-          instructor: "John Doe",
-          section: "L01",
-          enrollment: "12 / 35",
-          status: "approved",
-          registered: false,
-        },
-        {
-          courseId: "CMPS351",
-          courseName: "Operating Systems",
-          campus: "Female",
-          instructor: "Jane Smith",
-          section: "L02",
-          enrollment: "29 / 30",
-          status: "pending",
-          registered: true,
-        },
-        {
-          courseId: "CMPS482",
-          courseName: "Cyber Security",
-          campus: "Male",
-          instructor: "Dr. Xavier",
-          section: "L03",
-          enrollment: "30 / 30",
-          status: "rejected",
-          registered: false,
-        },
-      ];
-      setCourses(dummyData);
-    } catch (error) {
-      setFailedToLoad(true);
-    }
-  }, []); 
-
-  const filteredCourses = courses.filter((course) =>
-    `${course.courseId} ${course.courseName} ${course.instructor}`
+  const filteredCourses = registrableClasses.filter((cls) =>
+    `${cls.course.courseId} ${cls.course.courseName} ${cls.instructor}`
       .toLowerCase()
       .includes(searchTerm.toLowerCase())
   );
@@ -191,12 +167,30 @@ export default function RegisterCourse() {
   };
 
   const getStatusBadgeClass = (status) => {
-    return status === "approved"
+    return status === "open"
       ? styles["status-approved"]
       : status === "pending"
       ? styles["status-pending"]
       : styles["status-rejected"];
   };
+
+  const getInstructorName = (email) => {
+    if (users.length) {
+      const instructor = users.find((u) => u.email === email);
+      if (instructor) {
+        const firstName = instructor.firstName;
+        const lastName = instructor.lastName;
+        return `${firstName} ${lastName}`;
+      }
+    }
+    return "No Name";
+  };
+
+  if (
+    registrableClasses.length === 0
+  ) {
+    return <p>Loading courses...</p>;
+  }
 
   return (
     <main className={styles.register}>
@@ -258,31 +252,31 @@ export default function RegisterCourse() {
               <tr key={index}>
                 <td className={`${styles.data} ${styles["course-no"]}`}>
                   <span onClick={() => setClassModalVisible(true)}>
-                    {course.courseId}
+                    {course.course.courseId}
                   </span>
                 </td>
                 <td className={`${styles.data} ${styles["course-name"]}`}>
-                  {course.courseName}
+                  {course.course.courseName}
                 </td>
                 <td className={`${styles.data} ${styles["course-campus"]}`}>
                   {course.campus}
                 </td>
                 <td className={`${styles.data} ${styles["course-instructor"]}`}>
-                  {course.instructor}
+                  {getInstructorName(course.instructors[0].email)}
                 </td>
                 <td className={`${styles.data} ${styles["course-section"]}`}>
                   {course.section}
                 </td>
                 <td className={`${styles.data} ${styles["course-enrollment"]}`}>
-                  <span>{course.enrollment}</span>
+                  <span>{course.enrollmentActual} / {course.enrollmentMaximum}</span>
                 </td>
                 <td className={`${styles.data} ${styles["course-status"]}`}>
                   <div
-                    className={`${styles["status-badge"]} ${getStatusBadgeClass(course.status)}`}
+                    className={`${styles["status-badge"]} ${getStatusBadgeClass(course.classStatus)}`}
                   >
                     <span className={styles["status-circle"]}></span>
                     {/* first letter of the word capital */}
-                    {course.status.charAt(0).toUpperCase() + course.status.slice(1)} 
+                    {course.classStatus.charAt(0).toUpperCase() + course.classStatus.slice(1)} 
                   </div>
                 </td>
                 <td className={`${styles.data} ${styles["course-action"]}`}>
