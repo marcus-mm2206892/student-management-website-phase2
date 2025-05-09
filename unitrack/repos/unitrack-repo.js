@@ -441,9 +441,12 @@ class UniTrackRepo {
     return await prisma.classEnrollment.create({ data });
   }
 
-  async updateClassEnrollment(id, data) {
-    return await prisma.classEnrollment.update({
-      where: { id: Number(id) },
+  async updateClassEnrollment(classId, semesterEnrollmentId, data) {
+    return await prisma.classEnrollment.updateMany({
+      where: {
+        classId: classId,
+        semesterEnrollmentId: semesterEnrollmentId,
+      },
       data,
     });
   }

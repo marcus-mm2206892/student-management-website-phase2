@@ -260,14 +260,22 @@ export default function Grades() {
       }
 
       await Promise.all(
-        enrolledStudents.map((student) =>
-          createCompletedCourseAction({
-            studentId: student.studentId,
-            courseId: selectedClass.courseId,
-            letterGrade: localStorage.getItem(student.email),
+          enrolledStudents.map(async (student) => {
+            const lastEnrollment = student.semesterEnrollment[student.semesterEnrollment.length - 1];
+  
+            await createCompletedCourseAction({
+              studentId: student.studentId,
+              courseId: selectedClass.courseId,
+              letterGrade: localStorage.getItem(student.email),
+            });
+
+            await updateClassEnrollmentAction(
+              selectedClass.classId,
+              lastEnrollment.id,
+              { gradeStatus: "graded", letterGrade: localStorage.getItem(student.email) }
+            );
           })
-        )
-      );
+        );
 
       updateClassAction(selectedClass.classId, { classStatus: "completed" });
 

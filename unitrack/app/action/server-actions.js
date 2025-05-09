@@ -222,8 +222,8 @@ export async function createClassEnrollmentAction(data) {
   return await unitrackRepo.createClassEnrollment(data);
 }
 
-export async function updateClassEnrollmentAction(id, data) {
-  return await unitrackRepo.updateClassEnrollment(id, data);
+export async function updateClassEnrollmentAction(classId, semesterEnrollmentId, data) {
+  return await unitrackRepo.updateClassEnrollment(classId, semesterEnrollmentId, data);
 }
 
 export async function deleteClassEnrollmentAction(classId, semesterEnrollmentId) {
