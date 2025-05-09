@@ -2,24 +2,26 @@
 
 import { useState } from "react";
 import styles from "@/app/styles/admin-create-course.module.css";
+import { createPrerequisiteAction, createCourseMajorOfferingAction, createCourseAction } from "@/app/action/server-actions";
 
 /*
   To be fixed:
-    2. No validations yet
+    2. Proper validations and error handlings
     3. Need to populate subjects in subjects dropdown
-    4. Assign subject to new subject 
+    4. Assign subject to new subject ; also fetch from the new table
+    5. We should not create courses for other majors
 */
 
 export default function AdminCreateCourse() {
   const [selectedSubject, setSelectedSubject] = useState("Select Subject");
   const [selectedPrereqs, setSelectedPrereqs] = useState([]);
   const [selectedMajors, setSelectedMajors] = useState([]);
-  const [openDropdown, setOpenDropdown] = useState(null); // tracks which dropdown is open
-  const [courseNumber, setCourseNumber] = useState(null);
-  const [courseName, setCourseName] = useState(null);
-  const [creditHours, setCreditHours] = useState(null);
-  const [description, setDescription] = useState(null);
-  const [imageUrl, setImageUrl] = useState(null);
+  const [openDropdown, setOpenDropdown] = useState(""); // tracks which dropdown is open
+  const [courseNumber, setCourseNumber] = useState("");
+  const [courseName, setCourseName] = useState("");
+  const [creditHours, setCreditHours] = useState("");
+  const [description, setDescription] = useState("");
+  const [imageUrl, setImageUrl] = useState("");
 
   const subjects = ["CMPS", "CMPE", "ELEC"];
   const prerequisites = ["CMPS101", "CMPS202", "CMPS303"];
@@ -53,16 +55,79 @@ export default function AdminCreateCourse() {
     console.log("Descriptions: " + description);
     console.log("Image URL: " + imageUrl);
 
-
-    const newCourse =   {
-      courseId: (courseNumber+courseNumber),  //Concatenate : sub+courseNo
+    // Create new course
+    const newCourse =  {
+      courseId: (selectedSubject+courseNumber),  //Concatenate : sub+courseNo
       courseName: courseName,
-      creditHours: creditHours,
-      subject: "Computer Science",      // Need to modify subject
+      creditHours: parseInt(creditHours),
+      subject: selectedSubject === "CMPS" 
+        ? "Computer Science" 
+        : selectedSubject === "CMPE"
+        ? "Computer Engineering"
+        : selectedSubject === "ELEC"
+        ? "Electrical Engineering"
+        : "Unknown",      // Need to modify subject
       courseNumber: courseNumber,
       description: description,
       courseImage: imageUrl
     }
+    //Push new course to the table
+    const pushedCourse = await createCourseAction(newCourse);
+
+    console.log(newCourse);
+
+
+    // Create prerequesites for the new course
+    const preReqs = []
+    for( const prereqId of selectedPrereqs){
+      const newPreReq =  {  //Id auto generated
+        courseId: (selectedSubject+courseNumber), //Concatenate : sub+courseNo
+        prerequisiteId: prereqId,
+        minGrade: "D"
+      }
+      preReqs.push(newPreReq);
+      //Push to table
+    }
+
+    for (const p of preReqs) {
+      await createPrerequisiteAction(p);
+    }
+    console.log(preReqs);
+
+    // Create course major offerings
+    const courseMajorOffs = [];
+    for (const majorOffid of selectedMajors){
+        const newCourseMajorOffering =  {
+          courseId: (selectedSubject+courseNumber), //Concatenate : sub+courseNo
+          majorId: majorOffid === "Computer Science"
+            ? "CMPS"
+            : majorOffid === "Computer Engineering"
+            ? "CMPE"
+            : majorOffid === "Electrical Engineering"
+            ? "ELEC"
+            : "UNKNOWN"
+      }
+      //push to table
+      courseMajorOffs.push(newCourseMajorOffering)
+    }
+
+    for (const cmo of courseMajorOffs) {
+      await createCourseMajorOfferingAction(cmo);
+    }
+
+    console.log(courseMajorOffs);
+
+
+    //Reset the form
+    setSelectedSubject("Select Subject");
+    setSelectedPrereqs([]);
+    setSelectedMajors([]);
+    setOpenDropdown("");
+    setCourseNumber("");
+    setCourseName("");
+    setCreditHours("");
+    setDescription("");
+    setImageUrl("");
   };
 
   return (
