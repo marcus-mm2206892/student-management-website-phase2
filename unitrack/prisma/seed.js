@@ -123,9 +123,9 @@ async function seed() {
         });
     }
 
-    // for (const tc of teachingClasses) {
-    //     await prisma.teachingClasses.create({ data: tc })
-    // }
+    for (const tc of teachingClasses) {
+        await prisma.teachingClasses.create({ data: tc })
+    }
 
     console.log('Seeding completed successfully.');
 }
