@@ -1,6 +1,7 @@
 "use server";
 
 import unitrackRepo from "@/repos/unitrack-repo";
+import statisticsRepo from "@/repos/statistics-repo";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/dist/server/api-utils";
 
@@ -427,9 +428,17 @@ export async function createTeachingClassesActions(data) {
 // STATISTICS
 
 export async function getTop3MostEnrolledCoursesAction() {
-  return await unitrackRepo.getTop3MostEnrolledCourses();
+  return await statisticsRepo.getTop3MostEnrolledCourses();
 }
 
 export async function getAverageGPAByMajorAction() {
-  return await unitrackRepo.getAverageGPAByMajor();
+  return await statisticsRepo.getAverageGPAByMajor();
+}
+
+export async function getTop3CoursesWithMostFailsAction() {
+  return await statisticsRepo.getTop3CoursesWithMostFails();
+}
+
+export async function getTop3InstructorsWithMostClassesAction() {
+  return await statisticsRepo.getTop3InstructorsWithMostClasses();
 }

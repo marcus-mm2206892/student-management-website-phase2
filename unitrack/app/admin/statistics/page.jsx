@@ -2,34 +2,85 @@
 
 import styles from "@/app/styles/statistics.module.css";
 import { useEffect, useState } from "react";
-import { getTop3MostEnrolledCoursesAction, getAverageGPAByMajorAction } from "@/app/action/server-actions"
+import { 
+  getTop3MostEnrolledCoursesAction, 
+  getAverageGPAByMajorAction, 
+  getTop3CoursesWithMostFailsAction,
+  getTop3InstructorsWithMostClassesAction
+} from "@/app/action/server-actions"
 
 export default function StatisticsPage() {
-  const [topCourses, setTopCourses] = useState("Loading...");
+  const [topCourses, setTopCourses] = useState([]);
   const [gpaByMajor, setGpaByMajor] = useState({ CMPS: "Loading...", CMPE: "Loading..." });
+  const [mostFailedCourses, setMostFailedCourses] = useState([]);
+  const [topInstructors, setTopInstructors] = useState([]);
+
+
+
 
 
   useEffect(() => {
     const fetchData = async () => {
-      const [topCoursesRes, gpaMajorRes] = await Promise.all([
+      const [
+        topCoursesRes,
+        gpaMajorRes,
+        failedCoursesRes,
+        instructorsRes
+      ] = await Promise.all([
         getTop3MostEnrolledCoursesAction(),
         getAverageGPAByMajorAction(),
+        getTop3CoursesWithMostFailsAction(),
+        getTop3InstructorsWithMostClassesAction(), // call the action
       ]);
   
-      setTopCourses(topCoursesRes.join(", "));
+      setTopCourses(topCoursesRes);
       setGpaByMajor(gpaMajorRes);
+      setMostFailedCourses(failedCoursesRes);
+      setTopInstructors(instructorsRes);
     };
   
     fetchData();
   }, []);
   
+  
+  
 
   const stats = [
-    { label: "Top 3 Most Popular Courses by Enrolled Students", value: topCourses, icon: "fa-star" },
-{ label: "CS Students Avg. Grade Point Average", value: gpaByMajor.CMPS, icon: "fa-laptop-code" },
-{ label: "CE Students Avg. Grade Point Average", value: gpaByMajor.CMPE, icon: "fa-microchip" },
-
+    { label: "Top 3 Most Popular Courses by Enrolled Students", 
+      value: (
+        <>
+          {topCourses?.map((course, idx) => (
+            <div key={idx}>{course}</div>
+          ))}
+        </>
+      ), 
+      icon: "fa-star" },
+    { label: "CS Students Avg. Grade Point Average", value: gpaByMajor.CMPS, icon: "fa-laptop-code" },
+    { label: "CE Students Avg. Grade Point Average", value: gpaByMajor.CMPE, icon: "fa-microchip" },
+    {
+      label: "Courses With Most F Grades in History",
+      value: (
+        <>
+          {mostFailedCourses?.map((course, idx) => (
+            <div key={idx}>{course}</div>
+          ))}
+        </>
+      ),
+      icon: "fa-triangle-exclamation"
+    },
+    {
+      label: "Top 3 Instructors by Teaching Load",
+      value: (
+        <>
+          {topInstructors?.map((instructor, idx) => (
+            <div key={idx}>{instructor}</div>
+          ))}
+        </>
+      ),
+      icon: "fa-chalkboard-user",
+    },
   ];
+  
 
   return (
     <main className={styles.page}>

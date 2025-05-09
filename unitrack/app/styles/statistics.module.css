@@ -79,7 +79,7 @@
   flex-direction: column;
   justify-content: center;
   text-align: center;
-  height: 11rem;
+  height: 12rem;
   cursor: pointer;
   overflow: hidden;
   gap: 0.5rem;
@@ -94,7 +94,7 @@
 }
 
 .value {
-  font-size: 1.2rem;
+  font-size: 1rem;
   font-weight: 700;
   color: var(--clr-contrast-a0);
   margin-bottom: 0.4rem;
