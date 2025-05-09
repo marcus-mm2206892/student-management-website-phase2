@@ -46,23 +46,29 @@ class UniTrackRepo {
     return await prisma.student.findMany({
       include: {
         semesterEnrollment: { include: { classes: true } },
-        completedCourses: {include: {course: true}},
+        completedCourses: { include: { course: true } },
       },
     });
   }
 
   async getStudentById(id) {
-    return await prisma.student.findUnique({ where: { studentId: id }, include: {
+    return await prisma.student.findUnique({
+      where: { studentId: id },
+      include: {
         semesterEnrollment: { include: { classes: true } },
-        completedCourses: {include: {course: true}},
-      } });
+        completedCourses: { include: { course: true } },
+      },
+    });
   }
 
   async getStudentByEmail(email) {
-    return await prisma.student.findUnique({where: {email: email}, include: {
+    return await prisma.student.findUnique({
+      where: { email: email },
+      include: {
         semesterEnrollment: { include: { classes: true } },
-        completedCourses: {include: {course: true}},
-      }});
+        completedCourses: { include: { course: true } },
+      },
+    });
   }
 
   async createStudent(data) {
@@ -323,14 +329,15 @@ class UniTrackRepo {
   }
 
   async getAllAvailableClasses() {
-  return await prisma.class.findMany({
-    where: {
-      classStatus: {
-        not: "completed"
-      }
-    }, include: { instructors: true, schedule: true, course: true }
-  });
-}
+    return await prisma.class.findMany({
+      where: {
+        classStatus: {
+          not: "completed",
+        },
+      },
+      include: { instructors: true, schedule: true, course: true },
+    });
+  }
 
   async getClassIdsByCourse(courseId) {
     const classes = await prisma.courseCurrentClasses.findMany({
@@ -356,11 +363,15 @@ class UniTrackRepo {
       teachingRecords.map(async (t) => {
         const inst = await prisma.instructor.findUnique({
           where: { instructorId: t.instructorId },
+          include: {
+            user: true, // fetch firstName and lastName
+          },
         });
-        return inst
+
+        return inst && inst.user
           ? {
               id: inst.instructorId,
-              name: inst.name,
+              name: `${inst.user.firstName} ${inst.user.lastName}`,
               department: inst.department,
               college: inst.college,
             }
@@ -369,13 +380,13 @@ class UniTrackRepo {
     );
 
     return {
-      courseId: classObj?.courseId ?? "Unknown",
-      campus: classObj?.campus ?? "Unknown",
-      crn: classObj?.classId ?? "Unknown",
-      section: classObj?.section ?? "Unknown",
-      startTime: scheduleObj?.startTime ?? "N/A",
-      endTime: scheduleObj?.endTime ?? "N/A",
-      schedule: scheduleObj?.scheduleType?.split("") ?? [],
+      courseId: classObj.courseId,
+      crn: classObj.classId,
+      section: classObj.section,
+      campus: classObj.campus,
+      startTime: scheduleObj?.startTime,
+      endTime: scheduleObj?.endTime,
+      schedule: scheduleObj?.days || [],
       instructors: instructorData.filter(Boolean),
     };
   }
@@ -441,11 +452,10 @@ class UniTrackRepo {
     return await prisma.classEnrollment.deleteMany({
       where: {
         classId: classId,
-        semesterEnrollmentId: semesterEnrollmentId
-      }
+        semesterEnrollmentId: semesterEnrollmentId,
+      },
     });
   }
-  
 
   // Expertise
   async getAllExpertise() {
@@ -517,25 +527,27 @@ class UniTrackRepo {
     return unique;
   }
 
-  async getMajorCourseIdsByEmail(email){
-      const student = await prisma.student.findUnique({
+  async getMajorCourseIdsByEmail(email) {
+    const student = await prisma.student.findUnique({
       where: { email },
       include: {
         major: {
           include: {
             CourseMajorOfferings: {
-              select: { courseId: true }
-            }
-          }
-        }
-      }
+              select: { courseId: true },
+            },
+          },
+        },
+      },
     });
 
     if (!student) {
       throw new Error(`Student with email ${email} not found`);
     }
 
-  return student.major.CourseMajorOfferings.map(offering => offering.courseId);
+    return student.major.CourseMajorOfferings.map(
+      (offering) => offering.courseId
+    );
   }
 
   async getCourseMajorOfferingById(id) {

@@ -17,6 +17,7 @@ datasource db {
 model Admin {
   adminId String @id
   email   String @unique
+  user    User   @relation(fields: [email], references: [email])
 }
 
 model User {
@@ -27,8 +28,11 @@ model User {
   role            String
   gender          String
   themePreference ThemePreference
-  profileImage    String //In users.json, its referred to as profile-image
-  // userType        String
+  profileImage    String
+
+  student    Student?
+  instructor Instructor?
+  admin      Admin?
 }
 
 enum ThemePreference {
@@ -41,10 +45,11 @@ model Student {
   studentId          String               @id
   email              String               @unique
   college            String
-  majorId            String // Major
+  majorId            String
   completedCourses   CompletedCourse[]
   semesterEnrollment SemesterEnrollment[]
 
+  user  User  @relation(fields: [email], references: [email])
   major Major @relation(fields: [majorId], references: [majorId])
 }
 
@@ -87,6 +92,7 @@ model Instructor {
   gradedClasses   Class[]           @relation("GradedClasses")
   Expertise       Expertise[] // We need an expertise model
   TeachingClasses TeachingClasses[]
+  user            User              @relation(fields: [email], references: [email])
 }
 
 model Expertise {

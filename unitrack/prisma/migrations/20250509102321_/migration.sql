@@ -1,7 +1,8 @@
 -- CreateTable
 CREATE TABLE "Admin" (
     "adminId" TEXT NOT NULL PRIMARY KEY,
-    "email" TEXT NOT NULL
+    "email" TEXT NOT NULL,
+    CONSTRAINT "Admin_email_fkey" FOREIGN KEY ("email") REFERENCES "User" ("email") ON DELETE RESTRICT ON UPDATE CASCADE
 );
 
 -- CreateTable
@@ -22,6 +23,7 @@ CREATE TABLE "Student" (
     "email" TEXT NOT NULL,
     "college" TEXT NOT NULL,
     "majorId" TEXT NOT NULL,
+    CONSTRAINT "Student_email_fkey" FOREIGN KEY ("email") REFERENCES "User" ("email") ON DELETE RESTRICT ON UPDATE CASCADE,
     CONSTRAINT "Student_majorId_fkey" FOREIGN KEY ("majorId") REFERENCES "Major" ("majorId") ON DELETE RESTRICT ON UPDATE CASCADE
 );
 
@@ -56,7 +58,8 @@ CREATE TABLE "Instructor" (
     "instructorId" TEXT NOT NULL PRIMARY KEY,
     "email" TEXT NOT NULL,
     "college" TEXT NOT NULL,
-    "department" TEXT NOT NULL
+    "department" TEXT NOT NULL,
+    CONSTRAINT "Instructor_email_fkey" FOREIGN KEY ("email") REFERENCES "User" ("email") ON DELETE RESTRICT ON UPDATE CASCADE
 );
 
 -- CreateTable
