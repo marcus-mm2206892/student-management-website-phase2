@@ -3,11 +3,21 @@
 import { useState } from "react";
 import styles from "@/app/styles/admin-create-course.module.css";
 
+/*
+  To be fixed:
+    2. No validations yet
+*/
+
 export default function AdminCreateCourse() {
   const [selectedSubject, setSelectedSubject] = useState("Select Subject");
   const [selectedPrereqs, setSelectedPrereqs] = useState([]);
   const [selectedMajors, setSelectedMajors] = useState([]);
   const [openDropdown, setOpenDropdown] = useState(null); // tracks which dropdown is open
+  const [courseNumber, setCourseNumber] = useState(null);
+  const [courseName, setCourseName] = useState(null);
+  const [creditHours, setCreditHours] = useState(null);
+  const [description, setDescription] = useState(null);
+  const [imageUrl, setImageUrl] = useState(null);
 
   const subjects = ["CMPS", "CMPE", "ELEC"];
   const prerequisites = ["CMPS101", "CMPS202", "CMPS303"];
@@ -29,9 +39,17 @@ export default function AdminCreateCourse() {
     setOpenDropdown((prev) => (prev === name ? null : name));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     console.log("Course Created!");
+    console.log("Selected Subjects:" + selectedSubject);
+    console.log("Selected Pre-reqs:" + selectedPrereqs);
+    console.log("Selected Majors:" + selectedMajors);
+    console.log("Course No: " + courseNumber);
+    console.log("Course Name: " + courseName);
+    console.log("Credit Hours: " + creditHours);
+    console.log("Descriptions: " + description);
+    console.log("Image URL: " + imageUrl);
   };
 
   return (
@@ -86,7 +104,9 @@ export default function AdminCreateCourse() {
                 name="courseNumber"
                 className={styles["input-field"]}
                 placeholder="e.g. 350"
+                value={courseNumber}
                 required
+                onChange={(e) => setCourseNumber(e.target.value)}
               />
             </div>
 
@@ -99,7 +119,9 @@ export default function AdminCreateCourse() {
                 name="courseName"
                 className={styles["input-field"]}
                 placeholder="e.g. Operating Systems"
+                value={courseName}
                 required
+                onChange={(e) => {setCourseName(e.target.value)}}
               />
             </div>
 
@@ -114,7 +136,9 @@ export default function AdminCreateCourse() {
                 min="1"
                 max="5"
                 placeholder="e.g. 3"
+                value={creditHours}
                 required
+                onChange={(e) => {setCreditHours(e.target.value)}}
               />
             </div>
 
@@ -127,6 +151,8 @@ export default function AdminCreateCourse() {
                 className={styles["input-field"]}
                 rows="4"
                 placeholder="Brief course overview..."
+                value={description}
+                onChange={(e) => {setDescription(e.target.value)}}
                 required
               ></textarea>
             </div>
@@ -140,7 +166,9 @@ export default function AdminCreateCourse() {
                 name="imageUrl"
                 className={styles["input-field"]}
                 placeholder="https://example.com/image.jpg"
+                value={imageUrl}
                 required
+                onChange={(e) => {setImageUrl(e.target.value)}}
               />
             </div>
 

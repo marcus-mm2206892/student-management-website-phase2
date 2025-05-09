@@ -397,7 +397,7 @@ export default function AdminCreateClassPage() {
                 type="number"
                 className={styles["input-field"]}
                 placeholder="e.g. 30"
-                value={maxStudents}
+                value={maxStudents}  //Required??
                 onChange={(e) => setMaxStudents(e.target.value)}
               />
             </div>
