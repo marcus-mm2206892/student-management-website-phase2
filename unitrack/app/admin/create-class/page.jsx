@@ -375,25 +375,15 @@ export default function AdminCreateClassPage() {
                 )}
               </div>
               <div className={styles["tag-container"]}>
-<<<<<<< Updated upstream
-                {selectedInstructors.map((ins, i) => (
-                  <span key={i} className={styles.tag}>
-                    {ins}
-                    <button type="button" onClick={() => handleInstructorToggle(ins)}>×</button>
-                  </span>
-                ))}
-=======
               {selectedInstructors.map((ins, i) => {
                 const fullName = `${ins.user.firstName} ${ins.user.lastName}`;
-
                 return (
-                  <div key={i} className={styles.tag}>
+                  <span key={i} className={styles.tag}>
                     {fullName}
                     <button type="button" onClick={() => handleInstructorToggle(ins)}>×</button>
-                  </div>
+                  </span>
                 );
               })}
->>>>>>> Stashed changes
               </div>
             </div>
 
