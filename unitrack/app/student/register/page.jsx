@@ -4,7 +4,7 @@ import styles from "@/app/styles/register-course.module.css";
 import NoResults from "@/app/components/NoResults";
 import ClassModal from "@/app/components/ClassModal";
 import AlertModal from "@/app/components/AlertModal";
-import { createClassEnrollmentAction, deleteClassEnrollmentAction, getAllAvailableClasses, getAllClassesAction, getAllUsersAction, getStudentByEmailAction } from "@/app/action/server-actions";
+import { createClassEnrollmentAction, deleteClassEnrollmentAction, getAllAvailableClasses, getAllClassesAction, getAllUsersAction, getStudentByEmailAction, updateClassAction } from "@/app/action/server-actions";
 import { redirect, useRouter } from "next/navigation";
 
 export default function RegisterCourse() {
@@ -176,15 +176,27 @@ export default function RegisterCourse() {
     );
   
     const task = () => {
+      const updatedEnrollment = !course.registered? course.enrollmentActual + 1 : Math.max(0, course.enrollmentActual - 1);
+      //Unregistering from a course
       if (course.registered) {
         if (student?.semesterEnrollment?.length > 0) {
           const lastEnrollment = student.semesterEnrollment[student.semesterEnrollment.length - 1];
           deleteClassEnrollmentAction(course.classId, lastEnrollment.id);
         }
+
+
       } else {
+      //Registering from a course
         if (student?.semesterEnrollment?.length > 0) {
+          // Alert if already registered for the course in another class
           if (classes.find((c) => c.courseId === course.courseId)) {
             setAlertMessage(`You are already registered in another class for ${course.course.courseName} (${course.courseId}).`);
+            setAlertVisible(true);
+            return;
+          }
+
+          if (course.enrollmentActual === course.enrollmentMaximum) {
+            setAlertMessage("This class is already full. Please register for another class.");
             setAlertVisible(true);
             return;
           }
@@ -197,9 +209,12 @@ export default function RegisterCourse() {
             letterGrade: "N/A",
             gradeStatus: "ungraded",
           });
+
         }
       }
 
+      updateClassAction(course.classId, {enrollmentActual: updatedEnrollment});
+      
       const action = course.registered ? "unregistered from" : "registered for";
       setAlertMessage(`You have successfully ${action} ${course?.course.courseName}`);
       setAlertVisible(true);
