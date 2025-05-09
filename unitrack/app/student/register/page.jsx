@@ -10,7 +10,6 @@ import { redirect, useRouter } from "next/navigation";
 export default function RegisterCourse() {
   const [alertVisible, setAlertVisible] = useState(false);
   const [alertMessage, setAlertMessage] = useState("");
-  const [courses, setCourses] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [failedToLoad, setFailedToLoad] = useState(false);
   const [noResults, setNoResults] = useState(false);
@@ -22,6 +21,8 @@ export default function RegisterCourse() {
   const [user, setUser] = useState(null);
   const [registrableClasses, setRegistrableClasses] = useState([]);
   const [users, setUsers] = useState([]);
+  const [selectedClass, setSelectedClass] = useState(null)
+  const [selectedCourse, setSelectedCourse] = useState(null)
 
   const router = useRouter();
 
@@ -134,6 +135,7 @@ export default function RegisterCourse() {
       if (availableClasses.length > 0 && completedCourses.length > 0) {
         const completedCourseIds = completedCourses.map((c) => c.courseId);
 
+        // Filtering out completed courses
         const filtered = availableClasses.filter(
           (cls) => !completedCourseIds.includes(cls.courseId)
         ).sort((a, b) => b.enrollmentActual - a.enrollmentActual);
@@ -149,8 +151,20 @@ export default function RegisterCourse() {
         console.log("Updated registrable classes:", registrableClasses);
       }, [registrableClasses]);
 
+      const getInstructorName = (email) => {
+        if (users.length) {
+          const instructor = users.find((u) => u.email === email);
+          if (instructor) {
+            const firstName = instructor.firstName;
+            const lastName = instructor.lastName;
+            return `${firstName} ${lastName}`;
+          }
+        }
+        return "No Name";
+      };
+
   const filteredCourses = registrableClasses.filter((cls) =>
-    `${cls.course.courseId} ${cls.course.courseName} ${cls.instructor}`
+    `${cls.course.courseId} ${cls.course.courseName} ${getInstructorName(cls.instructors?.[0]?.email)}`
       .toLowerCase()
       .includes(searchTerm.toLowerCase())
   );
@@ -214,7 +228,7 @@ export default function RegisterCourse() {
       }
 
       updateClassAction(course.classId, {enrollmentActual: updatedEnrollment});
-      
+
       const action = course.registered ? "unregistered from" : "registered for";
       setAlertMessage(`You have successfully ${action} ${course?.course.courseName}`);
       setAlertVisible(true);
@@ -234,16 +248,10 @@ export default function RegisterCourse() {
       : styles["status-rejected"];
   };
 
-  const getInstructorName = (email) => {
-    if (users.length) {
-      const instructor = users.find((u) => u.email === email);
-      if (instructor) {
-        const firstName = instructor.firstName;
-        const lastName = instructor.lastName;
-        return `${firstName} ${lastName}`;
-      }
-    }
-    return "No Name";
+  const handleClassClick = (cls, course) => {
+    setSelectedClass(cls);
+    setSelectedCourse(course);
+    setClassModalVisible(true);
   };
 
   if (
@@ -311,7 +319,7 @@ export default function RegisterCourse() {
             {filteredCourses.map((course, index) => (
               <tr key={index}>
                 <td className={`${styles.data} ${styles["course-no"]}`}>
-                  <span onClick={() => setClassModalVisible(true)}>
+                  <span onClick={() => handleClassClick(course, course.course)}>
                     {course.course.courseId}
                   </span>
                 </td>
@@ -369,7 +377,18 @@ export default function RegisterCourse() {
         )}
       </section>
 
-      {/* <ClassModal isVisible={classModalVisible} onClose={() => setClassModalVisible(false)} /> */}
+      {selectedClass && selectedCourse && (
+                <ClassModal
+                  cls={selectedClass}
+                  course={selectedCourse}
+                  isVisible={classModalVisible}
+                  onClose={() => {
+                    setClassModalVisible(false);
+                    setSelectedClass(null);
+                    setSelectedCourse(null);
+                  }}
+                />
+      )}
 
       <AlertModal
         title="Registration Update"
