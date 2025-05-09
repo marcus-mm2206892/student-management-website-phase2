@@ -443,8 +443,30 @@ class UniTrackRepo {
     return await prisma.class.findMany({ where: { classStatus: "rejected" } });
   }
 
-  async createClass(data) {
-    return await prisma.class.create({ data });
+  async createClass(newClass) {
+    return await db.class.create({
+      data: {
+        classId: newClass.classId,
+        courseId: newClass.courseId,
+        semester: newClass.semester,
+        instructionalMethod: newClass.instructionalMethod,
+        campus: newClass.campus,
+        enrollmentActual: newClass.enrollmentActual,
+        enrollmentMaximum: newClass.enrollmentMaximum,
+        classStatus: newClass.classStatus,
+        schedule: {
+          create: {
+            scheduleType: newClass.schedule.scheduleType,
+            startTime: newClass.schedule.startTime,
+            endTime: newClass.schedule.endTime,
+          }
+        },
+        section: newClass.section,
+        instructors: {
+          connect: newClass.instructors.map((i) => ({ instructorId: i.instructorId }))
+        }
+      }
+    });
   }
 
   async updateClass(id, data) {

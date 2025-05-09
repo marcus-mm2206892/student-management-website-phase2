@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import styles from "@/app/styles/admin-create-class.module.css";
-import { getAllCoursesAction, getAllInstructorsAction, getClassByIdAction, getLatestCreatedClassAction } from "@/app/action/server-actions";
+import { createClassAction, getAllCoursesAction, getAllInstructorsAction, getClassByIdAction, getLatestCreatedClassAction } from "@/app/action/server-actions";
 import AlertModal from "@/app/components/AlertModal";
 
 export default function AdminCreateClassPage() {
@@ -157,7 +157,7 @@ export default function AdminCreateClassPage() {
     }
   }, [course, campus]);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     const selectedCourseId = course.courseId;
@@ -188,43 +188,41 @@ export default function AdminCreateClassPage() {
 
     const newClass = {
       classId: newClassId,
-      selectedCourseId,
-      semester,
-      instructionalMethods: "English",
-      campus,
+      courseId: selectedCourseId,
+      semester: semester,
+      instructionalMethod: "English",
+      campus: selectedCampus,
       enrollmentActual: 0,
       enrollmentMaximum: parseInt(maxStudents),
       classStatus: "pending",
       schedule: {
         scheduleType: selectedSchedType === "Monday, Wednesday" ? "MW" : "STT",
-        selectedStartTime,
-        setSelectedEndTime,
+        startTime: selectedStartTime,
+        endTime: setSelectedEndTime,
       },
       instructors: selectedInstructors,
       section,
     };
 
-    // Save to localStorage or update your state (instead of classes.push())
-    const updatedClasses = [...courses]; // Update your classes state here
-    const courseIndex = updatedClasses.findIndex((c) => c.courseId === courseId);
-    updatedClasses[courseIndex].currentClasses.push(newClassId);
+    const result = await createClassAction(newClass);
 
-    localStorage.setItem("classes", JSON.stringify(updatedClasses)); // Save to localStorage
+    if (result) {
+      setAlertMessage("Class successfully created.")
+      setAlertVisible(true)
 
-    openAlertModal(
-      "Success",
-      `Class ${newClassId} created for course ${courseId}`
-    );
-
-    // Reset form
-    setSection("");
-    setMaxStudents("");
-    setSelectedCourse("Select Course");
-    setSelectedInstructors([]);
-    setSelectedCampus("Select Campus");
-    setSelectedSchedType("Select Schedule Type");
-    setSelectedStartTime("Select Time");
-    setSelectedEndTime("Select Time");
+      // Reset form
+      setSection("");
+      setMaxStudents("");
+      setSelectedCourse("Select Course");
+      setSelectedInstructors([]);
+      setSelectedCampus("Select Campus");
+      setSelectedSchedType("Select Schedule Type");
+      setSelectedStartTime("Select Time");
+      setSelectedEndTime("Select Time");
+    } else {
+      setAlertMessage("Failed to create class.")
+      setAlertVisible(true)
+    }
   };
 
   return (
