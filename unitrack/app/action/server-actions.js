@@ -207,6 +207,10 @@ export async function updateClassAction(id, data) {
   return await unitrackRepo.updateClass(id, data);
 }
 
+export async function getLatestCreatedClassAction() {
+  return await unitrackRepo.getLatestCreatedClass()
+}
+
 //Pending Approval Classes
 
 export async function getPendingApprovalClassesAction() {

@@ -37,13 +37,13 @@ export default function Grades() {
     useEffect(() => {
       async function fetchInstructor() {
         if (user && user.email) {
-          const result = await getInstructorByEmailAction(email);
+          const result = await getInstructorByEmailAction(user.email);
           setInstructor(result);
         }
       }
   
       fetchInstructor();
-    }, [email]);
+    }, [user]);
 
     // useEffect(() => {
     //   console.log("Updated instructor:", instructor);

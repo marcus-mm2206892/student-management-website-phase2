@@ -260,7 +260,7 @@ class UniTrackRepo {
   // Instructor
   async getAllInstructors() {
     return await prisma.instructor.findMany({
-      include: { teachingClasses: true, gradedClasses: true },
+      include: { teachingClasses: true, gradedClasses: true, user: true },
     });
   }
 
@@ -358,7 +358,7 @@ class UniTrackRepo {
 
   // Class
   async getAllClasses() {
-    return await prisma.class.findMany();
+    return await prisma.class.findMany({ include: {CourseCurrentClasses: true}} );
   }
 
   async getClassById(id) {
@@ -453,6 +453,14 @@ class UniTrackRepo {
 
   async deleteClass(id) {
     return await prisma.class.delete({ where: { classId: id } });
+  }
+
+  async getLatestCreatedClass() {
+    return await prisma.class.findFirst({
+      orderBy: {
+        classId: 'desc',
+      },
+    });
   }
 
   async getPendingApprovalClasses() {
