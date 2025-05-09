@@ -6,7 +6,7 @@ import EmptyContent from "@/app/components/EmptyContent";
 import ClassModal from "@/app/components/ClassModal";
 import styles from "@/app/styles/student-profile.module.css";
 import cardStyles from "@/app/styles/course-card-profile.module.css";
-import { getStudentByEmailAction } from "@/app/action/server-actions";
+import { getCourseByIdAction, getStudentByEmailAction } from "@/app/action/server-actions";
 
 export default function StudentProfile() {
   const [enrolledClasses, setEnrolledClasses] = useState([]);
@@ -15,6 +15,7 @@ export default function StudentProfile() {
   const [user, setUser] = useState(null);
   const [student, setStudent] = useState(null)
   const [currentClasses, setCurrentClasses] = useState([]);
+  const [currentCourses, setCurrentCourses] = useState([]);
 
   useEffect(() => {
     const storedUser = localStorage.getItem("user");
@@ -59,6 +60,33 @@ export default function StudentProfile() {
         useEffect(() => {
           console.log("Updated classes:", currentClasses);
         }, [currentClasses]);
+  
+  useEffect(() => {
+    async function fetchCourses() {
+      const newCourses = [];
+
+      if (currentClasses) {
+        for (const cls of currentClasses) {
+          const crs = await getCourseByIdAction(cls.courseId);
+          newCourses.push(crs);
+        }
+      }
+
+      return newCourses;
+    }
+
+    async function loadCourses() {
+      const resolvedCourses = await fetchCourses(); 
+      setCurrentCourses(resolvedCourses);               
+    }
+
+    loadCourses()
+  }, [currentClasses])
+
+  useEffect(() => {
+    console.log("Updated classes:", currentCourses);
+  }, [currentCourses]);
+
 
   useEffect(() => {
     const dummyCourses = [
