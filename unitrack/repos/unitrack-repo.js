@@ -291,6 +291,46 @@ class UniTrackRepo {
     });
   }
 
+  async updateInstructorTeachingClasses(instructorId, data) {
+    await prisma.instructor.update({
+        where: { instructorId: instructorId },
+        data: {
+            teachingClasses: {
+                connect: {
+                    classId: data.classId,
+                },
+            },
+        },
+    });
+
+    await prisma.teachingClasses.create({data})
+}
+
+
+ async  updateInstructorGradedClasses(instructorId, data) {
+  await prisma.instructor.update({
+      where: { instructorId: instructorId },
+      data: {
+          gradedClasses: {
+              connect: {
+                  classId: data.classId,
+              },
+          },
+      },
+  });
+
+  await prisma.gradedClasses.create({
+    data: {
+      class: {
+        connect: { classId: data.classId },
+      },
+      instructor: {
+        connect: { instructorId: instructorId },
+      },
+    },
+  });
+}
+
   async deleteInstructor(id) {
     return await prisma.instructor.delete({ where: { instructorId: id } });
   }
@@ -441,9 +481,12 @@ class UniTrackRepo {
     return await prisma.classEnrollment.create({ data });
   }
 
-  async updateClassEnrollment(id, data) {
-    return await prisma.classEnrollment.update({
-      where: { id: Number(id) },
+  async updateClassEnrollment(classId, semesterEnrollmentId, data) {
+    return await prisma.classEnrollment.updateMany({
+      where: {
+        classId: classId,
+        semesterEnrollmentId: semesterEnrollmentId,
+      },
       data,
     });
   }
@@ -578,6 +621,16 @@ class UniTrackRepo {
   }
   async deletePrerequisite(id) {
     return await prisma.prerequisite.delete({ where: { id } });
+  }
+  
+  // Teaching Classes
+  async createTeachingClass(data) {
+    return await prisma.teachingClasses.create({data});
+  }
+
+  // Graded Classes
+  async createGradedClass(data) {
+    return await prisma.gradedClasses.create({data});
   }
 }
 

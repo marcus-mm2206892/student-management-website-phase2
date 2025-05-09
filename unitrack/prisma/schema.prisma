@@ -93,6 +93,8 @@ model Instructor {
   Expertise       Expertise[] // We need an expertise model
   TeachingClasses TeachingClasses[]
   user            User              @relation("UserInstructor", fields: [email], references: [email])
+
+  GradedClasses GradedClasses[]
 }
 
 model Expertise {
@@ -133,6 +135,8 @@ model Class {
   course               Course                 @relation(fields: [courseId], references: [courseId])
   CourseCurrentClasses CourseCurrentClasses[] @relation("ClasstoCurrentCourses")
   TeachingClasses      TeachingClasses[]
+
+  GradedClasses GradedClasses[]
 }
 
 model Schedule {
@@ -188,6 +192,15 @@ model Prerequisite {
 }
 
 model TeachingClasses {
+  id           Int    @id @default(autoincrement())
+  classId      String
+  instructorId String
+
+  class      Class      @relation(fields: [classId], references: [classId])
+  instructor Instructor @relation(fields: [instructorId], references: [instructorId])
+}
+
+model GradedClasses {
   id           Int    @id @default(autoincrement())
   classId      String
   instructorId String

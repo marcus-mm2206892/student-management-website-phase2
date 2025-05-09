@@ -4,13 +4,12 @@ import styles from "@/app/styles/register-course.module.css";
 import NoResults from "@/app/components/NoResults";
 import ClassModal from "@/app/components/ClassModal";
 import AlertModal from "@/app/components/AlertModal";
-import { createClassEnrollmentAction, deleteClassEnrollmentAction, getAllAvailableClasses, getAllClassesAction, getAllUsersAction, getStudentByEmailAction } from "@/app/action/server-actions";
+import { createClassEnrollmentAction, deleteClassEnrollmentAction, getAllAvailableClasses, getAllClassesAction, getAllUsersAction, getStudentByEmailAction, updateClassAction } from "@/app/action/server-actions";
 import { redirect, useRouter } from "next/navigation";
 
 export default function RegisterCourse() {
   const [alertVisible, setAlertVisible] = useState(false);
   const [alertMessage, setAlertMessage] = useState("");
-  const [courses, setCourses] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [failedToLoad, setFailedToLoad] = useState(false);
   const [noResults, setNoResults] = useState(false);
@@ -22,6 +21,8 @@ export default function RegisterCourse() {
   const [user, setUser] = useState(null);
   const [registrableClasses, setRegistrableClasses] = useState([]);
   const [users, setUsers] = useState([]);
+  const [selectedClass, setSelectedClass] = useState(null)
+  const [selectedCourse, setSelectedCourse] = useState(null)
 
   const router = useRouter();
 
@@ -134,6 +135,7 @@ export default function RegisterCourse() {
       if (availableClasses.length > 0 && completedCourses.length > 0) {
         const completedCourseIds = completedCourses.map((c) => c.courseId);
 
+        // Filtering out completed courses
         const filtered = availableClasses.filter(
           (cls) => !completedCourseIds.includes(cls.courseId)
         ).sort((a, b) => b.enrollmentActual - a.enrollmentActual);
@@ -149,8 +151,20 @@ export default function RegisterCourse() {
         console.log("Updated registrable classes:", registrableClasses);
       }, [registrableClasses]);
 
+      const getInstructorName = (email) => {
+        if (users.length) {
+          const instructor = users.find((u) => u.email === email);
+          if (instructor) {
+            const firstName = instructor.firstName;
+            const lastName = instructor.lastName;
+            return `${firstName} ${lastName}`;
+          }
+        }
+        return "No Name";
+      };
+
   const filteredCourses = registrableClasses.filter((cls) =>
-    `${cls.course.courseId} ${cls.course.courseName} ${cls.instructor}`
+    `${cls.course.courseId} ${cls.course.courseName} ${getInstructorName(cls.instructors?.[0]?.email)}`
       .toLowerCase()
       .includes(searchTerm.toLowerCase())
   );
@@ -176,15 +190,27 @@ export default function RegisterCourse() {
     );
   
     const task = () => {
+      const updatedEnrollment = !course.registered? course.enrollmentActual + 1 : Math.max(0, course.enrollmentActual - 1);
+      //Unregistering from a course
       if (course.registered) {
         if (student?.semesterEnrollment?.length > 0) {
           const lastEnrollment = student.semesterEnrollment[student.semesterEnrollment.length - 1];
           deleteClassEnrollmentAction(course.classId, lastEnrollment.id);
         }
+
+
       } else {
+      //Registering from a course
         if (student?.semesterEnrollment?.length > 0) {
+          // Alert if already registered for the course in another class
           if (classes.find((c) => c.courseId === course.courseId)) {
             setAlertMessage(`You are already registered in another class for ${course.course.courseName} (${course.courseId}).`);
+            setAlertVisible(true);
+            return;
+          }
+
+          if (course.enrollmentActual === course.enrollmentMaximum) {
+            setAlertMessage("This class is already full. Please register for another class.");
             setAlertVisible(true);
             return;
           }
@@ -197,8 +223,11 @@ export default function RegisterCourse() {
             letterGrade: "N/A",
             gradeStatus: "ungraded",
           });
+
         }
       }
+
+      updateClassAction(course.classId, {enrollmentActual: updatedEnrollment});
 
       const action = course.registered ? "unregistered from" : "registered for";
       setAlertMessage(`You have successfully ${action} ${course?.course.courseName}`);
@@ -219,16 +248,10 @@ export default function RegisterCourse() {
       : styles["status-rejected"];
   };
 
-  const getInstructorName = (email) => {
-    if (users.length) {
-      const instructor = users.find((u) => u.email === email);
-      if (instructor) {
-        const firstName = instructor.firstName;
-        const lastName = instructor.lastName;
-        return `${firstName} ${lastName}`;
-      }
-    }
-    return "No Name";
+  const handleClassClick = (cls, course) => {
+    setSelectedClass(cls);
+    setSelectedCourse(course);
+    setClassModalVisible(true);
   };
 
   if (
@@ -296,7 +319,7 @@ export default function RegisterCourse() {
             {filteredCourses.map((course, index) => (
               <tr key={index}>
                 <td className={`${styles.data} ${styles["course-no"]}`}>
-                  <span onClick={() => setClassModalVisible(true)}>
+                  <span onClick={() => handleClassClick(course, course.course)}>
                     {course.course.courseId}
                   </span>
                 </td>
@@ -307,7 +330,7 @@ export default function RegisterCourse() {
                   {course.campus}
                 </td>
                 <td className={`${styles.data} ${styles["course-instructor"]}`}>
-                  {getInstructorName(course.instructors[0].email)}
+                  {getInstructorName(course.instructors?.[0]?.email)}
                 </td>
                 <td className={`${styles.data} ${styles["course-section"]}`}>
                   {course.section}
@@ -354,7 +377,18 @@ export default function RegisterCourse() {
         )}
       </section>
 
-      {/* <ClassModal isVisible={classModalVisible} onClose={() => setClassModalVisible(false)} /> */}
+      {selectedClass && selectedCourse && (
+                <ClassModal
+                  cls={selectedClass}
+                  course={selectedCourse}
+                  isVisible={classModalVisible}
+                  onClose={() => {
+                    setClassModalVisible(false);
+                    setSelectedClass(null);
+                    setSelectedCourse(null);
+                  }}
+                />
+      )}
 
       <AlertModal
         title="Registration Update"

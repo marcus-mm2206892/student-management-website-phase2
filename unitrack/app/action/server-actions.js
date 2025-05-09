@@ -133,6 +133,14 @@ export async function updateInstructorAction(id, data) {
   return await unitrackRepo.updateInstructor(id, data);
 }
 
+export async function updateInstructorTeachingClassesAction(instructorId, data) {
+    return await unitrackRepo.updateInstructorTeachingClasses(instructorId, data);
+}
+
+export async function updateInstructorGradedClassesAction(instructorId, data) {
+  return await unitrackRepo.updateInstructorGradedClasses(instructorId, data);
+}
+
 export async function deleteInstructorAction(id) {
   return await unitrackRepo.deleteInstructor(id);
 }
@@ -222,8 +230,8 @@ export async function createClassEnrollmentAction(data) {
   return await unitrackRepo.createClassEnrollment(data);
 }
 
-export async function updateClassEnrollmentAction(id, data) {
-  return await unitrackRepo.updateClassEnrollment(id, data);
+export async function updateClassEnrollmentAction(classId, semesterEnrollmentId, data) {
+  return await unitrackRepo.updateClassEnrollment(classId, semesterEnrollmentId, data);
 }
 
 export async function deleteClassEnrollmentAction(classId, semesterEnrollmentId) {
@@ -389,4 +397,9 @@ export async function updatePrerequisiteAction(id, data) {
 
 export async function deletePrerequisiteAction(id) {
   return await unitrackRepo.deletePrerequisite(id);
+}
+
+// Teaching Class
+export async function createTeachingClassesActions(data) {
+  return await unitrackRepo.createTeachingClasses(data);
 }
