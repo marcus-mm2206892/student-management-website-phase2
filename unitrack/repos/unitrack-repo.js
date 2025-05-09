@@ -57,6 +57,7 @@ class UniTrackRepo {
       include: {
         semesterEnrollment: { include: { classes: true } },
         completedCourses: { include: { course: true } },
+        major: {include: {CourseMajorOfferings: true}}
       },
     });
   }
@@ -67,6 +68,7 @@ class UniTrackRepo {
       include: {
         semesterEnrollment: { include: { classes: true } },
         completedCourses: { include: { course: true } },
+        major: {include: {CourseMajorOfferings: true}}
       },
     });
   }

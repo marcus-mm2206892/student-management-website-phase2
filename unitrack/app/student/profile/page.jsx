@@ -6,17 +6,21 @@ import EmptyContent from "@/app/components/EmptyContent";
 import ClassModal from "@/app/components/ClassModal";
 import styles from "@/app/styles/student-profile.module.css";
 import cardStyles from "@/app/styles/course-card-profile.module.css";
-import { getCourseByIdAction, getStudentByEmailAction } from "@/app/action/server-actions";
+import { getClassByIdAction, getCourseByIdAction, getStudentByEmailAction } from "@/app/action/server-actions";
 
 export default function StudentProfile() {
   const [enrolledClasses, setEnrolledClasses] = useState([]);
   const [courses, setCourses] = useState([]);
-  const [selectedClass, setSelectedClass] = useState(null);
+  const [selectedClass, setSelectedClass] = useState(null)
+  const [selectedCourse, setSelectedCourse] = useState(null)
   const [user, setUser] = useState(null);
   const [student, setStudent] = useState(null)
-  const [currentClasses, setCurrentClasses] = useState([]);
-  const [currentCourses, setCurrentCourses] = useState([]);
-
+  const [completedCourses, setCompletedCourses] = useState(0);
+  const [totalCourses, setTotalCourses] = useState(0);
+  const [openCoursesCH, setOpenCoursesCH] = useState(0);
+  const [pendingCoursesCH, setPendingCoursesCH] = useState(0);
+  const [classModalVisible, setClassModalVisible] = useState(false);
+  
   useEffect(() => {
     const storedUser = localStorage.getItem("user");
     if (storedUser) {
@@ -35,6 +39,10 @@ export default function StudentProfile() {
           fetchStudent();
         }, [user]);
   
+  useEffect(() => {
+        console.log("Updated student:", student);
+      }, [student]);
+  
   
   useEffect(() => {
           async function fetchClasses() {
@@ -43,7 +51,8 @@ export default function StudentProfile() {
             if (student && student.semesterEnrollment && student.semesterEnrollment.length > 0) {
               const lastEnrollment = student.semesterEnrollment[student.semesterEnrollment.length - 1];
               for (const c of lastEnrollment.classes) {
-                newClasses.push(c);
+                const cls = await getClassByIdAction(c.classId)
+                newClasses.push(cls);
               }
             }
             return newClasses;
@@ -51,24 +60,25 @@ export default function StudentProfile() {
         
           async function loadClasses() {
             const resolvedClasses = await fetchClasses(); 
-            setCurrentClasses(resolvedClasses);               
+            setEnrolledClasses(resolvedClasses);               
           }
         
           loadClasses();
         }, [student]);
   
         useEffect(() => {
-          console.log("Updated classes:", currentClasses);
-        }, [currentClasses]);
+          console.log("Updated classes:", enrolledClasses);
+        }, [enrolledClasses]);
   
   useEffect(() => {
     async function fetchCourses() {
       const newCourses = [];
 
-      if (currentClasses) {
-        for (const cls of currentClasses) {
+      if (enrolledClasses) {
+        for (const cls of enrolledClasses) {
           const crs = await getCourseByIdAction(cls.courseId);
-          newCourses.push(crs);
+          const crsWithStatus = {...crs , classStatus: cls.classStatus}
+          newCourses.push(crsWithStatus);
         }
       }
 
@@ -77,71 +87,76 @@ export default function StudentProfile() {
 
     async function loadCourses() {
       const resolvedCourses = await fetchCourses(); 
-      setCurrentCourses(resolvedCourses);               
+      setCourses(resolvedCourses);               
     }
 
     loadCourses()
-  }, [currentClasses])
+  }, [enrolledClasses])
 
   useEffect(() => {
-    console.log("Updated classes:", currentCourses);
-  }, [currentCourses]);
-
+    console.log("Updated courses:", courses);
+  }, [courses]);
 
   useEffect(() => {
-    const dummyCourses = [
-      {
-        courseId: "CMPS 350",
-        courseName: "Operating Systems",
-        creditHours: 3,
-        courseImage: "/assets/imgs/course-placeholder.png",
-        description: "Introduction to operating system principles",
-        majorsOffered: ["CMPS", "CMPE"],
-      },
-      {
-        courseId: "CMPS 351",
-        courseName: "Software Engineering",
-        creditHours: 3,
-        courseImage: "/assets/imgs/course-placeholder.png",
-        description: "Software development lifecycle and best practices",
-        majorsOffered: ["CMPS"],
-      },
-    ];
+    if (student) {
+      setCompletedCourses(student.completedCourses.length); // Replace with actual logic if needed
+    }
+  }, [student])
 
-    const dummyClasses = [
-      {
-        classId: "25501",
-        courseId: "CMPS 350",
-        section: "L01",
-        semester: "Spring 2025",
-      },
-      {
-        classId: "25502",
-        courseId: "CMPS 351",
-        section: "L02",
-        semester: "Spring 2025",
-      },
-    ];
+  useEffect(() => {
+    if (student) {
+      setTotalCourses(student.major.CourseMajorOfferings.length); // Replace with actual logic if needed
+    }
+  }, [student])
 
-    setCourses(dummyCourses);
-    setEnrolledClasses(dummyClasses);
-  }, []);
+  useEffect(() => {
+    if (courses) {
+      let count = 0
+      courses.forEach((c) => {
+        if (c.classStatus === "open")
+          count+=c.creditHours;
+      })
+      setOpenCoursesCH(count);
+    }
+  }, [courses])
 
-  const completedCourses = 20;
-  const totalCourses = 30;
+  useEffect(() => {
+    if (courses) {
+      let count = 0
+      courses.forEach((c) => {
+        if (c.classStatus === "pending")
+          count+=c.creditHours;
+      })
+      setPendingCoursesCH(count);
+    }
+  }, [courses])
+
+  useEffect(() => {
+    console.log("Updated open course CH:", openCoursesCH);
+  }, [openCoursesCH]);
+
+  useEffect(() => {
+    console.log("Updated pending course CH:", pendingCoursesCH);
+  }, [pendingCoursesCH]);
+
   const percentCompleted = Math.round((completedCourses / totalCourses) * 100);
 
-  const handleClassClick = (cls) => setSelectedClass(cls);
-  const handleCloseModal = () => setSelectedClass(null);
+  const handleClassClick = (cls, course) => {
+    setSelectedClass(cls);
+    setSelectedCourse(course);
+    setClassModalVisible(true);
+  };
 
   const renderClassCard = (cls) => {
+
+    if (!courses) return <p>Loading courses...</p>;
     const course = courses.find((c) => c.courseId === cls.courseId);
     if (!course) return null;
 
     const creditHoursText = course.creditHours === 1 ? "credit hour" : "credit hours";
 
     return (
-      <div key={cls.classId} className={cardStyles["course-card"]} onClick={() => handleClassClick(cls)}>
+      <div key={cls.classId} className={cardStyles["course-card"]} onClick={() => handleClassClick(cls, course)}>
         <div className={cardStyles["course-image"]}>
           <img
             src={course.courseImage}
@@ -169,7 +184,7 @@ export default function StudentProfile() {
             <span className={cardStyles["tag"]}>
               <i className="fa-solid fa-hourglass-half"></i> {course.creditHours} {creditHoursText}
             </span>
-            {course.majorsOffered.map((major, i) => (
+            {course.CourseMajorOfferings.map((major, i) => (
               <span key={i} className={cardStyles["tag"]}>
                 <i className={`fa-solid ${major === "CMPE" ? "fa-microchip" : "fa-laptop-code"}`}></i>{" "}
                 {major === "CMPS" ? "CS" : "CE"}
@@ -181,8 +196,8 @@ export default function StudentProfile() {
     );
   };
 
-  if (!user) {
-    return <p>Loading courses...</p>;
+  if (!user || !student) {
+    return <p>Loading.. </p>;
   }
 
   return (
@@ -197,14 +212,14 @@ export default function StudentProfile() {
           <div className={styles["course-image-div"]}>
             <div className={styles["course-image"]}>
               <Image
-                src={`/assets/major-files/2024-${user.department === "Computer Science" ? "cs" : "ce"}-flowchart.png`}
+                src={`/assets/major-files/2024-${student.majorId === "CMPS" ? "cs" : "ce"}-flowchart.png`}
                 alt="Flowchart"
                 fill
                 style={{ objectFit: "contain" }}
               />
               <a
                 className={styles["hover-icon"]}
-                href={`/assets/major-files/2024-${user.department === "Computer Science" ? "cs" : "ce"}-flowchart.pdf`}
+                href={`/assets/major-files/2024-${student.majorId === "CMPS" ? "cs" : "ce"}-flowchart.pdf`}
                 download
               >
                 <i className="fa-solid fa-download"></i>
@@ -215,8 +230,8 @@ export default function StudentProfile() {
 
           <div className={styles["credit-hours-card"]}>
             <div className={styles["credit-hours-text"]}>
-              <h2>You are taking <strong>6 credit hours</strong> this semester</h2>
-              <p>with <strong>7 credit hours</strong> waiting to be approved.</p>
+              <h2>You are taking <strong>{openCoursesCH} credit hours</strong> this semester</h2>
+              <p>with <strong>{pendingCoursesCH} credit hours</strong> waiting to be approved.</p>
             </div>
             <div className={styles["credit-hours-image"]}>
               <img src="/assets/imgs/unitrack-images/login-page-graphic.png" alt="Credit Hours" />
@@ -302,7 +317,18 @@ export default function StudentProfile() {
       </main>
 
       <div id="modalContainer">
-        {selectedClass && <ClassModal isVisible={!!selectedClass} onClose={handleCloseModal} />}
+        {selectedClass && selectedCourse && (
+                        <ClassModal
+                          cls={selectedClass}
+                          course={selectedCourse}
+                          isVisible={classModalVisible}
+                          onClose={() => {
+                            setClassModalVisible(false);
+                            setSelectedClass(null);
+                            setSelectedCourse(null);
+                          }}
+                        />
+          )}
       </div>
     </>
   );
