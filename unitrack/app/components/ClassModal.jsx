@@ -350,10 +350,6 @@ export default function ClassModal({ cls, course, isVisible, onClose }) {
 
         </div>
 
-        {userRole !== "admin" && userRole !== "instructor" && (
-          <button className={styles["register-btn"]}>Register Class</button>
-        )}
-
       </div>
     </div>
   );
