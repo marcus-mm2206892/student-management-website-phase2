@@ -8,7 +8,7 @@ import ClassModal from "@/app/components/ClassModal";
 import EmptyContent from "@/app/components/EmptyContent";
 import NoneSelected from "@/app/components/NoneSelected";
 import { useSearchParams } from "next/navigation";
-import { getInstructorByEmailAction, getClassByIdAction, getCourseByIdAction, getAllStudentsAction, getUserByEmailAction, getUsersByRoleAction, createCompletedCourseAction, updateClassAction } from "@/app/action/server-actions";
+import { getInstructorByEmailAction, getClassByIdAction, getCourseByIdAction, getAllStudentsAction, getUserByEmailAction, getUsersByRoleAction, createCompletedCourseAction, updateClassAction, updateInstructorGradedClassesAction, updateClassEnrollmentAction } from "@/app/action/server-actions";
 
 
 export default function Grades() {
@@ -38,9 +38,9 @@ export default function Grades() {
       fetchInstructor();
     }, [email]);
 
-    useEffect(() => {
-      console.log("Updated instructor:", instructor);
-    }, [instructor]);
+    // useEffect(() => {
+    //   console.log("Updated instructor:", instructor);
+    // }, [instructor]);
 
     useEffect(() => {
       async function fetchClasses() {
@@ -62,9 +62,9 @@ export default function Grades() {
       loadClasses();
     }, [instructor]);
   
-    useEffect(() => {
-      console.log("Updated classes:", classes);
-    }, [classes]);
+    // useEffect(() => {
+    //   console.log("Updated classes:", classes);
+    // }, [classes]);
   
     useEffect(() => {
   
@@ -88,62 +88,9 @@ export default function Grades() {
       loadCourses();
     }, [classes])
   
-    useEffect(() => {
-      console.log("Updated courses:", courses);
-    }, [courses]);
-  
-
-  // const courses = [
-  //   { courseId: "CMPS303", courseName: "Data Structures" },
-  //   { courseId: "CMPS350", courseName: "Web Development" },
-  //   { courseId: "CMPE202", courseName: "Digital Systems" },
-  // ];
-
-  // const classes = [
-  //   {
-  //     classId: "25501",
-  //     courseId: "CMPS303",
-  //     section: "L01",
-  //     campus: "Male",
-  //     instructors: ["dr.instructor@qu.edu.qa"],
-  //     enrollmentActual: 2,
-  //     classStatus: "open",
-  //   },
-  //   {
-  //     classId: "25502",
-  //     courseId: "CMPS350",
-  //     section: "L02",
-  //     campus: "Female",
-  //     instructors: ["dr.instructor@qu.edu.qa"],
-  //     enrollmentActual: 3,
-  //     classStatus: "completed",
-  //   },
-  // ];
-
-  // const users = [
-  //   { email: "layla.hassan@qu.com", firstName: "Layla", lastName: "Hassan" },
-  //   { email: "zayd.rahman@qu.com", firstName: "Zayd", lastName: "Rahman" },
-  //   { email: "nour.hakim@qu.com", firstName: "Nour", lastName: "Hakim" },
-  // ];
-
-  // const students = [
-  //   {
-  //     studentId: "S001",
-  //     email: "layla.hassan@qu.com",
-  //     semesterEnrollment: {
-  //       classes: [{ classId: "25501", courseId: "CMPS303" }],
-  //     },
-  //     completedCourses: [],
-  //   },
-  //   {
-  //     studentId: "S002",
-  //     email: "zayd.rahman@qu.com",
-  //     semesterEnrollment: {
-  //       classes: [{ classId: "25501", courseId: "CMPS303" }],
-  //     },
-  //     completedCourses: [],
-  //   },
-  // ];
+    // useEffect(() => {
+    //   console.log("Updated courses:", courses);
+    // }, [courses]);
 
   useEffect(() => {
     async function fetchStudents() {
@@ -173,21 +120,21 @@ export default function Grades() {
     loadUsers();
   }, [classes])
 
-  useEffect(() => {
-    console.log("Updated students:", students);
-  }, [students]);
+  // useEffect(() => {
+  //   console.log("Updated students:", students);
+  // }, [students]);
 
-  useEffect(() => {
-    console.log("Updated users:", users);
-  }, [users]);
+  // useEffect(() => {
+  //   console.log("Updated users:", users);
+  // }, [users]);
 
   const openInstructorClasses = classes.filter(
     (ic) => ic.classStatus === "open" || ic.classStatus === "completed"
   );
 
-  useEffect(() => {
-    console.log("Updated open intrusctor classes:", openInstructorClasses);
-  }, [openInstructorClasses]);
+  // useEffect(() => {
+  //   console.log("Updated open intrusctor classes:", openInstructorClasses);
+  // }, [openInstructorClasses]);
 
   const instructorClassesWithName = openInstructorClasses
     .map((c) => {
@@ -233,10 +180,10 @@ export default function Grades() {
     setGrades(gradeList);
 
   };
-
-  useEffect(() => {
-    console.log("Selected class:",selectedClass);
-  }, [selectedClass]);
+  
+  // useEffect(() => {
+  //   console.log("Selected class:",selectedClass);
+  // }, [selectedClass]);
 
   const handleGradeChange = (id, value) => {
     setGrades((prev) =>
@@ -278,6 +225,8 @@ export default function Grades() {
         );
 
       updateClassAction(selectedClass.classId, { classStatus: "completed" });
+
+      updateInstructorGradedClassesAction(instructor.instructorId, selectedClass);
 
       setAlertContent({
         title: "Grades Submitted",
