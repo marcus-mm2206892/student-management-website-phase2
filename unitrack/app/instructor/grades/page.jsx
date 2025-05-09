@@ -26,6 +26,7 @@ export default function Grades() {
   const [students, setStudents] = useState([]);
   const [users, setUsers] = useState([]);
   const [user, setUser] = useState(null);
+  const [refreshFlag, setRefreshFlag] = useState(false);
 
   useEffect(() => {
     const storedUser = localStorage.getItem("user");
@@ -43,7 +44,7 @@ export default function Grades() {
       }
   
       fetchInstructor();
-    }, [user]);
+    }, [user, refreshFlag]);
 
     // useEffect(() => {
     //   console.log("Updated instructor:", instructor);
@@ -67,7 +68,7 @@ export default function Grades() {
       }
     
       loadClasses();
-    }, [instructor]);
+    }, [instructor, refreshFlag]);
   
     // useEffect(() => {
     //   console.log("Updated classes:", classes);
@@ -93,7 +94,7 @@ export default function Grades() {
       }
     
       loadCourses();
-    }, [classes])
+    }, [classes, refreshFlag])
   
     // useEffect(() => {
     //   console.log("Updated courses:", courses);
@@ -111,7 +112,7 @@ export default function Grades() {
     }
   
     loadStudents();
-  }, [classes])
+  }, [classes, refreshFlag])
 
   useEffect(() => {
     async function fetchUsers() {
@@ -125,7 +126,7 @@ export default function Grades() {
     }
   
     loadUsers();
-  }, [classes])
+  }, [classes, refreshFlag])
 
   // useEffect(() => {
   //   console.log("Updated students:", students);
@@ -247,6 +248,11 @@ export default function Grades() {
       });
 
       setShowAlert(true);
+      setRefreshFlag((prev) => !prev);
+
+      setTimeout(() => {
+        setSelectedClass(null);
+      }, 2500);
     }
   };
 

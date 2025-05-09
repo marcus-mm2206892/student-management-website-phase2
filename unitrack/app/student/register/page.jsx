@@ -41,7 +41,7 @@ export default function RegisterCourse() {
         }
     
         fetchStudent();
-      }, [user]);
+      }, [user, refreshFlag]);
   
       // useEffect(() => {
       //   console.log("Updated student:", student);
@@ -176,7 +176,6 @@ export default function RegisterCourse() {
     if (!registrableClasses) return;
   
     const course = registrableClasses.find((c) => c.classId === courseId);
-    const selectedCourseDetails = getClassDetailsByIdAction(course.classId)
     if (!course) return;
   
     if (course.campus.toLowerCase() !== user.gender) {
