@@ -21,9 +21,8 @@ CREATE TABLE "Student" (
     "studentId" TEXT NOT NULL PRIMARY KEY,
     "email" TEXT NOT NULL,
     "college" TEXT NOT NULL,
-    "department" TEXT NOT NULL,
-    "majorIdField" TEXT,
-    CONSTRAINT "Student_majorIdField_fkey" FOREIGN KEY ("majorIdField") REFERENCES "Major" ("majorId") ON DELETE SET NULL ON UPDATE CASCADE
+    "majorId" TEXT NOT NULL,
+    CONSTRAINT "Student_majorId_fkey" FOREIGN KEY ("majorId") REFERENCES "Major" ("majorId") ON DELETE RESTRICT ON UPDATE CASCADE
 );
 
 -- CreateTable
@@ -76,7 +75,7 @@ CREATE TABLE "ClassEnrollment" (
     "gradeStatus" TEXT NOT NULL,
     "letterGrade" TEXT NOT NULL,
     "semesterEnrollmentId" INTEGER NOT NULL,
-    CONSTRAINT "ClassEnrollment_semesterEnrollmentId_fkey" FOREIGN KEY ("semesterEnrollmentId") REFERENCES "SemesterEnrollment" ("id") ON DELETE RESTRICT ON UPDATE CASCADE
+    CONSTRAINT "ClassEnrollment_semesterEnrollmentId_fkey" FOREIGN KEY ("semesterEnrollmentId") REFERENCES "SemesterEnrollment" ("id") ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 -- CreateTable
@@ -182,6 +181,9 @@ CREATE UNIQUE INDEX "Student_email_key" ON "Student"("email");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "Instructor_email_key" ON "Instructor"("email");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "ClassEnrollment_classId_semesterEnrollmentId_key" ON "ClassEnrollment"("classId", "semesterEnrollmentId");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "Schedule_classId_key" ON "Schedule"("classId");

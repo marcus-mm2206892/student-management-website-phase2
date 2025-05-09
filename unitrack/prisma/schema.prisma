@@ -41,12 +41,11 @@ model Student {
   studentId          String               @id
   email              String               @unique
   college            String
-  department         String // Major
+  majorId            String // Major
   completedCourses   CompletedCourse[]
   semesterEnrollment SemesterEnrollment[]
 
-  majorId      Major?  @relation(fields: [majorIdField], references: [majorId])
-  majorIdField String? //Not sure about major fieds, means same as departments
+  major Major @relation(fields: [majorId], references: [majorId])
 }
 
 model CompletedCourse {

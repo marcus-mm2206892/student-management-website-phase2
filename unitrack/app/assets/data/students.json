@@ -3,180 +3,180 @@
     "studentId": "S1001",
     "email": "marcus.monteiro@qu.com",
     "college": "Engineering",
-    "department": "Computer Science"
+    "majorId": "CMPS"
   },
   {
     "studentId": "S1002",
     "email": "calma.josh@qu.com",
     "college": "Engineering",
-    "department": "Computer Science"
+    "majorId": "CMPS"
   },
   {
     "studentId": "S1003",
     "email": "mohd.bashar@qu.com",
     "college": "Engineering",
-    "department": "Computer Science"
+    "majorId": "CMPS"
   },
   {
     "studentId": "S1004",
     "email": "audre.caraig@qu.com",
     "college": "Engineering",
-    "department": "Computer Science"
+    "majorId": "CMPS"
   },
   {
     "studentId": "S1005",
     "email": "liam.johnson@qu.com",
     "college": "Engineering",
-    "department": "Computer Science"
+    "majorId": "CMPS"
   },
   {
     "studentId": "S1006",
     "email": "nico.weiss@qu.com",
     "college": "Engineering",
-    "department": "Computer Science"
+    "majorId": "CMPS"
   },
   {
     "studentId": "S1007",
     "email": "wei.zhang@qu.com",
     "college": "Engineering",
-    "department": "Computer Science"
+    "majorId": "CMPS"
   },
   {
     "studentId": "S1008",
     "email": "hassan.kareem@qu.com",
     "college": "Engineering",
-    "department": "Computer Science"
+    "majorId": "CMPS"
   },
   {
     "studentId": "S1009",
     "email": "arjun.patel@qu.com",
     "college": "Engineering",
-    "department": "Computer Engineering"
+    "majorId": "CMPE"
   },
   {
     "studentId": "S1010",
     "email": "ethan.williams@qu.com",
     "college": "Engineering",
-    "department": "Computer Engineering"
+    "majorId": "CMPE"
   },
   {
     "studentId": "S1011",
     "email": "omar.farouq@qu.com",
     "college": "Engineering",
-    "department": "Computer Engineering"
+    "majorId": "CMPE"
   },
   {
     "studentId": "S1012",
     "email": "kenji.tanaka@qu.com",
     "college": "Engineering",
-    "department": "Computer Engineering"
+    "majorId": "CMPE"
   },
   {
     "studentId": "S1013",
     "email": "miguel.santos@qu.com",
     "college": "Engineering",
-    "department": "Computer Engineering"
+    "majorId": "CMPE"
   },
   {
     "studentId": "S1014",
     "email": "ali.mubarak@qu.com",
     "college": "Engineering",
-    "department": "Computer Engineering"
+    "majorId": "CMPE"
   },
   {
     "studentId": "S1015",
     "email": "minh.nguyen@qu.com",
     "college": "Engineering",
-    "department": "Computer Engineering"
+    "majorId": "CMPE"
   },
   {
     "studentId": "S1016",
     "email": "layla.hassan@qu.com",
     "college": "Engineering",
-    "department": "Computer Science"
+    "majorId": "CMPS"
   },
   {
     "studentId": "S1017",
     "email": "emily.davis@qu.com",
     "college": "Engineering",
-    "department": "Computer Science"
+    "majorId": "CMPS"
   },
   {
     "studentId": "S1018",
     "email": "aisha.yousef@qu.com",
     "college": "Engineering",
-    "department": "Computer Science"
+    "majorId": "CMPS"
   },
   {
     "studentId": "S1019",
     "email": "hana.suzuki@qu.com",
     "college": "Engineering",
-    "department": "Computer Science"
+    "majorId": "CMPS"
   },
   {
     "studentId": "S1020",
     "email": "chloe.martin@qu.com",
     "college": "Engineering",
-    "department": "Computer Science"
+    "majorId": "CMPS"
   },
   {
     "studentId": "S1021",
     "email": "sara.al-sabah@qu.com",
     "college": "Engineering",
-    "department": "Computer Science"
+    "majorId": "CMPS"
   },
   {
     "studentId": "S1022",
     "email": "anika.sharma@qu.com",
     "college": "Engineering",
-    "department": "Computer Science"
+    "majorId": "CMPS"
   },
   {
     "studentId": "S1023",
     "email": "mariam.khalid@qu.com",
     "college": "Engineering",
-    "department": "Computer Science"
+    "majorId": "CMPS"
   },
   {
     "studentId": "S1024",
     "email": "isabella.garcia@qu.com",
     "college": "Engineering",
-    "department": "Computer Engineering"
+    "majorId": "CMPE"
   },
   {
     "studentId": "S1025",
     "email": "noor.fahmy@qu.com",
     "college": "Engineering",
-    "department": "Computer Engineering"
+    "majorId": "CMPE"
   },
   {
     "studentId": "S1026",
     "email": "sakura.yamamoto@qu.com",
     "college": "Engineering",
-    "department": "Computer Engineering"
+    "majorId": "CMPE"
   },
   {
     "studentId": "S1027",
     "email": "nora.hussein@qu.com",
     "college": "Engineering",
-    "department": "Computer Engineering"
+    "majorId": "CMPE"
   },
   {
     "studentId": "S1028",
     "email": "siti.aminah@qu.com",
     "college": "Engineering",
-    "department": "Computer Engineering"
+    "majorId": "CMPE"
   },
   {
     "studentId": "S1029",
     "email": "amira.rahman@qu.com",
     "college": "Engineering",
-    "department": "Computer Engineering"
+    "majorId": "CMPE"
   },
   {
     "studentId": "S1030",
     "email": "jasmine.lee@qu.com",
     "college": "Engineering",
-    "department": "Computer Engineering"
+    "majorId": "CMPE"
   }
 ]
