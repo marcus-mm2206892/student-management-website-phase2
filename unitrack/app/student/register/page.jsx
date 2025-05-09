@@ -5,7 +5,7 @@ import NoResults from "@/app/components/NoResults";
 import ClassModal from "@/app/components/ClassModal";
 import AlertModal from "@/app/components/AlertModal";
 import { createClassEnrollmentAction, deleteClassEnrollmentAction, getAllAvailableClasses, getAllClassesAction, getAllUsersAction, getClassByIdAction, getClassDetailsByIdAction, getStudentByEmailAction, updateClassAction } from "@/app/action/server-actions";
-import { redirect, useRouter } from "next/navigation";
+import { redirect, usePathname, useRouter } from "next/navigation";
 
 export default function RegisterCourse() {
   const [alertVisible, setAlertVisible] = useState(false);
@@ -23,6 +23,7 @@ export default function RegisterCourse() {
   const [users, setUsers] = useState([]);
   const [selectedClass, setSelectedClass] = useState(null)
   const [selectedCourse, setSelectedCourse] = useState(null)
+  const [refreshFlag, setRefreshFlag] = useState(false);
 
     useEffect(() => {
       const storedUser = localStorage.getItem("user");
@@ -67,7 +68,7 @@ export default function RegisterCourse() {
         }
       
         loadClasses();
-      }, [student]);
+      }, [student, refreshFlag]);
 
       useEffect(() => {
         console.log("Updated classes:", classes);
@@ -92,7 +93,7 @@ export default function RegisterCourse() {
         }
       
         loadCompletedCourses();
-      }, [student]);
+      }, [student, refreshFlag]);
 
       // useEffect(() => {
       //   console.log("Updated completed courses:", completedCourses);
@@ -111,7 +112,7 @@ export default function RegisterCourse() {
         }
       
         loadAvailableClasses();
-      }, [student]);
+      }, [student, refreshFlag]);
 
 
   useEffect(() => {
@@ -127,7 +128,7 @@ export default function RegisterCourse() {
         }
       
         loadUsers();
-      }, [student]);
+      }, [student, refreshFlag]);
   
     useEffect(() => {
       if (availableClasses.length > 0 && completedCourses.length > 0) {
@@ -147,7 +148,7 @@ export default function RegisterCourse() {
 
       useEffect(() => {
         console.log("Updated registrable classes:", registrableClasses);
-      }, [registrableClasses]);
+      }, [registrableClasses, refreshFlag]);
 
       const getInstructorName = (email) => {
         if (users.length) {
@@ -194,7 +195,7 @@ export default function RegisterCourse() {
       if (course.registered) {
         if (student?.semesterEnrollment?.length > 0) {
           const lastEnrollment = student.semesterEnrollment[student.semesterEnrollment.length - 1];
-          deleteClassEnrollmentAction(course.classId, lastEnrollment.id);
+          await deleteClassEnrollmentAction(course.classId, lastEnrollment.id);
         }
 
 
@@ -232,7 +233,7 @@ export default function RegisterCourse() {
           }
 
           const lastEnrollment = student.semesterEnrollment[student.semesterEnrollment.length - 1];
-          createClassEnrollmentAction({
+          await createClassEnrollmentAction({
             classId: course.classId,
             courseId: course.courseId,
             semesterEnrollmentId: lastEnrollment.id,
@@ -243,17 +244,23 @@ export default function RegisterCourse() {
         }
       }
 
-      updateClassAction(course.classId, {enrollmentActual: updatedEnrollment});
+      await updateClassAction(course.classId, {enrollmentActual: updatedEnrollment});
 
       const action = course.registered ? "unregistered from" : "registered for";
       setAlertMessage(`You have successfully ${action} ${course?.course.courseName}`);
       setAlertVisible(true);
       setRegistrableClasses(updated);
+
+      setRefreshFlag((prev) => !prev);
     };
   
     // Set a timeout to delay the task (simulate async behavior)
     setTimeout(task, 500); // 500ms delay (you can adjust the delay as needed)
   }
+
+  useEffect(() => {
+        console.log(refreshFlag);
+      }, [refreshFlag]);
   
 
   const getStatusBadgeClass = (status) => {

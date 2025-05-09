@@ -240,7 +240,6 @@ export async function updateClassEnrollmentAction(classId, semesterEnrollmentId,
 
 export async function deleteClassEnrollmentAction(classId, semesterEnrollmentId) {
   const deleted = await unitrackRepo.deleteClassEnrollment(classId, semesterEnrollmentId)
-  revalidatePath('/') 
   return deleted;
 }
 
