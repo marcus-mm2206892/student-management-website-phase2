@@ -54,8 +54,6 @@ async function seed() {
     const gradedClasses = await loadData(dataPaths.gradedClasses);
     // const majorRequiredCourses = await loadData(dataPaths.majorRequiredCourses);
 
-    console.log(users[0]); // or cleanedUsers[0]
-
     await prisma.user.createMany({ data: users });
     await prisma.admin.createMany({ data: admins });
     await prisma.major.createMany({ data: majors });
@@ -99,18 +97,18 @@ async function seed() {
     await prisma.courseCurrentClasses.create({ data: ccc });
     }
 
-    for (const tc of teachingClasses) {
-        await prisma.instructor.update({
-            where: { instructorId: tc.instructorId },
-            data: {
-                teachingClasses: {
-                    connect: {
-                        classId: tc.classId,
-                    },
-                },
-            },
-        });
-    }
+    // for (const tc of teachingClasses) {
+    //     await prisma.instructor.update({
+    //         where: { instructorId: tc.instructorId },
+    //         data: {
+    //             teachingClasses: {
+    //                 connect: {
+    //                     classId: tc.classId,
+    //                 },
+    //             },
+    //         },
+    //     });
+    // }
 
     for (const gc of gradedClasses) {
         await prisma.instructor.update({
@@ -123,6 +121,10 @@ async function seed() {
                 },
             },
         });
+    }
+
+    for (const tc of teachingClasses) {
+        await prisma.teachingClasses.create({ data: tc })
     }
 
     console.log('Seeding completed successfully.');

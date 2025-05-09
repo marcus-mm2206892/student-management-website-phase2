@@ -517,14 +517,25 @@ class UniTrackRepo {
     return unique;
   }
 
-  async getCourseIdsByMajor(majorId) {
-    const results = await prisma.courseMajorOfferings.findMany({
-      where: { majorId },
-      select: {
-        courseId: true,
-      },
+  async getMajorCourseIdsByEmail(email){
+      const student = await prisma.student.findUnique({
+      where: { email },
+      include: {
+        major: {
+          include: {
+            CourseMajorOfferings: {
+              select: { courseId: true }
+            }
+          }
+        }
+      }
     });
-    return results.map((r) => r.courseId);
+
+    if (!student) {
+      throw new Error(`Student with email ${email} not found`);
+    }
+
+  return student.major.CourseMajorOfferings.map(offering => offering.courseId);
   }
 
   async getCourseMajorOfferingById(id) {
