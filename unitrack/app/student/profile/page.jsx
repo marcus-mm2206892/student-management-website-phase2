@@ -52,7 +52,9 @@ export default function StudentProfile() {
               const lastEnrollment = student.semesterEnrollment[student.semesterEnrollment.length - 1];
               for (const c of lastEnrollment.classes) {
                 const cls = await getClassByIdAction(c.classId)
-                newClasses.push(cls);
+                if (cls.classStatus === "open" || cls.classStatus === "pending") {
+                  newClasses.push(cls);
+                }
               }
             }
             return newClasses;
