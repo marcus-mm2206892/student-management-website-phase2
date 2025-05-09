@@ -176,10 +176,10 @@ export default function AdminCreateClassPage() {
               </div>
               <div className={styles["tag-container"]}>
                 {selectedInstructors.map((ins, i) => (
-                  <div key={i} className={styles.tag}>
+                  <span key={i} className={styles.tag}>
                     {ins}
                     <button type="button" onClick={() => handleInstructorToggle(ins)}>×</button>
-                  </div>
+                  </span>
                 ))}
               </div>
             </div>

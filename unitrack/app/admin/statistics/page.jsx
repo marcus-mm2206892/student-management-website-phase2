@@ -7,19 +7,15 @@ export default function StatisticsPage() {
     { label: "Total Enrolled Students", value: "432", icon: "fa-users" },
     { label: "Top Student", value: "Aya Al-Kuwari (GPA 3.96)", icon: "fa-user-graduate" },
     { label: "Most Enrolled Course", value: "CMPS350 - Web Development", icon: "fa-code" },
-    { label: "Average GPA", value: "3.26", icon: "fa-chart-line" },
+    { label: "Average Student GPA", value: "3.26", icon: "fa-chart-line" },
     { label: "Most Classes Offered", value: "CMPS497 (6 Classes)", icon: "fa-layer-group" },
     { label: "Total Classes Running", value: "102 Classes", icon: "fa-chalkboard" },
     { label: "Top 3 Most Popular Courses", value: "CMPS303, CMPE202, CMPS405", icon: "fa-star" },
-    { label: "Total Instructors", value: "25", icon: "fa-chalkboard-teacher" },
     { label: "Top Performing Major", value: "CMPS (Avg GPA 3.32)", icon: "fa-laptop-code" },
     { label: "Largest Major", value: "CMPE (236 Students)", icon: "fa-microchip" },
-    { label: "Most Diverse Course", value: "CHEM101 (2 Majors)", icon: "fa-flask" },
     { label: "Courses Shared Between Majors", value: "41", icon: "fa-handshake" },
-    { label: "Most Active Instructor", value: "Dr. Yasmin R. (5 Classes)", icon: "fa-user-tie" },
     { label: "Most Required Course", value: "CMPS303 (Required in 2 Majors)", icon: "fa-file-alt" },
     { label: "Course With Most Sections", value: "CMPS350 (7 Sections)", icon: "fa-copy" },
-    { label: "Major With Most Unique Courses", value: "CMPE (42 Courses)", icon: "fa-brain" },
   ];
 
   return (

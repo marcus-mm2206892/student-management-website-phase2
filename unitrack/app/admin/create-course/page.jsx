@@ -14,10 +14,12 @@ export default function AdminCreateCourse() {
   const majors = ["Computer Science", "Computer Engineering", "Electrical Engineering"];
 
   const handleMultiSelect = (item, list, setter) => {
-    if (!list.includes(item)) {
-      setter([...list, item]);
-    }
-  };
+  if (list.includes(item)) {
+    setter(list.filter((i) => i !== item));
+  } else {
+    setter([...list, item]);
+  }
+};
 
   const removeTag = (item, list, setter) => {
     setter(list.filter((i) => i !== item));
@@ -154,7 +156,7 @@ export default function AdminCreateCourse() {
                   <div className={styles["dropdown-menu"]}>
                     {prerequisites.map((p) => (
                       <div key={p} onClick={() => handleMultiSelect(p, selectedPrereqs, setSelectedPrereqs)}>
-                        {p}
+                        {selectedPrereqs.includes(p) ? "✅ " : ""}{p}
                       </div>
                     ))}
                   </div>
@@ -162,9 +164,9 @@ export default function AdminCreateCourse() {
               </div>
               <div className={styles["tag-container"]}>
                 {selectedPrereqs.map((tag, i) => (
-                  <div key={i} className="tag">
+                  <span key={i} className={styles["tag"]}>
                     {tag} <button type="button" onClick={() => removeTag(tag, selectedPrereqs, setSelectedPrereqs)}>×</button>
-                  </div>
+                  </span>
                 ))}
               </div>
             </div>
@@ -181,7 +183,7 @@ export default function AdminCreateCourse() {
                   <div className={styles["dropdown-menu"]}>
                     {majors.map((m) => (
                       <div key={m} onClick={() => handleMultiSelect(m, selectedMajors, setSelectedMajors)}>
-                        {m}
+                        {selectedMajors.includes(m) ? "✅ " : ""}{m}
                       </div>
                     ))}
                   </div>
@@ -189,7 +191,7 @@ export default function AdminCreateCourse() {
               </div>
               <div className={styles["tag-container"]}>
                 {selectedMajors.map((tag, i) => (
-                  <div key={i} className="tag">
+                  <div key={i} className={styles["tag"]}>
                     {tag} <button type="button" onClick={() => removeTag(tag, selectedMajors, setSelectedMajors)}>×</button>
                   </div>
                 ))}
