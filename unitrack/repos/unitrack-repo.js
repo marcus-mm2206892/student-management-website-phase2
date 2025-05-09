@@ -108,9 +108,9 @@ class UniTrackRepo {
     });
   }
 
-  async getCurrentCoursesByStudentId(studentId) {
+  async getCurrentCoursesByStudentEmail(email) {
     const student = await prisma.student.findUnique({
-      where: { studentId },
+      where: { email },
       include: {
         semesterEnrollment: {
           include: {
@@ -129,9 +129,9 @@ class UniTrackRepo {
     return courseIds;
   }
 
-  async getPendingCourseIdsByStudentId(studentId) {
+  async getPendingCourseIdsByStudentEmail(email) {
     const student = await prisma.student.findUnique({
-      where: { studentId },
+      where: { email },
       include: {
         semesterEnrollment: {
           include: {

@@ -4,7 +4,7 @@
   import styles from "@/app/styles/learningpath.module.css";
   import cardStyles from "@/app/styles/course-card-view.module.css";
 
-  import { getCompletedCoursesByStudentEmailAction, getAllCoursesAction, getCurrentCoursesByStudentIdAction, getCourseIdsByMajorAction, getPendingCourseIdsByStudentIdAction } from "@/app/action/server-actions";
+  import { getCompletedCoursesByStudentEmailAction, getAllCoursesAction, getCurrentCoursesByStudentEmailAction, getCourseIdsByMajorAction, getPendingCourseIdsByStudentEmailAction } from "@/app/action/server-actions";
 
 
   export default function LearningPath() {
@@ -16,8 +16,15 @@
     const[inProgressCourses, setInProgressCourses] = useState([]);
     const[scheduledCourses, setScheduledCourses] = useState([]);
     const[upcomingCourses, setUpcomingCourses] = useState([]);
+    const stored =  JSON.parse(localStorage.getItem("user"));
+    const [user, setUser] = useState({
+      email: stored?.email || "",
+      studentId: stored?.studentId || "",
+      majorId: stored?.majorId || ""
+    });
 
     useEffect(() => {
+
       async function loadAllCourseData() {
         const studentEmail = "mohd.bashar@qu.com";
         const studentId = "S1003";
@@ -26,10 +33,10 @@
         // Getting all the data in parallel
         const [allCourses, completed, current, required, pending] = await Promise.all([
           getAllCoursesAction(),
-          getCompletedCoursesByStudentEmailAction(studentEmail),
-          getCurrentCoursesByStudentIdAction(studentId),
+          getCompletedCoursesByStudentEmailAction(user.email),
+          getCurrentCoursesByStudentEmailAction(user.email),
           getCourseIdsByMajorAction(majorId),
-          getPendingCourseIdsByStudentIdAction(studentId)  
+          getPendingCourseIdsByStudentEmailAction(user.email)  
         ]);
     
         setCourses(allCourses);
@@ -90,6 +97,10 @@
       loadAllCourseData();
     }, []);
 
+    useEffect(() => {
+        console.log("Logged in user:", JSON.parse(localStorage.getItem("user")));
+      }, [user]);
+      
     useEffect(() => {
       const handleResize = () => {
         if (window.innerWidth > 768) setCurrentIndex(-1);

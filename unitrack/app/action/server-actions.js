@@ -42,12 +42,12 @@ export async function getCourseByIdAction(id) {
   return await unitrackRepo.getCourseById(id);
 }
 
-export async function getCurrentCoursesByStudentIdAction(studentId) {
-  return await unitrackRepo.getCurrentCoursesByStudentId(studentId);
+export async function getCurrentCoursesByStudentEmailAction(email) {
+  return await unitrackRepo.getCurrentCoursesByStudentEmail(email);
 }
 
-export async function getPendingCourseIdsByStudentIdAction(studentId) {
-  return await unitrackRepo.getPendingCourseIdsByStudentId(studentId);
+export async function getPendingCourseIdsByStudentEmailAction(studentId) {
+  return await unitrackRepo.getPendingCourseIdsByStudentEmail(studentId);
 }
 
 export async function createCourseAction(data) {
