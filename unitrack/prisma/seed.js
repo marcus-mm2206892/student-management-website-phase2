@@ -25,6 +25,7 @@ const dataPaths = {
     teachingClasses: 'teaching_classes.json',
     gradedClasses: 'graded_classes.json',
     majorRequiredCourses: 'major_required_course.json',
+    subjects:'subjects.json'
 };
 
 const dataDir = path.join(process.cwd(), 'app/assets/data');
@@ -53,6 +54,7 @@ async function seed() {
     const teachingClasses = await loadData(dataPaths.teachingClasses);
     const gradedClasses = await loadData(dataPaths.gradedClasses);
     // const majorRequiredCourses = await loadData(dataPaths.majorRequiredCourses);
+    const subjects = await loadData(dataPaths.subjects);
 
     await prisma.user.createMany({ data: users });
     await prisma.admin.createMany({ data: admins });
@@ -62,6 +64,11 @@ async function seed() {
     for (const exp of instructorExpertise) {
     await prisma.expertise.create({ data: exp });
     }
+    
+    console.log("Subjects"+ JSON.stringify(subjects[0]));
+
+    await prisma.subjects.createMany({ data: subjects });
+
 
     await prisma.course.createMany({ data: courses });
 

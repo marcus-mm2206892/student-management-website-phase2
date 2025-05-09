@@ -684,6 +684,16 @@ class UniTrackRepo {
   async createGradedClass(data) {
     return await prisma.gradedClasses.create({data});
   }
+
+  //Subjects 
+
+  async getAllSubjects() {
+    return await prisma.subjects.findMany({
+      include : {
+        code: true
+      }
+    })
+  }
 }
 
 export default new UniTrackRepo();

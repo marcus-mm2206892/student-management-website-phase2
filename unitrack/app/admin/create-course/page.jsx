@@ -6,6 +6,8 @@ import styles from "@/app/styles/admin-create-course.module.css";
 /*
   To be fixed:
     2. No validations yet
+    3. Need to populate subjects in subjects dropdown
+    4. Assign subject to new subject 
 */
 
 export default function AdminCreateCourse() {
@@ -42,7 +44,7 @@ export default function AdminCreateCourse() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log("Course Created!");
-    console.log("Selected Subjects:" + selectedSubject);
+    console.log("Selected Subject:" + selectedSubject);
     console.log("Selected Pre-reqs:" + selectedPrereqs);
     console.log("Selected Majors:" + selectedMajors);
     console.log("Course No: " + courseNumber);
@@ -50,6 +52,17 @@ export default function AdminCreateCourse() {
     console.log("Credit Hours: " + creditHours);
     console.log("Descriptions: " + description);
     console.log("Image URL: " + imageUrl);
+
+
+    const newCourse =   {
+      courseId: (courseNumber+courseNumber),  //Concatenate : sub+courseNo
+      courseName: courseName,
+      creditHours: creditHours,
+      subject: "Computer Science",      // Need to modify subject
+      courseNumber: courseNumber,
+      description: description,
+      courseImage: imageUrl
+    }
   };
 
   return (
