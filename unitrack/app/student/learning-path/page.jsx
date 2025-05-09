@@ -52,10 +52,12 @@
             };
           });
         setCompletedCourses(completedCoursesWithInfo);
+        const completedIds = completed.map(c => c.courseId);
+        const filteredCurrent = current.filter(courseId => !completedIds.includes(courseId));
     
         // In-progress courses
         const inProgressCoursesWithInfo = allCourses
-          .filter(course => current.includes(course.courseId))
+          .filter(course => filteredCurrent.includes(course.courseId))
           .map(course => ({
             courseId: course.courseId,
             courseName: course.courseName,
@@ -74,7 +76,6 @@
 
 
         // Remaining Courses
-        const completedIds = completed.map(c => c.courseId);
         const inProgressIds = current;
 
         const remainingIds = required.filter(
@@ -99,6 +100,10 @@
         console.log("Logged in user:", JSON.parse(localStorage.getItem("user")));
       }, [user]);
       
+    
+      useEffect(() => {
+        console.log(inProgressCourses);
+      }, [inProgressCourses]);
     useEffect(() => {
       const handleResize = () => {
         if (window.innerWidth > 768) setCurrentIndex(-1);

@@ -39,9 +39,9 @@ export default function StudentProfile() {
           fetchStudent();
         }, [user]);
   
-  useEffect(() => {
-        console.log("Updated student:", student);
-      }, [student]);
+  // useEffect(() => {
+  //       console.log("Updated student:", student);
+  //     }, [student]);
   
   
   useEffect(() => {
@@ -66,9 +66,9 @@ export default function StudentProfile() {
           loadClasses();
         }, [student]);
   
-        useEffect(() => {
-          console.log("Updated classes:", enrolledClasses);
-        }, [enrolledClasses]);
+        // useEffect(() => {
+        //   console.log("Updated classes:", enrolledClasses);
+        // }, [enrolledClasses]);
   
   useEffect(() => {
     async function fetchCourses() {
@@ -93,19 +93,19 @@ export default function StudentProfile() {
     loadCourses()
   }, [enrolledClasses])
 
-  useEffect(() => {
-    console.log("Updated courses:", courses);
-  }, [courses]);
+  // useEffect(() => {
+  //   console.log("Updated courses:", courses);
+  // }, [courses]);
 
   useEffect(() => {
     if (student) {
-      setCompletedCourses(student.completedCourses.length); // Replace with actual logic if needed
+      setCompletedCourses(student.completedCourses.length); 
     }
   }, [student])
 
   useEffect(() => {
     if (student) {
-      setTotalCourses(student.major.CourseMajorOfferings.length); // Replace with actual logic if needed
+      setTotalCourses(student.major.CourseMajorOfferings.length);
     }
   }, [student])
 
@@ -131,13 +131,13 @@ export default function StudentProfile() {
     }
   }, [courses])
 
-  useEffect(() => {
-    console.log("Updated open course CH:", openCoursesCH);
-  }, [openCoursesCH]);
+  // useEffect(() => {
+  //   console.log("Updated open course CH:", openCoursesCH);
+  // }, [openCoursesCH]);
 
-  useEffect(() => {
-    console.log("Updated pending course CH:", pendingCoursesCH);
-  }, [pendingCoursesCH]);
+  // useEffect(() => {
+  //   console.log("Updated pending course CH:", pendingCoursesCH);
+  // }, [pendingCoursesCH]);
 
   const percentCompleted = Math.round((completedCourses / totalCourses) * 100);
 
