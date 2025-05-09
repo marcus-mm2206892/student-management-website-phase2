@@ -25,11 +25,18 @@ export default function Grades() {
   const [grades, setGrades] = useState([]);
   const [students, setStudents] = useState([]);
   const [users, setUsers] = useState([]);
+  const [user, setUser] = useState(null);
 
-  const email = searchParams.get('email');
+  useEffect(() => {
+    const storedUser = localStorage.getItem("user");
+    if (storedUser) {
+      setUser(JSON.parse(storedUser));
+    }
+  }, []);
+
     useEffect(() => {
       async function fetchInstructor() {
-        if (email) {
+        if (user && user.email) {
           const result = await getInstructorByEmailAction(email);
           setInstructor(result);
         }
