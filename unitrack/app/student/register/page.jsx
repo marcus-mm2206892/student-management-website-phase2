@@ -24,8 +24,6 @@ export default function RegisterCourse() {
   const [selectedClass, setSelectedClass] = useState(null)
   const [selectedCourse, setSelectedCourse] = useState(null)
 
-  const router = useRouter();
-
     useEffect(() => {
       const storedUser = localStorage.getItem("user");
       if (storedUser) {

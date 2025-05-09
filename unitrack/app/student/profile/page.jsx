@@ -6,28 +6,61 @@ import EmptyContent from "@/app/components/EmptyContent";
 import ClassModal from "@/app/components/ClassModal";
 import styles from "@/app/styles/student-profile.module.css";
 import cardStyles from "@/app/styles/course-card-profile.module.css";
+import { getStudentByEmailAction } from "@/app/action/server-actions";
 
 export default function StudentProfile() {
   const [enrolledClasses, setEnrolledClasses] = useState([]);
   const [courses, setCourses] = useState([]);
   const [selectedClass, setSelectedClass] = useState(null);
-  const [user, setUser] = useState({
-    firstName: "",
-    lastName: "",
-    email: "",
-    major: "",
-    department: "Computer Science",
-  });
+  const [user, setUser] = useState(null);
+  const [student, setStudent] = useState(null)
+  const [currentClasses, setCurrentClasses] = useState([]);
 
   useEffect(() => {
-    const dummyUser = {
-      firstName: "Marcus",
-      lastName: "Monteiro",
-      email: "marcus.monteiro@qu.com",
-      major: "BSc. Computer Science",
-      department: "Computer Science",
-    };
+    const storedUser = localStorage.getItem("user");
+    if (storedUser) {
+      setUser(JSON.parse(storedUser));
+    }
+  }, []);
 
+  useEffect(() => {
+          async function fetchStudent() {
+            if (user && user.email) {
+              const result = await getStudentByEmailAction(user.email);
+              setStudent(result);
+            }
+          }
+      
+          fetchStudent();
+        }, [user]);
+  
+  
+  useEffect(() => {
+          async function fetchClasses() {
+            const newClasses = [];
+    
+            if (student && student.semesterEnrollment && student.semesterEnrollment.length > 0) {
+              const lastEnrollment = student.semesterEnrollment[student.semesterEnrollment.length - 1];
+              for (const c of lastEnrollment.classes) {
+                newClasses.push(c);
+              }
+            }
+            return newClasses;
+          }
+        
+          async function loadClasses() {
+            const resolvedClasses = await fetchClasses(); 
+            setCurrentClasses(resolvedClasses);               
+          }
+        
+          loadClasses();
+        }, [student]);
+  
+        useEffect(() => {
+          console.log("Updated classes:", currentClasses);
+        }, [currentClasses]);
+
+  useEffect(() => {
     const dummyCourses = [
       {
         courseId: "CMPS 350",
@@ -62,7 +95,6 @@ export default function StudentProfile() {
       },
     ];
 
-    setUser(dummyUser);
     setCourses(dummyCourses);
     setEnrolledClasses(dummyClasses);
   }, []);
@@ -120,6 +152,10 @@ export default function StudentProfile() {
       </div>
     );
   };
+
+  if (!user) {
+    return <p>Loading courses...</p>;
+  }
 
   return (
     <>
