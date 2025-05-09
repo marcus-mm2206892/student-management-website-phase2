@@ -133,8 +133,11 @@ export async function updateInstructorAction(id, data) {
   return await unitrackRepo.updateInstructor(id, data);
 }
 
-export async function updateInstructorTeachingClassesAction(instructorId, data) {
-    return await unitrackRepo.updateInstructorTeachingClasses(instructorId, data);
+export async function updateInstructorTeachingClassesAction(
+  instructorId,
+  data
+) {
+  return await unitrackRepo.updateInstructorTeachingClasses(instructorId, data);
 }
 
 export async function updateInstructorGradedClassesAction(instructorId, data) {
@@ -208,7 +211,7 @@ export async function updateClassAction(id, data) {
 }
 
 export async function getLatestCreatedClassAction() {
-  return await unitrackRepo.getLatestCreatedClass()
+  return await unitrackRepo.getLatestCreatedClass();
 }
 
 //Pending Approval Classes
@@ -234,12 +237,26 @@ export async function createClassEnrollmentAction(data) {
   return await unitrackRepo.createClassEnrollment(data);
 }
 
-export async function updateClassEnrollmentAction(classId, semesterEnrollmentId, data) {
-  return await unitrackRepo.updateClassEnrollment(classId, semesterEnrollmentId, data);
+export async function updateClassEnrollmentAction(
+  classId,
+  semesterEnrollmentId,
+  data
+) {
+  return await unitrackRepo.updateClassEnrollment(
+    classId,
+    semesterEnrollmentId,
+    data
+  );
 }
 
-export async function deleteClassEnrollmentAction(classId, semesterEnrollmentId) {
-  const deleted = await unitrackRepo.deleteClassEnrollment(classId, semesterEnrollmentId)
+export async function deleteClassEnrollmentAction(
+  classId,
+  semesterEnrollmentId
+) {
+  const deleted = await unitrackRepo.deleteClassEnrollment(
+    classId,
+    semesterEnrollmentId
+  );
   return deleted;
 }
 
@@ -405,4 +422,14 @@ export async function deletePrerequisiteAction(id) {
 // Teaching Class
 export async function createTeachingClassesActions(data) {
   return await unitrackRepo.createTeachingClasses(data);
+}
+
+// STATISTICS
+
+export async function getTop3MostEnrolledCoursesAction() {
+  return await unitrackRepo.getTop3MostEnrolledCourses();
+}
+
+export async function getAverageGPAByMajorAction() {
+  return await unitrackRepo.getAverageGPAByMajor();
 }

@@ -57,7 +57,7 @@ class UniTrackRepo {
       include: {
         semesterEnrollment: { include: { classes: true } },
         completedCourses: { include: { course: true } },
-        major: {include: {CourseMajorOfferings: true}}
+        major: { include: { CourseMajorOfferings: true } },
       },
     });
   }
@@ -68,7 +68,7 @@ class UniTrackRepo {
       include: {
         semesterEnrollment: { include: { classes: true } },
         completedCourses: { include: { course: true } },
-        major: {include: {CourseMajorOfferings: true}}
+        major: { include: { CourseMajorOfferings: true } },
       },
     });
   }
@@ -295,43 +295,42 @@ class UniTrackRepo {
 
   async updateInstructorTeachingClasses(instructorId, data) {
     await prisma.instructor.update({
-        where: { instructorId: instructorId },
-        data: {
-            teachingClasses: {
-                connect: {
-                    classId: data.classId,
-                },
-            },
-        },
-    });
-
-    await prisma.teachingClasses.create({data})
-}
-
-
- async  updateInstructorGradedClasses(instructorId, data) {
-  await prisma.instructor.update({
       where: { instructorId: instructorId },
       data: {
-          gradedClasses: {
-              connect: {
-                  classId: data.classId,
-              },
+        teachingClasses: {
+          connect: {
+            classId: data.classId,
           },
+        },
       },
-  });
+    });
 
-  await prisma.gradedClasses.create({
-    data: {
-      class: {
-        connect: { classId: data.classId },
+    await prisma.teachingClasses.create({ data });
+  }
+
+  async updateInstructorGradedClasses(instructorId, data) {
+    await prisma.instructor.update({
+      where: { instructorId: instructorId },
+      data: {
+        gradedClasses: {
+          connect: {
+            classId: data.classId,
+          },
+        },
       },
-      instructor: {
-        connect: { instructorId: instructorId },
+    });
+
+    await prisma.gradedClasses.create({
+      data: {
+        class: {
+          connect: { classId: data.classId },
+        },
+        instructor: {
+          connect: { instructorId: instructorId },
+        },
       },
-    },
-  });
-}
+    });
+  }
 
   async deleteInstructor(id) {
     return await prisma.instructor.delete({ where: { instructorId: id } });
@@ -360,7 +359,9 @@ class UniTrackRepo {
 
   // Class
   async getAllClasses() {
-    return await prisma.class.findMany({ include: {CourseCurrentClasses: true}} );
+    return await prisma.class.findMany({
+      include: { CourseCurrentClasses: true },
+    });
   }
 
   async getClassById(id) {
@@ -461,13 +462,15 @@ class UniTrackRepo {
             scheduleType: newClass.schedule.scheduleType,
             startTime: newClass.schedule.startTime,
             endTime: newClass.schedule.endTime,
-          }
+          },
         },
         section: newClass.section,
         instructors: {
-          connect: newClass.instructors.map((i) => ({ instructorId: i.instructorId }))
-        }
-      }
+          connect: newClass.instructors.map((i) => ({
+            instructorId: i.instructorId,
+          })),
+        },
+      },
     });
 
     await prisma.courseCurrentClasses.create({
@@ -502,7 +505,7 @@ class UniTrackRepo {
   async getLatestCreatedClass() {
     return await prisma.class.findFirst({
       orderBy: {
-        classId: 'desc',
+        classId: "desc",
       },
     });
   }
@@ -674,25 +677,120 @@ class UniTrackRepo {
   async deletePrerequisite(id) {
     return await prisma.prerequisite.delete({ where: { id } });
   }
-  
+
   // Teaching Classes
   async createTeachingClass(data) {
-    return await prisma.teachingClasses.create({data});
+    return await prisma.teachingClasses.create({ data });
   }
 
   // Graded Classes
   async createGradedClass(data) {
-    return await prisma.gradedClasses.create({data});
+    return await prisma.gradedClasses.create({ data });
   }
 
-  //Subjects 
+  //Subjects
 
   async getAllSubjects() {
     return await prisma.subjects.findMany({
-      include : {
-        code: true
+      include: {
+        code: true,
+      },
+    });
+  }
+
+  //STATISTICS
+  async getTop3MostEnrolledCourses() {
+    const result = await prisma.classEnrollment.groupBy({
+      by: ["classId"],
+      _count: {
+        classId: true,
+      },
+      orderBy: {
+        _count: {
+          classId: "desc",
+        },
+      },
+      take: 3,
+    });
+
+    const enriched = await Promise.all(
+      result.map(async (item) => {
+        const classObj = await prisma.class.findUnique({
+          where: { classId: item.classId },
+          include: { course: true },
+        });
+
+        const courseId = classObj?.course?.courseId ?? "Unknown";
+        const title = classObj?.course?.title ?? "Unknown";
+
+        return `${courseId} (${item._count.classId})`;
+      })
+    );
+
+    return enriched;
+  }
+
+  async getAverageGPAByMajor() {
+    const gradePoints = {
+      A: 4.0,
+      "B+": 3.5,
+      B: 3.0,
+      "C+": 2.5,
+      C: 2.0,
+      "D+": 1.5,
+      D: 1.0,
+    };
+
+    const [grades, students] = await Promise.all([
+      prisma.completedCourse.findMany({
+        select: { studentId: true, letterGrade: true },
+      }),
+      prisma.student.findMany({
+        select: { studentId: true, majorId: true },
+      }),
+    ]);
+
+    // Step 1: Build a map of studentId → majorId
+    const majorMap = new Map();
+    for (const { studentId, majorId } of students) {
+      majorMap.set(studentId, majorId);
+    }
+
+    // Step 2: Group grades by student
+    const gpaBuckets = {
+      CMPS: [],
+      CMPE: [],
+    };
+
+    const studentGrades = new Map();
+
+    for (const { studentId, letterGrade } of grades) {
+      const point = gradePoints[letterGrade] ?? 0.0;
+      if (!studentGrades.has(studentId)) {
+        studentGrades.set(studentId, []);
       }
-    })
+      studentGrades.get(studentId).push(point);
+    }
+
+    // Step 3: Compute GPA per student and sort into major buckets
+    for (const [studentId, gradesArr] of studentGrades.entries()) {
+      const major = majorMap.get(studentId);
+      if (major !== "CMPS" && major !== "CMPE") continue;
+
+      const gpa = gradesArr.reduce((a, b) => a + b, 0) / gradesArr.length;
+      gpaBuckets[major].push(gpa);
+    }
+
+    // Step 4: Compute average GPA per major
+    const cmpsGPA =
+      gpaBuckets.CMPS.reduce((a, b) => a + b, 0) / gpaBuckets.CMPS.length || 0;
+    const cmpeGPA =
+      gpaBuckets.CMPE.reduce((a, b) => a + b, 0) / gpaBuckets.CMPE.length || 0;
+
+    return {
+      CMPS: cmpsGPA.toFixed(2),
+      CMPE: cmpeGPA.toFixed(2),
+    };
   }
 }
 
