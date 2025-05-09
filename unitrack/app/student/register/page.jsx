@@ -307,7 +307,7 @@ export default function RegisterCourse() {
                   {course.campus}
                 </td>
                 <td className={`${styles.data} ${styles["course-instructor"]}`}>
-                  {getInstructorName(course.instructors[0].email)}
+                  {getInstructorName(course.instructors?.[0]?.email)}
                 </td>
                 <td className={`${styles.data} ${styles["course-section"]}`}>
                   {course.section}
