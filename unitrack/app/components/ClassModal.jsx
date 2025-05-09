@@ -18,7 +18,7 @@ export default function ClassModal({ cls, course, isVisible, onClose }) {
   };
 
   const generateWeekdaySpans = (type) => {
-    const days = ["S", "M", "T", "W", "T", "F", "S"];
+    const days = ["S", "M", "T", "W", "T"];
     return days.map((day, index) => (
       <span key={index} className={`${styles.day} ${type.includes(day) ? styles.active : ""}`}>
         {day}

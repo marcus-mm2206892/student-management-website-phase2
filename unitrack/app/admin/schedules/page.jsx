@@ -156,7 +156,7 @@ export default function AdminViewSchedule() {
                     <i className="fa-solid fa-calendar-days"></i>
                     <div className={styles["schedule-info"]}>
                       <div className={styles["weekdays"]}>
-                        {["S", "M", "T", "W", "T", "F", "S"].map((day, i) => (
+                        {["S", "M", "T", "W", "T"].map((day, i) => (
                           <div
                             key={i}
                             className={`${styles.day} ${selectedClassData.schedule.includes(day) ? styles.active : ""}`}

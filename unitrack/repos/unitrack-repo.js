@@ -364,7 +364,7 @@ class UniTrackRepo {
         const inst = await prisma.instructor.findUnique({
           where: { instructorId: t.instructorId },
           include: {
-            user: true, // fetch firstName and lastName
+            user: true,
           },
         });
 
@@ -380,13 +380,13 @@ class UniTrackRepo {
     );
 
     return {
-      courseId: classObj.courseId,
-      crn: classObj.classId,
-      section: classObj.section,
-      campus: classObj.campus,
-      startTime: scheduleObj?.startTime,
-      endTime: scheduleObj?.endTime,
-      schedule: scheduleObj?.days || [],
+      courseId: classObj?.courseId ?? "Unknown",
+      campus: classObj?.campus ?? "Unknown",
+      crn: classObj?.classId ?? "Unknown",
+      section: classObj?.section ?? "Unknown",
+      startTime: scheduleObj?.startTime ?? "N/A",
+      endTime: scheduleObj?.endTime ?? "N/A",
+      schedule: scheduleObj?.scheduleType?.split("") ?? [],
       instructors: instructorData.filter(Boolean),
     };
   }
