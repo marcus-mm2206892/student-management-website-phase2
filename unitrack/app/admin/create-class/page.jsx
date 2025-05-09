@@ -183,7 +183,6 @@ export default function AdminCreateClassPage() {
       return;
     }
 
-    // Assuming classes are fetched or stored in the state
     const lastClassId = parseInt(lastClass.classId)
     const newClassId = (lastClassId + 1).toString();
 
@@ -201,7 +200,7 @@ export default function AdminCreateClassPage() {
         selectedStartTime,
         setSelectedEndTime,
       },
-      instructors: instructorEmails,
+      instructors: selectedInstructors,
       section,
     };
 
