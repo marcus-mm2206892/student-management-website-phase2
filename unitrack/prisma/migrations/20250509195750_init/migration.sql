@@ -153,6 +153,21 @@ CREATE TABLE "TeachingClasses" (
 );
 
 -- CreateTable
+CREATE TABLE "GradedClasses" (
+    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "classId" TEXT NOT NULL,
+    "instructorId" TEXT NOT NULL,
+    CONSTRAINT "GradedClasses_classId_fkey" FOREIGN KEY ("classId") REFERENCES "Class" ("classId") ON DELETE RESTRICT ON UPDATE CASCADE,
+    CONSTRAINT "GradedClasses_instructorId_fkey" FOREIGN KEY ("instructorId") REFERENCES "Instructor" ("instructorId") ON DELETE RESTRICT ON UPDATE CASCADE
+);
+
+-- CreateTable
+CREATE TABLE "Subjects" (
+    "subject" TEXT NOT NULL PRIMARY KEY,
+    "code" TEXT NOT NULL
+);
+
+-- CreateTable
 CREATE TABLE "_TeachingClasses" (
     "A" TEXT NOT NULL,
     "B" TEXT NOT NULL,

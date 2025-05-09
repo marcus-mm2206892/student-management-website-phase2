@@ -164,6 +164,7 @@ model Course {
   CourseCurrentClasses CourseCurrentClasses[] @relation("CourseToCurrentClasses")
   CourseMajorOfferings CourseMajorOfferings[] @relation("CourseToMajorOfferings")
   CompletedCourse      CompletedCourse[]
+  // Subjects             Subjects               @relation(fields: [subject], references: [subject])
 }
 
 model CourseCurrentClasses {
@@ -207,4 +208,10 @@ model GradedClasses {
 
   class      Class      @relation(fields: [classId], references: [classId])
   instructor Instructor @relation(fields: [instructorId], references: [instructorId])
+}
+
+model Subjects {
+  subject String @id
+  code    String
+  // Course  Course[]
 }
