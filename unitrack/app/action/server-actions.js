@@ -354,8 +354,8 @@ export async function getAllCourseIdsAction() {
   return await unitrackRepo.getAllCourseIds();
 }
 
-export async function getCourseIdsByMajorAction(major) {
-  return await unitrackRepo.getCourseIdsByMajor(major);
+export async function getMajorCourseIdsByEmailAction(email) {
+  return await unitrackRepo.getMajorCourseIdsByEmail(email);
 }
 
 export async function createCourseMajorOfferingAction(data) {

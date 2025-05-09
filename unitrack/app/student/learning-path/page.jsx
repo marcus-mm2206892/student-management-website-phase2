@@ -4,7 +4,7 @@
   import styles from "@/app/styles/learningpath.module.css";
   import cardStyles from "@/app/styles/course-card-view.module.css";
 
-  import { getCompletedCoursesByStudentEmailAction, getAllCoursesAction, getCurrentCoursesByStudentEmailAction, getCourseIdsByMajorAction, getPendingCourseIdsByStudentEmailAction } from "@/app/action/server-actions";
+  import { getCompletedCoursesByStudentEmailAction, getAllCoursesAction, getCurrentCoursesByStudentEmailAction, getMajorCourseIdsByEmailAction, getPendingCourseIdsByStudentEmailAction } from "@/app/action/server-actions";
 
 
   export default function LearningPath() {
@@ -25,18 +25,16 @@
 
     useEffect(() => {
 
-      async function loadAllCourseData() {
-        const studentEmail = "mohd.bashar@qu.com";
-        const studentId = "S1003";
+      async function loadAllCourseData(studentEmail) {
         const majorId = "CMPS"; 
     
         // Getting all the data in parallel
         const [allCourses, completed, current, required, pending] = await Promise.all([
           getAllCoursesAction(),
-          getCompletedCoursesByStudentEmailAction(user.email),
-          getCurrentCoursesByStudentEmailAction(user.email),
-          getCourseIdsByMajorAction(majorId),
-          getPendingCourseIdsByStudentEmailAction(user.email)  
+          getCompletedCoursesByStudentEmailAction(studentEmail),
+          getCurrentCoursesByStudentEmailAction(studentEmail),
+          getMajorCourseIdsByEmailAction(studentEmail),
+          getPendingCourseIdsByStudentEmailAction(studentEmail)  
         ]);
     
         setCourses(allCourses);
@@ -94,7 +92,7 @@
         setUpcomingCourses(upcomingCoursesWithInfo);
       }
     
-      loadAllCourseData();
+      loadAllCourseData(user.email);
     }, []);
 
     useEffect(() => {
