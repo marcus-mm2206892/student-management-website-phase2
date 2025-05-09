@@ -112,9 +112,16 @@ export default function AdminCreateClassPage() {
 
   const schedules = ["Sunday, Tuesday, Thursday", "Monday, Wednesday"];
   const times = [
-    "08:00 AM", "09:00 AM", "10:00 AM",
-    "11:00 AM", "12:00 PM", "01:00 PM",
-    "02:00 PM", "03:00 PM", "04:00 PM",
+    "08:00",
+    "09:00",
+    "10:00",
+    "11:00",
+    "12:00",
+    "13:00",
+    "14:00",
+    "15:00",
+    "16:00",
+    "17:00",
   ];
 
   const campuses = ["Male", "Female"];
@@ -213,12 +220,12 @@ export default function AdminCreateClassPage() {
       // Reset form
       setSection("");
       setMaxStudents("");
-      setSelectedCourse("Select Course");
+      setCourse("Select Course");
       setSelectedInstructors([]);
-      setSelectedCampus("Select Campus");
-      setSelectedSchedType("Select Schedule Type");
-      setSelectedStartTime("Select Time");
-      setSelectedEndTime("Select Time");
+      setCampus("Select Campus");
+      setScheduleType("Select Schedule Type");
+      setStartTime("Select Time");
+      setEndTime("Select Time");
     } else {
       setAlertMessage("Failed to create class.")
       setAlertVisible(true)
@@ -235,7 +242,7 @@ export default function AdminCreateClassPage() {
       </header>
 
       <section className={styles.create}>
-        <form className={styles["create-class-form"]}>
+        <form className={styles["create-class-form"]} onSubmit={handleSubmit}>
           <div className={styles["input-div-container"]}>
             <div className={styles["field-div"]}>
               <h1>Create New Class</h1>

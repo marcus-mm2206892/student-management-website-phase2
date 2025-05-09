@@ -444,7 +444,7 @@ class UniTrackRepo {
   }
 
   async createClass(newClass) {
-    return await db.class.create({
+    const createdClass = await prisma.class.create({
       data: {
         classId: newClass.classId,
         courseId: newClass.courseId,
@@ -467,6 +467,26 @@ class UniTrackRepo {
         }
       }
     });
+
+    await prisma.courseCurrentClasses.create({
+      data: {
+        courseId: newClass.courseId,
+        classId: newClass.classId,
+      },
+    });
+
+    const teachingClassCreates = newClass.instructors.map((instructor) =>
+      prisma.teachingClasses.create({
+        data: {
+          classId: newClass.classId,
+          instructorId: instructor.instructorId,
+        },
+      })
+    );
+
+    await Promise.all(teachingClassCreates);
+
+    return createdClass;
   }
 
   async updateClass(id, data) {
