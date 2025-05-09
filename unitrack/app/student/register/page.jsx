@@ -4,7 +4,7 @@ import styles from "@/app/styles/register-course.module.css";
 import NoResults from "@/app/components/NoResults";
 import ClassModal from "@/app/components/ClassModal";
 import AlertModal from "@/app/components/AlertModal";
-import { createClassEnrollmentAction, deleteClassEnrollmentAction, getAllAvailableClasses, getAllClassesAction, getAllUsersAction, getStudentByEmailAction, updateClassAction } from "@/app/action/server-actions";
+import { createClassEnrollmentAction, deleteClassEnrollmentAction, getAllAvailableClasses, getAllClassesAction, getAllUsersAction, getClassByIdAction, getClassDetailsByIdAction, getStudentByEmailAction, updateClassAction } from "@/app/action/server-actions";
 import { redirect, useRouter } from "next/navigation";
 
 export default function RegisterCourse() {
@@ -177,6 +177,7 @@ export default function RegisterCourse() {
     if (!registrableClasses) return;
   
     const course = registrableClasses.find((c) => c.classId === courseId);
+    const selectedCourseDetails = getClassDetailsByIdAction(course.classId)
     if (!course) return;
   
     if (course.campus.toLowerCase() !== user.gender) {
@@ -189,7 +190,7 @@ export default function RegisterCourse() {
       c.courseId === courseId ? { ...c, registered: !c.registered } : c
     );
   
-    const task = () => {
+    const task = async () => {
       const updatedEnrollment = !course.registered? course.enrollmentActual + 1 : Math.max(0, course.enrollmentActual - 1);
       //Unregistering from a course
       if (course.registered) {
@@ -213,6 +214,23 @@ export default function RegisterCourse() {
             setAlertMessage("This class is already full. Please register for another class.");
             setAlertVisible(true);
             return;
+          }
+
+          const selectedCourseDetails = await getClassDetailsByIdAction(course.classId)
+          console.log(selectedCourseDetails)
+
+          for (const c of classes) {
+            const existingClass = await getClassDetailsByIdAction(c.classId);
+            console.log(existingClass)
+            if (
+              JSON.stringify(existingClass.schedule) === JSON.stringify(selectedCourseDetails.schedule) &&
+              existingClass.startTime === selectedCourseDetails.startTime &&
+              existingClass.endTime === selectedCourseDetails.endTime
+            ) {
+              setAlertMessage("Schedule conflict with another registered class. Please register for a different class.");
+              setAlertVisible(true);
+              return;
+            }
           }
 
           const lastEnrollment = student.semesterEnrollment[student.semesterEnrollment.length - 1];
