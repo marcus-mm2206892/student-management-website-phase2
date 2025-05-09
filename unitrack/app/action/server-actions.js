@@ -442,3 +442,11 @@ export async function getTop3CoursesWithMostFailsAction() {
 export async function getTop3InstructorsWithMostClassesAction() {
   return await statisticsRepo.getTop3InstructorsWithMostClasses();
 }
+
+export async function getSemesterCourseCountsByMajorAction() {
+  return await statisticsRepo.getSemesterCourseCountsByMajor();
+}
+
+export async function getTopStudentsByMajorGPAAction() {
+  return await statisticsRepo.getTopStudentsByMajorGPA();
+}
