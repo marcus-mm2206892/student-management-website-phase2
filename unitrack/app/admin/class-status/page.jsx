@@ -19,6 +19,8 @@ export default function ApproveClass() {
   const [alertOpen, setAlertOpen] = useState(false);
   const [alertContent, setAlertContent] = useState({ title: "", description: "" });
   const [classModalVisible, setClassModalVisible] = useState(false);
+  const [selectedClass, setSelectedClass] = useState(null);
+  const [selectedCourse, setSelectedCourse] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -32,13 +34,13 @@ export default function ApproveClass() {
     fetchData();
   }, []);
 
-  const getInstructorName = (instructorEmail) => {
-    const user = users.find((u) => u.email === instructorEmail);
+  const getInstructorName = (email) => {
+    const user = users.find((u) => u.email === email);
     return user ? `${user.firstName} ${user.lastName}` : "Unknown";
   };
 
   const filteredClasses = classes.filter((cls) =>
-    `${cls.courseId} ${cls.course?.courseName ?? ""} ${getInstructorName(cls.instructors?.[0]?.email)}`
+    `${cls.courseId} ${cls.course?.courseName ?? ""} ${cls.instructors?.map(i => getInstructorName(i.email)).join(" ")}`
       .toLowerCase()
       .includes(searchTerm.toLowerCase())
   );
@@ -74,6 +76,12 @@ export default function ApproveClass() {
       });
     }
     setAlertOpen(true);
+  };
+
+  const handleClassClick = (cls, course) => {
+    setSelectedClass(cls);
+    setSelectedCourse(course);
+    setClassModalVisible(true);
   };
 
   return (
@@ -117,13 +125,14 @@ export default function ApproveClass() {
             </tr>
             {!noResults && (
               <tr>
-                <th>Course No.</th>
-                <th>Name</th>
-                <th>Instructor</th>
-                <th>Section</th>
-                <th>Enrollment</th>
-                <th>Status</th>
-                <th>Action</th>
+                <th className={styles["course-no"]}>Course No.</th>
+                <th className={styles["course-name"]}>Name</th>
+                <th className={styles["course-campus"]}>Campus</th>
+                <th className={styles["course-instructor"]}>Instructor</th>
+                <th className={styles["course-section"]}>Section</th>
+                <th className={styles["course-enrollment"]}>Enrollment</th>
+                <th className={styles["course-status"]}>Status</th>
+                <th className={styles["course-action"]}>Action</th>
               </tr>
             )}
           </thead>
@@ -131,28 +140,42 @@ export default function ApproveClass() {
           <tbody>
             {filteredClasses.map((cls, i) => (
               <tr key={cls.classId}>
-                <td className={styles["data"]}>
-                  <span className={styles["course-no-span"]} onClick={() => setClassModalVisible(true)}>
+                <td className={`${styles.data} ${styles["course-no"]}`}>
+                  <span
+                    className={styles["course-no-span"]}
+                    onClick={() => handleClassClick(cls, cls.course)}
+                  >
                     {cls.courseId}
                   </span>
                 </td>
-                <td className={styles["data"]}>{cls.course?.courseName ?? "Unknown"}</td>
-                <td className={styles["data"]}>
-                  {getInstructorName(cls.instructors?.[0]?.email)}
+                <td className={`${styles.data} ${styles["course-name"]}`}>
+                  {cls.course.courseName}
                 </td>
-                <td className={styles["data"]}>{cls.section}</td>
-                <td className={styles["data"]}>
+                <td className={`${styles.data} ${styles["course-campus"]}`}>
+                  {cls.campus}
+                </td>
+                <td className={styles["course-instructor"]}>
+                  {cls.instructors?.length
+                    ? cls.instructors.map((inst, idx) => (
+                        <div key={idx}>{getInstructorName(inst.email)}</div>
+                      ))
+                    : "No Instructors"}
+                </td>
+                <td className={`${styles.data} ${styles["course-section"]}`}>
+                  {cls.section}
+                </td>
+                <td className={`${styles.data} ${styles["course-enrollment"]}`}>
                   <span className={styles["course-enrollment-span"]}>
                     {cls.enrollmentActual} / {cls.enrollmentMaximum}
                   </span>
                 </td>
-                <td className={styles["data"]}>
+                <td className={`${styles.data} ${styles["course-status"]}`}>
                   <div className={`${styles["status-badge"]} ${getStatusClass(cls.classStatus)}`}>
                     <span className={styles["status-circle"]}></span>
                     {cls.classStatus.charAt(0).toUpperCase() + cls.classStatus.slice(1)}
                   </div>
                 </td>
-                <td className={styles["data"]}>
+                <td className={`${styles.data} ${styles["course-action"]}`}>
                   <select
                     className={styles["status-dropdown"]}
                     value={cls.classStatus}
@@ -160,7 +183,7 @@ export default function ApproveClass() {
                   >
                     <option value="open">Open</option>
                     <option value="pending">Pending</option>
-                    <option value="rejected">Reject</option>
+                    <option value="rejected">Rejected</option>
                   </select>
                 </td>
               </tr>
@@ -175,7 +198,18 @@ export default function ApproveClass() {
         )}
       </section>
 
-      <ClassModal isVisible={classModalVisible} onClose={() => setClassModalVisible(false)} />
+      {selectedClass && selectedCourse && (
+        <ClassModal
+          cls={selectedClass}
+          course={selectedCourse}
+          isVisible={classModalVisible}
+          onClose={() => {
+            setClassModalVisible(false);
+            setSelectedClass(null);
+            setSelectedCourse(null);
+          }}
+        />
+      )}
 
       <AlertModal
         isOpen={alertOpen}

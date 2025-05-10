@@ -338,49 +338,49 @@ export default function RegisterCourse() {
           </thead>
 
           <tbody>
-            {filteredCourses.map((course, index) => (
+            {filteredCourses.map((cls, index) => (
               <tr key={index}>
                 <td className={`${styles.data} ${styles["course-no"]}`}>
-                  <span onClick={() => handleClassClick(course, course.course)}>
-                    {course.course.courseId}
+                  <span onClick={() => handleClassClick(cls, cls.course)}>
+                    {cls.course.courseId}
                   </span>
                 </td>
                 <td className={`${styles.data} ${styles["course-name"]}`}>
-                  {course.course.courseName}
+                  {cls.course.courseName}
                 </td>
                 <td className={`${styles.data} ${styles["course-campus"]}`}>
-                  {course.campus}
+                  {cls.campus}
                 </td>
                 <td className={styles["course-instructor"]}>
-                  {course.instructors?.length
-                    ? course.instructors.map((i, idx) => (
+                  {cls.instructors?.length
+                    ? cls.instructors.map((i, idx) => (
                         <div key={idx}>{getInstructorName(i.email)}</div>
                       ))
                     : "No Instructors"}
                 </td>
                 <td className={`${styles.data} ${styles["course-section"]}`}>
-                  {course.section}
+                  {cls.section}
                 </td>
                 <td className={`${styles.data} ${styles["course-enrollment"]}`}>
-                  <span>{course.enrollmentActual} / {course.enrollmentMaximum}</span>
+                  <span>{cls.enrollmentActual} / {cls.enrollmentMaximum}</span>
                 </td>
                 <td className={`${styles.data} ${styles["course-status"]}`}>
                   <div
-                    className={`${styles["status-badge"]} ${getStatusBadgeClass(course.classStatus)}`}
+                    className={`${styles["status-badge"]} ${getStatusBadgeClass(cls.classStatus)}`}
                   >
                     <span className={styles["status-circle"]}></span>
                     {/* first letter of the word capital */}
-                    {course.classStatus.charAt(0).toUpperCase() + course.classStatus.slice(1)} 
+                    {cls.classStatus.charAt(0).toUpperCase() + cls.classStatus.slice(1)} 
                   </div>
                 </td>
                 <td className={`${styles.data} ${styles["course-action"]}`}>
                   <button
                     className={`${styles["course-button"]} ${
-                      course.registered ? styles["registered-button"] : ""
+                      cls.registered ? styles["registered-button"] : ""
                     }`}
-                    onClick={() => handleRegisterToggle(course.classId)}
+                    onClick={() => handleRegisterToggle(cls.classId)}
                   >
-                    {course.registered ? "Unregister" : "Register"}
+                    {cls.registered ? "Unregister" : "Register"}
                   </button>
                 </td>
               </tr>

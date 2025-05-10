@@ -360,7 +360,15 @@ class UniTrackRepo {
   // Class
   async getAllClasses() {
     return await prisma.class.findMany({
-      include: { CourseCurrentClasses: true },
+      include: {
+        course: {
+          include: {
+            prerequisites: true,
+          },
+        },
+        instructors: true,
+        schedule: true,
+      },
     });
   }
 
@@ -378,7 +386,15 @@ class UniTrackRepo {
           not: "completed",
         },
       },
-      include: { instructors: true, schedule: true, course: true },
+      include: {
+        instructors: true,
+        schedule: true,
+        course: {
+          include: {
+            prerequisites: true,
+          },
+        },
+      },
     });
   }
 
