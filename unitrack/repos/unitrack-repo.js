@@ -720,11 +720,7 @@ class UniTrackRepo {
   //Subjects
 
   async getAllSubjects() {
-    return await prisma.subjects.findMany({
-      include: {
-        code: true,
-      },
-    });
+    return await prisma.subjects.findMany();
   }
 
   async getSubject(code) {

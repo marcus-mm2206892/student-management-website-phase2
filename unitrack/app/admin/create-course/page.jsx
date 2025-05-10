@@ -74,7 +74,7 @@ export default function AdminCreateCourse() {
 
     // Create new course
     const newCourse =  {
-      courseId: (selectedSubject+courseNumber),  //Concatenate : sub+courseNo
+      courseId: (selectedSubject+String(courseNumber)),  //Concatenate : sub+courseNo
       courseName: courseName,
       creditHours: parseInt(creditHours),
       subject: selectedSubject === "CMPS" 
@@ -98,7 +98,7 @@ export default function AdminCreateCourse() {
     const preReqs = []
     for( const prereqId of selectedPrereqs){
       const newPreReq =  {  //Id auto generated
-        courseId: (selectedSubject+courseNumber), //Concatenate : sub+courseNo
+        courseId: (selectedSubject+String(courseNumber)), //Concatenate : sub+courseNo
         prerequisiteId: prereqId,
         minGrade: "D"
       }
@@ -115,7 +115,7 @@ export default function AdminCreateCourse() {
     const courseMajorOffs = [];
     for (const majorOffid of selectedMajors){
         const newCourseMajorOffering =  {
-          courseId: (selectedSubject+courseNumber), //Concatenate : sub+courseNo
+          courseId: (selectedSubject+String(courseNumber)), //Concatenate : sub+courseNo
           majorId: majorOffid === "Computer Science"
             ? "CMPS"
             : majorOffid === "Computer Engineering"
