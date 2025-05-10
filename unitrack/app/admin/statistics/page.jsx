@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import {
   getTop3MostEnrolledCoursesAction,
   getAverageGPAByMajorAction,
+  getTop3CoursesWithMostAsAction,
   getTop3CoursesWithMostFailsAction,
   getTop3InstructorsWithMostClassesAction,
   getSemesterCourseCountsByMajorAction,
@@ -18,6 +19,7 @@ import {
 export default function StatisticsPage() {
   const [topCourses, setTopCourses] = useState([]);
   const [gpaByMajor, setGpaByMajor] = useState({ CMPS: "Loading...", CMPE: "Loading..." });
+  const [mostAsCourses, setMostAsCourses] = useState([]);
   const [mostFailedCourses, setMostFailedCourses] = useState([]);
   const [topInstructors, setTopInstructors] = useState([]);
   const [courseCounts, setCourseCounts] = useState({ csOnly: 0, ceOnly: 0, both: 0 });
@@ -32,6 +34,7 @@ export default function StatisticsPage() {
       const [
         topCoursesRes,
         gpaMajorRes,
+        asCoursesRes,
         failedCoursesRes,
         instructorsRes,
         courseCountsRes,
@@ -43,6 +46,7 @@ export default function StatisticsPage() {
       ] = await Promise.all([
         getTop3MostEnrolledCoursesAction(),
         getAverageGPAByMajorAction(),
+        getTop3CoursesWithMostAsAction(),
         getTop3CoursesWithMostFailsAction(),
         getTop3InstructorsWithMostClassesAction(),
         getSemesterCourseCountsByMajorAction(),
@@ -52,9 +56,10 @@ export default function StatisticsPage() {
         getTop3WaitlistedClassesAction(),
         getTop3CoursesWithMostOpenSectionsAction()
       ]);
-  
+      
       setTopCourses(topCoursesRes);
       setGpaByMajor(gpaMajorRes);
+      setMostAsCourses(asCoursesRes);
       setMostFailedCourses(failedCoursesRes);
       setTopInstructors(instructorsRes);
       setCourseCounts(courseCountsRes);
@@ -81,14 +86,25 @@ export default function StatisticsPage() {
       icon: "fa-star"
     },
     {
-      label: "CS Students Avg. Grade Point Average",
-      value: gpaByMajor.CMPS,
-      icon: "fa-laptop-code"
+      label: "Average Grade Point Average",
+      value: (
+        <>
+          CS: {gpaByMajor.CMPS} <br />
+          CE: {gpaByMajor.CMPE}
+        </>
+      ),
+      icon: "fa-graduation-cap"
     },
     {
-      label: "CE Students Avg. Grade Point Average",
-      value: gpaByMajor.CMPE,
-      icon: "fa-microchip"
+      label: "Courses With Most A Grades",
+      value: (
+        <>
+          {mostAsCourses?.map((course, idx) => (
+            <div key={idx}>{course}</div>
+          ))}
+        </>
+      ),
+      icon: "fa-trophy"
     },
     {
       label: "Courses With Most F Grades in History",

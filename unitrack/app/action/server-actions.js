@@ -55,7 +55,6 @@ export async function createCourseAction(data) {
   return await unitrackRepo.createCourse(data);
 }
 
-
 export async function checkCourseIdAction(courseId) {
   return await unitrackRepo.checkCourseId(courseId);
 }
@@ -438,6 +437,10 @@ export async function getTop3MostEnrolledCoursesAction() {
 
 export async function getAverageGPAByMajorAction() {
   return await statisticsRepo.getAverageGPAByMajor();
+}
+
+export async function getTop3CoursesWithMostAsAction() {
+  return await statisticsRepo.getTop3CoursesWithMostAs();
 }
 
 export async function getTop3CoursesWithMostFailsAction() {

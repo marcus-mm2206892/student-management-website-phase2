@@ -96,6 +96,30 @@ class StatisticsRepo {
     };
   }
 
+  async getTop3CoursesWithMostAs() {
+    // fetch all completed courses with A
+    const failedCourses = await prisma.completedCourse.findMany({
+      where: { letterGrade: "A" },
+      select: { courseId: true },
+    });
+
+    // Count A’s per course
+    const failCount = {};
+
+    for (const { courseId } of failedCourses) {
+      if (!failCount[courseId]) failCount[courseId] = 0;
+      failCount[courseId]++;
+    }
+
+    // Sort and take top 3
+    const sorted = Object.entries(failCount)
+      .sort((a, b) => b[1] - a[1])
+      .slice(0, 3)
+      .map(([courseId, count]) => `${courseId} (${count})`);
+
+    return sorted;
+  }
+
   async getTop3CoursesWithMostFails() {
     // fetch all completed courses with F
     const failedCourses = await prisma.completedCourse.findMany({
