@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import styles from "@/app/styles/admin-create-course.module.css";
-import { createPrerequisiteAction, createCourseMajorOfferingAction, createCourseAction } from "@/app/action/server-actions";
+import { createPrerequisiteAction, createCourseMajorOfferingAction, createCourseAction, checkCourseIdAction } from "@/app/action/server-actions";
 
 /*
   To be fixed:
@@ -22,6 +22,8 @@ export default function AdminCreateCourse() {
   const [creditHours, setCreditHours] = useState("");
   const [description, setDescription] = useState("");
   const [imageUrl, setImageUrl] = useState("");
+  const [courseExists, setCourseExists] = useState(false);
+
 
   const subjects = ["CMPS", "CMPE", "ELEC"];
   const prerequisites = ["CMPS101", "CMPS202", "CMPS303"];
@@ -54,6 +56,17 @@ export default function AdminCreateCourse() {
     console.log("Credit Hours: " + creditHours);
     console.log("Descriptions: " + description);
     console.log("Image URL: " + imageUrl);
+
+    // Check if the courseNo is valid/exists already
+    const isExist = await checkCourseIdAction((selectedSubject+courseNumber));
+    //if not valid, do not create, and do not reset the form, also make the courseNo field red
+
+    if (isExist) {
+      setCourseExists(true);
+      return; // Stop the form from submitting
+    }
+
+    setCourseExists(false); 
 
     // Create new course
     const newCourse =  {
@@ -173,20 +186,27 @@ export default function AdminCreateCourse() {
               </div>
             </div>
 
-            {/* Course Number */}
-            <div className={styles["field-div"]}>
-              <label htmlFor="courseNumber">Course Number</label>
-              <input
-                type="number"
-                id="courseNumber"
-                name="courseNumber"
-                className={styles["input-field"]}
-                placeholder="e.g. 350"
-                value={courseNumber}
-                required
-                onChange={(e) => setCourseNumber(e.target.value)}
-              />
-            </div>
+          {/* Course Number */}
+          <div className={styles["field-div"]}>
+            <label htmlFor="courseNumber">Course Number</label>
+            <input
+              type="number"
+              id="courseNumber"
+              name="courseNumber"
+              className={`${styles["input-field"]} ${courseExists ? styles["error-border"] : ""}`}
+              placeholder="e.g. 350"
+              value={courseNumber}
+              required
+              onChange={(e) => {
+                setCourseNumber(e.target.value);
+                setCourseExists(false); // reset error state on change
+              }}
+            />
+            {courseExists && (
+              <p className={styles["error-text"]}>Course ID already exists!</p>
+            )}
+          </div>
+
 
             {/* Course Name */}
             <div className={styles["field-div"]}>

@@ -207,6 +207,16 @@
   padding-bottom: 3rem;
 }
 
+.error-border {
+  border: 2px solid red;
+}
+
+.error-text {
+  color: red;
+  font-size: 0.9rem;
+}
+
+
 /* Responsive */
 @media (max-width: 768px) {
   .create {

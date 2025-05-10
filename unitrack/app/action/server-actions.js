@@ -55,6 +55,11 @@ export async function createCourseAction(data) {
   return await unitrackRepo.createCourse(data);
 }
 
+
+export async function checkCourseIdAction(courseId) {
+  return await unitrackRepo.checkCourseId(courseId);
+}
+
 export async function updateCourseAction(id, data) {
   return await unitrackRepo.updateCourse(id, data);
 }
