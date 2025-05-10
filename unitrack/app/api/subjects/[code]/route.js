@@ -8,5 +8,6 @@ export async function GET(req, { params }){
       return new Response(JSON.stringify({ error: 'Subject not found' }), { status: 404 });
     }
 
+    console.log(subject)
     return Response.json(subject, { status: 200 });
 }

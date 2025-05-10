@@ -724,8 +724,8 @@ class UniTrackRepo {
   }
 
   async getSubject(code) {
-    return await prisma.subjects.findUnique({
-      include: {code: true}
+    return await prisma.subjects.findFirst({
+      where: { code }
     })
   }
 }
