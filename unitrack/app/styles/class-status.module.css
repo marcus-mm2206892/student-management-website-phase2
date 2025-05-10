@@ -323,3 +323,33 @@
     font-size: 1.2rem;
   }
 }
+
+@media (max-width: 1020px) {
+  .course-instructor {
+    display: none !important;
+  }
+}
+
+@media (max-width: 920px) {
+  .course-enrollment {
+    display: none !important;
+  }
+}
+
+@media (max-width: 820px) {
+  .course-section {
+    display: none !important;
+  }
+}
+
+@media (max-width: 730px) {
+  .course-name {
+    display: none !important;
+  }
+}
+
+@media (max-width: 610px) {
+  .course-status {
+    display: none !important;
+  }
+}

@@ -17,14 +17,18 @@ export default function ClassModal({ cls, course, isVisible, onClose }) {
     return `${hour12}:${minute.toString().padStart(2, "0")} ${ampm}`;
   };
 
-  const generateWeekdaySpans = (type) => {
-    const days = ["S", "M", "T", "W", "T"];
+  const generateWeekdaySpans = (type = "") => {
+    const days = ["S", "M", "T", "W", "T",];
     return days.map((day, index) => (
-      <span key={index} className={`${styles.day} ${type.includes(day) ? styles.active : ""}`}>
+      <span
+        key={index}
+        className={`${styles.day} ${type.includes(day) ? styles.active : ""}`}
+      >
         {day}
       </span>
     ));
   };
+
 
   useEffect(() => {
     const handleClickOutside = (e) => {
@@ -252,7 +256,7 @@ export default function ClassModal({ cls, course, isVisible, onClose }) {
                       <div className={styles["weekdays"]}>
                         {generateWeekdaySpans(cls.schedule.scheduleType)}
                       </div>
-                      <p className={styles["date-range"]}>01/19/2025 - 05/08/2025</p>
+                      <p className={styles["date-range"]}>{cls.semester}</p>
                     </div>
                   </div>
                 </div>

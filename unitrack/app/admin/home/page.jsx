@@ -16,6 +16,7 @@ import {
   getAllInstructorsAction,
   getAllMajorsAction,
   getPendingApprovalClassesAction,
+  getAllCoursesAction,
 } from "@/app/action/server-actions";
 
 export default function AdminHome() {
@@ -27,9 +28,12 @@ export default function AdminHome() {
   const [students, setStudents] = useState([]);
   const [instructors, setInstructors] = useState([]);
   const [majors, setMajors] = useState([]);
+  const [courses, setCourses] = useState([]);
 
   const [selectedClass, setSelectedClass] = useState(null);
+  const [selectedCourse, setSelectedCourse] = useState(null);
   const [showClassModal, setShowClassModal] = useState(false);
+
   const [user, setUser] = useState({
     firstName: "Admin",
     lastName: "",
@@ -63,6 +67,7 @@ export default function AdminHome() {
         instructorList,
         majorList,
         approvalCandidates,
+        courseList,
       ] = await Promise.all([
         getAllClassesAction(),
         getApprovedClassesAction(),
@@ -72,6 +77,7 @@ export default function AdminHome() {
         getAllInstructorsAction(),
         getAllMajorsAction(),
         getPendingApprovalClassesAction(),
+        getAllCoursesAction(),
       ]);
 
       setAllClasses(all || []);
@@ -81,17 +87,68 @@ export default function AdminHome() {
       setStudents(studentList || []);
       setInstructors(instructorList || []);
       setMajors(majorList || []);
-      setEligiblePendingClasses(
-        (approvalCandidates || []).filter((cls) => cls.enrollmentActual >= 5)
-      );
+      setCourses(courseList || []);
+      setEligiblePendingClasses((approvalCandidates || []).filter((cls) => cls.enrollmentActual >= 5));
     };
 
     fetchStats();
   }, []);
 
-  const openClassModal = (cls) => {
+  const openClassModal = (cls, course) => {
     setSelectedClass(cls);
+    setSelectedCourse(course);
     setShowClassModal(true);
+  };
+
+  const renderClassCard = (cls) => {
+    const course = courses.find((c) => c.courseId === cls.courseId);
+    if (!course) return null;
+
+    const creditHoursText = course.creditHours === 1 ? "credit hour" : "credit hours";
+
+    return (
+      <div
+        key={cls.classId}
+        className={cardStyles["course-card"]}
+        onClick={() => openClassModal(cls, course)}
+      >
+        <div className={cardStyles["course-image"]}>
+          <img
+            src={course.courseImage}
+            alt="Course Image"
+            style={{ width: "100%", height: "100%", objectFit: "cover" }}
+          />
+          <div className={cardStyles["hover-icon"]}>
+            <i className="fa-solid fa-eye"></i>
+            <span className={cardStyles["hover-text"]}>View Class</span>
+          </div>
+          <i className={`fa-solid fa-turn-up ${cardStyles["top-right-icon"]}`}></i>
+        </div>
+
+        <div className={cardStyles["course-info"]}>
+          <div className={cardStyles["course-header"]}>
+            <div className={cardStyles["card-tags-div"]}>
+              <span className={cardStyles["course-tag"]}>{cls.courseId}</span>
+              <span className={cardStyles["section-tag"]}>{cls.section}</span>
+            </div>
+            <span className={cardStyles["semester"]}>{cls.semester}</span>
+          </div>
+          <h3>{course.courseName}</h3>
+          <p className={cardStyles["course-subtitle"]}>{course.description}</p>
+          <div className={cardStyles["course-tags"]}>
+            <span className={cardStyles["tag"]}>
+              <i className="fa-solid fa-hourglass-half"></i> {course.creditHours} {creditHoursText}
+            </span>
+            {course.CourseMajorOfferings?.map((major, i) => (
+              <span key={i} className={cardStyles["tag"]}>
+                <i className={`fa-solid ${major === "CMPE" ? "fa-microchip" : "fa-laptop-code"}`}></i>{" "}
+                {major === "CMPS" ? "CS" : "CE"}
+              </span>
+            ))}
+          </div>
+        </div>
+      </div>
+    );
   };
 
   const majorsText = majors.map((m) => m.majorName).join(" and ");
@@ -99,15 +156,12 @@ export default function AdminHome() {
 
   return (
     <main className={styles["admin-profile"]}>
-      {/* GREETINGS */}
       <section className={styles["greetings"]}>
         <h2>Welcome back, {user.firstName}!</h2>
         <p>Manage courses and view university stats from your dashboard.</p>
       </section>
 
-      {/* LEFT PANEL */}
       <section className={styles["admin-profile-left"]}>
-        {/* Approval Notice Card */}
         <div className={styles["credit-hours-card"]}>
           <div className={styles["credit-hours-text"]}>
             <h2>
@@ -124,7 +178,6 @@ export default function AdminHome() {
           </div>
         </div>
 
-        {/* Pending Classes Section */}
         <div className={`${styles["courses"]} ${styles["pending-courses"]}`}>
           <div className={styles["courses-header"]}>
             <div className={styles["courses-header-left"]}>
@@ -142,57 +195,12 @@ export default function AdminHome() {
             {eligiblePendingClasses.length === 0 ? (
               <EmptyContent />
             ) : (
-              eligiblePendingClasses.slice(0, 10).map((cls, index) => {
-                const creditHoursText = "credit hour" + (cls.creditHours === 1 ? "" : "s");
-                return (
-                  <div
-                    className={cardStyles["course-card"]}
-                    key={index}
-                    onClick={() => openClassModal(cls)}
-                  >
-                    <div className={cardStyles["course-image"]}>
-                      <img
-                        src={cls.courseImage}
-                        alt="Course"
-                        style={{ width: "100%", height: "100%", objectFit: "cover" }}
-                      />
-                      <div className={cardStyles["hover-icon"]}>
-                        <i className="fa-solid fa-eye"></i>
-                        <span className={cardStyles["hover-text"]}>View Class</span>
-                      </div>
-                      <i className={`fa-solid fa-turn-up ${cardStyles["top-right-icon"]}`}></i>
-                    </div>
-                    <div className={cardStyles["course-info"]}>
-                      <div className={cardStyles["course-header"]}>
-                        <div className={cardStyles["card-tags-div"]}>
-                          <span className={cardStyles["course-tag"]}>{cls.courseId}</span>
-                          <span className={cardStyles["section-tag"]}>{cls.section}</span>
-                        </div>
-                        <span className={cardStyles["semester"]}>{cls.semester}</span>
-                      </div>
-                      <h3>{cls.courseName}</h3>
-                      <p className={cardStyles["course-subtitle"]}>{cls.description}</p>
-                      <div className={cardStyles["course-tags"]}>
-                        <span className={cardStyles["tag"]}>
-                          <i className="fa-solid fa-hourglass-half"></i> {cls.creditHours} {creditHoursText}
-                        </span>
-                        {cls.majors?.map((major, i) => (
-                          <span className={cardStyles["tag"]} key={i}>
-                            <i className={`fa-solid ${major === "CMPE" ? "fa-microchip" : "fa-laptop-code"}`}></i>{" "}
-                            {major === "CMPS" ? "CS" : "CE"}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                );
-              })
+              eligiblePendingClasses.slice(0, 10).map(renderClassCard)
             )}
           </div>
         </div>
       </section>
 
-      {/* RIGHT PANEL */}
       <section className={styles["admin-profile-right"]}>
         <section className={styles["about-me-div"]}>
           <h3>About Me</h3>
@@ -244,10 +252,12 @@ export default function AdminHome() {
         </section>
       </section>
 
-      {showClassModal && (
+      {showClassModal && selectedClass && selectedCourse && (
         <ClassModal
           isVisible={showClassModal}
           onClose={() => setShowClassModal(false)}
+          cls={selectedClass}
+          course={selectedCourse}
         />
       )}
     </main>

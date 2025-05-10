@@ -594,7 +594,7 @@ body {
 }
 
 .date-range {
-  font-size: 0.7rem;
+  font-size: 0.4rem;
   color: var(--clr-contrast-a40);
   margin-top: 0.25rem;
 }
