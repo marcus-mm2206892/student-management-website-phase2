@@ -5,47 +5,42 @@ import styles from "@/app/styles/class-status.module.css";
 import NoResults from "@/app/components/NoResults";
 import AlertModal from "@/app/components/AlertModal";
 import ClassModal from "@/app/components/ClassModal";
+import {
+  getAllClassesAction,
+  getAllUsersAction,
+  updateClassAction,
+} from "@/app/action/server-actions";
 
 export default function ApproveClass() {
   const [searchTerm, setSearchTerm] = useState("");
   const [classes, setClasses] = useState([]);
+  const [users, setUsers] = useState([]);
   const [noResults, setNoResults] = useState(false);
   const [alertOpen, setAlertOpen] = useState(false);
   const [alertContent, setAlertContent] = useState({ title: "", description: "" });
   const [classModalVisible, setClassModalVisible] = useState(false);
 
   useEffect(() => {
-    const dummyClasses = [
-      {
-        courseId: "CMPS350",
-        name: "Web Development Fundamentals",
-        instructor: "John Doe",
-        section: "L01",
-        enrollment: "12 / 35",
-        status: "approved",
-      },
-      {
-        courseId: "CMPE202",
-        name: "Computer Organization",
-        instructor: "Jane Smith",
-        section: "L02",
-        enrollment: "20 / 30",
-        status: "pending",
-      },
-      {
-        courseId: "ELEC101",
-        name: "Intro to Circuits",
-        instructor: "Ahmed Zaki",
-        section: "L03",
-        enrollment: "30 / 30",
-        status: "rejected",
-      },
-    ];
-    setClasses(dummyClasses);
+    const fetchData = async () => {
+      const [classList, userList] = await Promise.all([
+        getAllClassesAction(),
+        getAllUsersAction(),
+      ]);
+      setClasses(classList);
+      setUsers(userList);
+    };
+    fetchData();
   }, []);
 
-  const filteredClasses = classes.filter((c) =>
-    `${c.courseId} ${c.name} ${c.instructor}`.toLowerCase().includes(searchTerm.toLowerCase())
+  const getInstructorName = (instructorEmail) => {
+    const user = users.find((u) => u.email === instructorEmail);
+    return user ? `${user.firstName} ${user.lastName}` : "Unknown";
+  };
+
+  const filteredClasses = classes.filter((cls) =>
+    `${cls.courseId} ${cls.course?.courseName ?? ""} ${getInstructorName(cls.instructors?.[0]?.email)}`
+      .toLowerCase()
+      .includes(searchTerm.toLowerCase())
   );
 
   useEffect(() => {
@@ -53,21 +48,31 @@ export default function ApproveClass() {
   }, [searchTerm, filteredClasses]);
 
   const getStatusClass = (status) => {
-    return status === "approved"
+    return status === "open"
       ? styles["status-approved"]
       : status === "pending"
       ? styles["status-pending"]
       : styles["status-rejected"];
   };
 
-  const handleStatusChange = (index, newStatus) => {
-    const updated = [...classes];
-    updated[index].status = newStatus;
-    setClasses(updated);
-    setAlertContent({
-      title: "Status Updated",
-      description: `Class ${updated[index].courseId} is now marked as ${newStatus}.`,
-    });
+  const handleStatusChange = async (index, newStatus) => {
+    const updatedClasses = [...classes];
+    const targetClass = updatedClasses[index];
+
+    try {
+      await updateClassAction(targetClass.classId, { classStatus: newStatus });
+      targetClass.classStatus = newStatus;
+      setClasses(updatedClasses);
+      setAlertContent({
+        title: "Status Updated",
+        description: `Class ${targetClass.courseId} is now marked as ${newStatus}.`,
+      });
+    } catch (err) {
+      setAlertContent({
+        title: "Update Failed",
+        description: `Could not update status for ${targetClass.courseId}.`,
+      });
+    }
     setAlertOpen(true);
   };
 
@@ -125,34 +130,35 @@ export default function ApproveClass() {
 
           <tbody>
             {filteredClasses.map((cls, i) => (
-              <tr key={i}>
+              <tr key={cls.classId}>
                 <td className={styles["data"]}>
-                  <span
-                    className={styles["course-no-span"]}
-                    onClick={() => setClassModalVisible(true)}
-                  >
+                  <span className={styles["course-no-span"]} onClick={() => setClassModalVisible(true)}>
                     {cls.courseId}
                   </span>
                 </td>
-                <td className={styles["data"]}>{cls.name}</td>
-                <td className={styles["data"]}>{cls.instructor}</td>
+                <td className={styles["data"]}>{cls.course?.courseName ?? "Unknown"}</td>
+                <td className={styles["data"]}>
+                  {getInstructorName(cls.instructors?.[0]?.email)}
+                </td>
                 <td className={styles["data"]}>{cls.section}</td>
                 <td className={styles["data"]}>
-                  <span className={styles["course-enrollment-span"]}>{cls.enrollment}</span>
+                  <span className={styles["course-enrollment-span"]}>
+                    {cls.enrollmentActual} / {cls.enrollmentMaximum}
+                  </span>
                 </td>
                 <td className={styles["data"]}>
-                  <div className={`${styles["status-badge"]} ${getStatusClass(cls.status)}`}>
+                  <div className={`${styles["status-badge"]} ${getStatusClass(cls.classStatus)}`}>
                     <span className={styles["status-circle"]}></span>
-                    {cls.status.charAt(0).toUpperCase() + cls.status.slice(1)}
+                    {cls.classStatus.charAt(0).toUpperCase() + cls.classStatus.slice(1)}
                   </div>
                 </td>
                 <td className={styles["data"]}>
                   <select
                     className={styles["status-dropdown"]}
-                    value={cls.status}
+                    value={cls.classStatus}
                     onChange={(e) => handleStatusChange(i, e.target.value)}
                   >
-                    <option value="approved">Approve</option>
+                    <option value="open">Open</option>
                     <option value="pending">Pending</option>
                     <option value="rejected">Reject</option>
                   </select>

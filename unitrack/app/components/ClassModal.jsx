@@ -55,14 +55,14 @@ export default function ClassModal({ cls, course, isVisible, onClose }) {
   }, [onClose]);
 
   useEffect(() => {
+    if (!cls || !cls.instructors) return;
+
     const fetchInstructors = async () => {
-      if (!cls.instructors?.length) return;
-  
       try {
         const results = await Promise.all(
           cls.instructors.map(async (inst) => {
             const user = await getUserByEmailAction(inst.email);
-            return { ...inst, ...user }; // Combine dummy info with real user data
+            return { ...inst, ...user };
           })
         );
         setInstructors(results);
@@ -70,9 +70,10 @@ export default function ClassModal({ cls, course, isVisible, onClose }) {
         console.error("Error fetching instructor data:", error);
       }
     };
-  
+
     fetchInstructors();
-  }, [cls.instructors]);
+  }, [cls]);
+
   
 
   if (!isVisible) return null;

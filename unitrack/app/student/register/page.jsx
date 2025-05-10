@@ -351,8 +351,12 @@ export default function RegisterCourse() {
                 <td className={`${styles.data} ${styles["course-campus"]}`}>
                   {course.campus}
                 </td>
-                <td className={`${styles.data} ${styles["course-instructor"]}`}>
-                  {getInstructorName(course.instructors?.[0]?.email)}
+                <td className={styles["course-instructor"]}>
+                  {course.instructors?.length
+                    ? course.instructors.map((i, idx) => (
+                        <div key={idx}>{getInstructorName(i.email)}</div>
+                      ))
+                    : "No Instructors"}
                 </td>
                 <td className={`${styles.data} ${styles["course-section"]}`}>
                   {course.section}
