@@ -1,6 +1,6 @@
 import unitrackRepo from "@/repos/unitrack-repo";
 
-export async function GET(req, props){
+export async function GET(req, {params}){
     const id = params.studentId;
     const student = await unitrackRepo.getStudentById(id);
     
@@ -11,7 +11,7 @@ export async function GET(req, props){
     return Response.json(student, { status: 200 });
 }
 
-export async function PUT(req){
+export async function PUT(req, {params}){
     const id = params.studentId;
     const body = await req.json();
     const updatedStudent = await unitrackRepo.updateStudent(id, body);

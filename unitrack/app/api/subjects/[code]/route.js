@@ -1,6 +1,12 @@
-export async function GET(req){
-    const { searchParams } = new URL(req.url);
-    // const type = searchParams.get('Type');
-    const response = { message: 'API endpoint http://localhost:3000 ' }
-    return Response.json(response, {status: 200});
+import unitrackRepo from "@/repos/unitrack-repo";
+
+export async function GET(req, { params }){
+    const code = params.code;
+    const subject = await unitrackRepo.getSubject(code);
+
+    if (!subject) {
+      return new Response(JSON.stringify({ error: 'Subject not found' }), { status: 404 });
+    }
+
+    return Response.json(subject, { status: 200 });
 }
