@@ -726,6 +726,12 @@ class UniTrackRepo {
       },
     });
   }
+
+  async getSubject(code) {
+    return await prisma.subjects.findUnique({
+      include: {code: true}
+    })
+  }
 }
 
 export default new UniTrackRepo();
