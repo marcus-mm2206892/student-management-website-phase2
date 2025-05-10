@@ -11,7 +11,7 @@ export async function GET(req, {params}){
     return Response.json(student, { status: 200 });
 }
 
-export async function PUT(req, {params}){
+export async function PUT(req, {params}){   //We can only directly modify the college, or else there would be a foreign key error
     const id = params.studentId;
     const body = await req.json();
     const updatedStudent = await unitrackRepo.updateStudent(id, body);

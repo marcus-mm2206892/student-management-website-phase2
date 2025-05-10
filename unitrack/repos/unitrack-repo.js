@@ -10,6 +10,11 @@ class UniTrackRepo {
   async getAdminById(adminId) {
     return await prisma.admin.findUnique({ where: { adminId } });
   }
+
+  async getAdminByEmail(email) {
+    return await prisma.admin.findFirst( { where: {email} } )
+  }
+
   async createAdmin(data) {
     return await prisma.admin.create({ data });
   }
@@ -279,14 +284,27 @@ class UniTrackRepo {
     });
   }
 
+  // async getInstructorById(id) {
+  //   return await prisma.instructor.findUnique({
+  //     where: {
+  //       instructorId: id,
+  //       include: { teachingClasses: true, gradedClasses: true },
+  //     },
+  //   });
+  // }
+
   async getInstructorById(id) {
     return await prisma.instructor.findUnique({
       where: {
-        instructorId: id,
-        include: { teachingClasses: true, gradedClasses: true },
+        instructorId: id
       },
+      include: {
+        teachingClasses: true,
+        gradedClasses: true
+      }
     });
   }
+
 
   async getInstructorByEmail(email) {
     return await prisma.instructor.findUnique({
