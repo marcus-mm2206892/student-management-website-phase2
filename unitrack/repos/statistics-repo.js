@@ -255,6 +255,64 @@ class StatisticsRepo {
       CMPE: topCE,
     };
   }
+
+  async getStudentGenderBreakdownByMajor() {
+    const students = await prisma.student.findMany({
+      select: {
+        majorId: true,
+        user: {
+          select: { gender: true },
+        },
+      },
+    });
+
+    let csMale = 0;
+    let csFemale = 0;
+    let ceMale = 0;
+    let ceFemale = 0;
+
+    for (const { majorId, user } of students) {
+      const gender = user.gender?.toLowerCase();
+
+      if (majorId === "CMPS") {
+        if (gender === "male") csMale++;
+        else if (gender === "female") csFemale++;
+      }
+
+      if (majorId === "CMPE") {
+        if (gender === "male") ceMale++;
+        else if (gender === "female") ceFemale++;
+      }
+    }
+
+    return {
+      csMale,
+      csFemale,
+      ceMale,
+      ceFemale,
+    };
+  }
+
+  async getTopSubjectsByInstructorCount() {
+    const grouped = await prisma.expertise.groupBy({
+      by: ["expertise"],
+      _count: {
+        instructorId: true,
+      },
+      orderBy: {
+        _count: {
+          instructorId: "desc",
+        },
+      },
+      take: 3,
+    });
+
+    const result = grouped.map(({ expertise, _count }) => {
+      return `${expertise} (${_count.instructorId} instructors)`;
+    });
+
+    return result;
+  }
 }
 
 export default new StatisticsRepo();

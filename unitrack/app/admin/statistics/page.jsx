@@ -2,13 +2,15 @@
 
 import styles from "@/app/styles/statistics.module.css";
 import { useEffect, useState } from "react";
-import { 
-  getTop3MostEnrolledCoursesAction, 
-  getAverageGPAByMajorAction, 
+import {
+  getTop3MostEnrolledCoursesAction,
+  getAverageGPAByMajorAction,
   getTop3CoursesWithMostFailsAction,
   getTop3InstructorsWithMostClassesAction,
   getSemesterCourseCountsByMajorAction,
-  getTopStudentsByMajorGPAAction
+  getTopStudentsByMajorGPAAction,
+  getStudentGenderBreakdownByMajorAction,
+  getTopSubjectsByInstructorCountAction
 } from "@/app/action/server-actions";
 
 export default function StatisticsPage() {
@@ -18,6 +20,9 @@ export default function StatisticsPage() {
   const [topInstructors, setTopInstructors] = useState([]);
   const [courseCounts, setCourseCounts] = useState({ csOnly: 0, ceOnly: 0, both: 0 });
   const [topStudents, setTopStudents] = useState({ CMPS: [], CMPE: [] });
+  const [genderCounts, setGenderCounts] = useState({ csMale: 0, csFemale: 0, ceMale: 0, ceFemale: 0 });
+  const [topSubjects, setTopSubjects] = useState([]);
+
 
   useEffect(() => {
     const fetchData = async () => {
@@ -27,14 +32,18 @@ export default function StatisticsPage() {
         failedCoursesRes,
         instructorsRes,
         courseCountsRes,
-        topStudentsRes
+        topStudentsRes,
+        genderCountsRes,
+        topSubjectsRes
       ] = await Promise.all([
         getTop3MostEnrolledCoursesAction(),
         getAverageGPAByMajorAction(),
         getTop3CoursesWithMostFailsAction(),
         getTop3InstructorsWithMostClassesAction(),
         getSemesterCourseCountsByMajorAction(),
-        getTopStudentsByMajorGPAAction()
+        getTopStudentsByMajorGPAAction(),
+        getStudentGenderBreakdownByMajorAction(),
+        getTopSubjectsByInstructorCountAction()
       ]);
   
       setTopCourses(topCoursesRes);
@@ -43,6 +52,8 @@ export default function StatisticsPage() {
       setTopInstructors(instructorsRes);
       setCourseCounts(courseCountsRes);
       setTopStudents(topStudentsRes);
+      setGenderCounts(genderCountsRes);
+      setTopSubjects(topSubjectsRes);
     };
   
     fetchData();
@@ -124,7 +135,29 @@ export default function StatisticsPage() {
         </>
       ),
       icon: "fa-user-graduate"
+    },
+    {
+      label: "Gender Breakdown by Major",
+      value: (
+        <>
+          <div>CS Male: {genderCounts.csMale}, CS Female {genderCounts.csFemale}</div>
+          <div>CE Male: {genderCounts.ceMale}, CE Female: {genderCounts.ceFemale}</div>
+        </>
+      ),
+      icon: "fa-venus-mars"
+    },
+    {
+      label: "Top 3 Instructor Expertise Areas",
+      value: (
+        <>
+          {topSubjects?.map((subject, idx) => (
+            <div key={idx}>{subject}</div>
+          ))}
+        </>
+      ),
+      icon: "fa-lightbulb"
     }
+
   ];
 
   return (
@@ -134,7 +167,7 @@ export default function StatisticsPage() {
           <h1 className={styles["statistics-title"]}>University Statistics Dashboard</h1>
         </div>
         <p className={styles["statistics-description"]}>
-          A real-time overview of academic trends, course performance, and student engagement.
+          An overview of academic trends, course performance, and instructor data.
         </p>
       </header>
 

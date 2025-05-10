@@ -450,3 +450,11 @@ export async function getSemesterCourseCountsByMajorAction() {
 export async function getTopStudentsByMajorGPAAction() {
   return await statisticsRepo.getTopStudentsByMajorGPA();
 }
+
+export async function getStudentGenderBreakdownByMajorAction() {
+  return await statisticsRepo.getStudentGenderBreakdownByMajor();
+}
+
+export async function getTopSubjectsByInstructorCountAction() {
+  return await statisticsRepo.getTopSubjectsByInstructorCount();
+}

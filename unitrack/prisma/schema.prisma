@@ -90,7 +90,7 @@ model Instructor {
   department      String
   teachingClasses Class[]           @relation("TeachingClasses")
   gradedClasses   Class[]           @relation("GradedClasses")
-  Expertise       Expertise[] // We need an expertise model
+  Expertise       Expertise[]
   TeachingClasses TeachingClasses[]
   user            User              @relation("UserInstructor", fields: [email], references: [email])
 
