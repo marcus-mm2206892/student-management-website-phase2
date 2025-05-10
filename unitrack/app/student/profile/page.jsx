@@ -275,7 +275,7 @@ export default function StudentProfile() {
               <div className={styles["about-me-content-right"]}>
                 <h2>{user.firstName} {user.lastName}</h2>
                 <p>{user.email}</p>
-                <span className={styles["major-tag"]}>{user.major}</span>
+                <span className={styles["major-tag"]}>{student.majorId === "CMPS" ? "Computer Science" : "Computer Engineering"}</span>
               </div>
             </div>
           </div>
@@ -284,10 +284,10 @@ export default function StudentProfile() {
             <h3 className={styles["content-info-attribute"]}>Download Study Plan</h3>
             <a
               className={`${styles["content-info-paragraph"]} ${styles["attachment"]}`}
-              href={`../assets/major-files/2024-${user.department === "Computer Science" ? "cs" : "ce"}-studyplan.pdf`}
+              href={`../assets/major-files/2024-${student.majorId === "CMPS" ? "cs" : "ce"}-studyplan.pdf`}
               download
             >
-              <i className="fa-solid fa-file-pdf"></i> Download {user.department} Study Plan
+              <i className="fa-solid fa-file-pdf"></i> Download {student.majorId === "CMPS" ? "CS" : "CE"} Study Plan
             </a>
           </div>
 
