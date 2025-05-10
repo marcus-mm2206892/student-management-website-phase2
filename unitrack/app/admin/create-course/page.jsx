@@ -3,7 +3,7 @@
 import { useState } from "react";
 import styles from "@/app/styles/admin-create-course.module.css";
 import { createPrerequisiteAction, createCourseMajorOfferingAction, createCourseAction, checkCourseIdAction } from "@/app/action/server-actions";
-
+import AlertModal from "@/app/components/AlertModal";
 /*
   To be fixed:
     2. Proper validations and error handlings
@@ -13,6 +13,8 @@ import { createPrerequisiteAction, createCourseMajorOfferingAction, createCourse
 */
 
 export default function AdminCreateCourse() {
+  const [alertVisible, setAlertVisible] = useState(false);
+  const [alertMessage, setAlertMessage] = useState("");
   const [selectedSubject, setSelectedSubject] = useState("Select Subject");
   const [selectedPrereqs, setSelectedPrereqs] = useState([]);
   const [selectedMajors, setSelectedMajors] = useState([]);
@@ -63,6 +65,8 @@ export default function AdminCreateCourse() {
 
     if (isExist) {
       setCourseExists(true);
+      setAlertMessage("The Course ID already exists. Please enter a different Course ID.")
+      setAlertVisible(true)
       return; // Stop the form from submitting
     }
 
@@ -130,6 +134,8 @@ export default function AdminCreateCourse() {
 
     console.log(courseMajorOffs);
 
+    setAlertMessage("The Course has been created successfully!.")
+    setAlertVisible(true)
 
     //Reset the form
     setSelectedSubject("Select Subject");
@@ -333,6 +339,13 @@ export default function AdminCreateCourse() {
           </div>
         </form>
       </section>
+
+      <AlertModal
+        title="Class Creation"
+        description={alertMessage}
+        isOpen={alertVisible}
+        onClose={() => setAlertVisible(false)}
+      />
     </main>
   );
 }

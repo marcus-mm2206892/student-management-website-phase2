@@ -53,9 +53,9 @@ export default function LayoutClient({ children }) {
   return (
     <>
       {shouldShowNavbar && user && <NavBar user={user} />}
-      <SessionProvider>
+      {/* <SessionProvider> */}
         {children}
-      </SessionProvider>
+      {/* </SessionProvider> */}
       <ScrollUpButton />
       <Footer user={user} />
     </>
