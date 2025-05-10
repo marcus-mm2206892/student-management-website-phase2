@@ -178,6 +178,12 @@ export default function AdminCreateClassPage() {
     const startIndex = times.indexOf(startTime);
     const endIndex = times.indexOf(endTime);
 
+    if (selectedSchedType === "Select Schedule Type") {
+      setAlertMessage("Please select a schedule type.")
+      setAlertVisible(true)
+      return;
+    }
+
     if (
       selectedStartTime === "Select Time" ||
       setSelectedEndTime === "Select Time" ||
@@ -185,10 +191,36 @@ export default function AdminCreateClassPage() {
       endIndex === -1 ||
       endIndex - startIndex !== 1
     ) {
-      setAlertMessage("Please select a valid start time. The end time must be exactly 1 hour later.")
+      setAlertMessage("Please select a valid start and/or end time. The end time must be exactly 1 hour later.")
       setAlertVisible(true)
       return;
     }
+
+    if (!selectedCourseId) {
+      setAlertMessage("Please select a course.")
+      setAlertVisible(true)
+      return;
+    }
+
+    if (!selectedInstructors.length) {
+      setAlertMessage("Please select at least one instructor.")
+      setAlertVisible(true)
+      return;
+    }
+
+    if (!maxStudents) {
+      setAlertMessage("Please enter the maximum number of students who can enroll.")
+      setAlertVisible(true)
+      return;
+    }
+
+    if (selectedCampus === "Select Campus") {
+      setAlertMessage("Please enter the campus of the class.")
+      setAlertVisible(true)
+      return;
+    }
+
+
 
     const lastClassId = parseInt(lastClass.classId)
     const newClassId = (lastClassId + 1).toString();
