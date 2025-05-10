@@ -108,9 +108,9 @@ export default function LoginPage() {
                   />
                   <label htmlFor="remember-me">Remember Me</label>
                 </div>
-                <div className={styles["forgot-password-div"]}>
+                {/* <div className={styles["forgot-password-div"]}>
                   <a href="#">Forgot Password?</a>
-                </div>
+                </div> */}
               </div>
 
               <div className={styles["input-box"]}>
@@ -121,25 +121,35 @@ export default function LoginPage() {
               </div>
             </form>
 
-            <button
-              type="button"
-              className={styles["input-submit"]}
-              onClick={() =>
-                signIn("google", { callbackUrl: "/third-party-handler" })
-              }
-            >
-              Continue with Google
-            </button>
+            <div className={styles["divider-or"]}>
+              <hr />
+              <span>OR</span>
+              <hr />
+            </div>
 
-            <button
-              type="button"
-              className={styles["input-submit"]}
-              onClick={() =>
-                signIn("github", { callbackUrl: "/third-party-handler" })
-              }
-            >
-              Continue with GitHub
-            </button>
+            <div className={styles["social-login-buttons-div"]}>
+              <button
+                type="button"
+                className={styles["auth-login"]}
+                onClick={() =>
+                  signIn("google", { callbackUrl: "/third-party-handler" })
+                }
+              >
+                <i className="fab fa-google" style={{ marginRight: "0.5rem" }}></i>
+                Sign in with Google
+              </button>
+
+              <button
+                type="button"
+                className={styles["auth-login"]}
+                onClick={() =>
+                  signIn("github", { callbackUrl: "/third-party-handler" })
+                }
+              >
+                <i className="fab fa-github" style={{ marginRight: "0.5rem" }}></i>
+                Sign in with GitHub
+              </button>
+            </div>
             
           </div>
         </section>

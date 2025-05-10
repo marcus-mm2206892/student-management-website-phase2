@@ -244,6 +244,49 @@
   max-width: 24rem;
 }
 
+.divider-or {
+  display: flex;
+  align-items: center;
+  margin: 2rem 0;
+  color: #aaa;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.divider-or hr {
+  flex: 1;
+  border: none;
+  border-top: 1px solid #ccc;
+  margin: 0 10px;
+}
+
+.social-login-buttons-div {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.auth-login {
+  width: 100%;
+  border: 1px solid var(--clr-surface-a30);
+  background-color: var(--clr-surface-a10);
+  color: var(--clr-contrast-a0);
+  font-size: 0.85rem;
+  padding: 0.75rem;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.auth-login:hover {
+  background-color: var(--clr-surface-a30);
+  transform: scale(1.02);
+  cursor: pointer;
+}
+
 @media (max-width: 768px) {
   .main-page {
     display: grid;
@@ -274,6 +317,10 @@
   .input-submit {
     font-size: 0.9rem;
   }
+
+  .social-login-buttons-div {
+    flex-direction: column;
+  }
 }
 
 @media (prefers-color-scheme: dark) {
@@ -286,5 +333,9 @@
   :global(body) {
     background-color: var(--clr-surface-tonal-a0);
     background-image: url(/assets/imgs/unitrack-images/pattern-black.png);
+  }
+  .auth-login:hover {
+    background-color: var(--clr-primary-contrast-a20);
+    color: var(--clr-surface-a0);
   }
 }
