@@ -173,6 +173,19 @@ class UniTrackRepo {
     return studentClasses;
   }
 
+  async checkCourseId(courseId) {
+    const course = await prisma.course.findUnique({ 
+      where: { courseId } });
+    
+    if (course) 
+      return true
+    else 
+      return false
+    
+  }
+
+
+
   async createCourse(data) {
     return await prisma.course.create({ data });
   }
