@@ -43,7 +43,7 @@ export default function ApproveClass() {
     `${cls.courseId} ${cls.course?.courseName ?? ""} ${cls.instructors?.map(i => getInstructorName(i.email)).join(" ")}`
       .toLowerCase()
       .includes(searchTerm.toLowerCase())
-  );
+  ).sort((a, b) => b.enrollmentActual - a.enrollmentActual);;
 
   useEffect(() => {
     setNoResults(searchTerm && filteredClasses.length === 0);
