@@ -212,6 +212,6 @@ model GradedClasses {
 
 model Subjects {
   subject String @id
-  code    String
+  code    String @unique
   // Course  Course[]
 }
