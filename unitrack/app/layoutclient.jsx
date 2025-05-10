@@ -6,6 +6,7 @@ import "./globals.css";
 import NavBar from "@/app/components/NavBar";
 import ScrollUpButton from "./components/ScrollUpButton";
 import Footer from "@/app/components/Footer";
+import { SessionProvider } from "next-auth/react";
 
 export default function LayoutClient({ children }) {
   const pathname = usePathname();
@@ -52,7 +53,9 @@ export default function LayoutClient({ children }) {
   return (
     <>
       {shouldShowNavbar && user && <NavBar user={user} />}
-      {children}
+      <SessionProvider>
+        {children}
+      </SessionProvider>
       <ScrollUpButton />
       <Footer user={user} />
     </>
