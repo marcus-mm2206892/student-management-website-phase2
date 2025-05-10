@@ -10,7 +10,9 @@ import {
   getSemesterCourseCountsByMajorAction,
   getTopStudentsByMajorGPAAction,
   getStudentGenderBreakdownByMajorAction,
-  getTopSubjectsByInstructorCountAction
+  getTopSubjectsByInstructorCountAction,
+  getTop3WaitlistedClassesAction,
+  getTop3CoursesWithMostOpenSectionsAction
 } from "@/app/action/server-actions";
 
 export default function StatisticsPage() {
@@ -22,7 +24,8 @@ export default function StatisticsPage() {
   const [topStudents, setTopStudents] = useState({ CMPS: [], CMPE: [] });
   const [genderCounts, setGenderCounts] = useState({ csMale: 0, csFemale: 0, ceMale: 0, ceFemale: 0 });
   const [topSubjects, setTopSubjects] = useState([]);
-
+  const [waitlistedClasses, setWaitlistedClasses] = useState([]);
+  const [topOpenCourses, setTopOpenCourses] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -34,7 +37,9 @@ export default function StatisticsPage() {
         courseCountsRes,
         topStudentsRes,
         genderCountsRes,
-        topSubjectsRes
+        topSubjectsRes,
+        waitlistedRes,
+        topOpenCoursesRes
       ] = await Promise.all([
         getTop3MostEnrolledCoursesAction(),
         getAverageGPAByMajorAction(),
@@ -43,7 +48,9 @@ export default function StatisticsPage() {
         getSemesterCourseCountsByMajorAction(),
         getTopStudentsByMajorGPAAction(),
         getStudentGenderBreakdownByMajorAction(),
-        getTopSubjectsByInstructorCountAction()
+        getTopSubjectsByInstructorCountAction(),
+        getTop3WaitlistedClassesAction(),
+        getTop3CoursesWithMostOpenSectionsAction()
       ]);
   
       setTopCourses(topCoursesRes);
@@ -54,6 +61,8 @@ export default function StatisticsPage() {
       setTopStudents(topStudentsRes);
       setGenderCounts(genderCountsRes);
       setTopSubjects(topSubjectsRes);
+      setWaitlistedClasses(waitlistedRes);
+      setTopOpenCourses(topOpenCoursesRes);
     };
   
     fetchData();
@@ -156,8 +165,29 @@ export default function StatisticsPage() {
         </>
       ),
       icon: "fa-lightbulb"
+    },
+    {
+      label: "Top 3 Classes by Waitlisted Students",
+      value: (
+        <>
+          {waitlistedClasses?.map((cls, idx) => (
+            <div key={idx}>{cls}</div>
+          ))}
+        </>
+      ),
+      icon: "fa-hourglass-half"
+    },
+    {
+      label: "Top 3 Courses With Most Open Sections",
+      value: (
+        <>
+          {topOpenCourses?.map((course, idx) => (
+            <div key={idx}>{course}</div>
+          ))}
+        </>
+      ),
+      icon: "fa-door-open"
     }
-
   ];
 
   return (

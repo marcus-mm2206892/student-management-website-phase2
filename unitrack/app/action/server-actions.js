@@ -458,3 +458,11 @@ export async function getStudentGenderBreakdownByMajorAction() {
 export async function getTopSubjectsByInstructorCountAction() {
   return await statisticsRepo.getTopSubjectsByInstructorCount();
 }
+
+export async function getTop3WaitlistedClassesAction() {
+  return await statisticsRepo.getTop3WaitlistedClasses();
+}
+
+export async function getTop3CoursesWithMostOpenSectionsAction() {
+  return await statisticsRepo.getTop3CoursesWithMostOpenSections();
+}

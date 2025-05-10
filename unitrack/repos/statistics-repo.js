@@ -313,6 +313,46 @@ class StatisticsRepo {
 
     return result;
   }
+
+  async getTop3WaitlistedClasses() {
+    const pendingClasses = await prisma.class.findMany({
+      where: { classStatus: "pending" },
+      select: {
+        classId: true,
+        courseId: true,
+        enrollmentActual: true,
+        section: true,
+      },
+    });
+
+    const sorted = pendingClasses
+      .sort((a, b) => b.enrollmentActual - a.enrollmentActual)
+      .slice(0, 3);
+
+    return sorted.map(
+      ({ courseId, section, enrollmentActual }) =>
+        `${courseId} - ${section} (${enrollmentActual} waitlisted)`
+    );
+  }
+
+  async getTop3CoursesWithMostOpenSections() {
+    const openClasses = await prisma.class.findMany({
+      where: { classStatus: "open" },
+      select: { courseId: true },
+    });
+
+    const sectionCountMap = {};
+    for (const { courseId } of openClasses) {
+      sectionCountMap[courseId] = (sectionCountMap[courseId] || 0) + 1;
+    }
+
+    const top3 = Object.entries(sectionCountMap)
+      .sort((a, b) => b[1] - a[1])
+      .slice(0, 3)
+      .map(([courseId, count]) => `${courseId} (${count} open sections)`);
+
+    return top3;
+  }
 }
 
 export default new StatisticsRepo();
