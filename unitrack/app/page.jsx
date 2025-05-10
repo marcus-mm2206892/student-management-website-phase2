@@ -4,6 +4,7 @@ import Head from "next/head";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useEffect } from "react";
+import { signIn } from "next-auth/react";
 import styles from "../app/styles/login-page.module.css";
 import ThemeResponsiveLogo from "./components/ThemeResponsiveLogo";
 import { getUserByEmailAction } from "./action/server-actions";
@@ -119,6 +120,27 @@ export default function LoginPage() {
                 </button>
               </div>
             </form>
+
+            <button
+              type="button"
+              className={styles["input-submit"]}
+              onClick={() =>
+                signIn("google", { callbackUrl: "/third-party-handler" })
+              }
+            >
+              Continue with Google
+            </button>
+
+            <button
+              type="button"
+              className={styles["input-submit"]}
+              onClick={() =>
+                signIn("github", { callbackUrl: "/third-party-handler" })
+              }
+            >
+              Continue with GitHub
+            </button>
+            
           </div>
         </section>
 
