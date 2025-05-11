@@ -19,26 +19,28 @@ export default function LoginPage() {
   }, []);
 
   const handleLogin = async (e) => {
+    
     e.preventDefault();
+    const result = await signIn("credentials", {
+      redirect: false,
+      email: username,
+      password,
+    });
+    console.log(result);
   
-    try {
-      const user = await getUserByEmailAction(username);
-  
-      if (!user || user.password !== password) {
-        alert("Invalid credentials");
-        return;
-      }
-  
+    if (result.ok) {
+      const user = await getUserByEmailAction(username); 
       localStorage.setItem("user", JSON.stringify(user));
-      console.log(user);
-      router.push(
-        `/${user.role}/home?firstName=${encodeURIComponent(user.firstName)}&lastName=${encodeURIComponent(user.lastName)}&email=${encodeURIComponent(user.email)}&role=${user.role}&profileImage=${encodeURIComponent(user.profileImage)}`
-      );
-    } catch (error) {
-      console.error("Login error:", error);
-      alert("Error logging in. Please try again.");
+      document.cookie = `user=${JSON.stringify(user)}; path=/; max-age=3600`; // 1 hour expiry
+      router.push(`/${user.role}/home`);
+    } else {
+      alert("Invalid credentials");
     }
-  }
+    if (result.error) {
+    alert(result.error);
+    }
+
+  };
 
 
   return (

@@ -207,6 +207,9 @@ CREATE UNIQUE INDEX "ClassEnrollment_classId_semesterEnrollmentId_key" ON "Class
 CREATE UNIQUE INDEX "Schedule_classId_key" ON "Schedule"("classId");
 
 -- CreateIndex
+CREATE UNIQUE INDEX "Subjects_code_key" ON "Subjects"("code");
+
+-- CreateIndex
 CREATE UNIQUE INDEX "_TeachingClasses_AB_unique" ON "_TeachingClasses"("A", "B");
 
 -- CreateIndex

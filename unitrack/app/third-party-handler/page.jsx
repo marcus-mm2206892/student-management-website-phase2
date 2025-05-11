@@ -18,7 +18,7 @@ export default function ThirdPartyHandler() {
             alert("No account found. Please contact admin.");
             return;
           }
-
+          
           localStorage.setItem("user", JSON.stringify(user));
 
           router.push(
