@@ -432,19 +432,24 @@ export async function createTeachingClassesActions(data) {
 // STATISTICS
 
 export async function getTop3MostEnrolledCoursesAction() {
-  return await statisticsRepo.getTop3MostEnrolledCourses();
+  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/statistics/top-3-enrolled`);
+  return res.json();
 }
 
+
 export async function getAverageGPAByMajorAction() {
-  return await statisticsRepo.getAverageGPAByMajor();
+  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/statistics/average-gpa-by-major`);
+  return res.json();
 }
 
 export async function getTop3CoursesWithMostAsAction() {
-  return await statisticsRepo.getTop3CoursesWithMostAs();
+  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/statistics/top-3-most-As`);
+  return res.json();
 }
 
 export async function getTop3CoursesWithMostFailsAction() {
-  return await statisticsRepo.getTop3CoursesWithMostFails();
+  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/statistics/top-3-most-fails`);
+  return res.json();
 }
 
 export async function getTop3InstructorsWithMostClassesAction() {
@@ -452,7 +457,8 @@ export async function getTop3InstructorsWithMostClassesAction() {
 }
 
 export async function getSemesterCourseCountsByMajorAction() {
-  return await statisticsRepo.getSemesterCourseCountsByMajor();
+  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/statistics/current-sem-offerings`);
+  return res.json();
 }
 
 export async function getTopStudentsByMajorGPAAction() {

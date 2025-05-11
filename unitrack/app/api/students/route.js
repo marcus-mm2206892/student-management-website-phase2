@@ -1,11 +1,6 @@
-import unitrackRepo from "@/repos/unitrack-repo";
+import statisticsRepo from "@/lib/statistics-repo";
 
-export async function GET(req){
-    const students = await unitrackRepo.getAllStudents();
-    
-    if (!students) {
-      return new Response(JSON.stringify({ error: 'Students not found' }), { status: 404 });
-    }
-    
-    return Response.json(students, { status: 200 });
+export async function GET() {
+  const data = await statisticsRepo.getAverageGPAByMajor();
+  return Response.json(data);
 }
