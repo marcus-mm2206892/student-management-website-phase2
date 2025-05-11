@@ -106,11 +106,11 @@ export default function CourseModal({ course, onClose }) {
 
         </div>
 
-        {!isStaff && (
+        {/* {!isStaff && (
           <button className={styles["register-btn"]} onClick={() => alert("Registered!")}>
             Register
           </button>
-        )}
+        )} */}
       </div>
     </div>
   );
