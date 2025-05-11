@@ -6,10 +6,9 @@ import { createPrerequisiteAction, createCourseMajorOfferingAction, createCourse
 import AlertModal from "@/app/components/AlertModal";
 /*
   To be fixed:
-    2. Proper validations and error handlings
     3. Need to populate subjects in subjects dropdown
     4. Assign subject to new subject ; also fetch from the new table
-    5. We should not create courses for other majors
+    5. We should not create courses for other majors?
 */
 
 export default function AdminCreateCourse() {
@@ -29,7 +28,7 @@ export default function AdminCreateCourse() {
 
   const subjects = ["CMPS", "CMPE", "ELEC"];
   const prerequisites = ["CMPS101", "CMPS202", "CMPS303"];
-  const majors = ["Computer Science", "Computer Engineering", "Electrical Engineering"];
+  const majors = ["Computer Science", "Computer Engineering"];
 
   const handleMultiSelect = (item, list, setter) => {
   if (list.includes(item)) {
