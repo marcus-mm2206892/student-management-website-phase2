@@ -32,24 +32,14 @@ export default function StatisticsPage() {
   useEffect(() => {
     const fetchData = async () => {
       const [
-        topCoursesRes,
-        gpaMajorRes,
-        asCoursesRes,
-        failedCoursesRes,
         instructorsRes,
-        courseCountsRes,
         topStudentsRes,
         genderCountsRes,
         topSubjectsRes,
         waitlistedRes,
         topOpenCoursesRes
       ] = await Promise.all([
-        getTop3MostEnrolledCoursesAction(),
-        getAverageGPAByMajorAction(),
-        getTop3CoursesWithMostAsAction(),
-        getTop3CoursesWithMostFailsAction(),
         getTop3InstructorsWithMostClassesAction(),
-        getSemesterCourseCountsByMajorAction(),
         getTopStudentsByMajorGPAAction(),
         getStudentGenderBreakdownByMajorAction(),
         getTopSubjectsByInstructorCountAction(),
@@ -57,12 +47,7 @@ export default function StatisticsPage() {
         getTop3CoursesWithMostOpenSectionsAction()
       ]);
       
-      setTopCourses(topCoursesRes);
-      setGpaByMajor(gpaMajorRes);
-      setMostAsCourses(asCoursesRes);
-      setMostFailedCourses(failedCoursesRes);
       setTopInstructors(instructorsRes);
-      setCourseCounts(courseCountsRes);
       setTopStudents(topStudentsRes);
       setGenderCounts(genderCountsRes);
       setTopSubjects(topSubjectsRes);
@@ -70,6 +55,48 @@ export default function StatisticsPage() {
       setTopOpenCourses(topOpenCoursesRes);
     };
   
+    fetchData();
+  }, []);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        // Fetch data from all the APIs concurrently
+        const responses = await Promise.all([
+          fetch("/api/statistics/top-3-enrolled"),
+          fetch("/api/statistics/average-gpa-by-major"),
+          fetch("/api/statistics/top-3-most-As"),
+          fetch("/api/statistics/top-3-most-fails"),
+          fetch("/api/statistics/current-sem-offerings"),
+        ]);
+
+        // Check if all responses are OK
+        for (let res of responses) {
+          if (!res.ok) {
+            throw new Error(`Error: ${res.statusText}`);
+          }
+        }
+
+        // Parse all responses as JSON
+        const [
+          topCoursesRes,
+          gpaMajorRes,
+          asCoursesRes,
+          failedCoursesRes,
+          courseCountsRes
+        ] = await Promise.all(responses.map(res => res.json()));
+
+        // Set the state with the fetched data
+        setTopCourses(topCoursesRes);
+        setGpaByMajor(gpaMajorRes);
+        setMostAsCourses(asCoursesRes);
+        setMostFailedCourses(failedCoursesRes);
+        setCourseCounts(courseCountsRes);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
     fetchData();
   }, []);
 
