@@ -2,11 +2,13 @@
 import { useRef, useEffect, useState } from "react";
 import styles from "@/app/styles/course-modal.module.css";
 import { getCourseWithPrerequisitesAction } from "@/app/action/server-actions";
+import { useRouter } from "next/navigation";
 
 export default function CourseModal({ course, onClose }) {
   const modalRef = useRef(null);
   const [role, setRole] = useState("");
   const [prerequisites, setPrerequisites] = useState([]);
+  const router = useRouter();
 
   useEffect(() => {
     const storedUser = localStorage.getItem("user");
@@ -57,7 +59,10 @@ export default function CourseModal({ course, onClose }) {
             }}
           />
           {!isStaff && (
-            <div className={styles["hover-icon"]}>
+            <div className={styles["hover-icon"]} onClick={(e) => {
+                e.stopPropagation();
+                router.push('/student/register');
+              }}>
               <i className="fa-solid fa-plus"></i>
               <span className={styles["hover-text"]}>Register Course</span>
             </div>
@@ -105,12 +110,6 @@ export default function CourseModal({ course, onClose }) {
           </div>
 
         </div>
-
-        {/* {!isStaff && (
-          <button className={styles["register-btn"]} onClick={() => alert("Registered!")}>
-            Register
-          </button>
-        )} */}
       </div>
     </div>
   );
