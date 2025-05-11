@@ -183,7 +183,7 @@
     "studentId": "S1031",
     "email": "sara.khan@qu.com",
     "college": "Engineering",
-    "department": "Computer Engineering"
+    "department": "Computer Science"
   },
   {
     "studentId": "S1032",
@@ -195,7 +195,7 @@
     "studentId": "S1033",
     "email": "fatima.noor@qu.com",
     "college": "Engineering",
-    "department": "Computer Engineering"
+    "department": "Computer Science"
   },
   {
     "studentId": "S1034",
@@ -207,7 +207,7 @@
     "studentId": "S1035",
     "email": "aya.hassan@qu.com",
     "college": "Engineering",
-    "department": "Computer Engineering"
+    "department": "Computer Science"
   },
   {
     "studentId": "S1036",
@@ -219,7 +219,7 @@
     "studentId": "S1037",
     "email": "layla.adams@qu.com",
     "college": "Engineering",
-    "department": "Computer Engineering"
+    "department": "Computer Science"
   },
   {
     "studentId": "S1038",
@@ -231,7 +231,7 @@
     "studentId": "S1039",
     "email": "emma.lee@qu.com",
     "college": "Engineering",
-    "department": "Computer Engineering"
+    "department": "Computer Science"
   },
   {
     "studentId": "S1040",
@@ -249,7 +249,7 @@
     "studentId": "S1042",
     "email": "adam.brown@qu.com",
     "college": "Engineering",
-    "department": "Computer Science"
+    "department": "Computer Engineering"
   },
   {
     "studentId": "S1043",
@@ -261,7 +261,7 @@
     "studentId": "S1044",
     "email": "ethan.jones@qu.com",
     "college": "Engineering",
-    "department": "Computer Science"
+    "department": "Computer Engineering"
   },
   {
     "studentId": "S1045",
@@ -273,7 +273,7 @@
     "studentId": "S1046",
     "email": "ryan.taylor@qu.com",
     "college": "Engineering",
-    "department": "Computer Science"
+    "department": "Computer Engineering"
   },
   {
     "studentId": "S1047",
@@ -285,7 +285,7 @@
     "studentId": "S1048",
     "email": "bilal.hussein@qu.com",
     "college": "Engineering",
-    "department": "Computer Science"
+    "department": "Computer Engineering"
   },
   {
     "studentId": "S1049",
@@ -297,6 +297,6 @@
     "studentId": "S1050",
     "email": "david.clark@qu.com",
     "college": "Engineering",
-    "department": "Computer Science"
+    "department": "Computer Engineering"
   }
 ]
