@@ -178,5 +178,125 @@
     "email": "jasmine.lee@qu.com",
     "college": "Engineering",
     "majorId": "CMPE"
+  },
+    {
+    "studentId": "S1031",
+    "email": "sara.khan@qu.com",
+    "college": "Engineering",
+    "majorId": "CMPS"
+  },
+  {
+    "studentId": "S1032",
+    "email": "mohamed.ali@qu.com",
+    "college": "Engineering",
+    "majorId": "CMPS"
+  },
+  {
+    "studentId": "S1033",
+    "email": "fatima.noor@qu.com",
+    "college": "Engineering",
+    "majorId": "CMPS"
+  },
+  {
+    "studentId": "S1034",
+    "email": "james.smith@qu.com",
+    "college": "Engineering",
+    "majorId": "CMPS"
+  },
+  {
+    "studentId": "S1035",
+    "email": "aya.hassan@qu.com",
+    "college": "Engineering",
+    "majorId": "CMPS"
+  },
+  {
+    "studentId": "S1036",
+    "email": "omar.farouk@qu.com",
+    "college": "Engineering",
+    "majorId": "CMPS"
+  },
+  {
+    "studentId": "S1037",
+    "email": "layla.adams@qu.com",
+    "college": "Engineering",
+    "majorId": "CMPS"
+  },
+  {
+    "studentId": "S1038",
+    "email": "hassan.musa@qu.com",
+    "college": "Engineering",
+    "majorId": "CMPS"
+  },
+  {
+    "studentId": "S1039",
+    "email": "emma.lee@qu.com",
+    "college": "Engineering",
+    "majorId": "CMPS"
+  },
+  {
+    "studentId": "S1040",
+    "email": "youssef.amir@qu.com",
+    "college": "Engineering",
+    "majorId": "CMPS"
+  },
+  {
+    "studentId": "S1041",
+    "email": "noor.abdullah@qu.com",
+    "college": "Engineering",
+    "majorId": "CMPE"
+  },
+  {
+    "studentId": "S1042",
+    "email": "adam.brown@qu.com",
+    "college": "Engineering",
+    "majorId": "CMPE"
+  },
+  {
+    "studentId": "S1043",
+    "email": "hana.rahman@qu.com",
+    "college": "Engineering",
+    "majorId": "CMPE"
+  },
+  {
+    "studentId": "S1044",
+    "email": "ethan.jones@qu.com",
+    "college": "Engineering",
+    "majorId": "CMPE"
+  },
+  {
+    "studentId": "S1045",
+    "email": "salma.farid@qu.com",
+    "college": "Engineering",
+    "majorId": "CMPE"
+  },
+  {
+    "studentId": "S1046",
+    "email": "ryan.taylor@qu.com",
+    "college": "Engineering",
+    "majorId": "CMPE"
+  },
+  {
+    "studentId": "S1047",
+    "email": "zainab.ali@qu.com",
+    "college": "Engineering",
+    "majorId": "CMPE"
+  },
+  {
+    "studentId": "S1048",
+    "email": "bilal.hussein@qu.com",
+    "college": "Engineering",
+    "majorId": "CMPE"
+  },
+  {
+    "studentId": "S1049",
+    "email": "amal.mohamed@qu.com",
+    "college": "Engineering",
+    "majorId": "CMPE"
+  },
+  {
+    "studentId": "S1050",
+    "email": "david.clark@qu.com",
+    "college": "Engineering",
+    "majorId": "CMPE"
   }
 ]

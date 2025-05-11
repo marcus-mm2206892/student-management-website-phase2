@@ -1034,5 +1034,691 @@
     "letterGrade": "N/A",
     "courseId": "GENG360",
     "semesterEnrollmentId": 30
+  },
+  {
+    "classId": "25543",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A",
+    "courseId": "DAWA111",
+    "semesterEnrollmentId": 31
+  },
+  {
+    "classId": "25515",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A",
+    "courseId": "CMPS405",
+    "semesterEnrollmentId": 31
+  },
+  {
+    "classId": "25501",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A",
+    "courseId": "CMPS482",
+    "semesterEnrollmentId": 31
+  },
+  {
+    "classId": "25505",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A",
+    "courseId": "CMPS497",
+    "semesterEnrollmentId": 32
+  },
+  {
+    "classId": "25543",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A",
+    "courseId": "DAWA111",
+    "semesterEnrollmentId": 32
+  },
+  {
+    "classId": "25517",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A",
+    "courseId": "CMPS360",
+    "semesterEnrollmentId": 32
+  },
+  {
+    "classId": "25501",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A",
+    "courseId": "CMPS482",
+    "semesterEnrollmentId": 32
+  },
+  {
+    "classId": "25515",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A",
+    "courseId": "CMPS405",
+    "semesterEnrollmentId": 32
+  },
+  {
+    "classId": "25515",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A",
+    "courseId": "CMPS405",
+    "semesterEnrollmentId": 33
+  },
+  {
+    "classId": "25517",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A",
+    "courseId": "CMPS360",
+    "semesterEnrollmentId": 33
+  },
+  {
+    "classId": "25501",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A",
+    "courseId": "CMPS482",
+    "semesterEnrollmentId": 33
+  },
+  {
+    "classId": "25519",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A",
+    "courseId": "CMPS350",
+    "semesterEnrollmentId": 33
+  },
+  {
+    "classId": "25543",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A",
+    "courseId": "DAWA111",
+    "semesterEnrollmentId": 33
+  },
+  {
+    "classId": "25517",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A",
+    "courseId": "CMPS360",
+    "semesterEnrollmentId": 34
+  },
+  {
+    "classId": "25505",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A",
+    "courseId": "CMPS497",
+    "semesterEnrollmentId": 34
+  },
+  {
+    "classId": "25515",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A",
+    "courseId": "CMPS405",
+    "semesterEnrollmentId": 34
+  },
+  {
+    "classId": "25501",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A",
+    "courseId": "CMPS482",
+    "semesterEnrollmentId": 34
+  },
+  {
+    "classId": "25543",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A",
+    "courseId": "DAWA111",
+    "semesterEnrollmentId": 34
+  },
+  {
+    "classId": "25517",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A",
+    "courseId": "CMPS360",
+    "semesterEnrollmentId": 35
+  },
+  {
+    "classId": "25505",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A",
+    "courseId": "CMPS497",
+    "semesterEnrollmentId": 35
+  },
+  {
+    "classId": "25519",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A",
+    "courseId": "CMPS350",
+    "semesterEnrollmentId": 35
+  },
+  {
+    "classId": "25501",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A",
+    "courseId": "CMPS482",
+    "semesterEnrollmentId": 35
+  },
+  {
+    "classId": "25543",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A",
+    "courseId": "DAWA111",
+    "semesterEnrollmentId": 35
+  },
+  {
+    "classId": "25519",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A",
+    "courseId": "CMPS350",
+    "semesterEnrollmentId": 36
+  },
+  {
+    "classId": "25505",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A",
+    "courseId": "CMPS497",
+    "semesterEnrollmentId": 36
+  },
+  {
+    "classId": "25515",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A",
+    "courseId": "CMPS405",
+    "semesterEnrollmentId": 36
+  },
+  {
+    "classId": "25517",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A",
+    "courseId": "CMPS360",
+    "semesterEnrollmentId": 36
+  },
+  {
+    "classId": "25501",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A",
+    "courseId": "CMPS482",
+    "semesterEnrollmentId": 36
+  },
+  {
+    "classId": "25543",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A",
+    "courseId": "DAWA111",
+    "semesterEnrollmentId": 37
+  },
+  {
+    "classId": "25515",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A",
+    "courseId": "CMPS405",
+    "semesterEnrollmentId": 37
+  },
+  {
+    "classId": "25505",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A",
+    "courseId": "CMPS497",
+    "semesterEnrollmentId": 37
+  },
+  {
+    "classId": "25519",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A",
+    "courseId": "CMPS350",
+    "semesterEnrollmentId": 37
+  },
+  {
+    "classId": "25517",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A",
+    "courseId": "CMPS360",
+    "semesterEnrollmentId": 37
+  },
+  {
+    "classId": "25543",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A",
+    "courseId": "DAWA111",
+    "semesterEnrollmentId": 38
+  },
+  {
+    "classId": "25505",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A",
+    "courseId": "CMPS497",
+    "semesterEnrollmentId": 38
+  },
+  {
+    "classId": "25501",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A",
+    "courseId": "CMPS482",
+    "semesterEnrollmentId": 38
+  },
+  {
+    "classId": "25515",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A",
+    "courseId": "CMPS405",
+    "semesterEnrollmentId": 38
+  },
+  {
+    "classId": "25517",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A",
+    "courseId": "CMPS360",
+    "semesterEnrollmentId": 38
+  },
+  {
+    "classId": "25516",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A",
+    "courseId": "CMPS405",
+    "semesterEnrollmentId": 39
+  },
+  {
+    "classId": "25506",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A",
+    "courseId": "CMPS497",
+    "semesterEnrollmentId": 39
+  },
+  {
+    "classId": "25520",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A",
+    "courseId": "CMPS350",
+    "semesterEnrollmentId": 39
+  },
+  {
+    "classId": "25518",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A",
+    "courseId": "CMPS360",
+    "semesterEnrollmentId": 39
+  },
+  {
+    "classId": "25502",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A",
+    "courseId": "CMPS482",
+    "semesterEnrollmentId": 39
+  },
+  {
+    "classId": "25518",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A",
+    "courseId": "CMPS360",
+    "semesterEnrollmentId": 40
+  },
+  {
+    "classId": "25502",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A",
+    "courseId": "CMPS482",
+    "semesterEnrollmentId": 40
+  },
+  {
+    "classId": "25520",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A",
+    "courseId": "CMPS350",
+    "semesterEnrollmentId": 40
+  },
+  {
+    "classId": "25516",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A",
+    "courseId": "CMPS405",
+    "semesterEnrollmentId": 40
+  },
+  {
+    "classId": "25506",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A",
+    "courseId": "CMPS497",
+    "semesterEnrollmentId": 40
+  },
+  {
+    "classId": "25521",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A",
+    "courseId": "CMPE364",
+    "semesterEnrollmentId": 41
+  },
+  {
+    "classId": "25525",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A",
+    "courseId": "GENG360",
+    "semesterEnrollmentId": 41
+  },
+  {
+    "classId": "25527",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A",
+    "courseId": "GENG300",
+    "semesterEnrollmentId": 41
+  },
+  {
+    "classId": "25523",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A",
+    "courseId": "CMPE476",
+    "semesterEnrollmentId": 41
+  },
+  {
+    "classId": "25507",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A",
+    "courseId": "CMPE457",
+    "semesterEnrollmentId": 41
+  },
+  {
+    "classId": "25507",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A",
+    "courseId": "CMPE457",
+    "semesterEnrollmentId": 42
+  },
+  {
+    "classId": "25527",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A",
+    "courseId": "GENG300",
+    "semesterEnrollmentId": 42
+  },
+  {
+    "classId": "25525",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A",
+    "courseId": "GENG360",
+    "semesterEnrollmentId": 42
+  },
+  {
+    "classId": "25523",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A",
+    "courseId": "CMPE476",
+    "semesterEnrollmentId": 42
+  },
+  {
+    "classId": "25521",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A",
+    "courseId": "CMPE364",
+    "semesterEnrollmentId": 42
+  },
+  {
+    "classId": "25507",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A",
+    "courseId": "CMPE457",
+    "semesterEnrollmentId": 43
+  },
+  {
+    "classId": "25525",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A",
+    "courseId": "GENG360",
+    "semesterEnrollmentId": 43
+  },
+  {
+    "classId": "25527",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A",
+    "courseId": "GENG300",
+    "semesterEnrollmentId": 43
+  },
+  {
+    "classId": "25521",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A",
+    "courseId": "CMPE364",
+    "semesterEnrollmentId": 43
+  },
+  {
+    "classId": "25523",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A",
+    "courseId": "CMPE476",
+    "semesterEnrollmentId": 43
+  },
+  {
+    "classId": "25507",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A",
+    "courseId": "CMPE457",
+    "semesterEnrollmentId": 44
+  },
+  {
+    "classId": "25521",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A",
+    "courseId": "CMPE364",
+    "semesterEnrollmentId": 44
+  },
+  {
+    "classId": "25527",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A",
+    "courseId": "GENG300",
+    "semesterEnrollmentId": 44
+  },
+  {
+    "classId": "25525",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A",
+    "courseId": "GENG360",
+    "semesterEnrollmentId": 44
+  },
+  {
+    "classId": "25523",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A",
+    "courseId": "CMPE476",
+    "semesterEnrollmentId": 44
+  },
+  {
+    "classId": "25523",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A",
+    "courseId": "CMPE476",
+    "semesterEnrollmentId": 45
+  },
+  {
+    "classId": "25507",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A",
+    "courseId": "CMPE457",
+    "semesterEnrollmentId": 45
+  },
+  {
+    "classId": "25525",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A",
+    "courseId": "GENG360",
+    "semesterEnrollmentId": 45
+  },
+  {
+    "classId": "25527",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A",
+    "courseId": "GENG300",
+    "semesterEnrollmentId": 45
+  },
+  {
+    "classId": "25521",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A",
+    "courseId": "CMPE364",
+    "semesterEnrollmentId": 45
+  },
+  {
+    "classId": "25521",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A",
+    "courseId": "CMPE364",
+    "semesterEnrollmentId": 46
+  },
+  {
+    "classId": "25525",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A",
+    "courseId": "GENG360",
+    "semesterEnrollmentId": 46
+  },
+  {
+    "classId": "25507",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A",
+    "courseId": "CMPE457",
+    "semesterEnrollmentId": 46
+  },
+  {
+    "classId": "25523",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A",
+    "courseId": "CMPE476",
+    "semesterEnrollmentId": 46
+  },
+  {
+    "classId": "25527",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A",
+    "courseId": "GENG300",
+    "semesterEnrollmentId": 46
+  },
+  {
+    "classId": "25525",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A",
+    "courseId": "GENG360",
+    "semesterEnrollmentId": 47
+  },
+  {
+    "classId": "25521",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A",
+    "courseId": "CMPE364",
+    "semesterEnrollmentId": 47
+  },
+  {
+    "classId": "25507",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A",
+    "courseId": "CMPE457",
+    "semesterEnrollmentId": 47
+  },
+  {
+    "classId": "25523",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A",
+    "courseId": "CMPE476",
+    "semesterEnrollmentId": 47
+  },
+  {
+    "classId": "25527",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A",
+    "courseId": "GENG300",
+    "semesterEnrollmentId": 47
+  },
+  {
+    "classId": "25526",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A",
+    "courseId": "GENG360",
+    "semesterEnrollmentId": 48
+  },
+  {
+    "classId": "25524",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A",
+    "courseId": "CMPE476",
+    "semesterEnrollmentId": 48
+  },
+  {
+    "classId": "25528",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A",
+    "courseId": "GENG300",
+    "semesterEnrollmentId": 48
+  },
+  {
+    "classId": "25508",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A",
+    "courseId": "CMPE457",
+    "semesterEnrollmentId": 48
+  },
+  {
+    "classId": "25522",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A",
+    "courseId": "CMPE364",
+    "semesterEnrollmentId": 48
+  },
+  {
+    "classId": "25528",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A",
+    "courseId": "GENG300",
+    "semesterEnrollmentId": 49
+  },
+  {
+    "classId": "25526",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A",
+    "courseId": "GENG360",
+    "semesterEnrollmentId": 49
+  },
+  {
+    "classId": "25522",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A",
+    "courseId": "CMPE364",
+    "semesterEnrollmentId": 49
+  },
+  {
+    "classId": "25524",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A",
+    "courseId": "CMPE476",
+    "semesterEnrollmentId": 49
+  },
+  {
+    "classId": "25508",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A",
+    "courseId": "CMPE457",
+    "semesterEnrollmentId": 49
+  },
+  {
+    "classId": "25526",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A",
+    "courseId": "GENG360",
+    "semesterEnrollmentId": 50
+  },
+  {
+    "classId": "25508",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A",
+    "courseId": "CMPE457",
+    "semesterEnrollmentId": 50
+  },
+  {
+    "classId": "25522",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A",
+    "courseId": "CMPE364",
+    "semesterEnrollmentId": 50
+  },
+  {
+    "classId": "25528",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A",
+    "courseId": "GENG300",
+    "semesterEnrollmentId": 50
+  },
+  {
+    "classId": "25524",
+    "gradeStatus": "ungraded",
+    "letterGrade": "N/A",
+    "courseId": "CMPE476",
+    "semesterEnrollmentId": 50
   }
 ]

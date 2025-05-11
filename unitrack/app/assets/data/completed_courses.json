@@ -3958,5 +3958,2655 @@
     "studentId": "S1030",
     "courseId": "CMPE355",
     "letterGrade": "C"
+  },
+  {
+    "studentId": "S1031",
+    "courseId": "CMPS151",
+    "letterGrade": "A"
+  },
+  {
+    "studentId": "S1031",
+    "courseId": "CHEM101",
+    "letterGrade": "B+"
+  },
+  {
+    "studentId": "S1031",
+    "courseId": "CHEM103",
+    "letterGrade": "D"
+  },
+  {
+    "studentId": "S1031",
+    "courseId": "MATH101",
+    "letterGrade": "A"
+  },
+  {
+    "studentId": "S1031",
+    "courseId": "ENGL202",
+    "letterGrade": "C"
+  },
+  {
+    "studentId": "S1031",
+    "courseId": "CMPS251",
+    "letterGrade": "B+"
+  },
+  {
+    "studentId": "S1031",
+    "courseId": "PHYS191",
+    "letterGrade": "C"
+  },
+  {
+    "studentId": "S1031",
+    "courseId": "PHYS192",
+    "letterGrade": "B+"
+  },
+  {
+    "studentId": "S1031",
+    "courseId": "MATH102",
+    "letterGrade": "D"
+  },
+  {
+    "studentId": "S1031",
+    "courseId": "MATH231",
+    "letterGrade": "B"
+  },
+  {
+    "studentId": "S1031",
+    "courseId": "ENGL203",
+    "letterGrade": "C"
+  },
+  {
+    "studentId": "S1031",
+    "courseId": "CMPS200",
+    "letterGrade": "A"
+  },
+  {
+    "studentId": "S1031",
+    "courseId": "CMPS205",
+    "letterGrade": "C+"
+  },
+  {
+    "studentId": "S1031",
+    "courseId": "CMPS303",
+    "letterGrade": "B+"
+  },
+  {
+    "studentId": "S1031",
+    "courseId": "PHYS193",
+    "letterGrade": "A"
+  },
+  {
+    "studentId": "S1031",
+    "courseId": "CMPS323",
+    "letterGrade": "D"
+  },
+  {
+    "studentId": "S1031",
+    "courseId": "CMPS351",
+    "letterGrade": "C"
+  },
+  {
+    "studentId": "S1031",
+    "courseId": "CMPE263",
+    "letterGrade": "B+"
+  },
+  {
+    "studentId": "S1031",
+    "courseId": "GENG200",
+    "letterGrade": "C+"
+  },
+  {
+    "studentId": "S1031",
+    "courseId": "CMPS310",
+    "letterGrade": "B+"
+  },
+  {
+    "studentId": "S1031",
+    "courseId": "HIST121",
+    "letterGrade": "B"
+  },
+  {
+    "studentId": "S1031",
+    "courseId": "PHYS194",
+    "letterGrade": "B"
+  },
+  {
+    "studentId": "S1031",
+    "courseId": "ARAB100",
+    "letterGrade": "B"
+  },
+  {
+    "studentId": "S1031",
+    "courseId": "CMPE355",
+    "letterGrade": "B"
+  },
+  {
+    "studentId": "S1031",
+    "courseId": "CMPS380",
+    "letterGrade": "B"
+  },
+  {
+    "studentId": "S1032",
+    "courseId": "CMPS151",
+    "letterGrade": "B"
+  },
+  {
+    "studentId": "S1032",
+    "courseId": "CHEM101",
+    "letterGrade": "C+"
+  },
+  {
+    "studentId": "S1032",
+    "courseId": "CHEM103",
+    "letterGrade": "D"
+  },
+  {
+    "studentId": "S1032",
+    "courseId": "MATH101",
+    "letterGrade": "D+"
+  },
+  {
+    "studentId": "S1032",
+    "courseId": "ENGL202",
+    "letterGrade": "B"
+  },
+  {
+    "studentId": "S1032",
+    "courseId": "HIST121",
+    "letterGrade": "C"
+  },
+  {
+    "studentId": "S1032",
+    "courseId": "CMPS251",
+    "letterGrade": "C"
+  },
+  {
+    "studentId": "S1032",
+    "courseId": "PHYS191",
+    "letterGrade": "C+"
+  },
+  {
+    "studentId": "S1032",
+    "courseId": "PHYS192",
+    "letterGrade": "B"
+  },
+  {
+    "studentId": "S1032",
+    "courseId": "MATH102",
+    "letterGrade": "D+"
+  },
+  {
+    "studentId": "S1032",
+    "courseId": "MATH231",
+    "letterGrade": "F"
+  },
+  {
+    "studentId": "S1032",
+    "courseId": "CMPS200",
+    "letterGrade": "D+"
+  },
+  {
+    "studentId": "S1032",
+    "courseId": "CMPS303",
+    "letterGrade": "D"
+  },
+  {
+    "studentId": "S1032",
+    "courseId": "PHYS193",
+    "letterGrade": "D"
+  },
+  {
+    "studentId": "S1032",
+    "courseId": "CMPE263",
+    "letterGrade": "C+"
+  },
+  {
+    "studentId": "S1032",
+    "courseId": "GENG200",
+    "letterGrade": "D+"
+  },
+  {
+    "studentId": "S1032",
+    "courseId": "CMPS310",
+    "letterGrade": "D+"
+  },
+  {
+    "studentId": "S1032",
+    "courseId": "ENGL203",
+    "letterGrade": "D"
+  },
+  {
+    "studentId": "S1032",
+    "courseId": "CMPS205",
+    "letterGrade": "D"
+  },
+  {
+    "studentId": "S1032",
+    "courseId": "PHYS194",
+    "letterGrade": "D"
+  },
+  {
+    "studentId": "S1032",
+    "courseId": "ARAB100",
+    "letterGrade": "D"
+  },
+  {
+    "studentId": "S1032",
+    "courseId": "CMPS323",
+    "letterGrade": "D"
+  },
+  {
+    "studentId": "S1032",
+    "courseId": "CMPS351",
+    "letterGrade": "D"
+  },
+  {
+    "studentId": "S1032",
+    "courseId": "CMPE355",
+    "letterGrade": "D"
+  },
+  {
+    "studentId": "S1032",
+    "courseId": "CMPS380",
+    "letterGrade": "D"
+  },
+  {
+    "studentId": "S1033",
+    "courseId": "CMPS151",
+    "letterGrade": "A"
+  },
+  {
+    "studentId": "S1033",
+    "courseId": "CHEM101",
+    "letterGrade": "A"
+  },
+  {
+    "studentId": "S1033",
+    "courseId": "CHEM103",
+    "letterGrade": "A"
+  },
+  {
+    "studentId": "S1033",
+    "courseId": "MATH101",
+    "letterGrade": "A"
+  },
+  {
+    "studentId": "S1033",
+    "courseId": "ENGL202",
+    "letterGrade": "A"
+  },
+  {
+    "studentId": "S1033",
+    "courseId": "HIST121",
+    "letterGrade": "A"
+  },
+  {
+    "studentId": "S1033",
+    "courseId": "CMPS251",
+    "letterGrade": "A"
+  },
+  {
+    "studentId": "S1033",
+    "courseId": "PHYS191",
+    "letterGrade": "A"
+  },
+  {
+    "studentId": "S1033",
+    "courseId": "PHYS192",
+    "letterGrade": "A"
+  },
+  {
+    "studentId": "S1033",
+    "courseId": "MATH102",
+    "letterGrade": "A"
+  },
+  {
+    "studentId": "S1033",
+    "courseId": "MATH231",
+    "letterGrade": "B"
+  },
+  {
+    "studentId": "S1033",
+    "courseId": "ENGL203",
+    "letterGrade": "A"
+  },
+  {
+    "studentId": "S1033",
+    "courseId": "CMPS200",
+    "letterGrade": "A"
+  },
+  {
+    "studentId": "S1033",
+    "courseId": "CMPS205",
+    "letterGrade": "A"
+  },
+  {
+    "studentId": "S1033",
+    "courseId": "CMPS351",
+    "letterGrade": "B"
+  },
+  {
+    "studentId": "S1033",
+    "courseId": "CMPE263",
+    "letterGrade": "B"
+  },
+  {
+    "studentId": "S1033",
+    "courseId": "GENG200",
+    "letterGrade": "A"
+  },
+  {
+    "studentId": "S1033",
+    "courseId": "CMPS310",
+    "letterGrade": "B"
+  },
+  {
+    "studentId": "S1033",
+    "courseId": "CMPS303",
+    "letterGrade": "A"
+  },
+  {
+    "studentId": "S1033",
+    "courseId": "PHYS193",
+    "letterGrade": "A"
+  },
+  {
+    "studentId": "S1033",
+    "courseId": "PHYS194",
+    "letterGrade": "A"
+  },
+  {
+    "studentId": "S1033",
+    "courseId": "ARAB100",
+    "letterGrade": "A"
+  },
+  {
+    "studentId": "S1033",
+    "courseId": "CMPS323",
+    "letterGrade": "A"
+  },
+  {
+    "studentId": "S1033",
+    "courseId": "CMPE355",
+    "letterGrade": "A"
+  },
+  {
+    "studentId": "S1033",
+    "courseId": "CMPS380",
+    "letterGrade": "A"
+  },
+  {
+    "studentId": "S1034",
+    "courseId": "CMPS151",
+    "letterGrade": "A"
+  },
+  {
+    "studentId": "S1034",
+    "courseId": "CHEM101",
+    "letterGrade": "A"
+  },
+  {
+    "studentId": "S1034",
+    "courseId": "CHEM103",
+    "letterGrade": "A"
+  },
+  {
+    "studentId": "S1034",
+    "courseId": "MATH101",
+    "letterGrade": "A"
+  },
+  {
+    "studentId": "S1034",
+    "courseId": "ENGL202",
+    "letterGrade": "B+"
+  },
+  {
+    "studentId": "S1034",
+    "courseId": "CMPS251",
+    "letterGrade": "A"
+  },
+  {
+    "studentId": "S1034",
+    "courseId": "PHYS191",
+    "letterGrade": "A"
+  },
+  {
+    "studentId": "S1034",
+    "courseId": "PHYS192",
+    "letterGrade": "A"
+  },
+  {
+    "studentId": "S1034",
+    "courseId": "MATH102",
+    "letterGrade": "A"
+  },
+  {
+    "studentId": "S1034",
+    "courseId": "MATH231",
+    "letterGrade": "A"
+  },
+  {
+    "studentId": "S1034",
+    "courseId": "ENGL203",
+    "letterGrade": "A"
+  },
+  {
+    "studentId": "S1034",
+    "courseId": "CMPS200",
+    "letterGrade": "B+"
+  },
+  {
+    "studentId": "S1034",
+    "courseId": "ARAB100",
+    "letterGrade": "B"
+  },
+  {
+    "studentId": "S1034",
+    "courseId": "CMPS323",
+    "letterGrade": "A"
+  },
+  {
+    "studentId": "S1034",
+    "courseId": "CMPS351",
+    "letterGrade": "A"
+  },
+  {
+    "studentId": "S1034",
+    "courseId": "CMPE263",
+    "letterGrade": "B"
+  },
+  {
+    "studentId": "S1034",
+    "courseId": "GENG200",
+    "letterGrade": "B"
+  },
+  {
+    "studentId": "S1034",
+    "courseId": "CMPS310",
+    "letterGrade": "A"
+  },
+  {
+    "studentId": "S1034",
+    "courseId": "HIST121",
+    "letterGrade": "A"
+  },
+  {
+    "studentId": "S1034",
+    "courseId": "CMPS205",
+    "letterGrade": "A"
+  },
+  {
+    "studentId": "S1034",
+    "courseId": "CMPS303",
+    "letterGrade": "A"
+  },
+  {
+    "studentId": "S1034",
+    "courseId": "PHYS193",
+    "letterGrade": "A"
+  },
+  {
+    "studentId": "S1034",
+    "courseId": "PHYS194",
+    "letterGrade": "A"
+  },
+  {
+    "studentId": "S1034",
+    "courseId": "CMPE355",
+    "letterGrade": "A"
+  },
+  {
+    "studentId": "S1034",
+    "courseId": "CMPS380",
+    "letterGrade": "A"
+  },
+  {
+    "studentId": "S1035",
+    "courseId": "CMPS151",
+    "letterGrade": "A"
+  },
+  {
+    "studentId": "S1035",
+    "courseId": "CHEM101",
+    "letterGrade": "A"
+  },
+  {
+    "studentId": "S1035",
+    "courseId": "CHEM103",
+    "letterGrade": "A"
+  },
+  {
+    "studentId": "S1035",
+    "courseId": "MATH101",
+    "letterGrade": "A"
+  },
+  {
+    "studentId": "S1035",
+    "courseId": "ENGL202",
+    "letterGrade": "A"
+  },
+  {
+    "studentId": "S1035",
+    "courseId": "HIST121",
+    "letterGrade": "A"
+  },
+  {
+    "studentId": "S1035",
+    "courseId": "CMPS251",
+    "letterGrade": "A"
+  },
+  {
+    "studentId": "S1035",
+    "courseId": "PHYS191",
+    "letterGrade": "B+"
+  },
+  {
+    "studentId": "S1035",
+    "courseId": "PHYS192",
+    "letterGrade": "A"
+  },
+  {
+    "studentId": "S1035",
+    "courseId": "MATH102",
+    "letterGrade": "A"
+  },
+  {
+    "studentId": "S1035",
+    "courseId": "MATH231",
+    "letterGrade": "A"
+  },
+  {
+    "studentId": "S1035",
+    "courseId": "ENGL203",
+    "letterGrade": "A"
+  },
+  {
+    "studentId": "S1035",
+    "courseId": "CMPS200",
+    "letterGrade": "A"
+  },
+  {
+    "studentId": "S1035",
+    "courseId": "CMPS205",
+    "letterGrade": "A"
+  },
+  {
+    "studentId": "S1035",
+    "courseId": "CMPS303",
+    "letterGrade": "A"
+  },
+  {
+    "studentId": "S1035",
+    "courseId": "PHYS193",
+    "letterGrade": "A"
+  },
+  {
+    "studentId": "S1035",
+    "courseId": "PHYS194",
+    "letterGrade": "A"
+  },
+  {
+    "studentId": "S1035",
+    "courseId": "ARAB100",
+    "letterGrade": "A"
+  },
+  {
+    "studentId": "S1035",
+    "courseId": "CMPS323",
+    "letterGrade": "A"
+  },
+  {
+    "studentId": "S1035",
+    "courseId": "CMPS351",
+    "letterGrade": "B"
+  },
+  {
+    "studentId": "S1035",
+    "courseId": "CMPE263",
+    "letterGrade": "A"
+  },
+  {
+    "studentId": "S1035",
+    "courseId": "GENG200",
+    "letterGrade": "A"
+  },
+  {
+    "studentId": "S1035",
+    "courseId": "CMPS310",
+    "letterGrade": "A"
+  },
+  {
+    "studentId": "S1035",
+    "courseId": "CMPE355",
+    "letterGrade": "A"
+  },
+  {
+    "studentId": "S1035",
+    "courseId": "CMPS380",
+    "letterGrade": "A"
+  },
+  {
+    "studentId": "S1036",
+    "courseId": "CMPS151",
+    "letterGrade": "B"
+  },
+  {
+    "studentId": "S1036",
+    "courseId": "CHEM101",
+    "letterGrade": "D+"
+  },
+  {
+    "studentId": "S1036",
+    "courseId": "CHEM103",
+    "letterGrade": "B"
+  },
+  {
+    "studentId": "S1036",
+    "courseId": "MATH101",
+    "letterGrade": "D+"
+  },
+  {
+    "studentId": "S1036",
+    "courseId": "ENGL202",
+    "letterGrade": "B"
+  },
+  {
+    "studentId": "S1036",
+    "courseId": "HIST121",
+    "letterGrade": "C+"
+  },
+  {
+    "studentId": "S1036",
+    "courseId": "CMPS251",
+    "letterGrade": "C"
+  },
+  {
+    "studentId": "S1036",
+    "courseId": "PHYS191",
+    "letterGrade": "D"
+  },
+  {
+    "studentId": "S1036",
+    "courseId": "PHYS192",
+    "letterGrade": "C"
+  },
+  {
+    "studentId": "S1036",
+    "courseId": "MATH102",
+    "letterGrade": "F"
+  },
+  {
+    "studentId": "S1036",
+    "courseId": "MATH231",
+    "letterGrade": "D"
+  },
+  {
+    "studentId": "S1036",
+    "courseId": "ENGL203",
+    "letterGrade": "C+"
+  },
+  {
+    "studentId": "S1036",
+    "courseId": "CMPS200",
+    "letterGrade": "C"
+  },
+  {
+    "studentId": "S1036",
+    "courseId": "CMPS205",
+    "letterGrade": "D+"
+  },
+  {
+    "studentId": "S1036",
+    "courseId": "CMPS303",
+    "letterGrade": "C+"
+  },
+  {
+    "studentId": "S1036",
+    "courseId": "PHYS193",
+    "letterGrade": "D+"
+  },
+  {
+    "studentId": "S1036",
+    "courseId": "PHYS194",
+    "letterGrade": "C"
+  },
+  {
+    "studentId": "S1036",
+    "courseId": "ARAB100",
+    "letterGrade": "C"
+  },
+  {
+    "studentId": "S1036",
+    "courseId": "CMPS323",
+    "letterGrade": "D"
+  },
+  {
+    "studentId": "S1036",
+    "courseId": "CMPS351",
+    "letterGrade": "B"
+  },
+  {
+    "studentId": "S1036",
+    "courseId": "CMPE263",
+    "letterGrade": "B"
+  },
+  {
+    "studentId": "S1036",
+    "courseId": "GENG200",
+    "letterGrade": "B"
+  },
+  {
+    "studentId": "S1036",
+    "courseId": "CMPS310",
+    "letterGrade": "D+"
+  },
+  {
+    "studentId": "S1036",
+    "courseId": "CMPE355",
+    "letterGrade": "B"
+  },
+  {
+    "studentId": "S1036",
+    "courseId": "CMPS380",
+    "letterGrade": "B"
+  },
+  {
+    "studentId": "S1037",
+    "courseId": "CMPS151",
+    "letterGrade": "A"
+  },
+  {
+    "studentId": "S1037",
+    "courseId": "CHEM101",
+    "letterGrade": "C"
+  },
+  {
+    "studentId": "S1037",
+    "courseId": "CHEM103",
+    "letterGrade": "B+"
+  },
+  {
+    "studentId": "S1037",
+    "courseId": "MATH101",
+    "letterGrade": "C+"
+  },
+  {
+    "studentId": "S1037",
+    "courseId": "HIST121",
+    "letterGrade": "C"
+  },
+  {
+    "studentId": "S1037",
+    "courseId": "CMPS251",
+    "letterGrade": "D"
+  },
+  {
+    "studentId": "S1037",
+    "courseId": "PHYS191",
+    "letterGrade": "B+"
+  },
+  {
+    "studentId": "S1037",
+    "courseId": "PHYS192",
+    "letterGrade": "A"
+  },
+  {
+    "studentId": "S1037",
+    "courseId": "MATH102",
+    "letterGrade": "B"
+  },
+  {
+    "studentId": "S1037",
+    "courseId": "MATH231",
+    "letterGrade": "D"
+  },
+  {
+    "studentId": "S1037",
+    "courseId": "CMPS200",
+    "letterGrade": "B"
+  },
+  {
+    "studentId": "S1037",
+    "courseId": "CMPS205",
+    "letterGrade": "A"
+  },
+  {
+    "studentId": "S1037",
+    "courseId": "CMPS303",
+    "letterGrade": "C+"
+  },
+  {
+    "studentId": "S1037",
+    "courseId": "ARAB100",
+    "letterGrade": "C"
+  },
+  {
+    "studentId": "S1037",
+    "courseId": "CMPE263",
+    "letterGrade": "D"
+  },
+  {
+    "studentId": "S1037",
+    "courseId": "GENG200",
+    "letterGrade": "B+"
+  },
+  {
+    "studentId": "S1037",
+    "courseId": "CMPS310",
+    "letterGrade": "D"
+  },
+  {
+    "studentId": "S1037",
+    "courseId": "ENGL202",
+    "letterGrade": "D"
+  },
+  {
+    "studentId": "S1037",
+    "courseId": "ENGL203",
+    "letterGrade": "D"
+  },
+  {
+    "studentId": "S1037",
+    "courseId": "PHYS193",
+    "letterGrade": "D"
+  },
+  {
+    "studentId": "S1037",
+    "courseId": "PHYS194",
+    "letterGrade": "D"
+  },
+  {
+    "studentId": "S1037",
+    "courseId": "CMPS323",
+    "letterGrade": "D"
+  },
+  {
+    "studentId": "S1037",
+    "courseId": "CMPS351",
+    "letterGrade": "D"
+  },
+  {
+    "studentId": "S1037",
+    "courseId": "CMPE355",
+    "letterGrade": "D"
+  },
+  {
+    "studentId": "S1037",
+    "courseId": "CMPS380",
+    "letterGrade": "D"
+  },
+  {
+    "studentId": "S1038",
+    "courseId": "CMPS151",
+    "letterGrade": "B"
+  },
+  {
+    "studentId": "S1038",
+    "courseId": "CHEM101",
+    "letterGrade": "D"
+  },
+  {
+    "studentId": "S1038",
+    "courseId": "CHEM103",
+    "letterGrade": "B+"
+  },
+  {
+    "studentId": "S1038",
+    "courseId": "MATH101",
+    "letterGrade": "B+"
+  },
+  {
+    "studentId": "S1038",
+    "courseId": "ENGL202",
+    "letterGrade": "C"
+  },
+  {
+    "studentId": "S1038",
+    "courseId": "CMPS251",
+    "letterGrade": "A"
+  },
+  {
+    "studentId": "S1038",
+    "courseId": "PHYS191",
+    "letterGrade": "C"
+  },
+  {
+    "studentId": "S1038",
+    "courseId": "PHYS192",
+    "letterGrade": "D"
+  },
+  {
+    "studentId": "S1038",
+    "courseId": "MATH102",
+    "letterGrade": "B"
+  },
+  {
+    "studentId": "S1038",
+    "courseId": "CMPE263",
+    "letterGrade": "A"
+  },
+  {
+    "studentId": "S1038",
+    "courseId": "GENG200",
+    "letterGrade": "B+"
+  },
+  {
+    "studentId": "S1038",
+    "courseId": "HIST121",
+    "letterGrade": "B"
+  },
+  {
+    "studentId": "S1038",
+    "courseId": "MATH231",
+    "letterGrade": "B"
+  },
+  {
+    "studentId": "S1038",
+    "courseId": "ENGL203",
+    "letterGrade": "B"
+  },
+  {
+    "studentId": "S1038",
+    "courseId": "CMPS200",
+    "letterGrade": "B"
+  },
+  {
+    "studentId": "S1038",
+    "courseId": "CMPS205",
+    "letterGrade": "B"
+  },
+  {
+    "studentId": "S1038",
+    "courseId": "CMPS303",
+    "letterGrade": "B"
+  },
+  {
+    "studentId": "S1038",
+    "courseId": "PHYS193",
+    "letterGrade": "B"
+  },
+  {
+    "studentId": "S1038",
+    "courseId": "PHYS194",
+    "letterGrade": "B"
+  },
+  {
+    "studentId": "S1038",
+    "courseId": "ARAB100",
+    "letterGrade": "B"
+  },
+  {
+    "studentId": "S1038",
+    "courseId": "CMPS323",
+    "letterGrade": "B"
+  },
+  {
+    "studentId": "S1038",
+    "courseId": "CMPS351",
+    "letterGrade": "B"
+  },
+  {
+    "studentId": "S1038",
+    "courseId": "CMPS310",
+    "letterGrade": "B"
+  },
+  {
+    "studentId": "S1038",
+    "courseId": "CMPE355",
+    "letterGrade": "B"
+  },
+  {
+    "studentId": "S1038",
+    "courseId": "CMPS380",
+    "letterGrade": "B"
+  },
+   {
+    "studentId": "S1039",
+    "courseId": "CMPS151",
+    "letterGrade": "F"
+  },
+  {
+    "studentId": "S1039",
+    "courseId": "CHEM101",
+    "letterGrade": "D+"
+  },
+  {
+    "studentId": "S1039",
+    "courseId": "CHEM103",
+    "letterGrade": "D"
+  },
+  {
+    "studentId": "S1039",
+    "courseId": "MATH101",
+    "letterGrade": "B"
+  },
+  {
+    "studentId": "S1039",
+    "courseId": "ENGL202",
+    "letterGrade": "C"
+  },
+  {
+    "studentId": "S1039",
+    "courseId": "HIST121",
+    "letterGrade": "B"
+  },
+  {
+    "studentId": "S1039",
+    "courseId": "CMPS251",
+    "letterGrade": "C+"
+  },
+  {
+    "studentId": "S1039",
+    "courseId": "PHYS191",
+    "letterGrade": "D+"
+  },
+  {
+    "studentId": "S1039",
+    "courseId": "PHYS192",
+    "letterGrade": "B"
+  },
+  {
+    "studentId": "S1039",
+    "courseId": "MATH102",
+    "letterGrade": "C+"
+  },
+  {
+    "studentId": "S1039",
+    "courseId": "MATH231",
+    "letterGrade": "D+"
+  },
+  {
+    "studentId": "S1039",
+    "courseId": "ENGL203",
+    "letterGrade": "F"
+  },
+  {
+    "studentId": "S1039",
+    "courseId": "CMPS200",
+    "letterGrade": "D"
+  },
+  {
+    "studentId": "S1039",
+    "courseId": "CMPS205",
+    "letterGrade": "F"
+  },
+  {
+    "studentId": "S1039",
+    "courseId": "CMPS303",
+    "letterGrade": "F"
+  },
+  {
+    "studentId": "S1039",
+    "courseId": "PHYS193",
+    "letterGrade": "C"
+  },
+  {
+    "studentId": "S1039",
+    "courseId": "PHYS194",
+    "letterGrade": "D"
+  },
+  {
+    "studentId": "S1039",
+    "courseId": "ARAB100",
+    "letterGrade": "C"
+  },
+  {
+    "studentId": "S1039",
+    "courseId": "CMPS323",
+    "letterGrade": "C"
+  },
+  {
+    "studentId": "S1039",
+    "courseId": "CMPS351",
+    "letterGrade": "C"
+  },
+  {
+    "studentId": "S1039",
+    "courseId": "CMPE263",
+    "letterGrade": "D"
+  },
+  {
+    "studentId": "S1039",
+    "courseId": "GENG200",
+    "letterGrade": "D+"
+  },
+  {
+    "studentId": "S1039",
+    "courseId": "CMPS310",
+    "letterGrade": "B"
+  },
+  {
+    "studentId": "S1039",
+    "courseId": "CMPE355",
+    "letterGrade": "C"
+  },
+  {
+    "studentId": "S1039",
+    "courseId": "CMPS380",
+    "letterGrade": "C"
+  },
+  {
+    "studentId": "S1040",
+    "courseId": "CMPS151",
+    "letterGrade": "A"
+  },
+  {
+    "studentId": "S1040",
+    "courseId": "CHEM101",
+    "letterGrade": "D"
+  },
+  {
+    "studentId": "S1040",
+    "courseId": "CHEM103",
+    "letterGrade": "B+"
+  },
+  {
+    "studentId": "S1040",
+    "courseId": "MATH101",
+    "letterGrade": "C+"
+  },
+  {
+    "studentId": "S1040",
+    "courseId": "ENGL202",
+    "letterGrade": "D"
+  },
+  {
+    "studentId": "S1040",
+    "courseId": "HIST121",
+    "letterGrade": "B+"
+  },
+  {
+    "studentId": "S1040",
+    "courseId": "CMPS251",
+    "letterGrade": "B"
+  },
+  {
+    "studentId": "S1040",
+    "courseId": "PHYS191",
+    "letterGrade": "C"
+  },
+  {
+    "studentId": "S1040",
+    "courseId": "PHYS192",
+    "letterGrade": "C+"
+  },
+  {
+    "studentId": "S1040",
+    "courseId": "MATH102",
+    "letterGrade": "B"
+  },
+  {
+    "studentId": "S1040",
+    "courseId": "MATH231",
+    "letterGrade": "B+"
+  },
+  {
+    "studentId": "S1040",
+    "courseId": "ENGL203",
+    "letterGrade": "D"
+  },
+  {
+    "studentId": "S1040",
+    "courseId": "CMPS200",
+    "letterGrade": "C+"
+  },
+  {
+    "studentId": "S1040",
+    "courseId": "CMPS205",
+    "letterGrade": "C"
+  },
+  {
+    "studentId": "S1040",
+    "courseId": "CMPS351",
+    "letterGrade": "B+"
+  },
+  {
+    "studentId": "S1040",
+    "courseId": "CMPE263",
+    "letterGrade": "A"
+  },
+  {
+    "studentId": "S1040",
+    "courseId": "GENG200",
+    "letterGrade": "B+"
+  },
+  {
+    "studentId": "S1040",
+    "courseId": "CMPS310",
+    "letterGrade": "B+"
+  },
+  {
+    "studentId": "S1040",
+    "courseId": "CMPS303",
+    "letterGrade": "B"
+  },
+  {
+    "studentId": "S1040",
+    "courseId": "PHYS193",
+    "letterGrade": "B"
+  },
+  {
+    "studentId": "S1040",
+    "courseId": "PHYS194",
+    "letterGrade": "B"
+  },
+  {
+    "studentId": "S1040",
+    "courseId": "ARAB100",
+    "letterGrade": "B"
+  },
+  {
+    "studentId": "S1040",
+    "courseId": "CMPS323",
+    "letterGrade": "B"
+  },
+  {
+    "studentId": "S1040",
+    "courseId": "CMPE355",
+    "letterGrade": "B"
+  },
+  {
+    "studentId": "S1040",
+    "courseId": "CMPS380",
+    "letterGrade": "B"
+  },
+    {
+    "studentId": "S1041",
+    "courseId": "CMPS151",
+    "letterGrade": "C"
+  },
+  {
+    "studentId": "S1041",
+    "courseId": "GENG107",
+    "letterGrade": "C+"
+  },
+  {
+    "studentId": "S1041",
+    "courseId": "CHEM101",
+    "letterGrade": "B"
+  },
+  {
+    "studentId": "S1041",
+    "courseId": "CHEM103",
+    "letterGrade": "B"
+  },
+  {
+    "studentId": "S1041",
+    "courseId": "MATH101",
+    "letterGrade": "C+"
+  },
+  {
+    "studentId": "S1041",
+    "courseId": "ENGL202",
+    "letterGrade": "B+"
+  },
+  {
+    "studentId": "S1041",
+    "courseId": "CMPS205",
+    "letterGrade": "B+"
+  },
+  {
+    "studentId": "S1041",
+    "courseId": "CMPS251",
+    "letterGrade": "D"
+  },
+  {
+    "studentId": "S1041",
+    "courseId": "MATH102",
+    "letterGrade": "A"
+  },
+  {
+    "studentId": "S1041",
+    "courseId": "PHYS191",
+    "letterGrade": "C"
+  },
+  {
+    "studentId": "S1041",
+    "courseId": "PHYS192",
+    "letterGrade": "B+"
+  },
+  {
+    "studentId": "S1041",
+    "courseId": "ENGL203",
+    "letterGrade": "D"
+  },
+  {
+    "studentId": "S1041",
+    "courseId": "CMPE261",
+    "letterGrade": "B+"
+  },
+  {
+    "studentId": "S1041",
+    "courseId": "ELEC201",
+    "letterGrade": "B"
+  },
+  {
+    "studentId": "S1041",
+    "courseId": "MATH211",
+    "letterGrade": "B"
+  },
+  {
+    "studentId": "S1041",
+    "courseId": "CMPE355",
+    "letterGrade": "B"
+  },
+  {
+    "studentId": "S1041",
+    "courseId": "CMPE363",
+    "letterGrade": "A"
+  },
+  {
+    "studentId": "S1041",
+    "courseId": "CMPE370",
+    "letterGrade": "B+"
+  },
+  {
+    "studentId": "S1041",
+    "courseId": "CMPS405",
+    "letterGrade": "D"
+  },
+  {
+    "studentId": "S1041",
+    "courseId": "MATH217",
+    "letterGrade": "C+"
+  },
+  {
+    "studentId": "S1041",
+    "courseId": "PHYS193",
+    "letterGrade": "B"
+  },
+  {
+    "studentId": "S1041",
+    "courseId": "PHYS194",
+    "letterGrade": "B"
+  },
+  {
+    "studentId": "S1041",
+    "courseId": "ARAB100",
+    "letterGrade": "B"
+  },
+  {
+    "studentId": "S1041",
+    "courseId": "ELEC351",
+    "letterGrade": "B"
+  },
+  {
+    "studentId": "S1041",
+    "courseId": "ELEC231",
+    "letterGrade": "B"
+  },
+  {
+    "studentId": "S1041",
+    "courseId": "CMPE263",
+    "letterGrade": "B"
+  },
+  {
+    "studentId": "S1041",
+    "courseId": "CMPS303",
+    "letterGrade": "B"
+  },
+  {
+    "studentId": "S1041",
+    "courseId": "GENG200",
+    "letterGrade": "B"
+  },
+  {
+    "studentId": "S1042",
+    "courseId": "CMPS151",
+    "letterGrade": "F"
+  },
+  {
+    "studentId": "S1042",
+    "courseId": "GENG107",
+    "letterGrade": "F"
+  },
+  {
+    "studentId": "S1042",
+    "courseId": "CHEM101",
+    "letterGrade": "C+"
+  },
+  {
+    "studentId": "S1042",
+    "courseId": "CHEM103",
+    "letterGrade": "D"
+  },
+  {
+    "studentId": "S1042",
+    "courseId": "MATH101",
+    "letterGrade": "B"
+  },
+  {
+    "studentId": "S1042",
+    "courseId": "ENGL202",
+    "letterGrade": "F"
+  },
+  {
+    "studentId": "S1042",
+    "courseId": "CMPS205",
+    "letterGrade": "D+"
+  },
+  {
+    "studentId": "S1042",
+    "courseId": "CMPS251",
+    "letterGrade": "D"
+  },
+  {
+    "studentId": "S1042",
+    "courseId": "MATH102",
+    "letterGrade": "C+"
+  },
+  {
+    "studentId": "S1042",
+    "courseId": "PHYS191",
+    "letterGrade": "D+"
+  },
+  {
+    "studentId": "S1042",
+    "courseId": "PHYS192",
+    "letterGrade": "D"
+  },
+  {
+    "studentId": "S1042",
+    "courseId": "ENGL203",
+    "letterGrade": "C+"
+  },
+  {
+    "studentId": "S1042",
+    "courseId": "CMPE261",
+    "letterGrade": "C"
+  },
+  {
+    "studentId": "S1042",
+    "courseId": "ELEC201",
+    "letterGrade": "F"
+  },
+  {
+    "studentId": "S1042",
+    "courseId": "MATH211",
+    "letterGrade": "C+"
+  },
+  {
+    "studentId": "S1042",
+    "courseId": "PHYS193",
+    "letterGrade": "C"
+  },
+  {
+    "studentId": "S1042",
+    "courseId": "PHYS194",
+    "letterGrade": "B"
+  },
+  {
+    "studentId": "S1042",
+    "courseId": "ARAB100",
+    "letterGrade": "B"
+  },
+  {
+    "studentId": "S1042",
+    "courseId": "ELEC351",
+    "letterGrade": "C"
+  },
+  {
+    "studentId": "S1042",
+    "courseId": "ELEC231",
+    "letterGrade": "F"
+  },
+  {
+    "studentId": "S1042",
+    "courseId": "CMPE263",
+    "letterGrade": "F"
+  },
+  {
+    "studentId": "S1042",
+    "courseId": "CMPS303",
+    "letterGrade": "B"
+  },
+  {
+    "studentId": "S1042",
+    "courseId": "GENG200",
+    "letterGrade": "C"
+  },
+  {
+    "studentId": "S1042",
+    "courseId": "CMPE355",
+    "letterGrade": "B"
+  },
+  {
+    "studentId": "S1042",
+    "courseId": "CMPE363",
+    "letterGrade": "D"
+  },
+  {
+    "studentId": "S1042",
+    "courseId": "CMPE370",
+    "letterGrade": "D"
+  },
+  {
+    "studentId": "S1042",
+    "courseId": "CMPS405",
+    "letterGrade": "F"
+  },
+  {
+    "studentId": "S1042",
+    "courseId": "MATH217",
+    "letterGrade": "C+"
+  },
+  {
+    "studentId": "S1043",
+    "courseId": "CMPS151",
+    "letterGrade": "D"
+  },
+  {
+    "studentId": "S1043",
+    "courseId": "GENG107",
+    "letterGrade": "C"
+  },
+  {
+    "studentId": "S1043",
+    "courseId": "CHEM101",
+    "letterGrade": "C"
+  },
+  {
+    "studentId": "S1043",
+    "courseId": "CHEM103",
+    "letterGrade": "C+"
+  },
+  {
+    "studentId": "S1043",
+    "courseId": "MATH101",
+    "letterGrade": "C+"
+  },
+  {
+    "studentId": "S1043",
+    "courseId": "ENGL202",
+    "letterGrade": "C+"
+  },
+  {
+    "studentId": "S1043",
+    "courseId": "CMPS205",
+    "letterGrade": "C"
+  },
+  {
+    "studentId": "S1043",
+    "courseId": "CMPS251",
+    "letterGrade": "B"
+  },
+  {
+    "studentId": "S1043",
+    "courseId": "MATH102",
+    "letterGrade": "B"
+  },
+  {
+    "studentId": "S1043",
+    "courseId": "PHYS191",
+    "letterGrade": "B"
+  },
+  {
+    "studentId": "S1043",
+    "courseId": "PHYS192",
+    "letterGrade": "B"
+  },
+  {
+    "studentId": "S1043",
+    "courseId": "ENGL203",
+    "letterGrade": "C+"
+  },
+  {
+    "studentId": "S1043",
+    "courseId": "CMPE261",
+    "letterGrade": "D"
+  },
+  {
+    "studentId": "S1043",
+    "courseId": "ELEC201",
+    "letterGrade": "D"
+  },
+  {
+    "studentId": "S1043",
+    "courseId": "MATH211",
+    "letterGrade": "B"
+  },
+  {
+    "studentId": "S1043",
+    "courseId": "PHYS193",
+    "letterGrade": "D"
+  },
+  {
+    "studentId": "S1043",
+    "courseId": "PHYS194",
+    "letterGrade": "D"
+  },
+  {
+    "studentId": "S1043",
+    "courseId": "ARAB100",
+    "letterGrade": "C"
+  },
+  {
+    "studentId": "S1043",
+    "courseId": "ELEC351",
+    "letterGrade": "B+"
+  },
+  {
+    "studentId": "S1043",
+    "courseId": "ELEC231",
+    "letterGrade": "A"
+  },
+  {
+    "studentId": "S1043",
+    "courseId": "CMPE263",
+    "letterGrade": "B+"
+  },
+  {
+    "studentId": "S1043",
+    "courseId": "CMPS303",
+    "letterGrade": "C+"
+  },
+  {
+    "studentId": "S1043",
+    "courseId": "GENG200",
+    "letterGrade": "B"
+  },
+  {
+    "studentId": "S1043",
+    "courseId": "CMPE355",
+    "letterGrade": "C"
+  },
+  {
+    "studentId": "S1043",
+    "courseId": "CMPE363",
+    "letterGrade": "D"
+  },
+  {
+    "studentId": "S1043",
+    "courseId": "CMPE370",
+    "letterGrade": "D"
+  },
+  {
+    "studentId": "S1043",
+    "courseId": "CMPS405",
+    "letterGrade": "B+"
+  },
+  {
+    "studentId": "S1043",
+    "courseId": "MATH217",
+    "letterGrade": "A"
+  },
+  {
+    "studentId": "S1044",
+    "courseId": "CMPS151",
+    "letterGrade": "B+"
+  },
+  {
+    "studentId": "S1044",
+    "courseId": "GENG107",
+    "letterGrade": "A"
+  },
+  {
+    "studentId": "S1044",
+    "courseId": "CHEM101",
+    "letterGrade": "A"
+  },
+  {
+    "studentId": "S1044",
+    "courseId": "CHEM103",
+    "letterGrade": "A"
+  },
+  {
+    "studentId": "S1044",
+    "courseId": "MATH101",
+    "letterGrade": "A"
+  },
+  {
+    "studentId": "S1044",
+    "courseId": "ARAB100",
+    "letterGrade": "B+"
+  },
+  {
+    "studentId": "S1044",
+    "courseId": "CMPE263",
+    "letterGrade": "B"
+  },
+  {
+    "studentId": "S1044",
+    "courseId": "CMPS303",
+    "letterGrade": "B+"
+  },
+  {
+    "studentId": "S1044",
+    "courseId": "GENG200",
+    "letterGrade": "A"
+  },
+  {
+    "studentId": "S1044",
+    "courseId": "CMPE355",
+    "letterGrade": "A"
+  },
+  {
+    "studentId": "S1044",
+    "courseId": "CMPE363",
+    "letterGrade": "A"
+  },
+  {
+    "studentId": "S1044",
+    "courseId": "CMPE370",
+    "letterGrade": "A"
+  },
+  {
+    "studentId": "S1044",
+    "courseId": "CMPS405",
+    "letterGrade": "A"
+  },
+  {
+    "studentId": "S1044",
+    "courseId": "MATH217",
+    "letterGrade": "A"
+  },
+  {
+    "studentId": "S1044",
+    "courseId": "ENGL202",
+    "letterGrade": "A"
+  },
+  {
+    "studentId": "S1044",
+    "courseId": "CMPS205",
+    "letterGrade": "A"
+  },
+  {
+    "studentId": "S1044",
+    "courseId": "CMPS251",
+    "letterGrade": "A"
+  },
+  {
+    "studentId": "S1044",
+    "courseId": "MATH102",
+    "letterGrade": "A"
+  },
+  {
+    "studentId": "S1044",
+    "courseId": "PHYS191",
+    "letterGrade": "A"
+  },
+  {
+    "studentId": "S1044",
+    "courseId": "PHYS192",
+    "letterGrade": "A"
+  },
+  {
+    "studentId": "S1044",
+    "courseId": "ENGL203",
+    "letterGrade": "A"
+  },
+  {
+    "studentId": "S1044",
+    "courseId": "CMPE261",
+    "letterGrade": "A"
+  },
+  {
+    "studentId": "S1044",
+    "courseId": "ELEC201",
+    "letterGrade": "A"
+  },
+  {
+    "studentId": "S1044",
+    "courseId": "MATH211",
+    "letterGrade": "A"
+  },
+  {
+    "studentId": "S1044",
+    "courseId": "PHYS193",
+    "letterGrade": "A"
+  },
+  {
+    "studentId": "S1044",
+    "courseId": "PHYS194",
+    "letterGrade": "A"
+  },
+  {
+    "studentId": "S1044",
+    "courseId": "ELEC351",
+    "letterGrade": "A"
+  },
+  {
+    "studentId": "S1044",
+    "courseId": "ELEC231",
+    "letterGrade": "A"
+  },
+  {
+    "studentId": "S1045",
+    "courseId": "CMPS151",
+    "letterGrade": "C"
+  },
+  {
+    "studentId": "S1045",
+    "courseId": "GENG107",
+    "letterGrade": "C"
+  },
+  {
+    "studentId": "S1045",
+    "courseId": "CHEM101",
+    "letterGrade": "B+"
+  },
+  {
+    "studentId": "S1045",
+    "courseId": "CHEM103",
+    "letterGrade": "D"
+  },
+  {
+    "studentId": "S1045",
+    "courseId": "MATH101",
+    "letterGrade": "D"
+  },
+  {
+    "studentId": "S1045",
+    "courseId": "ENGL202",
+    "letterGrade": "B"
+  },
+  {
+    "studentId": "S1045",
+    "courseId": "CMPS205",
+    "letterGrade": "A"
+  },
+  {
+    "studentId": "S1045",
+    "courseId": "CMPS251",
+    "letterGrade": "A"
+  },
+  {
+    "studentId": "S1045",
+    "courseId": "MATH102",
+    "letterGrade": "B+"
+  },
+  {
+    "studentId": "S1045",
+    "courseId": "PHYS191",
+    "letterGrade": "C"
+  },
+  {
+    "studentId": "S1045",
+    "courseId": "PHYS192",
+    "letterGrade": "C"
+  },
+  {
+    "studentId": "S1045",
+    "courseId": "ENGL203",
+    "letterGrade": "A"
+  },
+  {
+    "studentId": "S1045",
+    "courseId": "CMPE261",
+    "letterGrade": "B"
+  },
+  {
+    "studentId": "S1045",
+    "courseId": "ELEC201",
+    "letterGrade": "C"
+  },
+  {
+    "studentId": "S1045",
+    "courseId": "MATH211",
+    "letterGrade": "C+"
+  },
+  {
+    "studentId": "S1045",
+    "courseId": "PHYS193",
+    "letterGrade": "B"
+  },
+  {
+    "studentId": "S1045",
+    "courseId": "PHYS194",
+    "letterGrade": "A"
+  },
+  {
+    "studentId": "S1045",
+    "courseId": "ARAB100",
+    "letterGrade": "B"
+  },
+  {
+    "studentId": "S1045",
+    "courseId": "ELEC351",
+    "letterGrade": "B"
+  },
+  {
+    "studentId": "S1045",
+    "courseId": "ELEC231",
+    "letterGrade": "A"
+  },
+  {
+    "studentId": "S1045",
+    "courseId": "CMPE263",
+    "letterGrade": "B+"
+  },
+  {
+    "studentId": "S1045",
+    "courseId": "CMPS303",
+    "letterGrade": "C"
+  },
+  {
+    "studentId": "S1045",
+    "courseId": "GENG200",
+    "letterGrade": "B+"
+  },
+  {
+    "studentId": "S1045",
+    "courseId": "CMPE355",
+    "letterGrade": "C"
+  },
+  {
+    "studentId": "S1045",
+    "courseId": "CMPE363",
+    "letterGrade": "C"
+  },
+  {
+    "studentId": "S1045",
+    "courseId": "CMPE370",
+    "letterGrade": "C"
+  },
+  {
+    "studentId": "S1045",
+    "courseId": "CMPS405",
+    "letterGrade": "C"
+  },
+  {
+    "studentId": "S1045",
+    "courseId": "MATH217",
+    "letterGrade": "C"
+  },
+  {
+    "studentId": "S1046",
+    "courseId": "CMPS151",
+    "letterGrade": "D+"
+  },
+  {
+    "studentId": "S1046",
+    "courseId": "GENG107",
+    "letterGrade": "C"
+  },
+  {
+    "studentId": "S1046",
+    "courseId": "CHEM101",
+    "letterGrade": "C"
+  },
+  {
+    "studentId": "S1046",
+    "courseId": "CHEM103",
+    "letterGrade": "F"
+  },
+  {
+    "studentId": "S1046",
+    "courseId": "MATH101",
+    "letterGrade": "D"
+  },
+  {
+    "studentId": "S1046",
+    "courseId": "ENGL202",
+    "letterGrade": "B"
+  },
+  {
+    "studentId": "S1046",
+    "courseId": "CMPS205",
+    "letterGrade": "C+"
+  },
+  {
+    "studentId": "S1046",
+    "courseId": "CMPS251",
+    "letterGrade": "D"
+  },
+  {
+    "studentId": "S1046",
+    "courseId": "MATH102",
+    "letterGrade": "B"
+  },
+  {
+    "studentId": "S1046",
+    "courseId": "PHYS191",
+    "letterGrade": "F"
+  },
+  {
+    "studentId": "S1046",
+    "courseId": "PHYS192",
+    "letterGrade": "D+"
+  },
+  {
+    "studentId": "S1046",
+    "courseId": "ENGL203",
+    "letterGrade": "C"
+  },
+  {
+    "studentId": "S1046",
+    "courseId": "CMPE261",
+    "letterGrade": "F"
+  },
+  {
+    "studentId": "S1046",
+    "courseId": "ELEC201",
+    "letterGrade": "D+"
+  },
+  {
+    "studentId": "S1046",
+    "courseId": "MATH211",
+    "letterGrade": "D"
+  },
+  {
+    "studentId": "S1046",
+    "courseId": "CMPS303",
+    "letterGrade": "D"
+  },
+  {
+    "studentId": "S1046",
+    "courseId": "GENG200",
+    "letterGrade": "D"
+  },
+  {
+    "studentId": "S1046",
+    "courseId": "CMPE355",
+    "letterGrade": "C"
+  },
+  {
+    "studentId": "S1046",
+    "courseId": "PHYS193",
+    "letterGrade": "D"
+  },
+  {
+    "studentId": "S1046",
+    "courseId": "PHYS194",
+    "letterGrade": "D"
+  },
+  {
+    "studentId": "S1046",
+    "courseId": "ARAB100",
+    "letterGrade": "D"
+  },
+  {
+    "studentId": "S1046",
+    "courseId": "ELEC351",
+    "letterGrade": "D"
+  },
+  {
+    "studentId": "S1046",
+    "courseId": "ELEC231",
+    "letterGrade": "D"
+  },
+  {
+    "studentId": "S1046",
+    "courseId": "CMPE263",
+    "letterGrade": "D"
+  },
+  {
+    "studentId": "S1046",
+    "courseId": "CMPE363",
+    "letterGrade": "D"
+  },
+  {
+    "studentId": "S1046",
+    "courseId": "CMPE370",
+    "letterGrade": "D"
+  },
+  {
+    "studentId": "S1046",
+    "courseId": "CMPS405",
+    "letterGrade": "D"
+  },
+  {
+    "studentId": "S1046",
+    "courseId": "MATH217",
+    "letterGrade": "D"
+  },
+  {
+    "studentId": "S1047",
+    "courseId": "CMPS151",
+    "letterGrade": "B"
+  },
+  {
+    "studentId": "S1047",
+    "courseId": "GENG107",
+    "letterGrade": "A"
+  },
+  {
+    "studentId": "S1047",
+    "courseId": "CHEM101",
+    "letterGrade": "A"
+  },
+  {
+    "studentId": "S1047",
+    "courseId": "CHEM103",
+    "letterGrade": "A"
+  },
+  {
+    "studentId": "S1047",
+    "courseId": "MATH101",
+    "letterGrade": "A"
+  },
+  {
+    "studentId": "S1047",
+    "courseId": "ENGL202",
+    "letterGrade": "B"
+  },
+  {
+    "studentId": "S1047",
+    "courseId": "CMPS205",
+    "letterGrade": "A"
+  },
+  {
+    "studentId": "S1047",
+    "courseId": "CMPS251",
+    "letterGrade": "A"
+  },
+  {
+    "studentId": "S1047",
+    "courseId": "MATH102",
+    "letterGrade": "A"
+  },
+  {
+    "studentId": "S1047",
+    "courseId": "PHYS191",
+    "letterGrade": "A"
+  },
+  {
+    "studentId": "S1047",
+    "courseId": "PHYS192",
+    "letterGrade": "A"
+  },
+  {
+    "studentId": "S1047",
+    "courseId": "ENGL203",
+    "letterGrade": "A"
+  },
+  {
+    "studentId": "S1047",
+    "courseId": "CMPE261",
+    "letterGrade": "A"
+  },
+  {
+    "studentId": "S1047",
+    "courseId": "ELEC201",
+    "letterGrade": "A"
+  },
+  {
+    "studentId": "S1047",
+    "courseId": "MATH211",
+    "letterGrade": "A"
+  },
+  {
+    "studentId": "S1047",
+    "courseId": "PHYS193",
+    "letterGrade": "B"
+  },
+  {
+    "studentId": "S1047",
+    "courseId": "PHYS194",
+    "letterGrade": "B"
+  },
+  {
+    "studentId": "S1047",
+    "courseId": "ARAB100",
+    "letterGrade": "B+"
+  },
+  {
+    "studentId": "S1047",
+    "courseId": "ELEC351",
+    "letterGrade": "A"
+  },
+  {
+    "studentId": "S1047",
+    "courseId": "ELEC231",
+    "letterGrade": "A"
+  },
+  {
+    "studentId": "S1047",
+    "courseId": "CMPE263",
+    "letterGrade": "A"
+  },
+  {
+    "studentId": "S1047",
+    "courseId": "CMPS303",
+    "letterGrade": "A"
+  },
+  {
+    "studentId": "S1047",
+    "courseId": "GENG200",
+    "letterGrade": "A"
+  },
+  {
+    "studentId": "S1047",
+    "courseId": "CMPE355",
+    "letterGrade": "A"
+  },
+  {
+    "studentId": "S1047",
+    "courseId": "CMPE363",
+    "letterGrade": "A"
+  },
+  {
+    "studentId": "S1047",
+    "courseId": "CMPE370",
+    "letterGrade": "A"
+  },
+  {
+    "studentId": "S1047",
+    "courseId": "CMPS405",
+    "letterGrade": "A"
+  },
+  {
+    "studentId": "S1047",
+    "courseId": "MATH217",
+    "letterGrade": "A"
+  },
+  {
+    "studentId": "S1048",
+    "courseId": "CMPS151",
+    "letterGrade": "C+"
+  },
+  {
+    "studentId": "S1048",
+    "courseId": "GENG107",
+    "letterGrade": "C"
+  },
+  {
+    "studentId": "S1048",
+    "courseId": "CHEM101",
+    "letterGrade": "B+"
+  },
+  {
+    "studentId": "S1048",
+    "courseId": "CHEM103",
+    "letterGrade": "C"
+  },
+  {
+    "studentId": "S1048",
+    "courseId": "MATH101",
+    "letterGrade": "B+"
+  },
+  {
+    "studentId": "S1048",
+    "courseId": "ENGL202",
+    "letterGrade": "D"
+  },
+  {
+    "studentId": "S1048",
+    "courseId": "CMPS205",
+    "letterGrade": "B+"
+  },
+  {
+    "studentId": "S1048",
+    "courseId": "CMPS251",
+    "letterGrade": "A"
+  },
+  {
+    "studentId": "S1048",
+    "courseId": "MATH102",
+    "letterGrade": "A"
+  },
+  {
+    "studentId": "S1048",
+    "courseId": "PHYS191",
+    "letterGrade": "C+"
+  },
+  {
+    "studentId": "S1048",
+    "courseId": "PHYS192",
+    "letterGrade": "B"
+  },
+  {
+    "studentId": "S1048",
+    "courseId": "ENGL203",
+    "letterGrade": "D"
+  },
+  {
+    "studentId": "S1048",
+    "courseId": "CMPE261",
+    "letterGrade": "C"
+  },
+  {
+    "studentId": "S1048",
+    "courseId": "CMPE263",
+    "letterGrade": "A"
+  },
+  {
+    "studentId": "S1048",
+    "courseId": "CMPS303",
+    "letterGrade": "C+"
+  },
+  {
+    "studentId": "S1048",
+    "courseId": "GENG200",
+    "letterGrade": "A"
+  },
+  {
+    "studentId": "S1048",
+    "courseId": "CMPE355",
+    "letterGrade": "C+"
+  },
+  {
+    "studentId": "S1048",
+    "courseId": "CMPE363",
+    "letterGrade": "C+"
+  },
+  {
+    "studentId": "S1048",
+    "courseId": "CMPE370",
+    "letterGrade": "A"
+  },
+  {
+    "studentId": "S1048",
+    "courseId": "CMPS405",
+    "letterGrade": "B"
+  },
+  {
+    "studentId": "S1048",
+    "courseId": "MATH217",
+    "letterGrade": "D"
+  },
+  {
+    "studentId": "S1048",
+    "courseId": "ELEC201",
+    "letterGrade": "C"
+  },
+  {
+    "studentId": "S1048",
+    "courseId": "MATH211",
+    "letterGrade": "C"
+  },
+  {
+    "studentId": "S1048",
+    "courseId": "PHYS193",
+    "letterGrade": "C"
+  },
+  {
+    "studentId": "S1048",
+    "courseId": "PHYS194",
+    "letterGrade": "C"
+  },
+  {
+    "studentId": "S1048",
+    "courseId": "ARAB100",
+    "letterGrade": "C"
+  },
+  {
+    "studentId": "S1048",
+    "courseId": "ELEC351",
+    "letterGrade": "C"
+  },
+  {
+    "studentId": "S1048",
+    "courseId": "ELEC231",
+    "letterGrade": "C"
+  },
+  {
+    "studentId": "S1049",
+    "courseId": "CMPS151",
+    "letterGrade": "C+"
+  },
+  {
+    "studentId": "S1049",
+    "courseId": "GENG107",
+    "letterGrade": "D"
+  },
+  {
+    "studentId": "S1049",
+    "courseId": "CHEM101",
+    "letterGrade": "B+"
+  },
+  {
+    "studentId": "S1049",
+    "courseId": "CHEM103",
+    "letterGrade": "B+"
+  },
+  {
+    "studentId": "S1049",
+    "courseId": "MATH101",
+    "letterGrade": "B+"
+  },
+  {
+    "studentId": "S1049",
+    "courseId": "ENGL202",
+    "letterGrade": "A"
+  },
+  {
+    "studentId": "S1049",
+    "courseId": "CMPS205",
+    "letterGrade": "C+"
+  },
+  {
+    "studentId": "S1049",
+    "courseId": "CMPS251",
+    "letterGrade": "B"
+  },
+  {
+    "studentId": "S1049",
+    "courseId": "MATH102",
+    "letterGrade": "D"
+  },
+  {
+    "studentId": "S1049",
+    "courseId": "PHYS191",
+    "letterGrade": "C"
+  },
+  {
+    "studentId": "S1049",
+    "courseId": "PHYS192",
+    "letterGrade": "C"
+  },
+  {
+    "studentId": "S1049",
+    "courseId": "ENGL203",
+    "letterGrade": "D"
+  },
+  {
+    "studentId": "S1049",
+    "courseId": "CMPE261",
+    "letterGrade": "B+"
+  },
+  {
+    "studentId": "S1049",
+    "courseId": "ELEC201",
+    "letterGrade": "C"
+  },
+  {
+    "studentId": "S1049",
+    "courseId": "MATH211",
+    "letterGrade": "B+"
+  },
+  {
+    "studentId": "S1049",
+    "courseId": "PHYS193",
+    "letterGrade": "D"
+  },
+  {
+    "studentId": "S1049",
+    "courseId": "PHYS194",
+    "letterGrade": "B"
+  },
+  {
+    "studentId": "S1049",
+    "courseId": "ARAB100",
+    "letterGrade": "B+"
+  },
+  {
+    "studentId": "S1049",
+    "courseId": "ELEC351",
+    "letterGrade": "D"
+  },
+  {
+    "studentId": "S1049",
+    "courseId": "ELEC231",
+    "letterGrade": "D"
+  },
+  {
+    "studentId": "S1049",
+    "courseId": "CMPE263",
+    "letterGrade": "B"
+  },
+  {
+    "studentId": "S1049",
+    "courseId": "CMPS303",
+    "letterGrade": "D"
+  },
+  {
+    "studentId": "S1049",
+    "courseId": "GENG200",
+    "letterGrade": "C+"
+  },
+  {
+    "studentId": "S1049",
+    "courseId": "CMPE355",
+    "letterGrade": "D"
+  },
+  {
+    "studentId": "S1049",
+    "courseId": "CMPE363",
+    "letterGrade": "D"
+  },
+  {
+    "studentId": "S1049",
+    "courseId": "CMPE370",
+    "letterGrade": "D"
+  },
+  {
+    "studentId": "S1049",
+    "courseId": "CMPS405",
+    "letterGrade": "D"
+  },
+  {
+    "studentId": "S1049",
+    "courseId": "MATH217",
+    "letterGrade": "D"
+  },
+  {
+    "studentId": "S1050",
+    "courseId": "CMPS151",
+    "letterGrade": "C+"
+  },
+  {
+    "studentId": "S1050",
+    "courseId": "GENG107",
+    "letterGrade": "C+"
+  },
+  {
+    "studentId": "S1050",
+    "courseId": "CHEM101",
+    "letterGrade": "C"
+  },
+  {
+    "studentId": "S1050",
+    "courseId": "CHEM103",
+    "letterGrade": "D"
+  },
+  {
+    "studentId": "S1050",
+    "courseId": "MATH101",
+    "letterGrade": "C+"
+  },
+  {
+    "studentId": "S1050",
+    "courseId": "ENGL202",
+    "letterGrade": "B+"
+  },
+  {
+    "studentId": "S1050",
+    "courseId": "CMPS205",
+    "letterGrade": "C"
+  },
+  {
+    "studentId": "S1050",
+    "courseId": "CMPS251",
+    "letterGrade": "D"
+  },
+  {
+    "studentId": "S1050",
+    "courseId": "MATH102",
+    "letterGrade": "B"
+  },
+  {
+    "studentId": "S1050",
+    "courseId": "PHYS191",
+    "letterGrade": "C"
+  },
+  {
+    "studentId": "S1050",
+    "courseId": "PHYS192",
+    "letterGrade": "B"
+  },
+  {
+    "studentId": "S1050",
+    "courseId": "ENGL203",
+    "letterGrade": "B+"
+  },
+  {
+    "studentId": "S1050",
+    "courseId": "CMPE261",
+    "letterGrade": "B"
+  },
+  {
+    "studentId": "S1050",
+    "courseId": "ELEC201",
+    "letterGrade": "C"
+  },
+  {
+    "studentId": "S1050",
+    "courseId": "MATH211",
+    "letterGrade": "B"
+  },
+  {
+    "studentId": "S1050",
+    "courseId": "PHYS193",
+    "letterGrade": "D"
+  },
+  {
+    "studentId": "S1050",
+    "courseId": "PHYS194",
+    "letterGrade": "A"
+  },
+  {
+    "studentId": "S1050",
+    "courseId": "ARAB100",
+    "letterGrade": "D"
+  },
+  {
+    "studentId": "S1050",
+    "courseId": "ELEC351",
+    "letterGrade": "A"
+  },
+  {
+    "studentId": "S1050",
+    "courseId": "ELEC231",
+    "letterGrade": "C+"
+  },
+  {
+    "studentId": "S1050",
+    "courseId": "CMPE263",
+    "letterGrade": "C+"
+  },
+  {
+    "studentId": "S1050",
+    "courseId": "CMPS303",
+    "letterGrade": "A"
+  },
+  {
+    "studentId": "S1050",
+    "courseId": "GENG200",
+    "letterGrade": "D"
+  },
+  {
+    "studentId": "S1050",
+    "courseId": "CMPE355",
+    "letterGrade": "C+"
+  },
+  {
+    "studentId": "S1050",
+    "courseId": "CMPE363",
+    "letterGrade": "D"
+  },
+  {
+    "studentId": "S1050",
+    "courseId": "CMPE370",
+    "letterGrade": "B+"
+  },
+  {
+    "studentId": "S1050",
+    "courseId": "CMPS405",
+    "letterGrade": "C"
+  },
+  {
+    "studentId": "S1050",
+    "courseId": "MATH217",
+    "letterGrade": "C"
   }
 ]
