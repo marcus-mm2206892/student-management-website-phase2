@@ -215,3 +215,8 @@ model Subjects {
   code    String @unique
   // Course  Course[]
 }
+
+generator erd {
+  provider = "prisma-erd-generator"
+  output   = "./ERD.pdf"
+}
