@@ -670,6 +670,206 @@
     "profileImage": "/assets/imgs/user-profile-images/female3.png"
   },
   {
+    "email": "sara.khan@qu.com",
+    "firstName": "Sara",
+    "lastName": "Khan",
+    "password": "sara123",
+    "role": "student",
+    "gender": "female",
+    "themePreference": "system",
+    "profileImage": "/assets/imgs/user-profile-images/female1.png"
+  },
+  {
+    "email": "mohamed.ali@qu.com",
+    "firstName": "Mohamed",
+    "lastName": "Ali",
+    "password": "ali123",
+    "role": "student",
+    "gender": "male",
+    "themePreference": "system",
+    "profileImage": "/assets/imgs/user-profile-images/male2.png"
+  },
+  {
+    "email": "fatima.noor@qu.com",
+    "firstName": "Fatima",
+    "lastName": "Noor",
+    "password": "fatima123",
+    "role": "student",
+    "gender": "female",
+    "themePreference": "system",
+    "profileImage": "/assets/imgs/user-profile-images/female2.png"
+  },
+  {
+    "email": "james.smith@qu.com",
+    "firstName": "James",
+    "lastName": "Smith",
+    "password": "james123",
+    "role": "student",
+    "gender": "male",
+    "themePreference": "system",
+    "profileImage": "/assets/imgs/user-profile-images/male3.png"
+  },
+  {
+    "email": "aya.hassan@qu.com",
+    "firstName": "Aya",
+    "lastName": "Hassan",
+    "password": "aya123",
+    "role": "student",
+    "gender": "female",
+    "themePreference": "system",
+    "profileImage": "/assets/imgs/user-profile-images/female3.png"
+  },
+  {
+    "email": "omar.farouk@qu.com",
+    "firstName": "Omar",
+    "lastName": "Farouk",
+    "password": "omar123",
+    "role": "student",
+    "gender": "male",
+    "themePreference": "system",
+    "profileImage": "/assets/imgs/user-profile-images/male1.png"
+  },
+  {
+    "email": "layla.adams@qu.com",
+    "firstName": "Layla",
+    "lastName": "Adams",
+    "password": "layla123",
+    "role": "student",
+    "gender": "female",
+    "themePreference": "system",
+    "profileImage": "/assets/imgs/user-profile-images/female4.png"
+  },
+  {
+    "email": "hassan.musa@qu.com",
+    "firstName": "Hassan",
+    "lastName": "Musa",
+    "password": "hassan123",
+    "role": "student",
+    "gender": "male",
+    "themePreference": "system",
+    "profileImage": "/assets/imgs/user-profile-images/male2.png"
+  },
+  {
+    "email": "emma.lee@qu.com",
+    "firstName": "Emma",
+    "lastName": "Lee",
+    "password": "emma123",
+    "role": "student",
+    "gender": "female",
+    "themePreference": "system",
+    "profileImage": "/assets/imgs/user-profile-images/female4.png"
+  },
+  {
+    "email": "youssef.amir@qu.com",
+    "firstName": "Youssef",
+    "lastName": "Amir",
+    "password": "youssef123",
+    "role": "student",
+    "gender": "male",
+    "themePreference": "system",
+    "profileImage": "/assets/imgs/user-profile-images/male3.png"
+  },
+  {
+    "email": "noor.abdullah@qu.com",
+    "firstName": "Noor",
+    "lastName": "Abdullah",
+    "password": "noor123",
+    "role": "student",
+    "gender": "female",
+    "themePreference": "system",
+    "profileImage": "/assets/imgs/user-profile-images/female1.png"
+  },
+  {
+    "email": "adam.brown@qu.com",
+    "firstName": "Adam",
+    "lastName": "Brown",
+    "password": "adam123",
+    "role": "student",
+    "gender": "male",
+    "themePreference": "system",
+    "profileImage": "/assets/imgs/user-profile-images/male4.png"
+  },
+  {
+    "email": "hana.rahman@qu.com",
+    "firstName": "Hana",
+    "lastName": "Rahman",
+    "password": "hana123",
+    "role": "student",
+    "gender": "female",
+    "themePreference": "system",
+    "profileImage": "/assets/imgs/user-profile-images/female2.png"
+  },
+  {
+    "email": "ethan.jones@qu.com",
+    "firstName": "Ethan",
+    "lastName": "Jones",
+    "password": "ethan123",
+    "role": "student",
+    "gender": "male",
+    "themePreference": "system",
+    "profileImage": "/assets/imgs/user-profile-images/male2.png"
+  },
+  {
+    "email": "salma.farid@qu.com",
+    "firstName": "Salma",
+    "lastName": "Farid",
+    "password": "salma123",
+    "role": "student",
+    "gender": "female",
+    "themePreference": "system",
+    "profileImage": "/assets/imgs/user-profile-images/female3.png"
+  },
+  {
+    "email": "ryan.taylor@qu.com",
+    "firstName": "Ryan",
+    "lastName": "Taylor",
+    "password": "ryan123",
+    "role": "student",
+    "gender": "male",
+    "themePreference": "system",
+    "profileImage": "/assets/imgs/user-profile-images/male1.png"
+  },
+  {
+    "email": "zainab.ali@qu.com",
+    "firstName": "Zainab",
+    "lastName": "Ali",
+    "password": "zainab123",
+    "role": "student",
+    "gender": "female",
+    "themePreference": "system",
+    "profileImage": "/assets/imgs/user-profile-images/female4.png"
+  },
+  {
+    "email": "bilal.hussein@qu.com",
+    "firstName": "Bilal",
+    "lastName": "Hussein",
+    "password": "bilal123",
+    "role": "student",
+    "gender": "male",
+    "themePreference": "system",
+    "profileImage": "/assets/imgs/user-profile-images/male4.png"
+  },
+  {
+    "email": "amal.mohamed@qu.com",
+    "firstName": "Amal",
+    "lastName": "Mohamed",
+    "password": "amal123",
+    "role": "student",
+    "gender": "female",
+    "themePreference": "system",
+    "profileImage": "/assets/imgs/user-profile-images/female4.png"
+  },
+  {
+    "email": "david.clark@qu.com",
+    "firstName": "David",
+    "lastName": "Clark",
+    "password": "david123",
+    "role": "student",
+    "gender": "male",
+    "themePreference": "system",
+    "profileImage": "/assets/imgs/user-profile-images/male2.png"
+  },
+  {
     "email": "admin@qu.com",
     "firstName": "Admin",
     "lastName": "",
