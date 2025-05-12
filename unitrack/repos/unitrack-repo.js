@@ -100,6 +100,16 @@ class UniTrackRepo {
       },
     });
   }
+  async getCourseIds() {
+    const courses = await prisma.course.findMany({
+      select: {
+        courseId: true,
+      },
+    });
+
+    const courseIds = courses.map((course) => course.courseId);
+    return courseIds;
+  }
 
   async getRecommendedCourses(studentId, majorId) {
     const completed = await prisma.completedCourse.findMany({

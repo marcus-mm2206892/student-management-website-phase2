@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import styles from "@/app/styles/admin-create-course.module.css";
-import { createPrerequisiteAction, createCourseMajorOfferingAction, createCourseAction, checkCourseIdAction, getAllSubjectCodeAction, getAllCourseIdsAction } from "@/app/action/server-actions";
+import { createPrerequisiteAction, createCourseMajorOfferingAction, createCourseAction, checkCourseIdAction, getAllSubjectCodeAction, getCourseIdsAction } from "@/app/action/server-actions";
 import AlertModal from "@/app/components/AlertModal";
 /*
   To be fixed:
@@ -43,7 +43,7 @@ export default function AdminCreateCourse() {
 
   useEffect(() => {
   async function fetchPrereqs() {
-      const courseIds = await getAllCourseIdsAction();
+      const courseIds = await getCourseIdsAction();
       setPrerequisites(courseIds);
     }
     fetchPrereqs();

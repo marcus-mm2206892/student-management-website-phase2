@@ -35,6 +35,11 @@ export async function getAllCoursesAction() {
   return await unitrackRepo.getAllCourses();
 }
 
+export async function getCourseIdsAction() {
+  return await unitrackRepo.getCourseIds();
+}
+
+
 export async function getRecommendedCoursesAction(email) {
   const student = await unitrackRepo.getStudentByEmail(email);
   if (!student) return [];
