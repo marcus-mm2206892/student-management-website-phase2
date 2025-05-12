@@ -29,15 +29,15 @@ export default function StudentProfile() {
   }, []);
 
   useEffect(() => {
-          async function fetchStudent() {
-            if (user && user.email) {
-              const result = await getStudentByEmailAction(user.email);
-              setStudent(result);
-            }
-          }
-      
-          fetchStudent();
-        }, [user]);
+    async function fetchStudent() {
+      if (user && user.email) {
+        const result = await getStudentByEmailAction(user.email);
+        setStudent(result);
+      }
+    }
+
+    fetchStudent();
+  }, [user]);
   
   // useEffect(() => {
   //       console.log("Updated student:", student);

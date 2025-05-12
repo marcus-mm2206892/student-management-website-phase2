@@ -12,7 +12,7 @@ class UniTrackRepo {
   }
 
   async getAdminByEmail(email) {
-    return await prisma.admin.findFirst( { where: {email} } )
+    return await prisma.admin.findFirst({ where: { email } });
   }
 
   async createAdmin(data) {
@@ -101,11 +101,78 @@ class UniTrackRepo {
     });
   }
 
+  async getRecommendedCourses(studentId, majorId) {
+    const completed = await prisma.completedCourse.findMany({
+      where: { studentId },
+      select: { courseId: true },
+    });
+    const completedCourseIds = completed.map((c) => c.courseId);
+
+    const required = await prisma.courseMajorOfferings.findMany({
+      where: { majorId },
+      select: { courseId: true },
+    });
+    const requiredCourseIds = required.map((r) => r.courseId);
+
+    const uncompletedRequiredIds = requiredCourseIds.filter(
+      (id) => !completedCourseIds.includes(id)
+    );
+
+    return await prisma.course.findMany({
+      where: { courseId: { in: uncompletedRequiredIds } },
+      include: { CourseMajorOfferings: true },
+    });
+  }
+
+  async getSupplementaryCourses(studentId) {
+    const completed = await prisma.completedCourse.findMany({
+      where: { studentId },
+      select: { courseId: true },
+    });
+    const completedCourseIds = completed.map((c) => c.courseId);
+
+    const all = await prisma.course.findMany({
+      include: { CourseMajorOfferings: true },
+    });
+
+    return all.filter(
+      (c) =>
+        !completedCourseIds.includes(c.courseId) &&
+        !c.courseId.startsWith("CMPS") &&
+        !c.courseId.startsWith("CMPE")
+    );
+  }
+
+  async getElectiveCourses(studentId) {
+    const electiveCourseIds = [
+      "CMPE471",
+      "CMPE483",
+      "CMPS360",
+      "CMPS482",
+      "CMPS497",
+    ];
+
+    const completed = await prisma.completedCourse.findMany({
+      where: { studentId },
+      select: { courseId: true },
+    });
+    const completedCourseIds = completed.map((c) => c.courseId);
+
+    const filteredElectives = electiveCourseIds.filter(
+      (id) => !completedCourseIds.includes(id)
+    );
+
+    return await prisma.course.findMany({
+      where: { courseId: { in: filteredElectives } },
+      include: { CourseMajorOfferings: true },
+    });
+  }
+
   async getCourseWithPrerequisites(id) {
     return await prisma.course.findUnique({
       where: { courseId: id },
       include: {
-        prerequisites: true, // loads prerequisiteId and minGrade
+        prerequisites: true,
       },
     });
   }
@@ -179,17 +246,13 @@ class UniTrackRepo {
   }
 
   async checkCourseId(courseId) {
-    const course = await prisma.course.findUnique({ 
-      where: { courseId } });
-    
-    if (course) 
-      return true
-    else 
-      return false
-    
+    const course = await prisma.course.findUnique({
+      where: { courseId },
+    });
+
+    if (course) return true;
+    else return false;
   }
-
-
 
   async createCourse(data) {
     return await prisma.course.create({ data });
@@ -296,15 +359,14 @@ class UniTrackRepo {
   async getInstructorById(id) {
     return await prisma.instructor.findUnique({
       where: {
-        instructorId: id
+        instructorId: id,
       },
       include: {
         teachingClasses: true,
-        gradedClasses: true
-      }
+        gradedClasses: true,
+      },
     });
   }
-
 
   async getInstructorByEmail(email) {
     return await prisma.instructor.findUnique({
@@ -427,6 +489,60 @@ class UniTrackRepo {
         },
       },
     });
+  }
+
+  async getRegisteredClassRecordsByStudentEmail(email) {
+    const student = await prisma.student.findUnique({
+      where: { email },
+      select: { studentId: true },
+    });
+
+    if (!student) return [];
+
+    const semesterEnrollments = await prisma.semesterEnrollment.findMany({
+      where: { studentId: student.studentId },
+      select: { id: true },
+    });
+
+    const semesterEnrollmentIds = semesterEnrollments.map((s) => s.id);
+
+    const enrollments = await prisma.classEnrollment.findMany({
+      where: {
+        semesterEnrollmentId: {
+          in: semesterEnrollmentIds,
+        },
+      },
+    });
+
+    const classIds = enrollments.map((e) => e.classId);
+
+    const classes = await prisma.class.findMany({
+      where: {
+        classId: {
+          in: classIds,
+        },
+      },
+      select: {
+        classId: true,
+        courseId: true,
+        classStatus: true,
+      },
+    });
+
+    const classMap = new Map();
+    for (const cls of classes) {
+      classMap.set(cls.classId, {
+        courseId: cls.courseId,
+        classStatus: cls.classStatus,
+      });
+    }
+
+    return enrollments
+      .map((e) => {
+        const match = classMap.get(e.classId);
+        return match ? match : null;
+      })
+      .filter(Boolean);
   }
 
   async getClassIdsByCourse(courseId) {
@@ -743,8 +859,8 @@ class UniTrackRepo {
 
   async getSubject(code) {
     return await prisma.subjects.findFirst({
-      where: { code }
-    })
+      where: { code },
+    });
   }
 }
 

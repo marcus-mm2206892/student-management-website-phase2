@@ -35,6 +35,30 @@ export async function getAllCoursesAction() {
   return await unitrackRepo.getAllCourses();
 }
 
+export async function getRecommendedCoursesAction(email) {
+  const student = await unitrackRepo.getStudentByEmail(email);
+  if (!student) return [];
+
+  return await unitrackRepo.getRecommendedCourses(
+    student.studentId,
+    student.majorId
+  );
+}
+
+export async function getSupplementaryCoursesAction(email) {
+  const student = await unitrackRepo.getStudentByEmail(email);
+  if (!student) return [];
+
+  return await unitrackRepo.getSupplementaryCourses(student.studentId);
+}
+
+export async function getElectiveCoursesAction(email) {
+  const student = await unitrackRepo.getStudentByEmail(email);
+  if (!student) return [];
+
+  return await unitrackRepo.getElectiveCourses(student.studentId);
+}
+
 export async function getCourseWithPrerequisitesAction(id) {
   return await unitrackRepo.getCourseWithPrerequisites(id);
 }
@@ -177,6 +201,10 @@ export async function deleteMajorAction(id) {
 // Class
 export async function getAllClassesAction() {
   return await unitrackRepo.getAllClasses();
+}
+
+export async function getRegisteredClassRecordsByStudentEmail(email) {
+  return await unitrackRepo.getRegisteredClassRecordsByStudentEmail(email);
 }
 
 export async function getAllAvailableClasses() {
@@ -432,29 +460,37 @@ export async function createTeachingClassesActions(data) {
 // STATISTICS
 
 export async function getTop3MostEnrolledCoursesAction() {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/statistics/top-3-enrolled`);
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_BASE_URL}/api/statistics/top-3-enrolled`
+  );
   return res.json();
 }
 
-
 export async function getAverageGPAByMajorAction() {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/statistics/average-gpa-by-major`);
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_BASE_URL}/api/statistics/average-gpa-by-major`
+  );
   return res.json();
 }
 
 export async function getTop3CoursesWithMostAsAction() {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/statistics/top-3-most-As`);
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_BASE_URL}/api/statistics/top-3-most-As`
+  );
   return res.json();
 }
 
 export async function getTop3CoursesWithMostFailsAction() {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/statistics/top-3-most-fails`);
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_BASE_URL}/api/statistics/top-3-most-fails`
+  );
   return res.json();
 }
 
-
 export async function getSemesterCourseCountsByMajorAction() {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/statistics/current-sem-offerings`);
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_BASE_URL}/api/statistics/current-sem-offerings`
+  );
   return res.json();
 }
 

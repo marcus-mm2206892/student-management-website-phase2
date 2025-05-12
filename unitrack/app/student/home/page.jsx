@@ -1,6 +1,11 @@
 "use client";
 
-import { getCoursesAction } from "@/app/action/server-actions";
+import {
+  getRecommendedCoursesAction,
+  getSupplementaryCoursesAction,
+  getElectiveCoursesAction,
+} from "@/app/action/server-actions";
+
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
@@ -8,28 +13,48 @@ import EmptyContent from "@/app/components/EmptyContent";
 import NoResults from "@/app/components/NoResults";
 import CourseModal from "@/app/components/CourseModal";
 
-
-import styles from '@/app/styles/student-home-page.module.css';
-import discoverStyles from '@/app/styles/course-card-discover.module.css';
+import styles from "@/app/styles/student-home-page.module.css";
+import discoverStyles from "@/app/styles/course-card-discover.module.css";
 
 const cycleTexts = [
-  'courses',
-  'track your progress',
-  'plan your academic journey'
+  "courses",
+  "track your progress",
+  "plan your academic journey",
 ];
 
 export default function StudentHome() {
   const router = useRouter();
   const [currentIndex, setCurrentIndex] = useState(0);
   const [selectedCourse, setSelectedCourse] = useState(null);
-  const [courses, setCourses] = useState([])
+  const [recommendedCourses, setRecommendedCourses] = useState([]);
+  const [supplementaryCourses, setSupplementaryCourses] = useState([]);
+  const [electiveCourses, setElectiveCourses] = useState([]);
+  const [user, setUser] = useState(null);
 
-  async function loadCourses() {
-    const initialCourses = await getCoursesAction();
-    setCourses(initialCourses);
-  }
+  useEffect(() => {
+    const storedUser = localStorage.getItem("user");
+    if (storedUser) {
+      setUser(JSON.parse(storedUser));
+    }
+  }, []);
 
-  useEffect( () => {loadCourses()}, [] )
+  useEffect(() => {
+    async function loadCourses() {
+      if (!user?.email) return;
+
+      const [recommended, supplementary, elective] = await Promise.all([
+        getRecommendedCoursesAction(user.email),
+        getSupplementaryCoursesAction(user.email),
+        getElectiveCoursesAction(user.email),
+      ]);
+
+      setRecommendedCourses(recommended);
+      setSupplementaryCourses(supplementary);
+      setElectiveCourses(elective);
+    }
+
+    loadCourses();
+  }, [user]);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -38,24 +63,25 @@ export default function StudentHome() {
     return () => clearInterval(interval);
   }, []);
 
-  const recommendedCourses = [];
-  const supplementaryCourses = [];
-  const electiveCourses = [];
-
   return (
     <>
-      {/* {JSON.stringify(courses[0])} */}
       <main className={styles["student-home"]}>
         <section className={styles.hero}>
           <h1>
-            Explore{' '}
+            Explore{" "}
             {cycleTexts.map((text, idx) => (
               <span
                 key={idx}
-                className={`${styles["cycle-text"]} ${currentIndex === idx ? styles.active : ''}`}
+                className={`${styles["cycle-text"]} ${
+                  currentIndex === idx ? styles.active : ""
+                }`}
               >
                 {text}
-                {idx < cycleTexts.length - 1 ? (idx === cycleTexts.length - 2 ? ', and ' : ', ') : ' '} 
+                {idx < cycleTexts.length - 1
+                  ? idx === cycleTexts.length - 2
+                    ? ", and "
+                    : ", "
+                  : " "}
               </span>
             ))}
             effortlessly.
@@ -65,8 +91,8 @@ export default function StudentHome() {
         <CourseSection
           title="Find Recommended Courses"
           subtitle="Explore uncompleted courses that fit your learning path."
-          courses={courses}
-          onBrowse={() => router.push('/browse')}
+          courses={recommendedCourses}
+          onBrowse={() => router.push("/browse")}
           router={router}
           onCourseClick={setSelectedCourse}
         />
@@ -75,7 +101,7 @@ export default function StudentHome() {
           title="Explore Beyond Your Path"
           subtitle="Take courses that enhance your core studies and deepen your overall learning experience."
           courses={supplementaryCourses}
-          onBrowse={() => router.push('/browse')}
+          onBrowse={() => router.push("/browse")}
           router={router}
           onCourseClick={setSelectedCourse}
         />
@@ -84,7 +110,7 @@ export default function StudentHome() {
           title="Find Elective Courses"
           subtitle="Explore elective courses that enhance your skills and broaden your academic experience."
           courses={electiveCourses}
-          onBrowse={() => router.push('/browse')}
+          onBrowse={() => router.push("/browse")}
           router={router}
           onCourseClick={setSelectedCourse}
         />
@@ -93,22 +119,31 @@ export default function StudentHome() {
           className={styles["more-btn"]}
           onClick={(e) => {
             e.stopPropagation();
-            router.push('/browse');
+            router.push("/browse");
           }}
         >
           Browse All Courses
         </button>
 
         {selectedCourse && (
-          <CourseModal course={selectedCourse} onClose={() => setSelectedCourse(null)} />
+          <CourseModal
+            course={selectedCourse}
+            onClose={() => setSelectedCourse(null)}
+          />
         )}
-
       </main>
     </>
   );
 }
 
-function CourseSection({ title, subtitle, courses, onBrowse, router, onCourseClick }) {
+function CourseSection({
+  title,
+  subtitle,
+  courses,
+  onBrowse,
+  router,
+  onCourseClick,
+}) {
   return (
     <section className={styles.courses}>
       <div className={styles["courses-header"]}>
@@ -133,10 +168,9 @@ function CourseSection({ title, subtitle, courses, onBrowse, router, onCourseCli
               onClick={() => onCourseClick(course)}
               onPlusClick={(e) => {
                 e.stopPropagation();
-                router.push('/student/register');
+                router.push("/student/register");
               }}
             />
-
           ))}
         </div>
       ) : (
@@ -147,7 +181,7 @@ function CourseSection({ title, subtitle, courses, onBrowse, router, onCourseCli
 }
 
 function CourseCard({ course, onClick, onPlusClick }) {
-  const creditText = course.creditHours === 1 ? 'Credit Hour' : 'Credit Hours';
+  const creditText = course.creditHours === 1 ? "Credit Hour" : "Credit Hours";
   return (
     <div className={discoverStyles["course-card"]} onClick={onClick}>
       <div className={discoverStyles["course-image"]}>
@@ -156,22 +190,34 @@ function CourseCard({ course, onClick, onPlusClick }) {
           <i className="fa-solid fa-plus"></i>
           <span className={discoverStyles["hover-text"]}>Register Course</span>
         </div>
-        <i className={`fa-solid fa-turn-up ${discoverStyles["top-right-icon"]}`}></i>
+        <i
+          className={`fa-solid fa-turn-up ${discoverStyles["top-right-icon"]}`}
+        ></i>
       </div>
       <div className={discoverStyles["course-info"]}>
         <div className={discoverStyles["course-header"]}>
-          <span className={discoverStyles["course-tag"]}>{course.courseId}</span>
+          <span className={discoverStyles["course-tag"]}>
+            {course.courseId}
+          </span>
           <span className={discoverStyles.semester}>Spring 2025</span>
         </div>
         <h3>{course.courseName}</h3>
-        <p className={discoverStyles["course-subtitle"]}>{course.description}</p>
+        <p className={discoverStyles["course-subtitle"]}>
+          {course.description}
+        </p>
         <div className={discoverStyles["course-tags"]}>
           <span className={discoverStyles.tag}>
-            <i className="fa-solid fa-hourglass-half"></i> {course.creditHours} {creditText}
+            <i className="fa-solid fa-hourglass-half"></i> {course.creditHours}{" "}
+            {creditText}
           </span>
           {course.CourseMajorOfferings?.map((m) => (
             <span key={m.majorId} className={discoverStyles.tag}>
-              <i className={`fa-solid ${m.majorId === 'CMPE' ? 'fa-microchip' : 'fa-laptop-code'}`}></i> {m.majorId}
+              <i
+                className={`fa-solid ${
+                  m.majorId === "CMPE" ? "fa-microchip" : "fa-laptop-code"
+                }`}
+              ></i>{" "}
+              {m.majorId}
             </span>
           ))}
         </div>

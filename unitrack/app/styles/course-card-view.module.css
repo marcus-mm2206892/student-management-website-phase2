@@ -60,6 +60,13 @@
   gap: 1rem;
 }
 
+.learning-path-course-grade {
+  margin-top: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
 .course-completed-main {
   display: flex;
   flex-direction: column;

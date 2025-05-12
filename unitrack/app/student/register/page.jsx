@@ -376,12 +376,22 @@ export default function RegisterCourse() {
                 <td className={`${styles.data} ${styles["course-action"]}`}>
                   <button
                     className={`${styles["course-button"]} ${
-                      cls.registered ? styles["registered-button"] : ""
+                      cls.registered
+                        ? cls.classStatus === "pending"
+                          ? styles["waitlist-button"]
+                          : styles["registered-button"]
+                        : ""
                     }`}
                     onClick={() => handleRegisterToggle(cls.classId)}
                   >
-                    {cls.registered ? "Unregister" : "Register"}
+                    {cls.registered
+                      ? cls.classStatus === "pending"
+                        ? "Waitlisted"
+                        : "Unregister"
+                      : "Register"}
                   </button>
+
+
                 </td>
               </tr>
             ))}
