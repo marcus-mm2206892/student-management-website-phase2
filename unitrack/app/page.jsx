@@ -134,26 +134,39 @@ export default function LoginPage() {
                 type="button"
                 className={styles["auth-login"]}
                 onClick={() =>
-                  signIn("google", { callbackUrl: "/third-party-handler" })
-                }
-              >
-                <i className="fab fa-google" style={{ marginRight: "0.5rem" }}></i>
-                Sign in with Google
-              </button>
-
-              <button
-                type="button"
-                className={styles["auth-login"]}
-                onClick={() =>
                   signIn("github", { callbackUrl: "/third-party-handler" })
                 }
               >
                 <i className="fab fa-github" style={{ marginRight: "0.5rem" }}></i>
                 Sign in with GitHub
               </button>
+              <button
+                type="button"
+                className={styles["auth-login"]}
+                onClick={() =>
+                  signIn("discord", { callbackUrl: "/third-party-handler" })
+                }
+              >
+                <i className="fab fa-discord" style={{ marginRight: "0.5rem" }}></i>
+                Sign in with Discord
+              </button>
             </div>
-            
+
+            <div className={styles["google-div"]}>
+              <button
+                type="button"
+                className={styles["auth-login"]}
+                onClick={() =>
+                  signIn("google", { callbackUrl: "/third-party-handler" })
+                }
+              >
+                <i className="fab fa-google" style={{ marginRight: "0.5rem" }}></i>
+                Sign in with Google
+              </button>
+            </div>
           </div>
+
+            
         </section>
 
         <section className={styles["welcome-col"]}>

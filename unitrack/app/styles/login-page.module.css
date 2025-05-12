@@ -287,6 +287,10 @@
   cursor: pointer;
 }
 
+.google-div {
+  margin-top: 2rem;
+}
+
 @media (max-width: 768px) {
   .main-page {
     display: grid;
