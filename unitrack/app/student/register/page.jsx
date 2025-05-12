@@ -4,7 +4,7 @@ import styles from "@/app/styles/register-course.module.css";
 import NoResults from "@/app/components/NoResults";
 import ClassModal from "@/app/components/ClassModal";
 import AlertModal from "@/app/components/AlertModal";
-import { createClassEnrollmentAction, deleteClassEnrollmentAction, getAllAvailableClasses, getAllClassesAction, getAllUsersAction, getClassByIdAction, getClassDetailsByIdAction, getStudentByEmailAction, updateClassAction } from "@/app/action/server-actions";
+import { createClassEnrollmentAction, deleteClassEnrollmentAction, getAllAvailableClasses, getAllClassesAction, getAllUsersAction, getClassByIdAction, getClassDetailsByIdAction, getStudentByEmailAction, updateClassAction, getCourseByIdAction } from "@/app/action/server-actions";
 import { redirect, usePathname, useRouter } from "next/navigation";
 
 export default function RegisterCourse() {
@@ -24,6 +24,8 @@ export default function RegisterCourse() {
   const [selectedClass, setSelectedClass] = useState(null)
   const [selectedCourse, setSelectedCourse] = useState(null)
   const [refreshFlag, setRefreshFlag] = useState(false);
+  const [creditHours, setCreditHours] = useState(0);
+  const [enrolledCourses, setEnrolledCourses] = useState([]);
 
     useEffect(() => {
       const storedUser = localStorage.getItem("user");
@@ -73,6 +75,43 @@ export default function RegisterCourse() {
       useEffect(() => {
         console.log("Updated classes:", classes);
       }, [classes]);
+
+      useEffect(() => {
+          async function fetchCourses() {
+            const newCourses = [];
+      
+            if (classes) {
+              for (const cls of classes) {
+                const crs = await getCourseByIdAction(cls.courseId);
+                const crsWithStatus = {...crs , classStatus: cls.classStatus}
+                newCourses.push(crsWithStatus);
+              }
+            }
+      
+            return newCourses;
+          }
+      
+          async function loadCourses() {
+            const resolvedCourses = await fetchCourses(); 
+            setEnrolledCourses(resolvedCourses);               
+          }
+      
+          loadCourses()
+        }, [classes, refreshFlag])
+
+      useEffect(() => {
+    if (enrolledCourses) {
+      let count = 0
+      enrolledCourses.forEach((c) => {
+        count+=c.creditHours;
+      })
+      setCreditHours(count);
+    }
+  }, [enrolledCourses, refreshFlag])
+
+  useEffect(() => {
+        console.log("Updated credit hours:", creditHours);
+      }, [creditHours]);
   
   useEffect(() => {
         async function fetchCompletedCourses() {
@@ -230,6 +269,16 @@ export default function RegisterCourse() {
               return;
             }
           }
+
+          const courseDetails = await getCourseByIdAction(course.courseId);
+          console.log(courseDetails)
+
+          if ((courseDetails.creditHours +  creditHours) > 18) {
+            setAlertMessage("You cannot register for this class. Registering would exceed the 18 credit hour limit.");
+              setAlertVisible(true);
+              return;
+          }
+
 
           const lastEnrollment = student.semesterEnrollment[student.semesterEnrollment.length - 1];
           await createClassEnrollmentAction({
