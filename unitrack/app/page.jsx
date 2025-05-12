@@ -1,7 +1,7 @@
 "use client";
 
 import Head from "next/head";
-import { useRouter } from "next/navigation";
+import { redirect, useRouter } from "next/navigation";
 import { useState } from "react";
 import { useEffect } from "react";
 import { signIn } from "next-auth/react";
@@ -134,26 +134,39 @@ export default function LoginPage() {
                 type="button"
                 className={styles["auth-login"]}
                 onClick={() =>
-                  signIn("google", { callbackUrl: "/third-party-handler" })
-                }
-              >
-                <i className="fab fa-google" style={{ marginRight: "0.5rem" }}></i>
-                Sign in with Google
-              </button>
-
-              <button
-                type="button"
-                className={styles["auth-login"]}
-                onClick={() =>
                   signIn("github", { callbackUrl: "/third-party-handler" })
                 }
               >
                 <i className="fab fa-github" style={{ marginRight: "0.5rem" }}></i>
                 Sign in with GitHub
               </button>
+              <button
+                type="button"
+                className={styles["auth-login"]}
+                onClick={() =>
+                  redirect("https://discord.com/oauth2/authorize?client_id=1371537508105719888&response_type=code&redirect_uri=http%3A%2F%2Flocalhost%3A3000%2Fthird-party-handler&scope=identify")
+                }
+              >
+                <i className="fab fa-discord" style={{ marginRight: "0.5rem" }}></i>
+                Sign in with Discord
+              </button>
             </div>
-            
+
+            <div className={styles["google-div"]}>
+              <button
+                type="button"
+                className={styles["auth-login"]}
+                onClick={() =>
+                  signIn("google", { callbackUrl: "/third-party-handler" })
+                }
+              >
+                <i className="fab fa-google" style={{ marginRight: "0.5rem" }}></i>
+                Sign in with Google
+              </button>
+            </div>
           </div>
+
+            
         </section>
 
         <section className={styles["welcome-col"]}>
