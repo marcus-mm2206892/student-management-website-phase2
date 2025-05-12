@@ -8,6 +8,7 @@ import ClassModal from "@/app/components/ClassModal";
 import {
   getAllClassesAction,
   getAllUsersAction,
+  getClassByIdAction,
   updateClassAction,
 } from "@/app/action/server-actions";
 
@@ -21,6 +22,7 @@ export default function ApproveClass() {
   const [classModalVisible, setClassModalVisible] = useState(false);
   const [selectedClass, setSelectedClass] = useState(null);
   const [selectedCourse, setSelectedCourse] = useState(null);
+  const [refreshFlag, setRefreshFlag] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -32,7 +34,7 @@ export default function ApproveClass() {
       setUsers(userList);
     };
     fetchData();
-  }, []);
+  }, [refreshFlag]);
 
   const getInstructorName = (email) => {
     const user = users.find((u) => u.email === email);
@@ -57,9 +59,18 @@ export default function ApproveClass() {
       : styles["status-rejected"];
   };
 
-  const handleStatusChange = async (index, newStatus) => {
+  const handleStatusChange = async (classId, newStatus) => {
     const updatedClasses = [...classes];
-    const targetClass = updatedClasses[index];
+    const targetClass = await getClassByIdAction(classId);
+
+    if (targetClass.enrollmentActual < 5 && newStatus === "open") {
+      setAlertContent({
+        title: "Action Denied",
+        description: `Class ${targetClass.courseId} cannot be marked as open because it has only ${targetClass.enrollmentActual} enrolled students. A minimum of 5 is required.`,
+      });
+      setAlertOpen(true);
+      return;
+    }
 
     try {
       await updateClassAction(targetClass.classId, { classStatus: newStatus });
@@ -69,6 +80,7 @@ export default function ApproveClass() {
         title: "Status Updated",
         description: `Class ${targetClass.courseId} is now marked as ${newStatus}.`,
       });
+      setRefreshFlag(prev => !prev);
     } catch (err) {
       setAlertContent({
         title: "Update Failed",
@@ -179,7 +191,7 @@ export default function ApproveClass() {
                   <select
                     className={styles["status-dropdown"]}
                     value={cls.classStatus}
-                    onChange={(e) => handleStatusChange(i, e.target.value)}
+                    onChange={(e) => handleStatusChange(cls.classId, e.target.value)}
                   >
                     <option value="open">Open</option>
                     <option value="pending">Pending</option>
