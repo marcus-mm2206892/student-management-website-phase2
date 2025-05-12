@@ -28,7 +28,7 @@ export default function ApproveClass() {
         getAllClassesAction(),
         getAllUsersAction(),
       ]);
-      setClasses(classList);
+      setClasses(classList.filter((cls) => cls.classStatus !== "completed"));
       setUsers(userList);
     };
     fetchData();
