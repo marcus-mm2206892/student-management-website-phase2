@@ -429,6 +429,12 @@ export async function createTeachingClassesActions(data) {
   return await unitrackRepo.createTeachingClasses(data);
 }
 
+//Subjects
+
+export async function getAllSubjectCodeAction() {
+  return await unitrackRepo.getAllSubjectCode();
+}
+
 // STATISTICS
 
 export async function getTop3MostEnrolledCoursesAction() {
