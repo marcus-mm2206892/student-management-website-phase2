@@ -16,6 +16,7 @@ export default function ThirdPartyHandler() {
 
           if (!user) {
             alert("No account found. Please contact admin.");
+            router.push("/");
             return;
           }
           
