@@ -452,13 +452,15 @@ export async function getTop3CoursesWithMostFailsAction() {
   return res.json();
 }
 
-export async function getTop3InstructorsWithMostClassesAction() {
-  return await statisticsRepo.getTop3InstructorsWithMostClasses();
-}
 
 export async function getSemesterCourseCountsByMajorAction() {
   const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/statistics/current-sem-offerings`);
   return res.json();
+}
+
+// STATISTICS
+export async function getTop3InstructorsWithMostClassesAction() {
+  return await statisticsRepo.getTop3InstructorsWithMostClasses();
 }
 
 export async function getTopStudentsByMajorGPAAction() {
