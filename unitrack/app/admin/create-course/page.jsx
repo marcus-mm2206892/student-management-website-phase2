@@ -1,8 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styles from "@/app/styles/admin-create-course.module.css";
-import { createPrerequisiteAction, createCourseMajorOfferingAction, createCourseAction, checkCourseIdAction } from "@/app/action/server-actions";
+import { createPrerequisiteAction, createCourseMajorOfferingAction, createCourseAction, checkCourseIdAction, getAllSubjectCodeAction, getAllCourseIdsAction } from "@/app/action/server-actions";
 import AlertModal from "@/app/components/AlertModal";
 /*
   To be fixed:
@@ -14,6 +14,8 @@ import AlertModal from "@/app/components/AlertModal";
 export default function AdminCreateCourse() {
   const [alertVisible, setAlertVisible] = useState(false);
   const [alertMessage, setAlertMessage] = useState("");
+  const [subjects, setSubjects] = useState([]);
+  const [prerequisites, setPrerequisites] = useState([]);
   const [selectedSubject, setSelectedSubject] = useState("Select Subject");
   const [selectedPrereqs, setSelectedPrereqs] = useState([]);
   const [selectedMajors, setSelectedMajors] = useState([]);
@@ -26,9 +28,26 @@ export default function AdminCreateCourse() {
   const [courseExists, setCourseExists] = useState(false);
 
 
-  const subjects = ["CMPS", "CMPE", "ELEC"];
-  const prerequisites = ["CMPS101", "CMPS202", "CMPS303"];
+  // const subjects = ["CMPS", "CMPE", "ELEC"];
+  // const prerequisites = ["CMPS101", "CMPS202", "CMPS303"];
   const majors = ["Computer Science", "Computer Engineering"];
+
+
+  useEffect(() => {
+    async function fetchSubjects() {
+      const codes = await getAllSubjectCodeAction();
+      setSubjects(codes);
+    }
+    fetchSubjects();
+  }, []);
+
+  useEffect(() => {
+  async function fetchPrereqs() {
+      const courseIds = await getAllCourseIdsAction();
+      setPrerequisites(courseIds);
+    }
+    fetchPrereqs();
+  }, []);
 
   const handleMultiSelect = (item, list, setter) => {
   if (list.includes(item)) {

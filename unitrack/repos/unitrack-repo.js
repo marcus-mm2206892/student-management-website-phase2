@@ -857,6 +857,16 @@ class UniTrackRepo {
     return await prisma.subjects.findMany();
   }
 
+  async getAllSubjectCode() {
+    const codes = await prisma.subjects.findMany({
+      select: {
+        code: true, 
+      },
+    });
+
+  return codes.map((s) => s.code); 
+  }
+
   async getSubject(code) {
     return await prisma.subjects.findFirst({
       where: { code },
