@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import styles from "@/app/styles/admin-create-course.module.css";
-import { createPrerequisiteAction, createCourseMajorOfferingAction, createCourseAction, checkCourseIdAction, getAllSubjectCodeAction, getCourseIdsAction } from "@/app/action/server-actions";
+import { createPrerequisiteAction, createCourseMajorOfferingAction, createCourseAction, checkCourseIdAction, getAllSubjectCodeAction, getCourseIdsAction, getMajorsNamesAction } from "@/app/action/server-actions";
 import AlertModal from "@/app/components/AlertModal";
 /*
   To be fixed:
@@ -16,6 +16,7 @@ export default function AdminCreateCourse() {
   const [alertMessage, setAlertMessage] = useState("");
   const [subjects, setSubjects] = useState([]);
   const [prerequisites, setPrerequisites] = useState([]);
+  const [majors, setMajors] = useState([]);
   const [selectedSubject, setSelectedSubject] = useState("Select Subject");
   const [selectedPrereqs, setSelectedPrereqs] = useState([]);
   const [selectedMajors, setSelectedMajors] = useState([]);
@@ -30,7 +31,7 @@ export default function AdminCreateCourse() {
 
   // const subjects = ["CMPS", "CMPE", "ELEC"];
   // const prerequisites = ["CMPS101", "CMPS202", "CMPS303"];
-  const majors = ["Computer Science", "Computer Engineering"];
+  // const majors = ["Computer Science", "Computer Engineering"];
 
 
   useEffect(() => {
@@ -42,11 +43,19 @@ export default function AdminCreateCourse() {
   }, []);
 
   useEffect(() => {
-  async function fetchPrereqs() {
-      const courseIds = await getCourseIdsAction();
-      setPrerequisites(courseIds);
+    async function fetchPrereqs() {
+        const courseIds = await getCourseIdsAction();
+        setPrerequisites(courseIds);
+      }
+      fetchPrereqs();
+  }, []);
+
+  useEffect(() => {
+    async function fetchMajors() {
+      const majorNames = await getMajorsNamesAction();
+      setMajors(majorNames);
     }
-    fetchPrereqs();
+    fetchMajors();
   }, []);
 
   const handleMultiSelect = (item, list, setter) => {

@@ -444,6 +444,17 @@ class UniTrackRepo {
     return await prisma.major.findMany();
   }
 
+  async getMajorsNames() {
+    const majors = await prisma.major.findMany({
+      select: {
+        majorName: true
+      }
+    });
+
+    const majorNames = majors.map((m) => m.majorName);
+    return majorNames;
+  }
+
   async getMajorById(id) {
     return await prisma.major.findUnique({ where: { majorId: id } });
   }

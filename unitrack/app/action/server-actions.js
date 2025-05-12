@@ -187,6 +187,10 @@ export async function getAllMajorsAction() {
   return await unitrackRepo.getAllMajors();
 }
 
+export async function getMajorsNamesAction() {
+  return await unitrackRepo.getMajorsNames();
+}
+
 export async function getMajorByIdAction(id) {
   return await unitrackRepo.getMajorById(id);
 }
