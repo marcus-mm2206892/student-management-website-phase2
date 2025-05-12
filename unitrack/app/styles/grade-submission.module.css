@@ -270,12 +270,14 @@
 
 .grade-submission .dropdown {
   position: relative;
+  z-index: 3;
   width: 6rem;
-  z-index: 1;
   overflow: visible;
 }
 
 .grade-submission .dropdown-toggle {
+  position: relative;
+  z-index: 2;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -288,8 +290,7 @@
 
 .grade-submission .dropdown-menu {
   border-radius: 8px;
-  display: block;
-  position: absolute;
+  position: relative;
   top: 100%;
   left: auto;
   right: auto;
