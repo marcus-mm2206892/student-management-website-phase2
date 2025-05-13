@@ -2,7 +2,7 @@
 
 ![App Banner](https://your-image-url.com/banner.gif) <!-- Replace with actual banner or GIF link -->
 
-A full-stack student management web application developed for the CMPS350 Web Development course at Qatar University. Built with React, Next.js, Prisma, and NextAuth, it empowers students, instructors, and administrators with seamless and secure interactions.
+A full-stack student management web application developed for students & teachers in an academic environment. Built with React, Next.js, Prisma, and NextAuth, it empowers students, instructors, and administrators with seamless and secure interactions.
 
 ---
 
@@ -50,7 +50,6 @@ A full-stack student management web application developed for the CMPS350 Web De
 | HTML, CSS      | Server Actions       |                |              | SQLite   |
 
 ---
-
 
 
 # 📄 License
