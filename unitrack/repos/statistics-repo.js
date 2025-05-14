@@ -25,7 +25,6 @@ class StatisticsRepo {
         });
 
         const courseId = classObj?.course?.courseId ?? "Unknown";
-        const title = classObj?.course?.title ?? "Unknown";
 
         return `${courseId} (${item._count.classId})`;
       })

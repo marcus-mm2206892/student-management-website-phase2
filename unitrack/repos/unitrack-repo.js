@@ -447,8 +447,8 @@ class UniTrackRepo {
   async getMajorsNames() {
     const majors = await prisma.major.findMany({
       select: {
-        majorName: true
-      }
+        majorName: true,
+      },
     });
 
     const majorNames = majors.map((m) => m.majorName);
@@ -702,6 +702,15 @@ class UniTrackRepo {
           gte: 5,
         },
       },
+      include: {
+        course: {
+          include: {
+            prerequisites: true,
+          },
+        },
+        instructors: true,
+        schedule: true,
+      },
     });
   }
 
@@ -881,11 +890,11 @@ class UniTrackRepo {
   async getAllSubjectCode() {
     const codes = await prisma.subjects.findMany({
       select: {
-        code: true, 
+        code: true,
       },
     });
 
-  return codes.map((s) => s.code); 
+    return codes.map((s) => s.code);
   }
 
   async getSubject(code) {
