@@ -1,7 +1,7 @@
 /* Body Styling */
 
 .main-page {
-  min-height: calc(100vh - 2rem);
+  height: calc(100vh - 2rem);
   margin: 1rem;
   background-color: rgba(var(--clr-surface-a0-rgb), 0.8);
   border-radius: 12px;
@@ -210,7 +210,7 @@
 
 .welcome-graphic {
   align-self: center;
-  width: 100%;
+  width: 80%;
 }
 
 .remember-me:checked::after {

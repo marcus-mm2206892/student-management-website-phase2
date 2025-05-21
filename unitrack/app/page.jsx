@@ -52,7 +52,7 @@ export default function LoginPage() {
           href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
         />
       </Head>
-
+      
       <div className={styles["main-page"]}>
         <ThemeResponsiveLogo
           type="text"

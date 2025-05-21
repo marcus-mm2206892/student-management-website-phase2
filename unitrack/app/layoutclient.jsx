@@ -17,7 +17,6 @@ export default function LayoutClient({ children }) {
   useEffect(() => {
     let userObj = null;
 
-    // Try loading from localStorage
     const storedUser = localStorage.getItem("user");
     if (storedUser) {
       try {
@@ -27,7 +26,6 @@ export default function LayoutClient({ children }) {
       }
     }
 
-    // Fallback to URL query if needed (e.g., post-login redirect)
     if (!userObj) {
       const firstName = searchParams.get("firstName");
       const lastName = searchParams.get("lastName");
@@ -45,19 +43,28 @@ export default function LayoutClient({ children }) {
     setIsLoaded(true);
   }, [searchParams]);
 
-  const hideNavbarRoutes = ["/"];
-  const shouldShowNavbar = !hideNavbarRoutes.includes(pathname);
+  useEffect(() => {
+    const body = document.body;
+    if (pathname === '/') {
+      body.classList.add('login-page');
+    } else {
+      body.classList.remove('login-page');
+    }
+  }, [pathname]);
+
+  const isLoginPage = pathname === "/";
+  const shouldShowNavAndFooter = !isLoginPage && user;
 
   if (!isLoaded) return null;
 
   return (
     <>
-      {shouldShowNavbar && user && <NavBar user={user} />}
+      {shouldShowNavAndFooter && <NavBar user={user} />}
       <SessionProvider>
         {children}
       </SessionProvider>
       <ScrollUpButton />
-      <Footer user={user} />
+      {shouldShowNavAndFooter && <Footer user={user} />}
     </>
   );
 }

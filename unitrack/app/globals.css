@@ -15,10 +15,22 @@ html {
 }
 
 body {
-  background-color: var(--clr-surface-tonal-a10);
+  background-color: var(--clr-surface-a0);
+  background-image: url("/assets/imgs/unitrack-images/pattern-blue.png");
   background-repeat: repeat;
+  color: var(--clr-contrast-a0);
   background-size: 1920px 1080px;
   font-family: "Inter", sans-serif;
+}
+
+.login-page {
+  background-color: var(--clr-surface-tonal-a0);
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background-image: url("/assets/imgs/unitrack-images/pattern-white.png");
+  }
 }
 
 /* Theme Variables */
