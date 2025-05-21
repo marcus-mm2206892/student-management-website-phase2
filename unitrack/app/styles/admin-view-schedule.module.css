@@ -1,12 +1,3 @@
-:global(body) {
-  background-color: var(--clr-surface-a0);
-  background-image: url("../assets/imgs/unitrack-images/pattern-blue.png");
-  background-repeat: repeat;
-  color: var(--clr-contrast-a0);
-  font-family: "Inter", sans-serif;
-  font-size: 0.85rem;
-}
-
 .view-schedule {
   height: calc(100vh - 53px - 1rem);
   margin: 53px auto 1rem auto;
@@ -90,12 +81,6 @@
   .view-schedule-title {
     text-align: center;
     font-size: 1.2rem;
-  }
-}
-
-@media (prefers-color-scheme: dark) {
-  :global(body) {
-    background-image: url("../assets/imgs/unitrack-images/pattern-white.png");
   }
 }
 

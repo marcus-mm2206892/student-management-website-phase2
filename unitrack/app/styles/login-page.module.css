@@ -323,17 +323,7 @@
   }
 }
 
-@media (prefers-color-scheme: dark) {
-  :global(body) {
-    background-image: url(/assets/imgs/unitrack-images/pattern-white.png);
-  }
-}
-
 @media (prefers-color-scheme: light) {
-  :global(body) {
-    background-color: var(--clr-surface-tonal-a0);
-    background-image: url(/assets/imgs/unitrack-images/pattern-black.png);
-  }
   .auth-login:hover {
     background-color: var(--clr-primary-contrast-a20);
     color: var(--clr-surface-a0);

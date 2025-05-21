@@ -33,6 +33,13 @@ body {
   }
 }
 
+@media (prefers-color-scheme: light) {
+  .login-page {
+    background-color: var(--clr-surface-tonal-a0);
+    background-image: url(/assets/imgs/unitrack-images/pattern-black.png);
+  }
+}
+
 /* Theme Variables */
 :root {
   font-family: "Inter", sans-serif;
@@ -138,4 +145,59 @@ body {
 
     --clr-accent: #ffc847;
   }
+}
+
+.no-results p {
+  font-size: 1rem;
+  color: var(--clr-contrast-a30);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+thead {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background-color: var(--clr-surface-tonal-a10);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+thead th[colspan="8"] {
+  padding: 0;
+  background-color: var(--clr-primary-a20);
+}
+
+thead tr:nth-child(2) th {
+  padding: 1rem;
+  white-space: nowrap;
+}
+
+td {
+  padding: 1rem;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #819fea0b;
+}
+
+tbody tr:hover {
+  background-color: var(--clr-surface-tonal-a10);
+}
+
+tbody tr td button {
+  width: 5rem;
+  height: 2.5rem;
+  border-radius: 0.7rem;
+  background-color: var(--clr-primary-a0);
+  color: var(--clr-contrast-a0);
+  border: 0;
+}
+
+tbody tr td button:hover {
+  background-color: var(--clr-primary-a10);
+  cursor: pointer;
 }

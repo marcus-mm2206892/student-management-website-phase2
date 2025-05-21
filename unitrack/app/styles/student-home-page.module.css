@@ -1,16 +1,3 @@
-:global(html) {
-  overflow-x: hidden;
-}
-
-:global(body) {
-  background-color: var(--clr-surface-a0);
-  background-image: url("/assets/imgs/unitrack-images/pattern-blue.png");
-  background-repeat: repeat;
-  color: var(--clr-contrast-a0);
-  font-family: "Inter", sans-serif;
-  font-size: 0.85rem;
-}
-
 .student-home {
   max-width: 1200px;
   margin: 53px auto 0 auto;
@@ -169,18 +156,8 @@
   }
 }
 
-@media (prefers-color-scheme: dark) {
-  :global(body) {
-    background-image: url(/assets/imgs/unitrack-images/pattern-white.png);
-  }
-}
-
 @media (prefers-color-scheme: light) {
-  :global(body) {
-    background-image: url("/assets/imgs/unitrack-images/pattern-black.png");
-  }
-
-  :global(.search-bar) {
+  .search-bar {
     background-color: var(--clr-surface-a20);
   }
 }

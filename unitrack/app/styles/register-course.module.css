@@ -1,18 +1,3 @@
-:global(body) {
-  background-color: var(--clr-surface-a0);
-  background-image: url("../assets/imgs/unitrack-images/pattern-blue.png");
-  background-repeat: repeat;
-  color: var(--clr-contrast-a0);
-  font-family: "Inter", sans-serif;
-  font-size: 0.85rem;
-}
-
-@media (prefers-color-scheme: dark) {
-  :global(body) {
-    background-image: url("../assets/imgs/unitrack-images/pattern-white.png");
-  }
-}
-
 .register {
   height: calc(100vh - 53px); /* full screen height minus navbar height */
   margin: 53px auto 1rem auto;
@@ -152,61 +137,6 @@
   .light-mode-svg {
     display: block;
   }
-}
-
-:global(.no-results p) {
-  font-size: 1rem;
-  color: var(--clr-contrast-a30);
-}
-
-:global(table) {
-  width: 100%;
-  border-collapse: collapse;
-  text-align: left;
-}
-
-:global(thead) {
-  position: sticky;
-  top: 0;
-  z-index: 10;
-  background-color: var(--clr-surface-tonal-a10);
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-:global(thead th[colspan="8"]) {
-  padding: 0;
-  background-color: var(--clr-primary-a20);
-}
-
-:global(thead tr:nth-child(2) th) {
-  padding: 1rem;
-  white-space: nowrap;
-}
-
-:global(td) {
-  padding: 1rem;
-}
-
-:global(tbody tr:nth-child(even)) {
-  background-color: #819fea0b;
-}
-
-:global(tbody tr:hover) {
-  background-color: var(--clr-surface-tonal-a10);
-}
-
-:global(tbody tr td button) {
-  width: 5rem;
-  height: 2.5rem;
-  border-radius: 0.7rem;
-  background-color: var(--clr-primary-a0);
-  color: var(--clr-contrast-a0);
-  border: 0;
-}
-
-:global(tbody tr td button:hover) {
-  background-color: var(--clr-primary-a10);
-  cursor: pointer;
 }
 
 .data.course-no span {
