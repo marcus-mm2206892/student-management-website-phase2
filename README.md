@@ -46,8 +46,8 @@ A full-stack student management web application developed for students & teacher
 
 | Frontend        | Backend & DB         | Authentication | Styling      | ORM      |
 |----------------|----------------------|----------------|--------------|----------|
-| React, Next.js | Next.js API Routes   | NextAuth       | Tailwind CSS | Prisma   |
-| HTML, CSS      | Server Actions       |                |              | SQLite   |
+| React, Next.js | Next.js API Routes   | NextAuth       |     CSS      | Prisma   |
+| HTML           | Server Actions       |                |              | SQLite   |
 
 ---
 
