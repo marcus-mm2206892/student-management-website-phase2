@@ -249,10 +249,6 @@
 }
 
 @media (prefers-color-scheme: light) {
-  body {
-    background-color: var(--clr-surface-a10);
-  }
-
   .footer {
     background-color: var(--clr-surface-a0);
   }
