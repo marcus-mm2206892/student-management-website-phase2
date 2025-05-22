@@ -26,26 +26,26 @@ export const authOptions = {
       },
       async authorize(credentials) {
         console.log("Received credentials:", credentials);
-        if (!credentials?.email || !credentials?.password) 
-          {console.log("Missing email or password");
-            return null;
-          }
+        if (!credentials?.email || !credentials?.password) {
+          console.log("Missing email or password");
+          return null;
+        }
 
         const user = await prisma.user.findUnique({
           where: { email: credentials.email },
         });
 
-         if (!user) {
-            console.log("User not found for email:", credentials.email);
-            return null;
-          }
+        if (!user) {
+          console.log("User not found for email:", credentials.email);
+          return null;
+        }
 
         if (!user.password) {
           console.log("User exists but has no password in DB");
           return null;
         }
 
-        const isValid = await credentials.password === user.password
+        const isValid = await compare(credentials.password, user.password);
         if (!isValid) {
           console.log("Password does not match for", credentials.email);
           return null;
@@ -61,19 +61,19 @@ export const authOptions = {
       },
     }),
   ],
- callbacks: {
+  callbacks: {
     async jwt({ token, user }) {
       if (user) {
-        token.role = user.role; 
+        token.role = user.role;
         token.id = user.id;
       }
       return token;
     },
     async session({ session, token }) {
-      session.user.role = token.role; 
+      session.user.role = token.role;
       session.user.id = token.id;
       return session;
-    }
+    },
   },
   secret: process.env.NEXTAUTH_SECRET,
 };

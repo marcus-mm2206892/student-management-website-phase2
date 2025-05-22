@@ -5,7 +5,7 @@
 //     return Response.json(response, {status: 200});
 // }
 
-import { verifyJwt } from "@/lib/jwt";
+import { verifyJwt } from "@/app/lib/jwt";
 import { PrismaClient } from "@prisma/client";
 
 export async function GET(request, { params }) {
