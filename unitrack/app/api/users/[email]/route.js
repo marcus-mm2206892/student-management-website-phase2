@@ -5,13 +5,13 @@
 //     return Response.json(response, {status: 200});
 // }
 
-import { verifyJwt } from "@/lib/jwt"
-import { PrismaClient } from "@prisma/client"
+import { verifyJwt } from "@/lib/jwt";
+import { PrismaClient } from "@prisma/client";
 
 export async function GET(request, { params }) {
-  const prisma = new PrismaClient()
+  const prisma = new PrismaClient();
 
-  const accessToken = request.headers.get("authorization")
+  const accessToken = request.headers.get("authorization");
   if (!accessToken || !verifyJwt(accessToken)) {
     return new Response(
       JSON.stringify({
@@ -20,7 +20,7 @@ export async function GET(request, { params }) {
       {
         status: 401,
       }
-    )
+    );
   }
   const userPosts = await prisma.post.findMany({
     where: { authorId: +params.id },
@@ -32,7 +32,7 @@ export async function GET(request, { params }) {
         },
       },
     },
-  })
+  });
 
-  return new Response(JSON.stringify(userPosts))
+  return new Response(JSON.stringify(userPosts));
 }
