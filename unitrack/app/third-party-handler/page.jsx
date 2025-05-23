@@ -1,12 +1,32 @@
 "use client";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
-import { getUserByEmailAction } from "../action/server-actions"; // ✅ use your existing function
+import { getUserByEmailAction } from "../action/server-actions";
+import AlertModal from "../components/AlertModal";
 
 export default function ThirdPartyHandler() {
   const { data: session, status } = useSession();
   const router = useRouter();
+
+  const [modalOpen, setModalOpen] = useState(false);
+  const [modalTitle, setModalTitle] = useState("");
+  const [modalDescription, setModalDescription] = useState("");
+  const [redirectUrl, setRedirectUrl] = useState("");
+
+  const showAlert = (title, description, url = "") => {
+    setModalTitle(title);
+    setModalDescription(description);
+    setRedirectUrl(url); // set URL to redirect to after modal OK
+    setModalOpen(true);
+  };
+
+  const handleModalClose = () => {
+    setModalOpen(false);
+    if (redirectUrl) {
+      router.push(redirectUrl);
+    }
+  };
 
   useEffect(() => {
     const redirectUser = async () => {
@@ -15,19 +35,22 @@ export default function ThirdPartyHandler() {
           const user = await getUserByEmailAction(session.user.email);
 
           if (!user) {
-            alert("No account found. Please contact admin.");
-            router.push("/");
+            showAlert("Login Error", "No account found. Please contact admin.", "/");
             return;
           }
-          
+
           localStorage.setItem("user", JSON.stringify(user));
 
-          router.push(
-            `/${user.role}/home?firstName=${encodeURIComponent(user.firstName)}&lastName=${encodeURIComponent(user.lastName)}&email=${encodeURIComponent(user.email)}&role=${user.role}&profileImage=${encodeURIComponent(user.profileImage)}`
-          );
+          const homeUrl = `/${user.role}/home?firstName=${encodeURIComponent(
+            user.firstName
+          )}&lastName=${encodeURIComponent(user.lastName)}&email=${encodeURIComponent(
+            user.email
+          )}&role=${user.role}&profileImage=${encodeURIComponent(user.profileImage)}`;
+          
+          router.push(homeUrl);
         } catch (err) {
           console.error("Error fetching user data:", err);
-          alert("Error logging in.");
+          showAlert("Server Error", "Error logging in. Please try again.", "/");
         }
       }
     };
@@ -35,5 +58,14 @@ export default function ThirdPartyHandler() {
     redirectUser();
   }, [status, session, router]);
 
-  return <p>Loading...</p>;
+  return (
+    <>
+      <AlertModal
+        title={modalTitle}
+        description={modalDescription}
+        isOpen={modalOpen}
+        onClose={handleModalClose}
+      />
+    </>
+  );
 }

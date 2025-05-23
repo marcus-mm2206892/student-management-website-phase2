@@ -75,8 +75,6 @@ async function seed() {
     await prisma.expertise.create({ data: exp });
   }
 
-  console.log("Subjects" + JSON.stringify(subjects[0]));
-
   await prisma.subjects.createMany({ data: subjects });
 
   await prisma.course.createMany({ data: courses });
