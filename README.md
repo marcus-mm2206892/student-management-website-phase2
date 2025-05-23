@@ -75,7 +75,7 @@ Real-time metrics to track academic performance:
 | Frontend        | Backend & DB         | Authentication | Styling       | ORM      |
 |----------------|----------------------|----------------|---------------|----------|
 | React, Next.js | Next.js API Routes   | NextAuth       | CSS Modules   | Prisma   |
-| HTML, JSX      | Server Actions       |                |               | SQLite   |
+| HTML, JSX      | Server Actions       |                |               | PostGres |
 
 ---
 
