@@ -40,10 +40,10 @@
     "profileImage": "/assets/imgs/user-profile-images/male4.png"
   },
   {
-    "email": "liam.johnson@qu.com",
-    "firstName": "Liam",
-    "lastName": "Johnson",
-    "password": "liam123",
+    "email": "john.doe@qu.com",
+    "firstName": "John",
+    "lastName": "Doe",
+    "password": "john123",
     "role": "student",
     "gender": "male",
     "themePreference": "system",
@@ -300,14 +300,14 @@
     "profileImage": "/assets/imgs/user-profile-images/female2.png"
   },
   {
-    "email": "qutaibah.malluhi@qu.com",
-    "firstName": "Qutaibah",
-    "lastName": "Malluhi",
-    "password": "qutaibahmalluhi123",
+    "email": "jane.doe@qu.com",
+    "firstName": "Jane",
+    "lastName": "Doe",
+    "password": "jane123",
     "role": "instructor",
-    "gender": "male",
+    "gender": "female",
     "themePreference": "system",
-    "profileImage": "/assets/imgs/user-profile-images/male3.png"
+    "profileImage": "/assets/imgs/user-profile-images/female3.png"
   },
   {
     "email": "junaid.qadir@qu.com",

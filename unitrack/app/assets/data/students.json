@@ -25,7 +25,7 @@
   },
   {
     "studentId": "S1005",
-    "email": "liam.johnson@qu.com",
+    "email": "john.doe@qu.com",
     "college": "Engineering",
     "majorId": "CMPS"
   },
@@ -179,7 +179,7 @@
     "college": "Engineering",
     "majorId": "CMPE"
   },
-    {
+  {
     "studentId": "S1031",
     "email": "sara.khan@qu.com",
     "college": "Engineering",

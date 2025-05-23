@@ -135,11 +135,24 @@ class UniTrackRepo {
   }
 
   async getSupplementaryCourses(studentId) {
+    const student = await prisma.student.findUnique({
+      where: { studentId },
+      select: { majorId: true },
+    });
+
+    if (!student) throw new Error("Student not found");
+
     const completed = await prisma.completedCourse.findMany({
       where: { studentId },
       select: { courseId: true },
     });
     const completedCourseIds = completed.map((c) => c.courseId);
+
+    const required = await prisma.courseMajorOfferings.findMany({
+      where: { majorId: student.majorId },
+      select: { courseId: true },
+    });
+    const requiredCourseIds = required.map((c) => c.courseId);
 
     const all = await prisma.course.findMany({
       include: { CourseMajorOfferings: true },
@@ -148,6 +161,7 @@ class UniTrackRepo {
     return all.filter(
       (c) =>
         !completedCourseIds.includes(c.courseId) &&
+        !requiredCourseIds.includes(c.courseId) &&
         !c.courseId.startsWith("CMPS") &&
         !c.courseId.startsWith("CMPE")
     );
