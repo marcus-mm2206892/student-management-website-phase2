@@ -1,76 +1,103 @@
-# UniTrack: A Student Management Application
+# 🎓 UniTrack: A Student Management Application
 
-![App Banner](https://your-image-url.com/banner.gif) <!-- Replace with actual banner or GIF link -->
-
-A full-stack student management web application developed for students & teachers in an academic environment. Built with React, Next.js, Prisma, and NextAuth, it empowers students, instructors, and administrators with seamless and secure interactions.
+**UniTrack** is a full-stack web application designed to manage university academic operations. Built using modern technologies like **React**, **Next.js**, **Prisma**, and **NextAuth**, it provides a secure, role-based platform for students, instructors, and administrators.
 
 ---
 
 ## 📌 Table of Contents
 
-- [Features](#features)
-- [Tech Stack](#tech-stack)
-- [License](#license)
+- [🔑 Demo Access](#-demo-access)
+- [🚀 Features](#-features)
+- [🛠️ Tech Stack](#-tech-stack)
+- [📊 Analytics Dashboard](#-analytics-dashboard)
+- [📄 License](#-license)
+
+---
+
+## 🔑 Demo Access
+
+For demonstration purposes, you can use the following credentials to test each user role:
+
+| Role         | Email                   | Password   |
+|--------------|--------------------------|------------|
+| **Student**   | `john.doe@qu.com`        | `john123`  |
+| **Instructor**| `jane.doe@qu.com`        | `jane123`  |
+| **Admin**     | `admin.doe@qu.com`       | `admin123` |
+
+Each role grants unique access to different features of the platform.
 
 ---
 
 ## 🚀 Features
 
-### 🧑‍🎓 Student Features
-- Login via secure authentication (NextAuth)
-- View and search available courses by name or category
-- Register for courses (with prerequisite and seat validation)
-- Track learning path: Completed, In Progress, and Pending courses
-- View grades of completed courses
+### 👩‍🎓 Student Portal
+- Secure login using **NextAuth**
+- Browse and search available courses by name or category
+- Register for courses with **prerequisite** and **seat limit validation**
+- View enrolled courses and academic progress
+- Track learning path: Completed, In Progress, Pending
+- View grades for completed courses
+- Recommended course suggestions based on study plan
 
-### 🧑‍🏫 Instructor Features
-- View assigned classes
-- Submit final grades for students
+### 👨‍🏫 Instructor Portal
+- View assigned classes and enrolled students
+- Submit grades securely for each student
+- Monitor academic performance and class progress
 
-### 🧑‍💼 Administrator Features
-- Validate or cancel classes
-- Create new courses and classes
-- Assign instructors to courses based on interests
-- Generate weekly course/class schedule
+### 🧑‍💼 Admin Panel
+- Create new courses and schedule class sections
+- Assign instructors to specific classes
+- Approve or reject new class creation requests
+- Generate and view weekly course/class schedules
+- View user and registration data
 
-### 📊 Analytics Dashboard
-- Real-time statistics such as:
-  - Top students of the semester
-  - Top 3 most enrolled courses
-  - Failure rate per course
-  - And 10+ meaningful visual metrics
+---
+
+## 📊 Analytics Dashboard
+
+Real-time metrics to track academic performance:
+
+- 🎓 Top-performing students of the semester
+- 📚 Top 3 most enrolled courses
+- ❌ Failure rates per course
+- 📈 Course popularity trends
+- 🧮 Credit hour distribution
+- 🕒 Class registration patterns
+- 🔄 Drop/add rates per course
+- ⚖️ Gender-based academic stats
+- ⏱️ Course fill-time analytics
+- 💡 10+ additional interactive charts
 
 ---
 
 ## 🛠️ Tech Stack
 
-| Frontend        | Backend & DB         | Authentication | Styling      | ORM      |
-|----------------|----------------------|----------------|--------------|----------|
-| React, Next.js | Next.js API Routes   | NextAuth       |     CSS      | Prisma   |
-| HTML           | Server Actions       |                |              | SQLite   |
+| Frontend        | Backend & DB         | Authentication | Styling       | ORM      |
+|----------------|----------------------|----------------|---------------|----------|
+| React, Next.js | Next.js API Routes   | NextAuth       | CSS Modules   | Prisma   |
+| HTML, JSX      | Server Actions       |                |               | SQLite   |
 
 ---
 
-
-# 📄 License
+## 📄 License
 
 This project is licensed under the **GNU General Public License v3.0 (GPL-3.0)**.
 
-This project is for educational purposes. Feel free to fork and build on it for learning.
-
 You are free to:
 
-- **Use** the code for any purpose.
-- **Study** how the code works and adapt it to your needs.
-- **Share** the code and any modifications you make.
-- **Modify** the code and distribute your versions under the same license.
+- ✅ **Use** the code for any purpose.
+- 🔍 **Study** how the code works and modify it.
+- 🔗 **Share** the original or your modified versions.
+- 🛠️ **Adapt** the project and distribute under the same license.
 
-However, under this license, you **must**:
+You **must**:
 
-- **Disclose source**: If you distribute the code (modified or unmodified), you must include the source code or a way to obtain it.
-- **License your modifications** under the same GPL-3.0 terms.
-- **State changes**: If you make changes to the code, you must clearly state what you changed.
+- 🧾 **Disclose source** code if distributing.
+- 🪪 **Apply GPL-3.0** license to any derivative works.
+- 📝 **State all changes** made from the original.
 
-There is **no warranty**, and the license does **not grant trademark rights**.
+> ⚠️ This project is provided **as-is**, **without warranty**, and does **not grant any trademark rights**.
 
-For more details, refer to the [full license text](https://www.gnu.org/licenses/gpl-3.0.en.html).
+For more details, see the [full license text here](https://www.gnu.org/licenses/gpl-3.0.en.html).
+
+
