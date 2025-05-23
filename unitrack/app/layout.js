@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import "./globals.css";
 import LayoutClient from "./layoutclient";
 
@@ -10,7 +11,9 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
-        <LayoutClient>{children}</LayoutClient>
+        <Suspense>
+          <LayoutClient>{children}</LayoutClient>
+        </Suspense>
       </body>
     </html>
   );

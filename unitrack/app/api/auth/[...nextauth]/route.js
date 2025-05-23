@@ -1,10 +1,11 @@
-import NextAuth from "next-auth";
+import NextAuth from "next-auth/next";
 import GoogleProvider from "next-auth/providers/google";
 import GitHubProvider from "next-auth/providers/github";
 import CredentialsProvider from "next-auth/providers/credentials";
 import { PrismaClient } from "@prisma/client";
 import { compare } from "bcryptjs";
-import client from "@/app/generated/prisma/client";
+
+export const dynamic = "force-dynamic";
 
 const prisma = new PrismaClient();
 
@@ -25,33 +26,15 @@ export const authOptions = {
         password: { label: "Password", type: "password" },
       },
       async authorize(credentials) {
-        console.log("Received credentials:", credentials);
-        if (!credentials?.email || !credentials?.password) {
-          console.log("Missing email or password");
-          return null;
-        }
-
         const user = await prisma.user.findUnique({
           where: { email: credentials.email },
         });
 
-        if (!user) {
-          console.log("User not found for email:", credentials.email);
-          return null;
-        }
-
-        if (!user.password) {
-          console.log("User exists but has no password in DB");
-          return null;
-        }
+        if (!user || !user.password) return null;
 
         const isValid = await compare(credentials.password, user.password);
-        if (!isValid) {
-          console.log("Password does not match for", credentials.email);
-          return null;
-        }
+        if (!isValid) return null;
 
-        console.log("Login successful:", user.email);
         return {
           id: user.id,
           email: user.email,
@@ -79,4 +62,6 @@ export const authOptions = {
 };
 
 const handler = NextAuth(authOptions);
-export { handler as GET, handler as POST };
+
+export const GET = handler;
+export const POST = handler;
