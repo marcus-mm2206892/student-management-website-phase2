@@ -8,15 +8,25 @@ import { signIn } from "next-auth/react";
 import styles from "../app/styles/login-page.module.css";
 import ThemeResponsiveLogo from "./components/ThemeResponsiveLogo";
 import { getUserByEmailAction } from "./action/server-actions";
+import AlertModal from "./components/AlertModal";
 
 export default function LoginPage() {
   const router = useRouter();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [modalOpen, setModalOpen] = useState(false);
+  const [modalTitle, setModalTitle] = useState("");
+  const [modalDescription, setModalDescription] = useState("");
 
   useEffect(() => {
     localStorage.removeItem("user");
   }, []);
+
+  const showAlert = (title, description) => {
+    setModalTitle(title);
+    setModalDescription(description);
+    setModalOpen(true);
+  };
 
   const handleLogin = async (e) => {
     
@@ -34,14 +44,13 @@ export default function LoginPage() {
       document.cookie = `user=${JSON.stringify(user)}; path=/; max-age=3600`; // 1 hour expiry
       router.push(`/${user.role}/home`);
     } else {
-      alert("Invalid credentials");
+      showAlert("Login Failed", "Invalid credentials. Please try again.");
     }
     if (result.error) {
-    alert(result.error);
+      showAlert("Authentication Error", "We could not sign you in. Please try again.");
     }
 
   };
-
 
   return (
     <>
@@ -171,6 +180,14 @@ export default function LoginPage() {
             </p>
           </div>
         </section>
+
+        <AlertModal
+          title={modalTitle}
+          description={modalDescription}
+          isOpen={modalOpen}
+          onClose={() => setModalOpen(false)}
+        />
+
       </div>
     </>
   );

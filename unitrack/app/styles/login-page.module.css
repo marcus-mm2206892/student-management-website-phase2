@@ -12,7 +12,11 @@
 
 .welcome-col {
   grid-area: welcome-col;
-  background-color: var(--clr-primary-a10);
+  background: linear-gradient(
+    60deg,
+    var(--clr-primary-a0),
+    var(--clr-primary-a40)
+  );
   border-radius: 12px;
   margin: 1.5rem 1.5rem 1.5rem 0;
   display: flex;

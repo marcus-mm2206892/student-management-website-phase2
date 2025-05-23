@@ -177,7 +177,7 @@ export default function InstructorHomePage() {
   return (
     <main className={styles["instructor-profile"]}>
       <div className={styles["greetings"]}>
-        <h1>Welcome back, Dr. {user.firstName} {user.lastName} 👋</h1>
+        <h1>Welcome back, Professor {user.firstName} {user.lastName} 👋</h1>
         <p>Here’s your teaching overview for this semester.</p>
       </div>
 
